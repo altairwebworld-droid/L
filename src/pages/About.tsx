@@ -14,13 +14,13 @@ export default function About() {
             className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]"
           >
             Built for the <br/>
-            <span className="text-gradient">Speed of Bail.</span>
+            <span className="text-stone-200">Speed of Bail.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
-            className="text-lg text-stone-400 leading-relaxed mb-8 font-medium"
+            className="text-lg text-stone-200 leading-relaxed mb-8 font-medium"
           >
             Lycore Group was founded on a simple premise: the bail bond industry is losing millions to outdated technology and slow response times. When a family is in crisis, they don't wait. They engage the first agency that responds, and if you don't answer their inquiry, they move to the next.
           </motion.p>
@@ -28,7 +28,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="text-lg text-stone-400 leading-relaxed mb-12 font-medium"
+            className="text-lg text-stone-200 leading-relaxed mb-12 font-medium"
           >
             We build the digital infrastructure that ensures you are the agency they find, the agency that responds instantly, and the agency they trust to handle their case.
           </motion.p>
@@ -55,7 +55,7 @@ export default function About() {
             >
               <div className="text-7xl font-display font-normal text-glow mb-6">60s</div>
               <h3 className="text-2xl font-medium mb-4 tracking-wide">The Golden Window</h3>
-              <p className="text-ink-muted max-w-xs font-light leading-relaxed">
+              <p className="text-stone-200 max-w-xs font-light leading-relaxed">
                 If you don't engage a bail lead within 60 seconds, your chance of conversion drops by 400%. Our systems guarantee instant engagement.
               </p>
             </motion.div>
@@ -65,8 +65,8 @@ export default function About() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-24">
         <div className="order-2 lg:order-1">
-          <h2 className="text-4xl font-normal mb-8 tracking-tight">A Message from <br/><i className="text-gradient">Our Founder</i></h2>
-          <div className="space-y-6 text-lg text-ink-muted font-light leading-relaxed">
+          <h2 className="text-4xl font-normal mb-8 tracking-tight">A Message from <br/><i className="text-stone-200">Our Founder</i></h2>
+          <div className="space-y-6 text-lg text-stone-200 font-light leading-relaxed">
             <p>
               "The bail bond industry is the backbone of the judicial system's efficiency, yet it is often the most underserved by modern technology. In bail, you aren't just writing a bond; you are managing high-stakes risk and providing a lifeline to families during their most vulnerable moments."
             </p>
@@ -85,19 +85,19 @@ export default function About() {
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-1 h-12 bg-white/20 shrink-0" />
-                  <p className="text-ink-muted font-light">
+                  <p className="text-stone-200 font-light">
                     <b>Crisis Infrastructure:</b> Bail bonds operate in crisis mode 24/7. Your technology must be as resilient as your agency.
                   </p>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-1 h-12 bg-white/20 shrink-0" />
-                  <p className="text-ink-muted font-light">
+                  <p className="text-stone-200 font-light">
                     <b>Compliance Certainty:</b> In a regulated industry, 'close enough' doesn't work. We build compliance into every line of code.
                   </p>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-1 h-12 bg-white/20 shrink-0" />
-                  <p className="text-ink-muted font-light">
+                  <p className="text-stone-200 font-light">
                     <b>Revenue Protection:</b> We don't measure success in clicks; we measure it in secured bonds and reduced skips.
                   </p>
                 </div>
@@ -108,7 +108,7 @@ export default function About() {
       </div>
 
       <section className="mb-24">
-        <h2 className="text-4xl font-normal mb-16 text-center tracking-tight">The <i className="text-gradient">Operational Shield</i></h2>
+        <h2 className="text-4xl font-normal mb-16 text-center tracking-tight">The <i className="text-stone-200">Operational Shield</i></h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
@@ -135,7 +135,7 @@ export default function About() {
             <div key={i} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-white/20 transition-all group">
               <div className="text-5xl font-display font-normal text-white/10 group-hover:text-white/20 transition-colors mb-4">{item.letter}</div>
               <h3 className="text-xl font-medium mb-4 tracking-wide">{item.title}</h3>
-              <p className="text-ink-muted font-light leading-relaxed text-sm">{item.desc}</p>
+              <p className="text-stone-200 font-light leading-relaxed text-sm">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -170,7 +170,7 @@ export default function About() {
                   {value.icon}
                 </div>
                 <h3 className="text-2xl font-medium mb-4 tracking-wide">{value.title}</h3>
-                <p className="text-ink-muted font-light leading-relaxed">{value.desc}</p>
+                <p className="text-stone-200 font-light leading-relaxed">{value.desc}</p>
               </motion.div>
             </TiltCard>
           </div>

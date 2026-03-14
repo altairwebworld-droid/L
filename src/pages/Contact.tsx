@@ -44,13 +44,13 @@ export default function Contact() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-normal mb-8"
         >
-          Request Your <i className="text-gradient">Custom Solution.</i>
+          Request Your <i className="text-stone-200">Custom Solution.</i>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
-          className="text-xl text-ink-muted font-light leading-relaxed"
+          className="text-xl text-stone-200 font-light leading-relaxed"
         >
           Every agency has unique pain points. Reach out today for a 30-minute infrastructure audit and see how we can eliminate your lead leaks and reduce forfeitures.
         </motion.p>
@@ -73,8 +73,8 @@ export default function Contact() {
                     <Mail size={24} className="text-white/80" />
                   </div>
                   <div>
-                    <h3 className="text-sm uppercase tracking-[0.1em] text-ink-muted mb-2 font-medium">Email Us</h3>
-                    <p className="text-ink-muted mb-2 font-light">For all inquiries and strategy session requests.</p>
+                    <h3 className="text-sm uppercase tracking-[0.1em] text-stone-200 mb-2 font-medium">Email Us</h3>
+                    <p className="text-stone-200 mb-2 font-light">For all inquiries and strategy session requests.</p>
                     <a href="mailto:services@lycore.org" className="text-xl hover:text-white transition-colors font-light">services@lycore.org</a>
                   </div>
                 </div>
@@ -84,8 +84,8 @@ export default function Contact() {
                     <MessageSquare size={24} className="text-white/80" />
                   </div>
                   <div>
-                    <h3 className="text-sm uppercase tracking-[0.1em] text-ink-muted mb-2 font-medium">Strategy Session</h3>
-                    <p className="text-ink-muted mb-2 font-light">Book a 30-minute audit of your current intake process.</p>
+                    <h3 className="text-sm uppercase tracking-[0.1em] text-stone-200 mb-2 font-medium">Strategy Session</h3>
+                    <p className="text-stone-200 mb-2 font-light">Book a 30-minute audit of your current intake process.</p>
                     <a href="mailto:services@lycore.org" className="text-xl hover:text-white transition-colors font-light">Request a Time</a>
                   </div>
                 </div>
@@ -95,7 +95,7 @@ export default function Contact() {
                     <MapPin size={24} className="text-white/80" />
                   </div>
                   <div>
-                    <h3 className="text-sm uppercase tracking-[0.1em] text-ink-muted mb-2 font-medium">Office</h3>
+                    <h3 className="text-sm uppercase tracking-[0.1em] text-stone-200 mb-2 font-medium">Office</h3>
                     <p className="text-xl font-light leading-relaxed">
                       1209 MOUNTAIN ROAD PL NE STE N<br />
                       ALBUQUERQUE, NM 87110
@@ -124,7 +124,7 @@ export default function Contact() {
                   <CheckCircle2 size={40} className="text-white" />
                 </motion.div>
                 <h2 className="text-3xl font-medium mb-4">Message Sent</h2>
-                <p className="text-ink-muted font-light">Thank you for reaching out. Our team will contact you shortly to schedule your strategy session.</p>
+                <p className="text-stone-200 font-light">Thank you for reaching out. Our team will contact you shortly to schedule your strategy session.</p>
                 <button 
                   onClick={() => setIsSubmitted(false)}
                   className="mt-8 text-sm uppercase tracking-widest text-white border-b border-white/20 pb-1 hover:border-white transition-all"
@@ -139,7 +139,7 @@ export default function Contact() {
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm uppercase tracking-[0.1em] text-ink-muted mb-3 font-medium">First Name</label>
+                      <label htmlFor="firstName" className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">First Name</label>
                       <input 
                         required
                         type="text" 
@@ -151,7 +151,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="lastName" className="block text-sm uppercase tracking-[0.1em] text-ink-muted mb-3 font-medium">Last Name</label>
+                      <label htmlFor="lastName" className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">Last Name</label>
                       <input 
                         required
                         type="text" 
@@ -165,7 +165,7 @@ export default function Contact() {
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm uppercase tracking-[0.1em] text-ink-muted mb-3 font-medium">Email Address</label>
+                    <label htmlFor="email" className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">Email Address</label>
                     <input 
                       required
                       type="email" 
@@ -178,7 +178,7 @@ export default function Contact() {
                   </div>
                   
                   <div>
-                    <label htmlFor="agency" className="block text-sm uppercase tracking-[0.1em] text-ink-muted mb-3 font-medium">Agency Name</label>
+                    <label htmlFor="agency" className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">Agency Name</label>
                     <input 
                       required
                       type="text" 
@@ -191,7 +191,7 @@ export default function Contact() {
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm uppercase tracking-[0.1em] text-ink-muted mb-3 font-medium">Message</label>
+                    <label htmlFor="message" className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">Message</label>
                     <textarea 
                       required
                       id="message" 

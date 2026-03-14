@@ -21,13 +21,13 @@ export default function BailBonds() {
           className="text-5xl md:text-7xl font-normal mb-8 leading-[1.1]"
         >
           The Bail Bond Industry is <br/>
-          <i className="text-gradient">Losing Millions to Slow Response.</i>
+          <i className="text-stone-200">Losing Millions to Slow Response.</i>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-          className="text-xl text-ink-muted font-light leading-relaxed mb-12"
+          className="text-xl text-stone-200 font-light leading-relaxed mb-12"
         >
           When a family member is in jail, they engage the first agency that responds. If you don't answer their inquiry immediately, they move to the next one. Slow intake, outdated websites, and delayed responses are costing you thousands in lost premiums every week.
         </motion.p>
@@ -47,19 +47,19 @@ export default function BailBonds() {
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">Lost revenue from delayed after-hours inquiries.</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">Lost revenue from delayed after-hours inquiries.</p>
               </li>
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">Low visibility in local search results when families search "bail bonds near me".</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">Low visibility in local search results when families search "bail bonds near me".</p>
               </li>
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">Slow manual intake processes that frustrate stressed clients.</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">Slow manual intake processes that frustrate stressed clients.</p>
               </li>
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">Outdated websites that fail to build trust and authority.</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">Outdated websites that fail to build trust and authority.</p>
               </li>
             </ul>
           </motion.div>
@@ -78,19 +78,19 @@ export default function BailBonds() {
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-white shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">Automated SMS text-back for every inquiry, instantly engaging the lead.</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">Automated SMS text-back for every inquiry, instantly engaging the lead.</p>
               </li>
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-white shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">High-conversion, lightning-fast websites optimized for local SEO dominance.</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">High-conversion, lightning-fast websites optimized for local SEO dominance.</p>
               </li>
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-white shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">24/7 AI Chatbots that qualify leads and collect defendant info instantly.</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">24/7 AI Chatbots that qualify leads and collect defendant info instantly.</p>
               </li>
               <li className="flex items-start gap-4">
                 <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-white shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
-                <p className="text-lg text-ink-muted font-light leading-relaxed">Streamlined digital intake forms and automated appointment scheduling.</p>
+                <p className="text-lg text-stone-200 font-light leading-relaxed">Streamlined digital intake forms and automated appointment scheduling.</p>
               </li>
             </ul>
           </motion.div>
@@ -99,15 +99,15 @@ export default function BailBonds() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-20">
         <div>
-          <h2 className="text-4xl font-normal mb-8 leading-tight">Your Agency, <br/><i className="text-gradient">Upgraded.</i></h2>
-          <p className="text-lg text-ink-muted leading-relaxed mb-8 font-light">
+          <h2 className="text-4xl font-normal mb-8 leading-tight">Your Agency, <br/><i className="text-stone-200">Upgraded.</i></h2>
+          <p className="text-lg text-stone-200 leading-relaxed mb-8 font-light">
             We don't just build websites; we build systems that work while you sleep. Our AI agents handle the initial intake, our SEO ensures you're the first choice, and our automation keeps the process moving.
           </p>
           <div className="space-y-4">
             {["24/7 Lead Capture", "Automated Compliance", "Local Market Dominance"].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-white/40" />
-                <span className="text-ink-muted font-light">{item}</span>
+                <span className="text-stone-200 font-light">{item}</span>
               </div>
             ))}
           </div>
@@ -128,7 +128,7 @@ export default function BailBonds() {
       </div>
 
       <div className="text-center mb-20">
-        <h2 className="text-4xl font-normal mb-6">How We <i className="text-gradient">Capture Every Lead</i></h2>
+        <h2 className="text-4xl font-normal mb-6">How We <i className="text-stone-200">Capture Every Lead</i></h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20 perspective-[1000px]">
@@ -159,7 +159,7 @@ export default function BailBonds() {
                 {feature.icon}
               </div>
               <h3 className="text-2xl font-medium mb-4 tracking-wide">{feature.title}</h3>
-              <p className="text-ink-muted font-light leading-relaxed">{feature.desc}</p>
+              <p className="text-stone-200 font-light leading-relaxed">{feature.desc}</p>
             </motion.div>
           </TiltCard>
         ))}
@@ -173,8 +173,8 @@ export default function BailBonds() {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-normal mb-8 tracking-tight">Stop Losing Premiums to <i className="text-gradient">Slower Competitors.</i></h2>
-            <p className="text-xl text-ink-muted max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-normal mb-8 tracking-tight">Stop Losing Premiums to <i className="text-stone-200">Slower Competitors.</i></h2>
+            <p className="text-xl text-stone-200 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
               Upgrade your agency's digital infrastructure today and start capturing every client opportunity.
             </p>
             <a href="mailto:services@lycore.org" className="btn-3d group">

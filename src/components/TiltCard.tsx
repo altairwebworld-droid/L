@@ -56,7 +56,7 @@ export default function TiltCard({ children, className = '', variant = "default"
       }}
       className={`relative group h-full ${className}`}
     >
-      <div className="relative h-full rounded-[1.5rem] border border-white/10 p-2 md:p-3">
+      <div className="relative h-full rounded-2xl md:rounded-3xl p-2 md:p-3 shadow-2xl">
         <GlowingEffect
           spread={40}
           glow={true}
@@ -64,14 +64,13 @@ export default function TiltCard({ children, className = '', variant = "default"
           proximity={64}
           inactiveZone={0.01}
           borderWidth={3}
-          variant={variant}
         />
         <div 
           style={{ 
             transform: "translateZ(20px)", 
             transformStyle: "preserve-3d" 
           }}
-          className="relative h-full w-full rounded-xl overflow-hidden bg-[#0c0c0c] border border-white/5 shadow-2xl"
+          className="relative h-full w-full rounded-xl md:rounded-2xl overflow-hidden bg-[#0c0c0c] border border-white/10"
         >
           {children}
         </div>

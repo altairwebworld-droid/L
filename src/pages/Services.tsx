@@ -86,13 +86,13 @@ export default function Services() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl md:text-7xl font-bold tracking-tight mb-8"
         >
-          Specialized <span className="text-gradient">Services</span>
+          Specialized <span className="text-stone-200">Services</span>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
-          className="text-xl text-ink-muted font-light leading-relaxed"
+          className="text-xl text-stone-200 font-light leading-relaxed"
         >
           Comprehensive digital infrastructure designed to capture, engage, and convert bail bond leads 24/7.
         </motion.p>
@@ -109,7 +109,7 @@ export default function Services() {
               
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
                 {service.headline.split('.').map((part, i) => (
-                  <span key={i} className={i === 1 ? 'text-gradient block mt-2' : ''}>
+                  <span key={i} className={i === 1 ? 'text-stone-200 block mt-2' : ''}>
                     {part}{i === 0 && '.'}
                   </span>
                 ))}
@@ -122,7 +122,7 @@ export default function Services() {
               <div className="space-y-6">
                 <div className="space-y-4">
                   <h4 className="micro-label text-white/60">The Impact</h4>
-                  <p className="text-ink-muted leading-relaxed font-light">
+                  <p className="text-stone-200 leading-relaxed font-light">
                     {service.whatItIs}
                   </p>
                 </div>
@@ -136,7 +136,7 @@ export default function Services() {
                           <div className="w-px h-auto bg-white/10 group-hover/item:bg-white/30 transition-colors shrink-0" />
                           <div>
                             <h5 className="text-white/90 font-medium mb-1 tracking-wide">{item.title}</h5>
-                            <p className="text-ink-muted text-sm font-light leading-relaxed">{item.desc}</p>
+                            <p className="text-stone-200 text-sm font-light leading-relaxed">{item.desc}</p>
                           </div>
                         </div>
                       ))}
@@ -148,8 +148,8 @@ export default function Services() {
                     <ul className="space-y-3">
                       {service.benefits.map((benefit, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 size={16} className="text-white/40 mt-0.5 shrink-0" />
-                          <span className="text-ink-muted text-sm font-light leading-relaxed">{benefit}</span>
+                          <CheckCircle2 size={16} className="text-stone-200 mt-0.5 shrink-0" />
+                          <span className="text-stone-200 text-sm font-light leading-relaxed">{benefit}</span>
                         </li>
                       ))}
                     </ul>
@@ -183,8 +183,8 @@ export default function Services() {
 
       {/* Additional Services Grid */}
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-normal mb-6">More <i className="text-gradient">Solutions</i></h2>
-        <p className="text-ink-muted font-light">Specialized tools to streamline every aspect of your bail agency.</p>
+        <h2 className="text-4xl font-normal mb-6">More <i className="text-stone-200">Solutions</i></h2>
+        <p className="text-stone-200 font-light">Specialized tools to streamline every aspect of your bail agency.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32 perspective-[1000px]">
@@ -219,7 +219,7 @@ export default function Services() {
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-medium mb-4 tracking-wide">{service.title}</h3>
-                <p className="text-ink-muted leading-relaxed mb-8 font-light text-sm">{service.desc}</p>
+                <p className="text-stone-200 leading-relaxed mb-8 font-light text-sm">{service.desc}</p>
                 
                 <ul className="space-y-3 mt-auto">
                   {service.features.map((feature, i) => (
@@ -243,8 +243,8 @@ export default function Services() {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
           <div className="relative z-10">
-            <h2 className="text-4xl font-normal mb-8">Need a <i className="text-gradient">Custom Solution?</i></h2>
-            <p className="text-ink-muted mb-12 max-w-2xl mx-auto font-light leading-relaxed text-lg">
+            <h2 className="text-4xl font-normal mb-8">Need a <i className="text-stone-200">Custom Solution?</i></h2>
+            <p className="text-stone-200 mb-12 max-w-2xl mx-auto font-light leading-relaxed text-lg">
               Every agency operates differently. We can customize our systems to fit your specific workflow, CRM, and intake requirements.
             </p>
             <a href="mailto:services@lycore.org" className="btn-3d group">
