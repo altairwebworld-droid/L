@@ -28,34 +28,36 @@ export default function Testimonials() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {testimonials.map((t, i) => (
-        <TiltCard key={i} className="h-full">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="p-8 md:p-10 flex flex-col h-full"
-          >
-            <div className="flex gap-1 mb-6 text-white/40">
-              {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
-            </div>
-            
-            <Quote size={32} className="text-white/10 mb-6 shrink-0" />
-            
-            <p className="text-ink-muted font-light leading-relaxed mb-8 flex-1 italic">
-              "{t.quote}"
-            </p>
-            
-            <div className="pt-8 border-t border-white/5">
-              <div className="font-medium tracking-wide mb-1">{t.author}</div>
-              <div className="text-xs text-ink-muted uppercase tracking-widest mb-4">{t.role}</div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-white">
-                <span className="w-1 h-1 rounded-full bg-emerald-500" />
-                {t.impact}
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <TiltCard className="h-full">
+            <div className="p-8 md:p-10 flex flex-col h-full">
+              <div className="flex gap-1 mb-6 text-white/40">
+                {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+              </div>
+              
+              <Quote size={32} className="text-white/10 mb-6 shrink-0" />
+              
+              <p className="text-ink-muted font-light leading-relaxed mb-8 flex-1 italic">
+                "{t.quote}"
+              </p>
+              
+              <div className="pt-8 border-t border-white/5">
+                <div className="font-medium tracking-wide mb-1">{t.author}</div>
+                <div className="text-xs text-ink-muted uppercase tracking-widest mb-4">{t.role}</div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-white">
+                  <span className="w-1 h-1 rounded-full bg-emerald-500" />
+                  {t.impact}
+                </div>
               </div>
             </div>
-          </motion.div>
-        </TiltCard>
+          </TiltCard>
+        </motion.div>
       ))}
     </div>
   );

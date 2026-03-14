@@ -289,10 +289,16 @@ export default function Home() {
 
       {/* 7.5 Testimonials Section */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-normal mb-6">What Our <i className="text-gradient">Clients Say</i></h2>
           <p className="text-ink-muted text-lg font-light max-w-2xl mx-auto">We measure our success by the growth of the agencies we partner with.</p>
-        </div>
+        </motion.div>
         <Testimonials />
       </section>
 
