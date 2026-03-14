@@ -51,7 +51,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+<<<<<<< HEAD
             className="text-xl md:text-2xl text-stone-200 max-w-3xl mx-auto mb-12 leading-relaxed font-medium text-glow-strong"
+=======
+            className="text-xl md:text-2xl text-stone-400 max-w-3xl mx-auto mb-12 leading-relaxed font-medium text-glow-strong"
+>>>>>>> origin/main
           >
             We build profit-driving engines for specialized agencies. <br className="hidden sm:block" /> Stop reactive intake. Start dominant growth.
           </motion.p>
@@ -76,7 +80,11 @@ export default function Home() {
       <section className="border-y border-white/5 bg-bg-alt/30 py-12">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-center micro-label mb-10">Solving Critical Pain Points for specialized agencies</p>
+<<<<<<< HEAD
           <div className="flex flex-wrap justify-center gap-16 md:gap-32 opacity-60">
+=======
+          <div className="flex flex-wrap justify-center gap-16 md:gap-32 opacity-40 grayscale">
+>>>>>>> origin/main
             <div className="text-2xl font-display font-medium tracking-wide">BailBonds Pro</div>
             <div className="text-2xl font-display font-medium tracking-wide">SecureRelease</div>
             <div className="text-2xl font-display font-medium tracking-wide">FastTrack Bail</div>
@@ -89,8 +97,13 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
+<<<<<<< HEAD
             <h2 className="text-4xl md:text-5xl font-normal mb-8 leading-tight">AI Call Answering <br/><i className="text-stone-200">for Bail Bonds</i></h2>
             <p className="text-stone-200 text-lg mb-10 leading-relaxed font-light">
+=======
+            <h2 className="text-4xl md:text-5xl font-normal mb-8 leading-tight">The Bail Bond Industry is <br/><i className="text-gradient">Bleeding Revenue</i> to Slow Response.</h2>
+            <p className="text-ink-muted text-lg mb-10 leading-relaxed font-light">
+>>>>>>> origin/main
               When a family member is in jail, they engage the first agency that responds. If you don't answer their inquiry immediately, they move to the next one. Slow intake, outdated websites, and "ghost" online presences are costing you thousands in lost premiums every week.
             </p>
             <ul className="space-y-6">
@@ -128,7 +141,11 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="font-medium text-sm tracking-wide">2 AM Lead Leak Detected</h3>
+<<<<<<< HEAD
                       <p className="text-[10px] text-stone-200 font-light">Lead lost to competitor in 60s</p>
+=======
+                      <p className="text-[10px] text-ink-muted font-light">Lead lost to competitor in 60s</p>
+>>>>>>> origin/main
                     </div>
                   </div>
                   <div className="h-1 bg-white/10 rounded-full w-full overflow-hidden">
@@ -147,8 +164,13 @@ export default function Home() {
 
       {/* 4. Solution Section */}
       <section id="solutions" className="max-w-7xl mx-auto px-6 text-center pt-16">
+<<<<<<< HEAD
         <h2 className="text-4xl md:text-6xl font-normal mb-8">Bail Bond Lead <br/><i className="text-stone-200">Capture AI</i></h2>
         <p className="text-xl text-stone-200 max-w-3xl mx-auto mb-20 font-light leading-relaxed">
+=======
+        <h2 className="text-4xl md:text-6xl font-normal mb-8">The Lycore <br/><i className="text-gradient">Client Capture System</i></h2>
+        <p className="text-xl text-ink-muted max-w-3xl mx-auto mb-20 font-light leading-relaxed">
+>>>>>>> origin/main
           An end-to-end infrastructure designed specifically to solve your toughest operational challenges and dominate local search.
         </p>
       </section>
@@ -201,7 +223,11 @@ export default function Home() {
                     {service.icon}
                   </div>
                   <h3 className="text-2xl font-medium mb-4 tracking-wide">{service.title}</h3>
+<<<<<<< HEAD
                   <p className="text-stone-200 font-light leading-relaxed flex-grow">{service.desc}</p>
+=======
+                  <p className="text-ink-muted font-light leading-relaxed flex-grow">{service.desc}</p>
+>>>>>>> origin/main
                 </motion.div>
               </TiltCard>
             </div>
@@ -220,8 +246,13 @@ export default function Home() {
               <Sparkles size={12} className="text-white" />
               Live Demo
             </div>
+<<<<<<< HEAD
             <h2 className="text-4xl md:text-5xl font-normal mb-8 leading-tight">Automated Client <br/><i className="text-stone-200">Follow-Up</i></h2>
             <p className="text-stone-200 text-lg mb-8 leading-relaxed font-light">
+=======
+            <h2 className="text-4xl md:text-5xl font-normal mb-8 leading-tight">See the AI <br/><i className="text-gradient">Solution in Action.</i></h2>
+            <p className="text-ink-muted text-lg mb-8 leading-relaxed font-light">
+>>>>>>> origin/main
               Our AI doesn't just "chat." It solves the lead leak. It qualifies, gathers critical jurisdictional data, and ensures your team only engages with revenue-ready clients.
             </p>
             <div className="space-y-6">
@@ -249,7 +280,11 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-5xl font-normal mb-6">Our Problem-First Process</h2>
+<<<<<<< HEAD
           <p className="text-stone-200 text-lg font-light">A strategic roadmap to reclaiming your agency's profit.</p>
+=======
+          <p className="text-ink-muted text-lg font-light">A strategic roadmap to reclaiming your agency's profit.</p>
+>>>>>>> origin/main
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -301,8 +336,13 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
+<<<<<<< HEAD
           <h2 className="text-4xl md:text-5xl font-normal mb-6">AI Systems Built for <i className="text-stone-200">Bail Agencies</i></h2>
           <p className="text-stone-200 text-lg font-light max-w-2xl mx-auto">We measure success by the reduction in your pain and the growth of your profit.</p>
+=======
+          <h2 className="text-4xl md:text-5xl font-normal mb-6">Proof of <i className="text-gradient">Performance</i></h2>
+          <p className="text-ink-muted text-lg font-light max-w-2xl mx-auto">We measure success by the reduction in your pain and the growth of your profit.</p>
+>>>>>>> origin/main
         </motion.div>
         <Testimonials />
       </section>
@@ -318,8 +358,13 @@ export default function Home() {
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none" />
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
+<<<<<<< HEAD
                 <h2 className="text-4xl md:text-5xl font-normal mb-8 leading-tight">The Bail Bond <br/><i className="text-stone-200">Problem-Solvers.</i></h2>
                 <p className="text-stone-200 text-lg mb-10 leading-relaxed font-light">
+=======
+                <h2 className="text-4xl md:text-5xl font-normal mb-8 leading-tight">The Bail Bond <br/><i className="text-gradient">Problem-Solvers.</i></h2>
+                <p className="text-ink-muted text-lg mb-10 leading-relaxed font-light">
+>>>>>>> origin/main
                   Generic agencies don't understand the urgency of a bail bond lead. We know that if you don't respond in 60 seconds, the client is gone. Our systems are built specifically for the high-stakes, time-sensitive nature of the bail industry.
                 </p>
                 <a href="mailto:services@lycore.org" className="inline-flex items-center gap-3 text-white text-sm tracking-[0.1em] uppercase font-bold hover:text-white/70 transition-colors group">
@@ -348,7 +393,11 @@ export default function Home() {
           {[
             { q: "How quickly can you deploy the Client Capture System?", a: "Most systems are fully operational within 14-21 days, directly addressing your agency's most urgent bottlenecks." },
             { q: "Do I need to replace my current website?", a: "Not always. We can integrate our AI chat and SMS systems into your existing site, although a conversion-optimized rebuild usually delivers the highest ROI." },
+<<<<<<< HEAD
             { q: "How does the AI handle jurisdictional compliance?", a: "Our AI is trained with specific jurisdictional logic and 'Safe-Harbor' phrasing, ensuring it gathers info without making unauthorized legal promises." },
+=======
+            { q: "How does the AI handle jurisdictional compliance?", a: "Our AI is trained with specific jurisdictional logic and 'Safe-Harbor' phrasing, ensuring it gathers info without making legal promises." },
+>>>>>>> origin/main
             { q: "Is the system secure for high-stakes defendant data?", a: "Yes, we use enterprise-grade encryption to ensure every piece of intake data is handled with the highest level of security and privacy." }
           ].map((faq, i) => (
             <div key={i} className="glass-panel p-8 rounded-2xl border border-white/5">
@@ -369,8 +418,13 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
             <div className="relative z-10">
+<<<<<<< HEAD
               <h2 className="text-5xl md:text-7xl font-normal mb-8 tracking-tight">Ready for a Solution <br/><i className="text-stone-200">That Pays for Itself?</i></h2>
               <p className="text-xl text-stone-200 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+=======
+              <h2 className="text-5xl md:text-7xl font-normal mb-8 tracking-tight">Ready for a Solution <br/><i className="text-gradient">That Pays for Itself?</i></h2>
+              <p className="text-xl text-ink-muted max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+>>>>>>> origin/main
                 Stop losing clients to agencies with faster response times. Upgrade your digital infrastructure and dominate your local market today.
               </p>
               <a href="mailto:services@lycore.org" className="btn-3d">
