@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Mail, MapPin, MessageSquare, CheckCircle2 } from 'lucide-react';
 import TiltCard from '../components/TiltCard';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ export default function Contact() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-normal mb-8"
         >
-          Let's <i className="text-gradient">Connect.</i>
+          Request Your <i className="text-gradient">Custom Solution.</i>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
@@ -52,7 +52,7 @@ export default function Contact() {
           transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
           className="text-xl text-ink-muted font-light leading-relaxed"
         >
-          Ready to stop losing leads and start capturing every client opportunity? Reach out to schedule a strategy session.
+          Every agency has unique pain points. Reach out today for a 30-minute infrastructure audit and see how we can eliminate your lead leaks and reduce forfeitures.
         </motion.p>
       </div>
 
