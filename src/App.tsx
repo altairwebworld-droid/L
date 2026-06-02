@@ -14,6 +14,7 @@ import ServiceDetail from './pages/ServiceDetail';
 import Audit from './pages/Audit';
 import Book from './pages/Book';
 import Legal from './pages/Legal';
+import RedirectResult from './pages/RedirectResult';
 import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
@@ -39,6 +40,9 @@ export default function App() {
           <Route path="ui-apps-for-bail-bonds" element={<ServiceDetail />} />
           <Route path="free-bail-bond-lead-system-audit" element={<Audit />} />
           <Route path="book" element={<Book />} />
+          <Route path="audit-request-received" element={<RedirectResult type="audit-success" />} />
+          <Route path="booking-confirmed" element={<RedirectResult type="booking-success" />} />
+          <Route path="booking-failed" element={<RedirectResult type="booking-failed" />} />
           <Route path="privacy" element={<Legal />} />
           <Route path="terms" element={<Legal />} />
         </Route>
