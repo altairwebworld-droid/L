@@ -23,6 +23,36 @@ const attributionKeys = {
 } as const;
 
 const storageKey = 'lycore_attribution';
+let gaInitialized = false;
+
+export function initAnalytics(measurementId?: string) {
+  if (typeof window === 'undefined' || !measurementId || gaInitialized) {
+    return;
+  }
+
+  const analyticsWindow = window as DataLayerWindow;
+  analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+  analyticsWindow.gtag =
+    analyticsWindow.gtag ||
+    function gtag() {
+      analyticsWindow.dataLayer?.push(arguments as unknown as Record<string, unknown>);
+    };
+
+  const existingScript = document.querySelector(`script[src*="${measurementId}"]`);
+  if (!existingScript) {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+    document.head.appendChild(script);
+  }
+
+  analyticsWindow.gtag('js', new Date());
+  analyticsWindow.gtag('config', measurementId, {
+    page_path: window.location.pathname,
+    page_location: window.location.href,
+  });
+  gaInitialized = true;
+}
 
 export function getAttribution(): Attribution {
   if (typeof window === 'undefined') {

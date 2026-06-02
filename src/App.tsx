@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -16,8 +17,13 @@ import Book from './pages/Book';
 import Legal from './pages/Legal';
 import RedirectResult from './pages/RedirectResult';
 import ScrollToTop from './components/ScrollToTop';
+import { initAnalytics } from './lib/analytics';
 
 export default function App() {
+  useEffect(() => {
+    initAnalytics(import.meta.env.VITE_GA4_MEASUREMENT_ID);
+  }, []);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
