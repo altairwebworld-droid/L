@@ -1,14 +1,12 @@
-# Backend CRM Readiness Report
+# 30/60/90 Optimization Plan
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
-- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
-- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
-- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.
-- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.
-- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.
-- Verification status: Fully implemented for readiness; Requires manual setup for live routing.
+| Period | Metrics to Check | What Improvement Looks Like | Action if Underperforming |
+| --- | --- | --- | --- |
+| 30 Days | Indexing, impressions, clicks, form starts, form errors | More pages indexed, impressions growing, starts > 0 | Request indexing, fix crawl errors, simplify form |
+| 60 Days | Service page impressions, CTR, FAQ queries, internal links | Service pages getting clicks, FAQs answering queries | Expand FAQs, strengthen internal links, revise copy |
+| 90 Days | Qualified lead count, CRM follow-up success | High % of leads are qualified agency owners | Add proof assets, connect automations, expand high-value topics |
 
 ## Implementation Detail Matrix
 

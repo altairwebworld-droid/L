@@ -1,14 +1,16 @@
-# Backend CRM Readiness Report
+# Accessibility Report
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
-- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
-- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
-- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.
-- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.
-- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.
-- Verification status: Fully implemented for readiness; Requires manual setup for live routing.
+| Accessibility Requirement | Status | Implementation Details |
+| --- | --- | --- |
+| Form Labels | Fully implemented | All inputs have associated <label> tags |
+| Button Aria Labels | Fully implemented | Icon buttons have descriptive aria-labels |
+| Semantic HTML | Fully implemented | Using header, nav, main, footer, section, article |
+| Focus States | Partial | Relies on browser defaults; custom buttons lack explicit ring |
+| Keyboard Navigation | Partial | Native elements work; <details> FAQ lacks custom handling |
+| Color Contrast | Partial | stone-300 on stone-950 may need contrast review |
+| Alt Text | Fully implemented | No critical raster images; OG image has metadata |
 
 ## Implementation Detail Matrix
 

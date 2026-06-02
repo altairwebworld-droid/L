@@ -17,7 +17,7 @@ Created: 2026-06-02
 | Valid schema | JSON-LD parses and matches visible content. | Generated route HTML | Schema parses without errors. | Fully implemented |
 | CTA clicks | Audit CTA interactions. | Analytics utility | CTA events fire after analytics setup. | Requires manual setup |
 | Form starts | Visitors starting the audit form. | Analytics utility | Starts captured with path context. | Requires manual setup |
-| Form submissions | Successful audit requests. | Vercel Function/backend/CRM | Valid submissions are validated and optionally forwarded to Zoho or another webhook. | Fully implemented |
+| Form submissions | Successful audit requests. | Vercel Function/backend/CRM | Valid submissions are validated and optionally forwarded to the selected CRM or automation webhook. | Fully implemented |
 | Form errors | Validation/backend errors. | Analytics/backend logs | Errors are tracked and reduced. | Fully implemented |
 | Lead source/UTM captured | Attribution readiness. | Payload/backend rows | Source and UTM fields persist. | Fully implemented |
 | Qualified leads | Lead quality after routing. | CRM/backend after setup | More agency-owner/manager leads. | Requires manual setup |

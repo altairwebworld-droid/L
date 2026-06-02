@@ -180,7 +180,7 @@ export const servicePages: ServicePage[] = [
     problem:
       'Leads are harder to follow up when calls, forms, chat, and owner notes are scattered across disconnected tools.',
     explanation:
-      'LyCore structures lead data so a backend can send it to tools such as HubSpot, Zoho, Bitrix24, Airtable, Supabase, Make, Zapier, n8n, or a custom dashboard when credentials are provided.',
+      'LyCore structures lead data so a backend can send it to the selected CRM, database, automation platform, or custom dashboard when real credentials are provided.',
     benefits: ['CRM-friendly field names', 'Cleaner lead routing', 'Source and UTM capture', 'Credentials kept out of frontend code'],
     included: ['Webhook placeholder', 'Environment variable pattern', 'Payload validation', 'CRM field documentation'],
     process: ['Map lead fields', 'Prepare API route', 'Connect credentials manually', 'Test CRM record creation'],

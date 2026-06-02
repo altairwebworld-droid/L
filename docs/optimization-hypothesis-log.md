@@ -1,14 +1,18 @@
-# Backend CRM Readiness Report
+# Optimization Hypothesis Log
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
-- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
-- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
-- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.
-- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.
-- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.
-- Verification status: Fully implemented for readiness; Requires manual setup for live routing.
+| Area | Hypothesis | Metric | Expected result | Review date | Status |
+| --- | --- | --- | --- | --- | --- |
+| CTA | Specific audit CTA will increase clarity. | CTA clicks/forms | Higher form starts | 30 days | Pending |
+| Service pages | Dedicated pages for core services improve search. | Impressions | More impressions | 60 days | Pending |
+| FAQs | Direct answers improve AEO readiness. | AI summaries | Accurate summaries | 60 days | Pending |
+| Form payload | Qualification fields improve lead quality. | Qualified leads | Better leads | 30 days | Pending |
+| CRM readiness | Webhook placeholder reduces integration friction. | Setup time | Faster setup | 60 days | Pending |
+| Chatbot | Strict 10-step flow increases qualification rate. | Chatbot leads | Higher qual rate | 30 days | Pending |
+| Internal Linking | Contextual related links increase time on site. | Pages/session | Higher engagement | 60 days | Pending |
+| Schema | Service/FAQ schema increases rich results. | Rich results | More rich snippets | 90 days | Pending |
+| Agentic Flow | Automated scoring prioritizes follow-up. | Response time | Faster response | 30 days | Pending |
 
 ## Implementation Detail Matrix
 

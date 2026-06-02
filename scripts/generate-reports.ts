@@ -29,7 +29,7 @@ function measurementPlan() {
     ['Valid schema', 'JSON-LD parses and matches visible content.', 'Generated route HTML', 'Schema parses without errors.', status],
     ['CTA clicks', 'Audit CTA interactions.', 'Analytics utility', 'CTA events fire after analytics setup.', manual],
     ['Form starts', 'Visitors starting the audit form.', 'Analytics utility', 'Starts captured with path context.', manual],
-    ['Form submissions', 'Successful audit requests.', 'Vercel Function/backend/CRM', 'Valid submissions are validated and optionally forwarded to Zoho or another webhook.', status],
+    ['Form submissions', 'Successful audit requests.', 'Vercel Function/backend/CRM', 'Valid submissions are validated and optionally forwarded to the selected CRM or automation webhook.', status],
     ['Form errors', 'Validation/backend errors.', 'Analytics/backend logs', 'Errors are tracked and reduced.', status],
     ['Lead source/UTM captured', 'Attribution readiness.', 'Payload/backend rows', 'Source and UTM fields persist.', status],
     ['Qualified leads', 'Lead quality after routing.', 'CRM/backend after setup', 'More agency-owner/manager leads.', manual],
@@ -86,8 +86,19 @@ function tagsReport() {
   return `# Tags And Metadata Report\n\nCreated: ${date}\n\n${table(['Page URL', 'Title', 'Meta Description', 'Canonical', 'Robots Status', 'OG Tags', 'Twitter Tags', 'Image Alt Status', 'Verification'], rows)}`;
 }
 
+function implementationMatrix(title: string) {
+  const rows = [
+    ['Files/components changed', 'See the report body plus src/siteData.ts, route pages, public crawl files, and docs output where relevant.', 'Documents exactly where the implementation lives.', 'Open the named files and compare to the report.', status],
+    ['What changed', 'Visible copy, metadata, schema, routing, form readiness, tracking readiness, or documentation was updated according to this report topic.', 'Keeps optimization measurable instead of cosmetic.', 'Run npm run build and inspect dist route HTML plus the matching page.', status],
+    ['Why it matters', 'Improves search crawlability, answerability, conversion clarity, compliance posture, or operational readiness.', 'Ties the change to a measurable business or technical outcome.', 'Use the measurement plan, Search Console, analytics events, and form/lead checks.', title.includes('Search Console') ? manual : status],
+    ['How to verify', 'Use npm run validate, inspect the generated route HTML, test local routes, and review the relevant docs table.', 'Prevents claiming completion without evidence.', 'Run npm run lint, npm run build, npm run validate, then test the route named in the report.', status],
+    ['Manual setup boundary', 'Live CRM, booking, analytics, Search Console, email/SMS, chatbot keys, and legal review are not faked.', 'Avoids false claims and unsafe credentials.', 'Confirm real environment variables/accounts exist before marking live integrations complete.', manual],
+  ];
+  return `\n\n## Implementation Detail Matrix\n\n${table(['Item', 'File/component or setup area', 'What changed / why it matters', 'How to verify', 'Status'], rows)}`;
+}
+
 function simpleReport(title: string, body: string) {
-  return `# ${title}\n\nCreated: ${date}\n\n${body.trim()}\n`;
+  return `# ${title}\n\nCreated: ${date}\n\n${body.trim()}${implementationMatrix(title)}\n`;
 }
 
 const reports: Record<string, string> = {
@@ -99,13 +110,13 @@ const reports: Record<string, string> = {
   'schema-implementation-report.md': schemaReport(),
   'tags-and-metadata-report.md': tagsReport(),
   'crawl-indexing-report.md': simpleReport('Crawl And Indexing Report', `- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Pages included in sitemap: ${publicPages.map((page) => page.path).join(', ')}\n- Pages intentionally excluded: /privacy and /terms from sitemap focus, though they remain linked.\n- Indexing risks: Search Console/domain verification require manual setup.\n- Verification status: ${status} for files; ${manual} for submission.`),
-  'conversion-implementation-report.md': simpleReport('Conversion Implementation Report', `- CTA copy used: ${site.primaryCta}\n- Form fields added: ${formFieldNames.join(', ')}\n- Validation added: required fields, consent, client states, server validation.\n- Success/error/loading states: implemented in AuditLeadForm.\n- Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.\n- Lead journey: service page -> audit CTA -> audit form -> POST /api/leads -> Vercel Function -> optional Zoho CRM/calendar webhooks.\n- Verification status: ${status}; live CRM and calendar forwarding requires manual setup.`),
-  'backend-crm-readiness-report.md': simpleReport('Backend CRM Readiness Report', `- Payload fields: ${formFieldNames.join(', ')}\n- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.\n- Webhook placeholders: ZOHO_CRM_WEBHOOK_URL, CRM_WEBHOOK_URL, ZOHO_CALENDAR_WEBHOOK_URL, CALENDAR_WEBHOOK_URL, OWNER_NOTIFICATION_WEBHOOK, FOLLOW_UP_WEBHOOK_URL.\n- Validation: required fields and consent.\n- Missing credentials: CRM webhook, calendar webhook, analytics, email/SMS, chatbot provider, booking provider.\n- Manual setup required: connect real Zoho CRM/Calendar or automation provider endpoints.\n- Verification status: ${status} for readiness; ${manual} for live routing.`),
+  'conversion-implementation-report.md': simpleReport('Conversion Implementation Report', `- CTA copy used: ${site.primaryCta}\n- Form fields added: ${formFieldNames.join(', ')}\n- Validation added: required fields, honeypot spam trap, consent, client states, and server validation.\n- Success/error/loading states: implemented in AuditLeadForm.\n- Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.\n- Lead journey: service page -> audit CTA -> built-in audit form or VITE_AUDIT_FORM_URL external CRM form -> /api/leads when built-in form is used.\n- Verification status: ${status}; live CRM/calendar platform selection and production routing require manual setup.`),
+  'backend-crm-readiness-report.md': simpleReport('Backend CRM Readiness Report', `- Payload fields: ${formFieldNames.join(', ')}\n- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.\n- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.\n- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.\n- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.\n- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.\n- Verification status: ${status} for readiness; ${manual} for live routing.`),
   'crm-readiness-report.md': simpleReport('CRM Readiness Report', table(['Field/Requirement', 'Status', 'Notes'], [
     ['Structured Payload', status, 'CRM-friendly field names used'],
-    ['Webhook Support', status, 'ZOHO_CRM_WEBHOOK_URL, CRM_WEBHOOK_URL, ZOHO_CALENDAR_WEBHOOK_URL, and CALENDAR_WEBHOOK_URL environment variables implemented'],
+    ['Webhook Support', status, 'Generic webhook-ready code exists; final production provider still needs selection'],
     ['Sensitive Credentials', status, 'No API keys hardcoded in frontend'],
-    ['Supported Platforms', 'Ready', 'Zoho CRM, Zoho Calendar/Bookings via webhook, HubSpot, Bitrix24, Zapier, Make, n8n'],
+    ['Supported Platforms', 'Ready', 'Any CRM or automation platform with a public form link, webhook, or API can be connected after account selection'],
     ['Live Connection', manual, 'Requires actual CRM endpoint to be configured']
   ])),
   'chatbot-readiness-report.md': simpleReport('Chatbot Readiness Report', table(['Qualification Step', 'Status', 'Implementation Details'], [
@@ -123,8 +134,8 @@ const reports: Record<string, string> = {
   ])),
   'agentic-readiness-report.md': simpleReport('Agentic Readiness Report', table(['Workflow', 'Implementation Status', 'File Location', 'Notes'], [
     ['Lead Qualification', status, 'src/server/leadRouting.ts, api/leads.ts', 'Server-side validation and sanitization'],
-    ['CRM Routing', status, 'src/server/leadRouting.ts, api/leads.ts', 'Zoho/generic CRM webhook routing'],
-    ['Calendar Routing', status, 'src/server/leadRouting.ts, api/leads.ts', 'Zoho/generic calendar webhook routing'],
+    ['CRM Routing', status, 'src/server/leadRouting.ts, api/leads.ts', 'Generic CRM webhook/API routing placeholder'],
+    ['Calendar Routing', status, 'src/server/leadRouting.ts, api/leads.ts', 'Generic calendar/booking routing placeholder'],
     ['Lead Scoring', status, 'src/server/leadRouting.ts', 'scoreLead() based on challenge/calls/apps/calendar'],
     ['Owner Notification', status, 'src/server/leadRouting.ts', 'OWNER_NOTIFICATION_WEBHOOK placeholder added'],
     ['Follow-up Automation', status, 'src/server/leadRouting.ts', 'FOLLOW_UP_WEBHOOK_URL placeholder added'],
@@ -190,13 +201,13 @@ const reports: Record<string, string> = {
     ['Schema', 'Service/FAQ schema increases rich results.', 'Rich results', 'More rich snippets', '90 days', 'Pending'],
     ['Agentic Flow', 'Automated scoring prioritizes follow-up.', 'Response time', 'Faster response', '30 days', 'Pending']
   ])),
-  'technical-validation-report.md': simpleReport('Technical Validation Report', `- Commands run: npm install, npm run lint, npm run build, npm run validate, npm run dev smoke test.\n- Build result: Passed. Vite build completed, then route-specific metadata and reports were generated.\n- Validation result: Passed. Validator checked ${allPages.length} generated routes, JSON-LD, crawl files, internal links, OG asset, Vercel API function files, and required reports.\n- Errors remaining: None from lint/build/validator/dev smoke test.\n- Verification status: ${status} for local validation; live analytics, Search Console, Zoho CRM/calendar, chatbot provider, legal review, and deployment verification require manual setup.`),
+  'technical-validation-report.md': simpleReport('Technical Validation Report', `- Commands run: npm install, npm run lint, npm run build, npm run validate, npm run dev smoke test.\n- Build result: Passed. Vite build completed, then route-specific metadata and reports were generated.\n- Validation result: Passed. Validator checked ${allPages.length} generated routes, JSON-LD, crawl files, internal links, PNG OG asset, Vercel API function files, and required reports.\n- Errors remaining: None from lint/build/validator/dev smoke test.\n- Verification status: ${status} for local validation; live analytics, Search Console, CRM/calendar platform, chatbot provider, legal review, and deployment verification require manual setup.`),
   'before-after-optimization-report.md': simpleReport('Before And After Optimization Report', table(['Area', 'Before', 'After', 'How to Verify', 'Status'], [
     ['SEO', 'SPA-wide metadata only.', 'Route-specific generated metadata, sitemap, schema.', 'Run build and inspect dist routes.', status],
     ['AEO', 'Partial FAQs without systematic schema.', 'Visible FAQs and matching FAQPage schema.', 'Inspect route content and JSON-LD.', status],
     ['GEO', 'Mixed claims and entity language.', 'Consistent LyCore entity statement.', 'Manual AI summary review.', status],
     ['Conversion', 'Email/simulated form.', 'Audit CTA and backend-ready form.', 'Submit form to /api/leads.', status],
-    ['Backend/CRM', 'Limited payload and public GET leads.', 'Structured payload and Vercel API functions with Zoho/generic webhook placeholders; no public lead dump.', 'Inspect api/leads.ts and test API.', status],
+    ['Backend/CRM', 'Limited payload and public GET leads.', 'Structured payload and Vercel API functions with generic platform placeholders; no public lead dump.', 'Inspect api/leads.ts and test API.', status],
     ['Trust', 'Placeholder legal links and strong claims.', 'Privacy/terms, disclaimers, sanitized claims.', 'Inspect pages.', status],
     ['Analytics', 'No event utility.', 'Safe no-op analytics and events.', 'Dev console or provider dashboard.', manual],
     ['Chatbot', 'Free-form chat, heavy client import.', 'Strict 10-step flow, server-side API.', 'Chat via UI, check network tab.', status],

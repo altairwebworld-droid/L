@@ -1,14 +1,13 @@
-# Backend CRM Readiness Report
+# Social Sharing Report
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
-- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
-- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
-- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.
-- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.
-- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.
-- Verification status: Fully implemented for readiness; Requires manual setup for live routing.
+| Sharing Element | Status | Implementation Details |
+| --- | --- | --- |
+| Open Graph Image | Fully implemented | https://lycore.org/og-image.png (Converted from SVG) |
+| OG Title/Description | Fully implemented | Generated uniquely per route |
+| Canonical URL | Fully implemented | Generated per route |
+| Twitter Card | Fully implemented | summary_large_image set |
 
 ## Implementation Detail Matrix
 

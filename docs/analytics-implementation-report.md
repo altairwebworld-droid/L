@@ -1,14 +1,18 @@
-# Backend CRM Readiness Report
+# Analytics Implementation Report
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
-- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
-- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
-- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.
-- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.
-- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.
-- Verification status: Fully implemented for readiness; Requires manual setup for live routing.
+| Event Name | Status | Trigger Context |
+| --- | --- | --- |
+| cta_click | Fully implemented | User clicks a primary CTA button |
+| audit_form_start | Fully implemented | User begins typing in the audit form |
+| audit_form_submit_success | Fully implemented | Form successfully submits to backend |
+| audit_form_submit_error | Fully implemented | Validation or server error during submission |
+| service_page_view | Fully implemented | User navigates to a service detail page |
+| scroll_depth | Fully implemented | User scrolls past 25%, 50%, 75%, 90% |
+| chatbot_open | Fully implemented | User opens the AI chat widget |
+| chatbot_lead_captured | Fully implemented | Chatbot successfully collects lead info |
+| Live Dashboard | Requires manual setup | Requires GA4/PostHog ID in .env |
 
 ## Implementation Detail Matrix
 

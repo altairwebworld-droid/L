@@ -100,15 +100,13 @@ function addTarget(targets: WebhookTarget[], target: WebhookTarget | null) {
 
 function leadWebhookTargets(env: Env) {
   const targets: WebhookTarget[] = [];
-  addTarget(targets, env.ZOHO_CRM_WEBHOOK_URL ? { name: 'Zoho CRM webhook', url: env.ZOHO_CRM_WEBHOOK_URL, kind: 'crm' } : null);
-  addTarget(targets, env.CRM_WEBHOOK_URL ? { name: 'Generic CRM webhook', url: env.CRM_WEBHOOK_URL, kind: 'crm' } : null);
+  addTarget(targets, env.CRM_WEBHOOK_URL ? { name: 'CRM webhook', url: env.CRM_WEBHOOK_URL, kind: 'crm' } : null);
   return targets;
 }
 
 function calendarWebhookTargets(env: Env) {
   const targets: WebhookTarget[] = [];
-  addTarget(targets, env.ZOHO_CALENDAR_WEBHOOK_URL ? { name: 'Zoho Calendar webhook', url: env.ZOHO_CALENDAR_WEBHOOK_URL, kind: 'calendar' } : null);
-  addTarget(targets, env.CALENDAR_WEBHOOK_URL ? { name: 'Generic calendar webhook', url: env.CALENDAR_WEBHOOK_URL, kind: 'calendar' } : null);
+  addTarget(targets, env.CALENDAR_WEBHOOK_URL ? { name: 'Calendar webhook', url: env.CALENDAR_WEBHOOK_URL, kind: 'calendar' } : null);
   return targets;
 }
 
@@ -145,7 +143,7 @@ function buildCalendarPayload(payload: NormalizedLeadPayload, leadScore: number,
     bookingUrl: env.BOOKING_URL || env.VITE_BOOKING_URL || '',
     submittedAt: payload.submittedAt,
     note:
-      'Requires manual setup: map this payload in Zoho Flow, Zoho CRM workflow, Zoho Calendar, Zoho Bookings, Make, Zapier, or n8n before production appointment creation is live.',
+      'Requires manual setup: map this payload in the selected CRM, booking platform, Make, Zapier, or n8n before production appointment creation is live.',
   };
 }
 
@@ -196,7 +194,7 @@ export async function routeLead(payload: NormalizedLeadPayload, leadScore: numbe
     leadScore,
     lead: payload,
     manualSetupNote:
-      'Map these fields inside Zoho CRM, Zoho Flow, Make, Zapier, n8n, or another CRM/backend. Do not put private API keys in frontend code.',
+      'Map these fields inside the selected CRM, Make, Zapier, n8n, or another backend. Do not put private API keys in frontend code.',
   };
   const calendarPayload = buildCalendarPayload(payload, leadScore, env);
   const notificationPayload = {
@@ -264,11 +262,11 @@ export async function submitLead(body: LeadPayload, env: Env = process.env) {
 
 export function fallbackChat(message: string) {
   const normalized = message.toLowerCase();
-  if (normalized.includes('zoho')) {
-    return 'LyCore can route validated audit leads into Zoho through a server-side webhook. Calendar creation can also be prepared through a separate Zoho Calendar or Zoho Flow webhook after field mapping is configured.';
-  }
   if (normalized.includes('crm')) {
-    return 'LyCore can prepare a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. Live CRM routing requires manual setup with real credentials.';
+    return 'LyCore can prepare a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. Live CRM routing requires manual setup with a real platform.';
+  }
+  if (normalized.includes('form')) {
+    return 'LyCore can support either the built-in audit form or an external CRM intake form. The form should capture contact details, agency context, consent, source data, and the visitor challenge.';
   }
   if (normalized.includes('dashboard')) {
     return 'LyCore can build custom dashboards for bail bond agencies to review leads, intake status, source data, CRM handoff, follow-up activity, and operational signals after data sources are connected.';
@@ -306,7 +304,7 @@ export async function chatReply(message: string, env: Env = process.env) {
       contents: safeMessage,
       config: {
         systemInstruction:
-          "You are LyCore's website intake assistant. You MUST guide visitors through a strict 10-step qualification flow. Ask exactly ONE question at a time. The flow is: 1. Welcome 2. Ask if they own/manage a bail bond agency 3. Ask what they need help with (calls, SEO, CRM, Zoho, calendar, dashboards, apps, etc.) 4. Ask for their website URL 5. Ask for agency location 6. Ask whether they miss calls after hours 7. Recommend the relevant LyCore service 8. Offer the free lead system audit 9. Collect contact details 10. Confirm their info will be reviewed. Do not give legal advice, promise results, replace licensed professionals, or make bail outcome decisions. Keep replies under 50 words.",
+          "You are LyCore's website intake assistant. You MUST guide visitors through a strict 10-step qualification flow. Ask exactly ONE question at a time. The flow is: 1. Welcome 2. Ask if they own/manage a bail bond agency 3. Ask what they need help with (calls, SEO, CRM, calendar, dashboards, apps, etc.) 4. Ask for their website URL 5. Ask for agency location 6. Ask whether they miss calls after hours 7. Recommend the relevant LyCore service 8. Offer the free lead system audit 9. Collect contact details 10. Confirm their info will be reviewed. Do not give legal advice, promise results, replace licensed professionals, or make bail outcome decisions. Keep replies under 50 words.",
       },
     });
     return { status: 200, body: { success: true, text: response.text || fallbackChat(safeMessage), manualSetupRequired: false } };

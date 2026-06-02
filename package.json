@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build",
+    "build": "vite build && tsx scripts/generate-static-metadata.ts && tsx scripts/generate-reports.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "validate": "tsx scripts/validate-implementation.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

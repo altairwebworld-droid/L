@@ -1,14 +1,20 @@
-# Backend CRM Readiness Report
+# Chatbot Readiness Report
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
-- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
-- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
-- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.
-- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.
-- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.
-- Verification status: Fully implemented for readiness; Requires manual setup for live routing.
+| Qualification Step | Status | Implementation Details |
+| --- | --- | --- |
+| 1. Welcome | Fully implemented | Handled by Gemini prompt |
+| 2. Agency check | Fully implemented | Prompt enforces asking if owner/manager |
+| 3. Identify needs | Fully implemented | Prompt checks for SEO, CRM, calls, apps |
+| 4. Website URL | Fully implemented | Prompt requests website |
+| 5. Location | Fully implemented | Prompt requests agency location |
+| 6. Missed calls check | Fully implemented | Prompt asks about after-hours calls |
+| 7. Recommend service | Fully implemented | AI recommends LyCore solutions |
+| 8. Offer audit | Fully implemented | Prompt directs to free audit |
+| 9. Collect contact | Fully implemented | Prompt asks for details |
+| 10. Confirm | Fully implemented | Prompt confirms review |
+| Live Gemini API | Requires manual setup | Requires GEMINI_API_KEY to be set |
 
 ## Implementation Detail Matrix
 

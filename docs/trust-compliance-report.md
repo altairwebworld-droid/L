@@ -1,14 +1,16 @@
-# Backend CRM Readiness Report
+# Trust Compliance Report
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
-- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
-- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
-- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.
-- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.
-- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.
-- Verification status: Fully implemented for readiness; Requires manual setup for live routing.
+| Compliance Item | Status | Implementation Details |
+| --- | --- | --- |
+| Privacy Policy | Fully implemented | /privacy route created |
+| Terms of Service | Fully implemented | /terms route created |
+| AI Disclaimer | Fully implemented | Visible on site and form |
+| No False Guarantees | Fully implemented | Scrubbed revenue/ranking claims |
+| Human in Control | Fully implemented | Trust section emphasizes AI as support tool |
+| Data Consent | Fully implemented | Mandatory checkbox on lead form |
+| Legal Review | Requires manual setup | Agency lawyer should review placeholder policies |
 
 ## Implementation Detail Matrix
 
