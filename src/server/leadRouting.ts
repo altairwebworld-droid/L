@@ -148,6 +148,20 @@ function buildCalendarPayload(payload: NormalizedLeadPayload, leadScore: number,
   };
 }
 
+function splitFullName(fullName: string) {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) {
+    return { firstName: '', lastName: 'Unknown' };
+  }
+  if (parts.length === 1) {
+    return { firstName: '', lastName: parts[0] };
+  }
+  return {
+    firstName: parts.slice(0, -1).join(' '),
+    lastName: parts[parts.length - 1],
+  };
+}
+
 async function postWebhook(target: WebhookTarget, payload: Record<string, unknown>) {
   const response = await fetch(target.url, {
     method: 'POST',
@@ -193,6 +207,9 @@ export async function routeLead(payload: NormalizedLeadPayload, leadScore: numbe
   const crmPayload = {
     source: 'lycore_website_audit_form',
     leadScore,
+    ...payload,
+    ...splitFullName(payload.fullName),
+    company: payload.agencyName,
     lead: payload,
     manualSetupNote:
       'Map these fields inside the selected CRM, Make, Zapier, n8n, or another backend. Do not put private API keys in frontend code.',
