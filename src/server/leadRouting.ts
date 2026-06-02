@@ -2,12 +2,18 @@ export type LeadPayload = {
   fullName?: string;
   agencyName?: string;
   website?: string;
+  websiteUrl?: string;
   email?: string;
   phone?: string;
+  phoneNumber?: string;
   location?: string;
+  cityState?: string;
   biggestChallenge?: string;
   currentCRM?: string;
+  currentCrmTool?: string;
   missedCalls?: string;
+  missAfterHoursCalls?: string;
+  helpNeeded?: string;
   preferredContactMethod?: string;
   preferredContactTime?: string;
   message?: string;
@@ -24,7 +30,31 @@ export type LeadPayload = {
   honeypot?: string;
 };
 
-export type NormalizedLeadPayload = Required<Omit<LeadPayload, 'honeypot'>>;
+export type NormalizedLeadPayload = {
+  fullName: string;
+  agencyName: string;
+  website: string;
+  email: string;
+  phone: string;
+  location: string;
+  biggestChallenge: string;
+  currentCRM: string;
+  missedCalls: string;
+  helpNeeded: string;
+  preferredContactMethod: string;
+  preferredContactTime: string;
+  message: string;
+  consent: boolean;
+  sourcePage: string;
+  landingPage: string;
+  referrer: string;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  utmContent: string;
+  utmTerm: string;
+  submittedAt: string;
+};
 
 type Env = Record<string, string | undefined>;
 
@@ -45,27 +75,55 @@ export const requiredLeadFields: Array<keyof LeadPayload> = [
   'preferredContactMethod',
 ];
 
+// Replace these with Jotform question IDs. Full Name controls usually use qid_first and qid_last.
+export const jotformFieldIds = {
+  fullNameFirst: 'REPLACE_WITH_FULL_NAME_FIRST_FIELD_ID',
+  fullNameLast: 'REPLACE_WITH_FULL_NAME_LAST_FIELD_ID',
+  agencyName: 'REPLACE_WITH_AGENCY_NAME_FIELD_ID',
+  websiteUrl: 'REPLACE_WITH_WEBSITE_URL_FIELD_ID',
+  email: 'REPLACE_WITH_EMAIL_FIELD_ID',
+  phoneNumber: 'REPLACE_WITH_PHONE_NUMBER_FIELD_ID',
+  cityState: 'REPLACE_WITH_CITY_STATE_FIELD_ID',
+  biggestChallenge: 'REPLACE_WITH_BIGGEST_CHALLENGE_FIELD_ID',
+  currentCrmTool: 'REPLACE_WITH_CURRENT_CRM_TOOL_FIELD_ID',
+  missAfterHoursCalls: 'REPLACE_WITH_MISS_AFTER_HOURS_CALLS_FIELD_ID',
+  helpNeeded: 'REPLACE_WITH_HELP_NEEDED_FIELD_ID',
+  preferredContactMethod: 'REPLACE_WITH_PREFERRED_CONTACT_METHOD_FIELD_ID',
+  preferredContactTime: 'REPLACE_WITH_PREFERRED_CONTACT_TIME_FIELD_ID',
+  message: 'REPLACE_WITH_MESSAGE_FIELD_ID',
+  consent: 'REPLACE_WITH_CONSENT_FIELD_ID',
+};
+
 export function clean(value: unknown, maxLength = 2000) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
 }
 
 export function validateLead(payload: LeadPayload) {
-  const missing = requiredLeadFields.filter((field) => !clean(payload[field]));
+  const missing = requiredLeadFields.filter((field) => {
+    if (field === 'website') return false;
+    if (field === 'phone') return !clean(payload.phone || payload.phoneNumber);
+    if (field === 'location') return !clean(payload.location || payload.cityState);
+    if (field === 'currentCRM') return !clean(payload.currentCRM || payload.currentCrmTool);
+    if (field === 'missedCalls') return !clean(payload.missedCalls || payload.missAfterHoursCalls);
+    return !clean(payload[field]);
+  });
   if (payload.consent !== true) missing.push('consent');
   return missing;
 }
 
 export function normalizeLeadPayload(body: LeadPayload): NormalizedLeadPayload {
+  const biggestChallenge = clean(body.biggestChallenge);
   return {
     fullName: clean(body.fullName),
     agencyName: clean(body.agencyName),
-    website: clean(body.website),
+    website: clean(body.website || body.websiteUrl),
     email: clean(body.email),
-    phone: clean(body.phone),
-    location: clean(body.location),
-    biggestChallenge: clean(body.biggestChallenge),
-    currentCRM: clean(body.currentCRM),
-    missedCalls: clean(body.missedCalls),
+    phone: clean(body.phone || body.phoneNumber),
+    location: clean(body.location || body.cityState),
+    biggestChallenge,
+    currentCRM: clean(body.currentCRM || body.currentCrmTool),
+    missedCalls: clean(body.missedCalls || body.missAfterHoursCalls),
+    helpNeeded: clean(body.helpNeeded) || biggestChallenge,
     preferredContactMethod: clean(body.preferredContactMethod),
     preferredContactTime: clean(body.preferredContactTime),
     message: clean(body.message),
@@ -162,6 +220,86 @@ function splitFullName(fullName: string) {
   };
 }
 
+function splitNameForJotform(fullName: string) {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  return {
+    firstName: parts[0] || '',
+    lastName: parts.slice(1).join(' '),
+  };
+}
+
+function placeholderJotformFieldIds() {
+  return Object.entries(jotformFieldIds)
+    .filter(([, fieldId]) => fieldId.startsWith('REPLACE_WITH_'))
+    .map(([field]) => field);
+}
+
+function appendJotformValue(body: URLSearchParams, fieldId: string, value: string | boolean) {
+  const normalizedValue = typeof value === 'boolean' ? (value ? 'Yes' : 'No') : clean(value);
+  if (!fieldId || !normalizedValue) return;
+  body.set(`submission[${fieldId}]`, normalizedValue);
+}
+
+function buildJotformSubmissionBody(payload: NormalizedLeadPayload) {
+  const body = new URLSearchParams();
+  const { firstName, lastName } = splitNameForJotform(payload.fullName);
+
+  appendJotformValue(body, jotformFieldIds.fullNameFirst, firstName);
+  appendJotformValue(body, jotformFieldIds.fullNameLast, lastName);
+  appendJotformValue(body, jotformFieldIds.agencyName, payload.agencyName);
+  appendJotformValue(body, jotformFieldIds.websiteUrl, payload.website);
+  appendJotformValue(body, jotformFieldIds.email, payload.email);
+  appendJotformValue(body, jotformFieldIds.phoneNumber, payload.phone);
+  appendJotformValue(body, jotformFieldIds.cityState, payload.location);
+  appendJotformValue(body, jotformFieldIds.biggestChallenge, payload.biggestChallenge);
+  appendJotformValue(body, jotformFieldIds.currentCrmTool, payload.currentCRM);
+  appendJotformValue(body, jotformFieldIds.missAfterHoursCalls, payload.missedCalls);
+  appendJotformValue(body, jotformFieldIds.helpNeeded, payload.helpNeeded);
+  appendJotformValue(body, jotformFieldIds.preferredContactMethod, payload.preferredContactMethod);
+  appendJotformValue(body, jotformFieldIds.preferredContactTime, payload.preferredContactTime);
+  appendJotformValue(body, jotformFieldIds.message, payload.message);
+  appendJotformValue(body, jotformFieldIds.consent, payload.consent);
+
+  return body;
+}
+
+async function submitToJotform(payload: NormalizedLeadPayload, leadScore: number, env: Env) {
+  const apiKey = clean(env.JOTFORM_API_KEY, 500);
+  const formId = clean(env.JOTFORM_FORM_ID, 100);
+
+  if (!apiKey || !formId) {
+    throw new Error('Jotform API is not configured. Add JOTFORM_API_KEY and JOTFORM_FORM_ID.');
+  }
+
+  const placeholders = placeholderJotformFieldIds();
+  if (placeholders.length) {
+    throw new Error(`Replace these Jotform field ID placeholders before production use: ${placeholders.join(', ')}`);
+  }
+
+  const endpoint = new URL(`https://api.jotform.com/form/${encodeURIComponent(formId)}/submissions`);
+  endpoint.searchParams.set('apiKey', apiKey);
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: buildJotformSubmissionBody(payload),
+  });
+  const result = (await response.json().catch(() => ({}))) as { responseCode?: number; message?: string };
+
+  if (!response.ok || (typeof result.responseCode === 'number' && result.responseCode >= 400)) {
+    throw new Error(result.message || `Jotform rejected the request with status ${response.status}`);
+  }
+
+  return {
+    manualSetupRequired: false,
+    forwardedTo: ['Jotform API'],
+    crmConfigured: true,
+    calendarConfigured: false,
+    notificationConfigured: false,
+    leadScore,
+  };
+}
+
 async function postWebhook(target: WebhookTarget, payload: Record<string, unknown>) {
   const response = await fetch(target.url, {
     method: 'POST',
@@ -255,9 +393,9 @@ export async function submitLead(body: LeadPayload, env: Env = process.env) {
   const leadScore = scoreLead(payload);
 
   try {
-    const routing = await routeLead(payload, leadScore, env);
+    const routing = await submitToJotform(payload, leadScore, env);
     return {
-      status: routing.manualSetupRequired ? 202 : 201,
+      status: 201,
       body: {
         success: true,
         leadScore,
@@ -271,7 +409,7 @@ export async function submitLead(body: LeadPayload, env: Env = process.env) {
       status: 502,
       body: {
         success: false,
-        error: 'Lead validation passed, but CRM/calendar routing failed. Check Vercel function logs and webhook setup.',
+        error: 'Lead validation passed, but background routing failed. Check Vercel function logs and Jotform setup.',
         detail: message,
       },
     };

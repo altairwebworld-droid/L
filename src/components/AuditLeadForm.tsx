@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ExternalLink, Send } from 'lucide-react';
+import { CheckCircle2, Send } from 'lucide-react';
 import { getAttribution, trackEvent } from '../lib/analytics';
 import { site } from '../siteData';
 
@@ -42,33 +42,6 @@ export default function AuditLeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({ type: 'idle', message: '' });
   const [started, setStarted] = useState(false);
-  const externalAuditFormUrl = import.meta.env.VITE_AUDIT_FORM_URL;
-
-  if (externalAuditFormUrl) {
-    return (
-      <div className="glass-panel rounded-[32px] border border-white/10 p-6 md:p-10 space-y-6">
-        <div>
-          <h2 className="text-3xl font-medium mb-3">Request Your Free Audit</h2>
-          <p className="text-stone-300 font-light leading-relaxed">
-            LyCore uses a connected CRM intake form so your request is captured directly in the lead system.
-          </p>
-        </div>
-        <a
-          href={externalAuditFormUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-3d w-full gap-3"
-          onClick={() => trackEvent('cta_click', { cta: 'external_audit_form', path: window.location.pathname })}
-        >
-          {site.primaryCta}
-          <ExternalLink size={16} />
-        </a>
-        <p className="text-xs text-stone-400 leading-relaxed">
-          The CRM intake form will open in a new tab. No ranking, revenue, client volume, or legal outcome guarantees. {site.aiDisclaimer}
-        </p>
-      </div>
-    );
-  }
 
   const updateField = (field: keyof LeadFormState, value: string | boolean) => {
     if (!started) {
@@ -86,7 +59,7 @@ export default function AuditLeadForm() {
       // Silently succeed to trick the bot
       setIsSubmitting(false);
       setFormData(initialState);
-      setStatus({ type: 'success', message: 'Audit request received. LyCore will review your lead system details.' });
+      setStatus({ type: 'success', message: 'Thank you. Your audit request has been received.' });
       return;
     }
     
@@ -119,14 +92,12 @@ export default function AuditLeadForm() {
       setStarted(false);
       setStatus({
         type: 'success',
-        message: result.manualSetupRequired
-          ? 'Audit request received. CRM routing requires manual setup before production automation is active.'
-          : 'Audit request received. LyCore will review your lead system details.',
+        message: 'Thank you. Your audit request has been received.',
       });
       trackEvent('audit_form_submit_success', { manualSetupRequired: Boolean(result.manualSetupRequired) });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Submission failed.';
-      setStatus({ type: 'error', message: `${message} Backend or CRM setup may still be required.` });
+      setStatus({ type: 'error', message: 'Something went wrong. Please try again or contact us directly.' });
       trackEvent('audit_form_submit_error', { reason: message });
     } finally {
       setIsSubmitting(false);
@@ -149,7 +120,7 @@ export default function AuditLeadForm() {
           <div>
             <h2 className="text-3xl font-medium mb-3">Request Your Free Audit</h2>
             <p className="text-stone-300 font-light leading-relaxed">
-              Share how your agency captures leads today. The payload is ready for backend and CRM routing once real credentials are configured.
+              Share how your agency captures leads today. Your request stays on this website while the backend saves it securely.
             </p>
           </div>
 
@@ -227,7 +198,7 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LyCore using this information to respond to my audit request. Submissions can be routed to Zoho after ZOHO_CRM_WEBHOOK_URL is configured.
+              I consent to LyCore using this information to respond to my audit request.
             </span>
           </label>
 
