@@ -11,6 +11,10 @@ export default function Seo() {
     document.title = page.title;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute('content', page.description);
+    const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]') || document.createElement('meta');
+    robots.name = 'robots';
+    robots.content = page.kind === 'system' ? 'noindex,follow' : 'index,follow';
+    document.head.appendChild(robots);
     trackEvent('service_page_view', { path: location.pathname });
   }, [location.pathname]);
 

@@ -25,7 +25,7 @@ export type PageMeta = {
   title: string;
   description: string;
   h1: string;
-  kind: 'home' | 'legacy' | 'service' | 'audit' | 'legal';
+  kind: 'home' | 'legacy' | 'service' | 'audit' | 'legal' | 'system';
   faqs?: Faq[];
 };
 
@@ -371,7 +371,37 @@ export const auditPage: PageMeta = {
   faqs: [globalFaqs[5], globalFaqs[6], globalFaqs[7], globalFaqs[4]],
 };
 
-export const allPages: PageMeta[] = [...legacyPages, ...servicePages, auditPage, ...legalPages];
+export const redirectPages: PageMeta[] = [
+  {
+    path: '/audit-request-received',
+    label: 'Audit Request Received',
+    title: 'Audit Request Received | LyCore',
+    description:
+      'Confirmation page for LyCore bail bond lead system audit requests, with next steps for booking, CRM review, and human follow-up.',
+    h1: 'Your lead system audit request is in.',
+    kind: 'system',
+  },
+  {
+    path: '/booking-confirmed',
+    label: 'Booking Confirmed',
+    title: 'Strategy Call Booking Confirmed | LyCore',
+    description:
+      'Confirmation page for a LyCore strategy call booking, with next steps for reviewing bail bond lead capture, intake, CRM, and follow-up workflows.',
+    h1: 'Your strategy call is booked.',
+    kind: 'system',
+  },
+  {
+    path: '/booking-failed',
+    label: 'Booking Not Completed',
+    title: 'Strategy Call Booking Not Completed | LyCore',
+    description:
+      'Fallback page for interrupted LyCore booking flows, with options to retry scheduling or email LyCore for help.',
+    h1: 'The meeting was not booked.',
+    kind: 'system',
+  },
+];
+
+export const allPages: PageMeta[] = [...legacyPages, ...servicePages, auditPage, ...redirectPages, ...legalPages];
 
 export const navLinks = [
   { label: 'Services', path: '/services' },

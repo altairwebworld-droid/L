@@ -35,7 +35,8 @@ for (const page of allPages) {
   expect(html.includes(esc(page.title)), `${page.path}: title mismatch`);
   expect(html.includes(`name="description"`), `${page.path}: missing description`);
   expect(html.includes(`rel="canonical" href="${site.domain}${page.path === '/' ? '' : page.path}"`), `${page.path}: missing canonical`);
-  expect(html.includes('name="robots" content="index,follow"'), `${page.path}: missing robots meta`);
+  const robots = page.kind === 'system' ? 'noindex,follow' : 'index,follow';
+  expect(html.includes(`name="robots" content="${robots}"`), `${page.path}: missing robots meta`);
   expect(html.includes('property="og:title"'), `${page.path}: missing og:title`);
   expect(html.includes('name="twitter:card"'), `${page.path}: missing twitter card`);
   expect((html.match(/application\/ld\+json/g) || []).length > 0, `${page.path}: missing JSON-LD`);

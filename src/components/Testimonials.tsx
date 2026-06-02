@@ -1,33 +1,30 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Quote, Star } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import TiltCard from './TiltCard';
 
-const testimonials = [
+const trustNotes = [
   {
-    quote: "Lycore's AI chat changed our business. We used to miss 30% of our leads because we couldn't respond to inquiries at 3 AM. Now, the AI handles the intake and we just step in to finalize.",
-    author: "Marcus Thompson",
-    role: "Owner, Thompson Bail Bonds",
-    impact: "+45% Lead Capture"
+    title: 'No fake proof',
+    body: 'LyCore should only publish client results, reviews, ratings, or rankings after they are verified and approved for public use.',
+    status: 'Proof requires manual setup',
   },
   {
-    quote: "The automated SMS response is a game changer. Clients tell us they were about to search for the next agency on Google when they got our text. It keeps them on the hook.",
-    author: "Sarah Jenkins",
-    role: "Operations Manager, Liberty Release",
-    impact: "30s Response Time"
+    title: 'Human-in-control AI',
+    body: 'AI support can help with intake, summaries, and follow-up, but licensed professionals remain responsible for legal, financial, and client decisions.',
+    status: 'Visible compliance note',
   },
   {
-    quote: "Our new website actually looks professional. In this industry, trust is everything. Families feel safe working with us because our digital presence matches our service quality.",
-    author: "David Chen",
-    role: "CEO, Pacific Bail Group",
-    impact: "2x Conversion Rate"
-  }
+    title: 'Measured improvement',
+    body: 'SEO, AEO, GEO, forms, CRM routing, analytics, and calendar flows are prepared so improvements can be checked after deployment.',
+    status: 'Measurement-ready',
+  },
 ];
 
 export default function Testimonials() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {testimonials.map((t, i) => (
+      {trustNotes.map((note, i) => (
         <motion.div
           key={i}
           initial={{ opacity: 0, y: 30 }}
@@ -37,22 +34,17 @@ export default function Testimonials() {
         >
           <TiltCard className="h-full">
             <div className="p-8 md:p-10 flex flex-col h-full">
-              <div className="flex gap-1 mb-6 text-white/40">
-                {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+              <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mb-6">
+                <CheckCircle2 size={20} className="text-white/70" />
               </div>
-              
-              <Quote size={32} className="text-white/10 mb-6 shrink-0" />
-              
-              <p className="text-ink-muted font-light leading-relaxed mb-8 flex-1 italic">
-                "{t.quote}"
-              </p>
+
+              <h3 className="text-2xl font-normal tracking-tight mb-4">{note.title}</h3>
+              <p className="text-ink-muted font-light leading-relaxed mb-8 flex-1">{note.body}</p>
               
               <div className="pt-8 border-t border-white/5">
-                <div className="font-medium tracking-wide mb-1">{t.author}</div>
-                <div className="text-xs text-ink-muted uppercase tracking-widest mb-4">{t.role}</div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-white">
                   <span className="w-1 h-1 rounded-full bg-emerald-500" />
-                  {t.impact}
+                  {note.status}
                 </div>
               </div>
             </div>

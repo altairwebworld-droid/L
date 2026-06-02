@@ -50,6 +50,9 @@ Created: 2026-06-02
 | /free-bail-bond-lead-system-audit | Service | Describe service/audit offer | scripts/generate-static-metadata.ts | Yes | Audience and URL match page content | Fully implemented |
 | /free-bail-bond-lead-system-audit | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /free-bail-bond-lead-system-audit | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /audit-request-received | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /booking-confirmed | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /booking-failed | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /privacy | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /terms | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | All pages | ContactPoint/LocalBusiness | Real contact/location details | Not added | Not applicable | Physical address/phone not verified | Not applicable |

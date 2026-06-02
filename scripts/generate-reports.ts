@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { allPages, formFieldNames, globalFaqs, servicePages, site } from '../src/siteData';
+import { allPages, formFieldNames, globalFaqs, redirectPages, servicePages, site } from '../src/siteData';
 
 const root = process.cwd();
 const docsDir = path.join(root, 'docs');
@@ -12,7 +12,7 @@ const cell = (value: string) => value.replace(/\|/g, '\\|').replace(/\n/g, '<br>
 const table = (headers: string[], rows: string[][]) =>
   `| ${headers.map(cell).join(' | ')} |\n| ${headers.map(() => '---').join(' | ')} |\n${rows.map((row) => `| ${row.map(cell).join(' | ')} |`).join('\n')}\n`;
 
-const publicPages = allPages.filter((page) => page.kind !== 'legal');
+const publicPages = allPages.filter((page) => page.kind !== 'legal' && page.kind !== 'system');
 
 function measurementPlan() {
   const rows = [
@@ -82,7 +82,17 @@ function schemaReport() {
 }
 
 function tagsReport() {
-  const rows = allPages.map((page) => [page.path, page.title, page.description, `${site.domain}${page.path === '/' ? '' : page.path}`, 'index,follow', 'Present', 'Present', 'Present', status]);
+  const rows = allPages.map((page) => [
+    page.path,
+    page.title,
+    page.description,
+    `${site.domain}${page.path === '/' ? '' : page.path}`,
+    page.kind === 'system' ? 'noindex,follow' : 'index,follow',
+    'Present',
+    'Present',
+    'Present',
+    status,
+  ]);
   return `# Tags And Metadata Report\n\nCreated: ${date}\n\n${table(['Page URL', 'Title', 'Meta Description', 'Canonical', 'Robots Status', 'OG Tags', 'Twitter Tags', 'Image Alt Status', 'Verification'], rows)}`;
 }
 
@@ -109,8 +119,8 @@ const reports: Record<string, string> = {
   'geo-implementation-report.md': geoReport(),
   'schema-implementation-report.md': schemaReport(),
   'tags-and-metadata-report.md': tagsReport(),
-  'crawl-indexing-report.md': simpleReport('Crawl And Indexing Report', `- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Pages included in sitemap: ${publicPages.map((page) => page.path).join(', ')}\n- Pages intentionally excluded: /privacy and /terms from sitemap focus, though they remain linked.\n- Indexing risks: Search Console/domain verification require manual setup.\n- Verification status: ${status} for files; ${manual} for submission.`),
-  'conversion-implementation-report.md': simpleReport('Conversion Implementation Report', `- CTA copy used: ${site.primaryCta}\n- Form fields added: ${formFieldNames.join(', ')}\n- Validation added: required fields, honeypot spam trap, consent, client states, and server validation.\n- Success/error/loading states: implemented in AuditLeadForm.\n- Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.\n- Lead journey: service page -> audit CTA -> built-in audit form or VITE_AUDIT_FORM_URL external CRM form -> /api/leads when built-in form is used.\n- Verification status: ${status}; live CRM/calendar platform selection and production routing require manual setup.`),
+  'crawl-indexing-report.md': simpleReport('Crawl And Indexing Report', `- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Pages included in sitemap: ${publicPages.map((page) => page.path).join(', ')}\n- Pages intentionally excluded: /privacy and /terms from sitemap focus, plus ${redirectPages.map((page) => page.path).join(', ')} because they are post-submit/post-booking confirmation pages and should not be indexed.\n- Indexing risks: Search Console/domain verification require manual setup.\n- Verification status: ${status} for files; ${manual} for submission.`),
+  'conversion-implementation-report.md': simpleReport('Conversion Implementation Report', `- CTA copy used: ${site.primaryCta}\n- Form fields added: ${formFieldNames.join(', ')}\n- Validation added: required fields, honeypot spam trap, consent, client states, and server validation.\n- Success/error/loading states: implemented in AuditLeadForm and optimized redirect result pages.\n- Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.\n- Lead journey: service page -> audit CTA -> built-in audit form or VITE_AUDIT_FORM_URL external intake form -> /api/leads when built-in form is used -> /audit-request-received after external form success -> /booking-confirmed or /booking-failed after calendar flow.\n- Verification status: ${status}; live CRM/calendar platform selection and production routing require manual setup.`),
   'backend-crm-readiness-report.md': simpleReport('Backend CRM Readiness Report', `- Payload fields: ${formFieldNames.join(', ')}\n- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.\n- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.\n- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.\n- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.\n- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.\n- Verification status: ${status} for readiness; ${manual} for live routing.`),
   'crm-readiness-report.md': simpleReport('CRM Readiness Report', table(['Field/Requirement', 'Status', 'Notes'], [
     ['Structured Payload', status, 'CRM-friendly field names used'],
@@ -135,12 +145,13 @@ const reports: Record<string, string> = {
   'agentic-readiness-report.md': simpleReport('Agentic Readiness Report', table(['Workflow', 'Implementation Status', 'File Location', 'Notes'], [
     ['Lead Qualification', status, 'src/server/leadRouting.ts, api/leads.ts', 'Server-side validation and sanitization'],
     ['CRM Routing', status, 'src/server/leadRouting.ts, api/leads.ts', 'Generic CRM webhook/API routing placeholder'],
-    ['Calendar Routing', status, 'src/server/leadRouting.ts, api/leads.ts', 'Generic calendar/booking routing placeholder'],
+    ['Calendar Routing', status, 'src/server/leadRouting.ts, api/leads.ts, src/pages/RedirectResult.tsx', 'Generic calendar/booking routing placeholder and noindex redirect result pages'],
     ['Lead Scoring', status, 'src/server/leadRouting.ts', 'scoreLead() based on challenge/calls/apps/calendar'],
     ['Owner Notification', status, 'src/server/leadRouting.ts', 'OWNER_NOTIFICATION_WEBHOOK placeholder added'],
     ['Follow-up Automation', status, 'src/server/leadRouting.ts', 'FOLLOW_UP_WEBHOOK_URL placeholder added'],
     ['Stored Chat Context', 'Missing', 'N/A', 'Future enhancement'],
-    ['Live Workflows', manual, '.env', 'Requires real webhook URLs']
+    ['Redirect Result Pages', status, 'src/pages/RedirectResult.tsx, src/siteData.ts', 'Audit and calendar completion pages are generated with route metadata and noindex robots tags'],
+    ['Live Workflows', manual, '.env', 'Requires real form/calendar URLs or webhook URLs']
   ])),
   'analytics-implementation-report.md': simpleReport('Analytics Implementation Report', table(['Event Name', 'Status', 'Trigger Context'], [
     ['cta_click', status, 'User clicks a primary CTA button'],

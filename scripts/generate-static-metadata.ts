@@ -10,6 +10,7 @@ const esc = (value: string) =>
   value.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char] || char));
 
 const absoluteUrl = (route: string) => `${site.domain}${route === '/' ? '' : route}`;
+const robotsFor = (page: PageMeta) => (page.kind === 'system' ? 'noindex,follow' : 'index,follow');
 
 function schemaFor(page: PageMeta) {
   const blocks: unknown[] = [];
@@ -75,10 +76,11 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="-G--OXjnQTRMBSyXvGwQlQHyUs-A4DWD8AKBNTXSjTQ" />
+    <link rel="stylesheet" href="/lycore-styles.css" />
     <title>${esc(page.title)}</title>
     <meta name="description" content="${esc(page.description)}" />
     <link rel="canonical" href="${canonical}" />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content="${robotsFor(page)}" />
     <meta property="og:title" content="${esc(page.title)}" />
     <meta property="og:description" content="${esc(page.description)}" />
     <meta property="og:type" content="website" />
@@ -98,7 +100,7 @@ function headFor(page: PageMeta, assetTags: string) {
 
 function sitemapXml() {
   const urls = allPages
-    .filter((page) => page.kind !== 'legal')
+    .filter((page) => page.kind !== 'legal' && page.kind !== 'system')
     .map((page) => `  <url><loc>${absoluteUrl(page.path)}</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>${page.path === '/' ? '1.0' : '0.8'}</priority></url>`)
     .join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;

@@ -16,6 +16,12 @@ const resultContent = {
     title: 'Your lead system audit request is in.',
     description:
       'Thanks for sharing your agency details. LyCore will review your intake, website, CRM, follow-up, and booking context before the next step.',
+    steps: [
+      'Your intake form platform should show the submitted agency details.',
+      'LyCore can review the website, call handling, intake, CRM, and follow-up context you provided.',
+      'Book a strategy call when you are ready to walk through the audit together.',
+    ],
+    note: 'If this request came through an external form, make sure that form is mapped to your selected CRM or inbox before production launch.',
     primaryLabel: 'Book a Strategy Call',
     primaryPath: '/book',
     secondaryLabel: 'Back to Services',
@@ -28,6 +34,12 @@ const resultContent = {
     title: 'Your strategy call is booked.',
     description:
       'You should receive a calendar confirmation from the booking system. Bring your website, CRM, call handling, and lead follow-up questions to the call.',
+    steps: [
+      'Check your email for the calendar confirmation from the booking platform.',
+      'Have your website URL, CRM questions, intake process, and follow-up problems ready.',
+      'Review the LyCore service pages if you want to compare websites, AI answering, dashboards, apps, and automation before the call.',
+    ],
+    note: 'Calendar reminders, CRM updates, and owner notifications require manual setup inside the selected booking or automation platform.',
     primaryLabel: 'Review Services',
     primaryPath: '/services',
     secondaryLabel: 'Go Home',
@@ -40,6 +52,12 @@ const resultContent = {
     title: 'The meeting was not booked.',
     description:
       'Something interrupted the booking flow. You can try again or email LyCore directly and we will help schedule the strategy call.',
+    steps: [
+      'Try the booking flow again if the calendar page was interrupted.',
+      'Email LyCore if the calendar tool does not load or the available times do not work.',
+      'If you already submitted the audit form, that form submission is separate from the calendar attempt.',
+    ],
+    note: 'This page is a fallback route. It does not mean your audit form failed unless the intake form itself showed an error.',
     primaryLabel: 'Try Booking Again',
     primaryPath: '/book',
     secondaryLabel: 'Email LyCore',
@@ -75,6 +93,19 @@ export default function RedirectResult({ type }: RedirectResultProps) {
         <p className="text-lg text-stone-300 font-light leading-relaxed max-w-2xl mx-auto mb-10">
           {content.description}
         </p>
+
+        <div className="grid md:grid-cols-3 gap-4 text-left mb-8">
+          {content.steps.map((step, index) => (
+            <div key={step} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-white/40 mb-3">
+                Step {index + 1}
+              </div>
+              <p className="text-sm leading-relaxed text-stone-300">{step}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-sm text-stone-400 leading-relaxed max-w-3xl mx-auto mb-10">{content.note}</p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
           <Link to={content.primaryPath} className="btn-3d gap-3 w-full sm:w-auto">
