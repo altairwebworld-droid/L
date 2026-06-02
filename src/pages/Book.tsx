@@ -49,15 +49,14 @@ export default function Book() {
             </div>
             <h3 className="text-2xl font-medium mb-3">Calendar Not Connected</h3>
             <p className="text-stone-300 font-light mx-auto mb-8">
-              The booking system is ready, but requires a manual connection to your Zoho Calendar, Zoho Bookings, Cal.com, Calendly, or other scheduling provider.
+              The booking system is ready, but requires your public CRM appointment calendar link.
             </p>
             <div className="p-5 bg-black/40 rounded-xl text-left border border-white/10 w-full">
               <p className="text-sm text-stone-400 font-medium mb-3">Setup instructions:</p>
               <code className="text-sm text-accent-blue break-all block leading-relaxed">
-                1. Set VITE_BOOKING_URL to your public booking link<br/>
-                2. Set BOOKING_URL to the same link for server webhook payloads<br/>
-                3. Optional: set ZOHO_CALENDAR_WEBHOOK_URL for calendar automation<br/>
-                4. Restart local dev or redeploy Vercel
+                1. Create or publish your CRM appointment calendar link<br/>
+                2. Set VITE_BOOKING_URL to that public link<br/>
+                3. Restart local dev or redeploy Vercel
               </code>
             </div>
           </div>

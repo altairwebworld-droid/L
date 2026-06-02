@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Send } from 'lucide-react';
+import { CheckCircle2, ExternalLink, Send } from 'lucide-react';
 import { getAttribution, trackEvent } from '../lib/analytics';
 import { site } from '../siteData';
 
@@ -42,6 +42,33 @@ export default function AuditLeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({ type: 'idle', message: '' });
   const [started, setStarted] = useState(false);
+  const externalAuditFormUrl = import.meta.env.VITE_AUDIT_FORM_URL;
+
+  if (externalAuditFormUrl) {
+    return (
+      <div className="glass-panel rounded-[32px] border border-white/10 p-6 md:p-10 space-y-6">
+        <div>
+          <h2 className="text-3xl font-medium mb-3">Request Your Free Audit</h2>
+          <p className="text-stone-300 font-light leading-relaxed">
+            LyCore uses a connected CRM intake form so your request is captured directly in the lead system.
+          </p>
+        </div>
+        <a
+          href={externalAuditFormUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="btn-3d w-full gap-3"
+          onClick={() => trackEvent('cta_click', { cta: 'external_audit_form', path: window.location.pathname })}
+        >
+          {site.primaryCta}
+          <ExternalLink size={16} />
+        </a>
+        <p className="text-xs text-stone-400 leading-relaxed">
+          The CRM intake form will open in a new tab. No ranking, revenue, client volume, or legal outcome guarantees. {site.aiDisclaimer}
+        </p>
+      </div>
+    );
+  }
 
   const updateField = (field: keyof LeadFormState, value: string | boolean) => {
     if (!started) {
@@ -200,7 +227,7 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LyCore using this information to respond to my audit request. Analytics, CRM routing, email, chatbot, and booking integrations require manual setup before production use.
+              I consent to LyCore using this information to respond to my audit request. Add VITE_AUDIT_FORM_URL to use an external CRM form directly in production.
             </span>
           </label>
 
