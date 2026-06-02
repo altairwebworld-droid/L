@@ -76,7 +76,11 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="-G--OXjnQTRMBSyXvGwQlQHyUs-A4DWD8AKBNTXSjTQ" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="stylesheet" href="/lycore-styles.css" />
+    <link rel="stylesheet" href="/form-overrides.css" />
     <title>${esc(page.title)}</title>
     <meta name="description" content="${esc(page.description)}" />
     <link rel="canonical" href="${canonical}" />
@@ -118,7 +122,7 @@ async function main() {
 
   await writeCrawlFiles(distDir);
   const template = await readFile(path.join(distDir, 'index.html'), 'utf8');
-  const assetTags = [...template.matchAll(/<(script|link)[^>]+(?:\/>|><\/script>)/g)]
+  const assetTags = [...template.matchAll(/<(script[^>]+><\/script>|link[^>]+>)/g)]
     .map((match) => match[0])
     .filter((tag) => tag.includes('/assets/'))
     .join('\n    ');

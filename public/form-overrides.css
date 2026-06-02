@@ -1,0 +1,56 @@
+.form-control {
+  width: 100%;
+  min-height: 3.4rem;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+  color: #fafaf9;
+  padding: 0.95rem 1rem;
+  font-size: 1rem;
+  line-height: 1.45;
+  font-weight: 400;
+  outline: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 14px 32px rgba(0, 0, 0, 0.32);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.form-control::placeholder {
+  color: rgba(250, 250, 249, 0.72);
+}
+
+.form-control:hover {
+  border-color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.form-control:focus {
+  border-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.26);
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.18),
+    0 16px 38px rgba(0, 0, 0, 0.3);
+}
+
+.form-control:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+select.form-control {
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+select.form-control option {
+  background: #1c1917;
+  color: #fafaf9;
+}
+
+textarea.form-control {
+  min-height: 8rem;
+}
