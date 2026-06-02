@@ -227,7 +227,7 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LyCore using this information to respond to my audit request. Add VITE_AUDIT_FORM_URL to use an external CRM form directly in production.
+              I consent to LyCore using this information to respond to my audit request. Submissions can be routed to Zoho after ZOHO_CRM_WEBHOOK_URL is configured.
             </span>
           </label>
 

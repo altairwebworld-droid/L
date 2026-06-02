@@ -100,6 +100,7 @@ function addTarget(targets: WebhookTarget[], target: WebhookTarget | null) {
 
 function leadWebhookTargets(env: Env) {
   const targets: WebhookTarget[] = [];
+  addTarget(targets, env.ZOHO_CRM_WEBHOOK_URL ? { name: 'Zoho CRM webhook', url: env.ZOHO_CRM_WEBHOOK_URL, kind: 'crm' } : null);
   addTarget(targets, env.CRM_WEBHOOK_URL ? { name: 'CRM webhook', url: env.CRM_WEBHOOK_URL, kind: 'crm' } : null);
   return targets;
 }
