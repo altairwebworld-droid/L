@@ -29,6 +29,41 @@ export type PageMeta = {
   faqs?: Faq[];
 };
 
+export const showcaseItems = [
+  {
+    title: 'Premium bail bond websites that make visitors act',
+    eyebrow: 'Website Concept',
+    image: '/showcase/37_vibrant_website_gradient_release.png',
+    alt: 'Concept bail bond website hero design with premium dark styling, clear call buttons, and intake-focused layout.',
+    copy:
+      'Show families exactly what to do next: call, start intake, book a consultation, or request help. LyCore can design conversion-focused pages that feel credible, fast, and built for urgent decisions.',
+  },
+  {
+    title: 'Mobile apps that keep clients and staff informed',
+    eyebrow: 'Mobile App Concept',
+    image: '/showcase/38_vibrant_mobile_neon_calm.png',
+    alt: 'Concept mobile app screens for bail bond release status, reminders, and client updates.',
+    copy:
+      'Give agency teams and clients a cleaner way to see status, reminders, next steps, and contact options. App builds require real workflow, privacy, and account setup before launch.',
+  },
+  {
+    title: 'Dashboards that show where every lead stands',
+    eyebrow: 'Dashboard Concept',
+    image: '/showcase/39_vibrant_dashboard_signal_ops.png',
+    alt: 'Concept bail bond agency dashboard showing case pipeline, court schedule, activity, and lead status cards.',
+    copy:
+      'Turn scattered calls, forms, CRM notes, bookings, and follow-up tasks into one operating view so owners can see what needs attention.',
+  },
+  {
+    title: 'Human support pages that build trust quickly',
+    eyebrow: 'Trust Page Concept',
+    image: '/showcase/40_vibrant_people_support_story.png',
+    alt: 'Concept bail bond landing page with human support imagery and clear help-focused messaging.',
+    copy:
+      'Use calm, direct messaging that makes the agency feel professional and reachable while keeping licensed professionals in control.',
+  },
+];
+
 export type ServicePage = PageMeta & {
   problem: string;
   explanation: string;
@@ -108,10 +143,10 @@ export const servicePages: ServicePage[] = [
     problem:
       'Bail bond agencies can miss important lead details when calls arrive after hours, during court work, or while staff are already helping another family.',
     explanation:
-      'LyCore prepares AI receptionist workflows that support call answering, lead qualification, summaries, and CRM handoff while keeping licensed professionals responsible for decisions.',
-    benefits: ['Support after-hours response', 'Collect cleaner intake details', 'Prepare summaries for staff', 'Keep humans in control'],
-    included: ['Call flow outline', 'Qualification questions', 'Fallback language', 'CRM-ready summary fields'],
-    process: ['Map common caller questions', 'Define safe AI boundaries', 'Prepare routing fields', 'Test summaries before launch'],
+      'LyCore helps you put a trained intake assistant at the front door of your agency, so callers get a response, staff get clean notes, and licensed agents stay in charge of the decisions.',
+    benefits: ['Capture caller details when staff are busy', 'Send cleaner summaries to your team', 'Route hot leads faster', 'Keep licensed agents in control'],
+    included: ['Buyer-focused call script', 'Lead qualification questions', 'Safe fallback language', 'CRM-ready call summary fields'],
+    process: ['Find the calls you miss or repeat', 'Write safe intake conversations', 'Route summaries to your team', 'Test before live use'],
     related: ['/bail-bond-intake-automation', '/bail-bond-crm-integration', '/bail-bond-follow-up-automation'],
     faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[4], globalFaqs[7]],
   },
@@ -126,10 +161,10 @@ export const servicePages: ServicePage[] = [
     problem:
       'Many agency websites are difficult to understand, thin on service content, and not ready to measure qualified lead capture.',
     explanation:
-      'LyCore builds Google-ready bail bond websites that explain your offer, answer buyer questions, route visitors to a free audit, and prepare submissions for backend or CRM workflows.',
-    benefits: ['Clear offer above the fold', 'Dedicated service pages', 'Mobile-friendly audit form', 'Metadata and schema readiness'],
-    included: ['Homepage positioning', 'Service pages', 'Audit offer page', 'Trust and compliance content'],
-    process: ['Clarify the offer', 'Build page templates', 'Add answer content', 'Validate metadata and links'],
+      'LyCore builds bail bond websites that sell the next step: clear help, fast contact, intake capture, service pages, trust copy, and search-ready structure that can be measured after launch.',
+    benefits: ['Make the offer obvious in seconds', 'Turn service pages into lead paths', 'Give visitors a reason to submit', 'Prepare every page for search and sharing'],
+    included: ['Sales-focused homepage', 'Dedicated service pages', 'Free audit offer page', 'Trust and compliance content'],
+    process: ['Clarify why visitors should act', 'Build the page experience', 'Add direct answers and CTAs', 'Validate metadata, links, and mobile layout'],
     related: ['/bail-bond-seo-services', '/bail-bond-intake-automation', '/free-bail-bond-lead-system-audit'],
     faqs: [globalFaqs[6], globalFaqs[5], globalFaqs[2], globalFaqs[3]],
   },
@@ -144,10 +179,10 @@ export const servicePages: ServicePage[] = [
     problem:
       'Search engines and AI answer tools need clear, crawlable pages before they can understand what an agency offers.',
     explanation:
-      'LyCore improves technical SEO foundations with unique metadata, clean URLs, service pages, internal links, sitemap and robots files, schema, and answer-focused content. Rankings are never guaranteed.',
-    benefits: ['Better crawl readiness', 'Clearer service coverage', 'Improved answer readiness', 'Search Console measurement plan'],
-    included: ['Title and meta strategy', 'Service page structure', 'Structured data', 'Internal linking and crawl checks'],
-    process: ['Audit visibility', 'Create indexable pages', 'Add metadata and schema', 'Measure impressions, clicks, CTR, and queries'],
+      'LyCore turns your website into something Google and AI answer tools can understand: focused service pages, useful answers, clean metadata, internal links, schema, sitemap, and measurement. Rankings are never guaranteed.',
+    benefits: ['Help search engines understand your services', 'Give each offer its own page', 'Answer buyer questions directly', 'Measure impressions, clicks, and queries'],
+    included: ['Title and meta strategy', 'Indexable service pages', 'Structured data', 'Internal links and crawl checks'],
+    process: ['Find search visibility gaps', 'Create useful service pages', 'Add metadata and schema', 'Measure what Google shows after launch'],
     related: ['/bail-bond-website-design', '/ai-receptionist-for-bail-bonds', '/free-bail-bond-lead-system-audit'],
     faqs: [globalFaqs[5], globalFaqs[6], globalFaqs[3], globalFaqs[1]],
   },
@@ -162,10 +197,10 @@ export const servicePages: ServicePage[] = [
     problem:
       'Manual intake can lose details, delay responses, and make it difficult to know which marketing source produced a lead.',
     explanation:
-      'LyCore prepares intake workflows that collect contact details, challenge context, consent, landing page, referrer, and UTM data in one structured payload.',
-    benefits: ['More consistent lead records', 'Cleaner attribution', 'Faster CRM handoff', 'Better qualification before follow-up'],
-    included: ['Lead qualification form', 'Hidden UTM/source fields', 'Validation and consent', 'Backend-ready payload'],
-    process: ['Define required fields', 'Capture source data', 'Validate submissions', 'Prepare CRM handoff'],
+      'LyCore builds intake flows that ask the right questions, capture source data, confirm consent, and give your team a cleaner lead record before follow-up starts.',
+    benefits: ['Collect the details staff actually need', 'Reduce back-and-forth', 'See where the lead came from', 'Prepare stronger CRM handoff'],
+    included: ['Lead qualification form', 'Hidden source and UTM fields', 'Validation and consent', 'Backend-ready lead payload'],
+    process: ['Choose the questions that matter', 'Capture source data', 'Validate the submission', 'Prepare CRM or inbox handoff'],
     related: ['/bail-bond-crm-integration', '/bail-bond-follow-up-automation', '/ai-receptionist-for-bail-bonds'],
     faqs: [globalFaqs[2], globalFaqs[3], globalFaqs[7], globalFaqs[5]],
   },
@@ -180,8 +215,8 @@ export const servicePages: ServicePage[] = [
     problem:
       'Leads are harder to follow up when calls, forms, chat, and owner notes are scattered across disconnected tools.',
     explanation:
-      'LyCore structures lead data so a backend can send it to the selected CRM, database, automation platform, or custom dashboard when real credentials are provided.',
-    benefits: ['CRM-friendly field names', 'Cleaner lead routing', 'Source and UTM capture', 'Credentials kept out of frontend code'],
+      'LyCore prepares your lead data so forms, calls, chat, booking, and follow-up can move into the CRM or dashboard you choose once real account access is connected.',
+    benefits: ['Stop copying lead details by hand', 'Send the right fields to the right system', 'Preserve source and UTM data', 'Keep private credentials out of frontend code'],
     included: ['Webhook placeholder', 'Environment variable pattern', 'Payload validation', 'CRM field documentation'],
     process: ['Map lead fields', 'Prepare API route', 'Connect credentials manually', 'Test CRM record creation'],
     related: ['/bail-bond-intake-automation', '/bail-bond-follow-up-automation', '/free-bail-bond-lead-system-audit'],
@@ -198,8 +233,8 @@ export const servicePages: ServicePage[] = [
     problem:
       'Qualified leads can go cold if follow-up depends on manual reminders, scattered notes, or delayed owner notifications.',
     explanation:
-      'LyCore prepares follow-up workflows that can notify owners, summarize lead context, update a CRM, and support next-step reminders once email, CRM, or automation credentials are connected.',
-    benefits: ['Faster response preparation', 'Better owner visibility', 'Consistent follow-up tasks', 'More complete lead context'],
+      'LyCore prepares follow-up workflows so promising leads are easier to see, summarize, assign, and move to the next step once your email, CRM, calendar, or automation platform is connected.',
+    benefits: ['Know which leads need attention', 'Give owners cleaner summaries', 'Create consistent follow-up tasks', 'Keep more context with every lead'],
     included: ['Notification placeholder', 'Lead summary placeholder', 'Follow-up workflow outline', 'Analytics events for completions'],
     process: ['Capture the lead', 'Categorize the challenge', 'Prepare owner summary', 'Trigger follow-up after CRM setup'],
     related: ['/bail-bond-crm-integration', '/bail-bond-intake-automation', '/ai-receptionist-for-bail-bonds'],
@@ -216,10 +251,10 @@ export const servicePages: ServicePage[] = [
     problem:
       'Bail bond agency owners and managers can lose visibility when lead sources, intake notes, CRM records, call summaries, and follow-up tasks live in separate tools.',
     explanation:
-      'LyCore builds custom dashboards that organize lead capture, source tracking, intake status, CRM handoff, follow-up activity, and operational signals into clear views for agency teams.',
-    benefits: ['Centralize lead visibility', 'Review source and UTM data', 'Track intake and follow-up status', 'Prepare owner-ready reporting'],
-    included: ['Dashboard planning', 'Lead and CRM data views', 'Filtering and status patterns', 'Manual setup notes for connected data sources'],
-    process: ['Map dashboard users and decisions', 'Define the data sources', 'Design agency-focused views', 'Connect live data after credentials are provided'],
+      'LyCore builds dashboards that help owners see the business instead of chasing it: new leads, intake status, source data, follow-up activity, calendar items, and CRM handoff in one view.',
+    benefits: ['See what needs attention today', 'Compare lead sources', 'Track intake and follow-up status', 'Create owner-ready reporting'],
+    included: ['Dashboard planning', 'Lead and CRM data views', 'Filters and status boards', 'Manual setup notes for connected data sources'],
+    process: ['Decide what the owner needs to see', 'Map the data sources', 'Design agency-focused views', 'Connect live data after credentials are provided'],
     related: ['/bail-bond-crm-integration', '/bail-bond-intake-automation', '/bail-bond-follow-up-automation'],
     faqs: [globalFaqs[8], globalFaqs[3], globalFaqs[7], globalFaqs[5]],
   },
@@ -234,8 +269,8 @@ export const servicePages: ServicePage[] = [
     problem:
       'Qualified leads can stall when booking, reminders, staff handoff, and CRM updates are disconnected from the intake process.',
     explanation:
-      'LyCore prepares appointment-setting workflows that guide qualified visitors from calls, forms, or chat toward the right next step while preserving consent, source data, and human review.',
-    benefits: ['Route qualified leads to booking', 'Prepare reminder workflows', 'Support staff handoff', 'Keep appointment data measurable'],
+      'LyCore prepares appointment-setting flows that move qualified leads from interest to a scheduled next step, while keeping consent, source data, staff handoff, and CRM updates ready.',
+    benefits: ['Make booking the obvious next step', 'Prepare reminder workflows', 'Support staff handoff', 'Keep appointment data measurable'],
     included: ['Booking flow outline', 'Qualification handoff fields', 'Reminder workflow placeholder', 'CRM/update readiness'],
     process: ['Define appointment types', 'Map qualification rules', 'Prepare booking and reminder fields', 'Connect calendar tools after manual setup'],
     related: ['/bail-bond-follow-up-automation', '/bail-bond-crm-integration', '/ai-receptionist-for-bail-bonds'],
@@ -252,9 +287,9 @@ export const servicePages: ServicePage[] = [
     problem:
       'Agency teams often need lead and follow-up visibility while away from a desk, but disconnected tools make mobile operations harder to manage.',
     explanation:
-      'LyCore can build mobile apps that support bail bond agency workflows such as lead review, intake visibility, follow-up tasks, appointment coordination, and internal dashboard access.',
-    benefits: ['Support mobile lead review', 'Improve task visibility', 'Coordinate appointment follow-up', 'Prepare role-based workflow views'],
-    included: ['Mobile workflow planning', 'App UI structure', 'Backend/API readiness', 'Manual setup notes for app store, auth, and push tools'],
+      'LyCore can build mobile apps that give agency teams cleaner access to leads, intake status, reminders, appointments, tasks, and dashboard views when they are away from the desk.',
+    benefits: ['Review leads from anywhere', 'Improve task visibility', 'Coordinate appointment follow-up', 'Prepare role-based workflow views'],
+    included: ['Mobile workflow planning', 'App screen design', 'Backend/API readiness', 'Manual setup notes for app store, auth, and push tools'],
     process: ['Define user roles', 'Map mobile workflows', 'Design core screens', 'Connect backend/auth/push services after setup'],
     related: ['/custom-dashboards-for-bail-bonds', '/appointment-setting-for-bail-bonds', '/bail-bond-crm-integration'],
     faqs: [globalFaqs[10], globalFaqs[8], globalFaqs[3], globalFaqs[5]],
@@ -270,8 +305,8 @@ export const servicePages: ServicePage[] = [
     problem:
       'Generic software screens often do not match the way bail bond agencies review leads, coordinate intake, manage follow-up, and understand source performance.',
     explanation:
-      'LyCore builds custom web UI apps for agency workflows such as lead review, intake queues, dashboard interfaces, follow-up views, appointment coordination, and internal operations.',
-    benefits: ['Create agency-specific interfaces', 'Improve workflow clarity', 'Support internal tools', 'Prepare data-ready UI screens'],
+      'LyCore builds custom web UI apps for the screens your team actually needs: intake queues, lead review, dashboard views, appointment coordination, follow-up tasks, and internal operations.',
+    benefits: ['Create agency-specific interfaces', 'Make workflows easier to scan', 'Support internal tools', 'Prepare data-ready UI screens'],
     included: ['UI app planning', 'Responsive interface design', 'Workflow screens', 'API and analytics readiness'],
     process: ['Define the workflow', 'Design the app screens', 'Build responsive UI', 'Connect APIs and analytics after setup'],
     related: ['/custom-dashboards-for-bail-bonds', '/mobile-apps-for-bail-bonds', '/bail-bond-crm-integration'],
