@@ -372,6 +372,26 @@ export const legacyPages: PageMeta[] = [
     faqs: [globalFaqs[5], globalFaqs[7], globalFaqs[4]],
   },
   {
+    path: '/service-areas',
+    label: 'Service Areas',
+    title: 'Bail Bond Website and AI Services Across the United States - LyCore',
+    description:
+      'LyCore supports bail bond agencies across the United States with remote website design, AI receptionist workflows, intake automation, CRM readiness, dashboards, and follow-up systems.',
+    h1: 'Service Areas for Bail Bond Agency Websites and Automation',
+    kind: 'legacy',
+    faqs: [globalFaqs[0], globalFaqs[3], globalFaqs[5]],
+  },
+  {
+    path: '/albuquerque-bail-bond-marketing',
+    label: 'Albuquerque',
+    title: 'Albuquerque Bail Bond Marketing, Websites, and AI Receptionist Services - LyCore',
+    description:
+      'LyCore Group LLC is based in Albuquerque, New Mexico and supports bail bond agencies with SEO websites, AI receptionist workflows, intake automation, CRM readiness, and lead tracking.',
+    h1: 'Albuquerque Bail Bond Marketing and Lead Capture Systems',
+    kind: 'legacy',
+    faqs: [globalFaqs[1], globalFaqs[2], globalFaqs[5]],
+  },
+  {
     path: '/bail-bonds',
     label: 'Bail Bonds',
     title: 'Lead Capture Systems for Bail Bond Agencies - LyCore',
@@ -462,6 +482,7 @@ export const navLinks = [
   { label: 'Dashboards', path: '/custom-dashboards-for-bail-bonds' },
   { label: 'Apps', path: '/mobile-apps-for-bail-bonds' },
   { label: 'Bail Bonds', path: '/bail-bonds' },
+  { label: 'Locations', path: '/service-areas' },
   { label: 'Book a Call', path: '/book' },
   { label: 'Contact', path: '/contact' },
   { label: 'About', path: '/about' },

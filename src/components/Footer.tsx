@@ -40,6 +40,8 @@ export default function Footer() {
           <ul className="flex flex-col gap-4">
             <li><Link to="/about" className="text-sm text-ink/85 hover:text-white transition-colors font-light">About</Link></li>
             <li><Link to="/bail-bonds" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Bail bonds</Link></li>
+            <li><Link to="/service-areas" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Service areas</Link></li>
+            <li><Link to="/albuquerque-bail-bond-marketing" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Albuquerque</Link></li>
             <li><Link to={site.auditPath} className="text-sm text-ink/85 hover:text-white transition-colors font-light">Free audit</Link></li>
             <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
             <li><a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.phone}</a></li>

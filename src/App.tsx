@@ -16,6 +16,7 @@ import Audit from './pages/Audit';
 import Book from './pages/Book';
 import Legal from './pages/Legal';
 import RedirectResult from './pages/RedirectResult';
+import ServiceAreas from './pages/ServiceAreas';
 import ScrollToTop from './components/ScrollToTop';
 import { initAnalytics } from './lib/analytics';
 
@@ -33,6 +34,8 @@ export default function App() {
           <Route path="services" element={<Services />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="service-areas" element={<ServiceAreas />} />
+          <Route path="albuquerque-bail-bond-marketing" element={<ServiceAreas />} />
           <Route path="bail-bonds" element={<BailBonds />} />
           <Route path="ai-receptionist-for-bail-bonds" element={<ServiceDetail />} />
           <Route path="bail-bond-website-design" element={<ServiceDetail />} />

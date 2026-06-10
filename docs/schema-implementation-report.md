@@ -14,6 +14,10 @@ Created: 2026-06-02
 | /contact | Service | Describe service/audit offer | scripts/generate-static-metadata.ts | Yes | Audience and URL match page content | Fully implemented |
 | /contact | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /contact | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /service-areas | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /service-areas | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /albuquerque-bail-bond-marketing | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /albuquerque-bail-bond-marketing | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /bail-bonds | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /bail-bonds | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /book | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
