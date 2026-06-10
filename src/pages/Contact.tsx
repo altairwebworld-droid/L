@@ -1,4 +1,4 @@
-import { Mail } from 'lucide-react';
+import { Building2, Mail, MapPin, Phone } from 'lucide-react';
 import AuditLeadForm from '../components/AuditLeadForm';
 import { FaqSection, Hero } from '../components/PageSections';
 import { globalFaqs, site } from '../siteData';
@@ -22,6 +22,22 @@ export default function Contact() {
             <a href={`mailto:${site.email}`} className="text-xl hover:text-white/70 transition-colors font-light">
               {site.email}
             </a>
+            <div className="mt-8 space-y-5 text-sm text-stone-300">
+              <p className="flex gap-3">
+                <Building2 className="mt-0.5 h-5 w-5 shrink-0 text-white/70" />
+                <span>{site.legalName}</span>
+              </p>
+              <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="flex gap-3 hover:text-white transition-colors">
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-white/70" />
+                <span>{site.phone}</span>
+              </a>
+              <p className="flex gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-white/70" />
+                <span>
+                  {site.address.street}, {site.address.locality}, {site.address.region} {site.address.postalCode}
+                </span>
+              </p>
+            </div>
             <p className="text-xs text-stone-400 mt-6 leading-relaxed">
               Physical address, phone, CRM, analytics, booking, and chatbot integrations require manual setup or verification before production claims are made.
             </p>

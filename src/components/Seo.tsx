@@ -62,5 +62,29 @@ export default function Seo() {
     document.head.appendChild(canonical);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const schema = document.querySelector<HTMLScriptElement>('#lycore-organization-schema') || document.createElement('script');
+    schema.id = 'lycore-organization-schema';
+    schema.type = 'application/ld+json';
+    schema.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: site.name,
+      legalName: site.legalName,
+      url: site.domain,
+      email: site.email,
+      telephone: site.phone,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: site.address.street,
+        addressLocality: site.address.locality,
+        addressRegion: site.address.region,
+        postalCode: site.address.postalCode,
+        addressCountry: site.address.country,
+      },
+    });
+    document.head.appendChild(schema);
+  }, []);
+
   return null;
 }
