@@ -38,6 +38,9 @@ export function Hero({
             <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
               {site.primaryCta}
             </Link>
+            <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="btn-3d-dark w-full sm:w-auto" data-track="phone_click">
+              Call {site.phone}
+            </a>
             <Link to="/services" className="btn-3d-dark w-full sm:w-auto">
               {site.secondaryCta}
             </Link>
@@ -58,6 +61,9 @@ export function Hero({
           <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
             {site.primaryCta}
           </Link>
+          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="btn-3d-dark w-full sm:w-auto" data-track="phone_click">
+            Call {site.phone}
+          </a>
           <Link to="/services" className="btn-3d-dark w-full sm:w-auto">
             {site.secondaryCta}
           </Link>
@@ -98,10 +104,10 @@ export function ShowcaseSection() {
         <div className="max-w-3xl">
           <p className="micro-label mb-4">Concept showcase</p>
           <h2 className="text-4xl md:text-6xl font-normal tracking-tight mb-5">
-            The kind of digital presence bail bond agencies should be proud to send people to.
+            Sample bail bond website directions LyCore can build from.
           </h2>
           <p className="text-white text-lg font-light leading-relaxed">
-            These are concept visuals showing the types of websites, dashboards, mobile apps, and trust-building pages LyCore can create. They are not client results, rankings, reviews, or legal-service claims.
+            These sample website visuals show possible directions for premium bail bond homepages, service pages, and lead-capture experiences. They are concept references, not client results, rankings, reviews, or legal-service claims.
           </p>
         </div>
         <Link to={site.auditPath} className="btn-3d shrink-0" data-track="cta_click">
@@ -117,7 +123,7 @@ export function ShowcaseSection() {
                 src={item.image}
                 alt={item.alt}
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                className="h-full w-full object-contain transition-transform duration-700 hover:scale-[1.03]"
               />
             </div>
             <div className="p-7 md:p-8">

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, Phone, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { navLinks, site } from '../siteData';
 
@@ -29,9 +29,9 @@ export default function Navbar() {
           <span className="font-display font-bold text-2xl tracking-tighter">LyCore</span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden xl:flex items-center gap-1">
           {navLinks.map((item) => (
-            <Link key={item.path} to={item.path} className="px-4 py-2 text-[11px] tracking-[0.15em] uppercase font-bold text-ink-muted hover:text-ink transition-all relative group">
+            <Link key={item.path} to={item.path} className="px-3 py-2 text-[10px] tracking-[0.12em] uppercase font-bold text-ink-muted hover:text-ink transition-all relative group">
               {item.label}
               <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-white transition-all group-hover:w-4 rounded-full" />
             </Link>
@@ -39,10 +39,13 @@ export default function Navbar() {
           <Link to={site.auditPath} className="btn-3d px-6 py-2.5 ml-3 text-[10px]" data-track="cta_click">
             Free Audit
           </Link>
+          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white hover:text-black transition-colors" aria-label={`Call LyCore at ${site.phone}`}>
+            <Phone size={16} />
+          </a>
         </div>
 
         <button
-          className="lg:hidden text-ink-muted p-2 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+          className="xl:hidden text-ink-muted p-2 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={isOpen}
@@ -65,6 +68,12 @@ export default function Navbar() {
           <Link to={site.auditPath} onClick={() => setIsOpen(false)} className="btn-3d px-6 py-4 mt-4 w-full text-center" data-track="cta_click">
             {site.primaryCta}
           </Link>
+          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-lg tracking-wide font-medium text-ink hover:text-white transition-colors">
+            Call {site.phone}
+          </a>
+          <a href={`mailto:${site.email}`} className="text-lg tracking-wide font-medium text-ink hover:text-white transition-colors">
+            {site.email}
+          </a>
         </motion.div>
       )}
     </nav>

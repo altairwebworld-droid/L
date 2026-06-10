@@ -14,6 +14,11 @@ export default function Footer() {
             <span className="font-display font-medium text-xl tracking-wide">LyCore</span>
           </Link>
           <p className="text-ink text-sm max-w-md leading-relaxed font-light">{site.coreStatement}</p>
+          <div className="mt-6 flex flex-col gap-3 text-sm text-ink/90">
+            <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="hover:text-white transition-colors">{site.phone}</a>
+            <a href={`mailto:${site.email}`} className="hover:text-white transition-colors">{site.email}</a>
+            <p>{site.address.street}, {site.address.locality}, {site.address.region} {site.address.postalCode}</p>
+          </div>
           <p className="text-ink/85 text-xs max-w-md leading-relaxed font-light mt-5">{site.aiDisclaimer}</p>
         </div>
 
@@ -37,6 +42,7 @@ export default function Footer() {
             <li><Link to="/bail-bonds" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Bail bonds</Link></li>
             <li><Link to={site.auditPath} className="text-sm text-ink/85 hover:text-white transition-colors font-light">Free audit</Link></li>
             <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
+            <li><a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.phone}</a></li>
             <li><a href={`mailto:${site.email}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.email}</a></li>
           </ul>
         </div>

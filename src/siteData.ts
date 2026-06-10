@@ -40,36 +40,44 @@ export type PageMeta = {
 
 export const showcaseItems = [
   {
-    title: 'Premium bail bond websites that make visitors act',
-    eyebrow: 'Website Concept',
-    image: '/showcase/37_vibrant_website_gradient_release.png',
-    alt: 'Concept bail bond website hero design with premium dark styling, clear call buttons, and intake-focused layout.',
+    title: 'Verdict-style strategic bail website',
+    eyebrow: 'Sample Website 01',
+    image: '/showcase/sample-verdict-strategic-bail.jpeg',
+    alt: 'Sample bail bond website concept with a white editorial layout, large strategic bail solutions headline, and contact an agent navigation.',
     copy:
-      'Show families exactly what to do next: call, start intake, book a consultation, or request help. LyCore can design conversion-focused pages that feel credible, fast, and built for urgent decisions.',
+      'A clean premium hero concept for agencies that want a confident legal-advisory feel, clear navigation, and immediate consultation messaging.',
   },
   {
-    title: 'Mobile apps that keep clients and staff informed',
-    eyebrow: 'Mobile App Concept',
-    image: '/showcase/38_vibrant_mobile_neon_calm.png',
-    alt: 'Concept mobile app screens for bail bond release status, reminders, and client updates.',
+    title: 'Aegis bail bonds agency landing page',
+    eyebrow: 'Sample Website 02',
+    image: '/showcase/sample-aegis-bail-bonds-agency.jpeg',
+    alt: 'Sample bail bonds agency website concept with oversized typography, black and white styling, and request agent call to action.',
     copy:
-      'Give agency teams and clients a cleaner way to see status, reminders, next steps, and contact options. App builds require real workflow, privacy, and account setup before launch.',
+      'A bold agency homepage direction with oversized typography, instant request-agent action, and a high-end black-and-white brand system.',
   },
   {
-    title: 'Dashboards that show where every lead stands',
-    eyebrow: 'Dashboard Concept',
-    image: '/showcase/39_vibrant_dashboard_signal_ops.png',
-    alt: 'Concept bail bond agency dashboard showing case pipeline, court schedule, activity, and lead status cards.',
+    title: 'Bail Relief conversion-focused hero',
+    eyebrow: 'Sample Website 03',
+    image: '/showcase/sample-bail-relief-freedom-secured.jpeg',
+    alt: 'Sample bail relief website concept with large freedom secured headline, request bond button, handcuffs, compass, and service callouts.',
     copy:
-      'Turn scattered calls, forms, CRM notes, bookings, and follow-up tasks into one operating view so owners can see what needs attention.',
+      'A high-impact landing page style for urgent visitors, built around a clear request-bond action, visual service callouts, and immediate credibility.',
   },
   {
-    title: 'Human support pages that build trust quickly',
-    eyebrow: 'Trust Page Concept',
-    image: '/showcase/40_vibrant_people_support_story.png',
-    alt: 'Concept bail bond landing page with human support imagery and clear help-focused messaging.',
+    title: 'Secured freedom service architecture',
+    eyebrow: 'Sample Website 04',
+    image: '/showcase/sample-aegis-secured-freedom.jpeg',
+    alt: 'Sample bail bond services page concept with architectural monochrome layout, process notes, and secured freedom messaging.',
     copy:
-      'Use calm, direct messaging that makes the agency feel professional and reachable while keeping licensed professionals in control.',
+      'A structured service-page concept for explaining process, requirements, confidentiality, tracking, and release steps in a refined layout.',
+  },
+  {
+    title: 'Aegis underwriter premium brand page',
+    eyebrow: 'Sample Website 05',
+    image: '/showcase/sample-aegis-underwriter.jpeg',
+    alt: 'Sample premium bail services website concept with burgundy background, contact an underwriter button, process strip, and phone icon.',
+    copy:
+      'A polished premium direction with visible contact actions, process steps, and stronger brand personality for agencies that want a more distinctive look.',
   },
 ];
 
@@ -455,6 +463,7 @@ export const navLinks = [
   { label: 'Apps', path: '/mobile-apps-for-bail-bonds' },
   { label: 'Bail Bonds', path: '/bail-bonds' },
   { label: 'Book a Call', path: '/book' },
+  { label: 'Contact', path: '/contact' },
   { label: 'About', path: '/about' },
 ];
 
