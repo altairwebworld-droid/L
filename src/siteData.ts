@@ -346,9 +346,9 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/about',
     label: 'About',
-    title: 'About LyCore Bail Bond Lead Systems - LyCore',
+    title: 'About LyCore Group LLC - AI Receptionist and Lead Automation',
     description:
-      'Learn how LyCore supports bail bond agencies with measurable websites, AI-supported intake, CRM readiness, follow-up automation, dashboards, appointment setting, and apps.',
+      'Learn how LyCore Group LLC supports bail bond agencies with AI receptionist workflows, SEO websites, intake automation, CRM readiness, dashboards, and follow-up systems.',
     h1: 'About LyCore',
     kind: 'legacy',
     faqs: [globalFaqs[4], globalFaqs[5]],

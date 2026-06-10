@@ -6,7 +6,7 @@ Created: 2026-06-02
 | --- | --- | --- |
 | / | Bail Bonds AI Receptionist and SEO Websites - LyCore | Fully implemented |
 | /services | Bail Bond Lead Capture Services - LyCore | Fully implemented |
-| /about | About LyCore Bail Bond Lead Systems - LyCore | Fully implemented |
+| /about | About LyCore Group LLC - AI Receptionist and Lead Automation | Fully implemented |
 | /contact | Request a Bail Bond Lead System Audit - LyCore | Fully implemented |
 | /bail-bonds | Lead Capture Systems for Bail Bond Agencies - LyCore | Fully implemented |
 | /book | Book a Strategy Call - LyCore | Fully implemented |

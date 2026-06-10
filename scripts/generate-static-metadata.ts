@@ -14,11 +14,10 @@ const robotsFor = (page: PageMeta) => (page.kind === 'system' ? 'noindex,follow'
 const present = (value: string | undefined): value is string => Boolean(value);
 
 function schemaFor(page: PageMeta) {
-  const blocks: unknown[] = [];
-  if (page.path === '/') {
-    blocks.push({
+  const blocks: unknown[] = [
+    {
       '@context': 'https://schema.org',
-      '@type': 'Organization',
+      '@type': 'ProfessionalService',
       name: site.name,
       legalName: site.legalName,
       url: site.domain,
@@ -33,7 +32,9 @@ function schemaFor(page: PageMeta) {
         postalCode: site.address.postalCode,
         addressCountry: site.address.country,
       },
-    });
+    },
+  ];
+  if (page.path === '/') {
     blocks.push({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
@@ -87,6 +88,7 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="-G--OXjnQTRMBSyXvGwQlQHyUs-A4DWD8AKBNTXSjTQ" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
