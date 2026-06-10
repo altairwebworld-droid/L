@@ -1,7 +1,16 @@
 export const site = {
   name: 'LyCore',
+  legalName: 'LYCORE GROUP LLC',
   domain: 'https://www.lycore.org',
   email: 'services@lycore.org',
+  phone: '+1 (917) 722-5646',
+  address: {
+    street: '1209 Mountain Road Pl NE, Ste N',
+    locality: 'Albuquerque',
+    region: 'NM',
+    postalCode: '87110',
+    country: 'US',
+  },
   primaryCta: 'Get a Free Bail Bond Lead System Audit',
   secondaryCta: 'See How It Works',
   auditPath: '/free-bail-bond-lead-system-audit',
