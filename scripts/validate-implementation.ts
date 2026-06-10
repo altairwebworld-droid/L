@@ -10,6 +10,19 @@ const errors: string[] = [];
 const esc = (value: string) =>
   value.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char] || char));
 
+const stripHtml = (value: string) =>
+  value
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const wordCount = (value: string) => {
+  const words = value.match(/\b[\w'-]+\b/g);
+  return words ? words.length : 0;
+};
+
 function expect(condition: unknown, message: string) {
   if (!condition) errors.push(message);
 }
@@ -33,6 +46,7 @@ for (const page of allPages) {
   const html = await readFile(file, 'utf8');
   expect((html.match(/<title>/g) || []).length === 1, `${page.path}: expected one title`);
   expect(html.includes(esc(page.title)), `${page.path}: title mismatch`);
+  expect(!page.title.includes('|'), `${page.path}: title should use a non-pipe delimiter`);
   expect(html.includes(`name="description"`), `${page.path}: missing description`);
   expect(html.includes(`rel="canonical" href="${site.domain}${page.path === '/' ? '' : page.path}"`), `${page.path}: missing canonical`);
   const robots = page.kind === 'system' ? 'noindex,follow' : 'index,follow';
@@ -51,6 +65,16 @@ for (const page of allPages) {
     const target = localTarget(match[1]);
     if (target) expect(existsSync(target), `${page.path}: broken generated internal link ${match[1]}`);
   }
+
+  if (page.path === '/') {
+    const rootBody = html.match(/<div id="root">([\s\S]*?)<\/div>/)?.[1] || '';
+    const visibleText = stripHtml(rootBody).toLowerCase();
+    expect(page.title.toLowerCase().includes('bail bonds'), '/: title must contain target keyword "bail bonds"');
+    expect((rootBody.match(/<h1[\s>]/gi) || []).length >= 1, '/: raw HTML must include an H1 fallback');
+    expect(/<h1[\s\S]*?bail bonds[\s\S]*?<\/h1>/i.test(rootBody), '/: raw HTML H1 must contain target keyword "bail bonds"');
+    expect(visibleText.includes('bail bonds'), '/: raw HTML body content must contain target keyword "bail bonds"');
+    expect(wordCount(visibleText) >= 100, '/: raw HTML fallback content should contain at least 100 crawlable words');
+  }
 }
 
 expect(existsSync(path.join(distDir, 'sitemap.xml')), 'Missing dist/sitemap.xml');
@@ -59,6 +83,25 @@ expect(existsSync(path.join(root, 'public', 'og-image.png')), 'Missing public/og
 expect(existsSync(path.join(root, 'api', 'leads.ts')), 'Missing Vercel Function api/leads.ts');
 expect(existsSync(path.join(root, 'api', 'chat.ts')), 'Missing Vercel Function api/chat.ts');
 expect(existsSync(path.join(root, 'src', 'server', 'leadRouting.ts')), 'Missing shared server lead routing logic');
+
+if (existsSync(path.join(distDir, 'sitemap.xml'))) {
+  const sitemap = await readFile(path.join(distDir, 'sitemap.xml'), 'utf8');
+  expect(sitemap.startsWith('<?xml version="1.0" encoding="UTF-8"?>'), 'sitemap.xml must start with an XML declaration');
+  expect(sitemap.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'), 'sitemap.xml missing urlset namespace');
+  for (const page of allPages.filter((item) => item.kind !== 'system')) {
+    expect(sitemap.includes(`<loc>${site.domain}${page.path === '/' ? '' : page.path}</loc>`), `sitemap missing public page ${page.path}`);
+  }
+  for (const page of allPages.filter((item) => item.kind === 'system')) {
+    expect(!sitemap.includes(`<loc>${site.domain}${page.path}</loc>`), `sitemap should not include system page ${page.path}`);
+  }
+  expect(!sitemap.includes('/api/'), 'sitemap should not include API routes');
+}
+
+if (existsSync(path.join(distDir, 'robots.txt'))) {
+  const robots = await readFile(path.join(distDir, 'robots.txt'), 'utf8');
+  expect(robots.includes(`Sitemap: ${site.domain}/sitemap.xml`), 'robots.txt missing canonical sitemap URL');
+  expect(!robots.includes('Disallow: /'), 'robots.txt should not block public pages');
+}
 
 const requiredDocs = [
   'lycore-baseline-audit.md',

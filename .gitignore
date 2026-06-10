@@ -6,3 +6,10 @@ coverage/
 *.log
 .env*
 !.env.example
+.vercel
+.env*.local
+
+# Screenshots & test results
+tmp-l-intake-*.png
+test-results/
+

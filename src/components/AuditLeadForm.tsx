@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Send } from 'lucide-react';
+import { Calendar, CheckCircle2, Send } from 'lucide-react';
 import { getAttribution, trackEvent } from '../lib/analytics';
 import { site } from '../siteData';
+import { usaCities } from '../data/usaCities';
 
 type LeadFormState = {
   fullName: string;
   agencyName: string;
   website: string;
   email: string;
+  phoneCountryCode: string;
   phone: string;
   location: string;
   biggestChallenge: string;
   currentCRM: string;
   missedCalls: string;
   preferredContactMethod: string;
-  preferredContactTime: string;
   message: string;
   consent: boolean;
   honeypot: string;
@@ -25,17 +26,24 @@ const initialState: LeadFormState = {
   agencyName: '',
   website: '',
   email: '',
+  phoneCountryCode: '+1',
   phone: '',
   location: '',
   biggestChallenge: '',
   currentCRM: '',
   missedCalls: '',
   preferredContactMethod: '',
-  preferredContactTime: '',
   message: '',
   consent: false,
   honeypot: '',
 };
+
+const countryCodes = [
+  { value: '+1', label: '+1' },
+  { value: '+44', label: '+44' },
+  { value: '+52', label: '+52' },
+  { value: '+61', label: '+61' },
+];
 
 export default function AuditLeadForm() {
   const [formData, setFormData] = useState<LeadFormState>(initialState);
@@ -74,6 +82,7 @@ export default function AuditLeadForm() {
     const attribution = getAttribution();
     const payload = {
       ...formData,
+      phone: `${formData.phoneCountryCode} ${formData.phone}`.trim(),
       ...attribution,
       submittedAt: new Date().toISOString(),
     };
@@ -133,10 +142,16 @@ export default function AuditLeadForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Field label="Full name" id="fullName" value={formData.fullName} onChange={(value) => updateField('fullName', value)} required />
             <Field label="Agency name" id="agencyName" value={formData.agencyName} onChange={(value) => updateField('agencyName', value)} required />
-            <Field label="Website URL" id="website" type="url" value={formData.website} onChange={(value) => updateField('website', value)} />
+            <Field label="Website URL (optional)" id="website" type="url" value={formData.website} onChange={(value) => updateField('website', value)} />
             <Field label="Email" id="email" type="email" value={formData.email} onChange={(value) => updateField('email', value)} required />
-            <Field label="Phone number" id="phone" type="tel" value={formData.phone} onChange={(value) => updateField('phone', value)} required />
-            <Field label="City/state" id="location" value={formData.location} onChange={(value) => updateField('location', value)} required />
+            <PhoneField
+              countryCode={formData.phoneCountryCode}
+              phone={formData.phone}
+              onCountryCodeChange={(value) => updateField('phoneCountryCode', value)}
+              onPhoneChange={(value) => updateField('phone', value)}
+              required
+            />
+            <CityField value={formData.location} onChange={(value) => updateField('location', value)} required />
             <Select
               label="Biggest challenge"
               id="biggestChallenge"
@@ -173,7 +188,7 @@ export default function AuditLeadForm() {
               options={['Email', 'Phone', 'Text']}
               required
             />
-            <Field label="Preferred contact time" id="preferredContactTime" value={formData.preferredContactTime} onChange={(value) => updateField('preferredContactTime', value)} />
+            <CalendarEventCard />
           </div>
 
           <label className="block">
@@ -222,6 +237,103 @@ export default function AuditLeadForm() {
   );
 }
 
+function CityField({
+  value,
+  onChange,
+  required = false,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <span className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">USA city</span>
+      <input
+        name="location"
+        type="text"
+        list="usa-cities"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="form-control"
+        placeholder="Start typing a city..."
+        autoComplete="address-level2"
+        required={required}
+      />
+      <datalist id="usa-cities">
+        {usaCities.map((city) => (
+          <option key={city} value={city} />
+        ))}
+      </datalist>
+    </label>
+  );
+}
+
+function PhoneField({
+  countryCode,
+  phone,
+  onCountryCodeChange,
+  onPhoneChange,
+  required = false,
+}: {
+  countryCode: string;
+  phone: string;
+  onCountryCodeChange: (value: string) => void;
+  onPhoneChange: (value: string) => void;
+  required?: boolean;
+}) {
+  return (
+    <fieldset className="block">
+      <legend className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">Phone number</legend>
+      <div className="grid grid-cols-[minmax(7rem,0.34fr)_minmax(0,1fr)] gap-3">
+        <select
+          name="phoneCountryCode"
+          value={countryCode}
+          onChange={(event) => onCountryCodeChange(event.target.value)}
+          className="form-control"
+          aria-label="Phone country code"
+          required={required}
+        >
+          {countryCodes.map((option) => (
+            <option key={`${option.label}-${option.value}`} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <input name="phone" type="tel" value={phone} onChange={(event) => onPhoneChange(event.target.value)} className="form-control" autoComplete="tel-national" required={required} />
+      </div>
+    </fieldset>
+  );
+}
+
+function CalendarEventCard() {
+  const bookingUrl = import.meta.env.VITE_BOOKING_URL || '/book';
+  const isExternalBookingUrl = /^https?:\/\//i.test(bookingUrl);
+
+  return (
+    <div className="md:col-span-2 rounded-2xl border border-white/10 bg-white/[0.06] p-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex gap-3">
+        <Calendar className="mt-1 h-5 w-5 shrink-0 text-accent-blue" />
+        <div>
+          <h3 className="text-sm uppercase tracking-[0.1em] text-stone-200 font-medium mb-2">Preferred contact time</h3>
+          <p className="text-sm text-stone-300 font-light leading-relaxed">
+            Use the Cal calendar to choose the best time for your audit review.
+          </p>
+        </div>
+      </div>
+      <a
+        href={bookingUrl}
+        className="btn-3d-dark shrink-0"
+        data-track="calendar_event_click"
+        target={isExternalBookingUrl ? '_blank' : undefined}
+        rel={isExternalBookingUrl ? 'noreferrer' : undefined}
+      >
+        Schedule calendar event
+      </a>
+    </div>
+  );
+}
+
 function Field({
   label,
   id,
@@ -251,6 +363,7 @@ function Select({
   value,
   onChange,
   options,
+  placeholder = 'Select one',
   required = false,
 }: {
   label: string;
@@ -258,13 +371,14 @@ function Select({
   value: string;
   onChange: (value: string) => void;
   options: string[];
+  placeholder?: string;
   required?: boolean;
 }) {
   return (
     <label className="block">
       <span className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">{label}</span>
       <select name={id} value={value} onChange={(event) => onChange(event.target.value)} className="form-control" required={required}>
-        <option value="">Select one</option>
+        <option value="">{placeholder}</option>
         {options.map((option) => (
           <option key={option} value={option}>
             {option}

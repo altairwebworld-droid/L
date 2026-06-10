@@ -13,8 +13,8 @@ export default function Footer() {
             </div>
             <span className="font-display font-medium text-xl tracking-wide">LyCore</span>
           </Link>
-          <p className="text-ink-muted text-sm max-w-md leading-relaxed font-light">{site.coreStatement}</p>
-          <p className="text-ink-muted text-xs max-w-md leading-relaxed font-light mt-5">{site.aiDisclaimer}</p>
+          <p className="text-ink text-sm max-w-md leading-relaxed font-light">{site.coreStatement}</p>
+          <p className="text-ink/85 text-xs max-w-md leading-relaxed font-light mt-5">{site.aiDisclaimer}</p>
         </div>
 
         <div>
@@ -22,7 +22,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-4">
             {servicePages.map((page) => (
               <li key={page.path}>
-                <Link to={page.path} className="text-sm text-ink-muted hover:text-ink transition-colors font-light">
+                <Link to={page.path} className="text-sm text-ink/85 hover:text-white transition-colors font-light">
                   {page.label}
                 </Link>
               </li>
@@ -33,22 +33,22 @@ export default function Footer() {
         <div>
           <h2 className="micro-label mb-6">Company</h2>
           <ul className="flex flex-col gap-4">
-            <li><Link to="/about" className="text-sm text-ink-muted hover:text-ink transition-colors font-light">About</Link></li>
-            <li><Link to="/bail-bonds" className="text-sm text-ink-muted hover:text-ink transition-colors font-light">Bail bonds</Link></li>
-            <li><Link to={site.auditPath} className="text-sm text-ink-muted hover:text-ink transition-colors font-light">Free audit</Link></li>
-            <li><Link to="/contact" className="text-sm text-ink-muted hover:text-ink transition-colors font-light">Contact</Link></li>
-            <li><a href={`mailto:${site.email}`} className="text-sm text-ink-muted hover:text-ink transition-colors font-light">{site.email}</a></li>
+            <li><Link to="/about" className="text-sm text-ink/85 hover:text-white transition-colors font-light">About</Link></li>
+            <li><Link to="/bail-bonds" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Bail bonds</Link></li>
+            <li><Link to={site.auditPath} className="text-sm text-ink/85 hover:text-white transition-colors font-light">Free audit</Link></li>
+            <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
+            <li><a href={`mailto:${site.email}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.email}</a></li>
           </ul>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-ink-muted font-light tracking-wide">
+        <p className="text-xs text-ink/75 font-light tracking-wide">
           &copy; {new Date().getFullYear()} LyCore Group. All rights reserved.
         </p>
         <div className="flex items-center gap-8">
-          <Link to="/privacy" className="text-xs text-ink-muted hover:text-ink transition-colors font-light tracking-wide">Privacy Policy</Link>
-          <Link to="/terms" className="text-xs text-ink-muted hover:text-ink transition-colors font-light tracking-wide">Terms of Use</Link>
+          <Link to="/privacy" className="text-xs text-ink/85 hover:text-white transition-colors font-light tracking-wide">Privacy Policy</Link>
+          <Link to="/terms" className="text-xs text-ink/85 hover:text-white transition-colors font-light tracking-wide">Terms of Use</Link>
         </div>
       </div>
     </footer>

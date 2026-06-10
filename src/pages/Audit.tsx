@@ -35,7 +35,7 @@ export default function Audit() {
           >
             {auditPage.h1}
           </motion.h1>
-          <p className="text-xl text-stone-200 font-light leading-relaxed mb-10">{auditPage.description}</p>
+          <p className="text-xl text-white font-light leading-relaxed mb-10">{auditPage.description}</p>
 
           <div className="glass-panel rounded-[32px] border border-white/10 p-6 md:p-8 mb-8">
             <div className="flex items-center gap-4 mb-6">
@@ -54,7 +54,7 @@ export default function Audit() {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 text-sm text-stone-400 font-light leading-relaxed">
+          <div className="flex items-start gap-4 text-sm text-white font-light leading-relaxed">
             <PhoneCall className="text-white/50 mt-1 shrink-0" size={20} />
             <p>{site.aiDisclaimer} The audit is informational and does not guarantee rankings, revenue, or legal outcomes.</p>
           </div>

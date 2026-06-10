@@ -11,6 +11,7 @@ const esc = (value: string) =>
 
 const absoluteUrl = (route: string) => `${site.domain}${route === '/' ? '' : route}`;
 const robotsFor = (page: PageMeta) => (page.kind === 'system' ? 'noindex,follow' : 'index,follow');
+const present = (value: string | undefined): value is string => Boolean(value);
 
 function schemaFor(page: PageMeta) {
   const blocks: unknown[] = [];
@@ -102,9 +103,50 @@ function headFor(page: PageMeta, assetTags: string) {
   </head>`;
 }
 
+function fallbackFor(page: PageMeta) {
+  const service = servicePages.find((item) => item.path === page.path);
+  const paragraphs =
+    page.path === '/'
+      ? [
+          site.coreStatement,
+          'Families looking for help may call, click, fill out a form, or leave within minutes. LyCore creates pages, intake questions, source tracking, and CRM-ready handoff paths so agency teams can respond with cleaner context while licensed professionals stay responsible for legal, financial, client, and bail outcome decisions.',
+          'Services include bail bond website design, bail bond SEO services, AI receptionist support, intake automation, CRM integration, follow-up automation, dashboards, appointment-setting workflows, mobile apps, and web UI apps. Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.',
+        ]
+      : [page.description, service?.problem, service?.explanation].filter(present);
+  const faqItems = page.faqs?.slice(0, 3) || [];
+
+  return `<main class="seo-fallback" aria-label="${esc(page.h1)}">
+        <section>
+          <p>${esc(site.name)}</p>
+          <h1>${esc(page.h1)}</h1>
+          ${paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('\n          ')}
+          ${page.path === '/' ? '<h2>Bail bonds lead capture built for urgent decisions</h2>' : ''}
+          ${
+            faqItems.length
+              ? `<h2>Common Questions</h2>
+          ${faqItems.map((faq) => `<h3>${esc(faq.question)}</h3>\n          <p>${esc(faq.answer)}</p>`).join('\n          ')}`
+              : ''
+          }
+          <nav aria-label="Primary crawl links">
+            <a href="${site.auditPath}">${esc(site.primaryCta)}</a>
+            <a href="/services">${esc(site.secondaryCta)}</a>
+            <a href="/bail-bonds">Bail Bonds Lead Systems</a>
+          </nav>
+        </section>
+      </main>`;
+}
+
+function bodyFor(page: PageMeta) {
+  return `<body>
+    <div id="root">
+      ${fallbackFor(page)}
+    </div>
+  </body>`;
+}
+
 function sitemapXml() {
   const urls = allPages
-    .filter((page) => page.kind !== 'legal' && page.kind !== 'system')
+    .filter((page) => page.kind !== 'system')
     .map((page) => `  <url><loc>${absoluteUrl(page.path)}</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>${page.path === '/' ? '1.0' : '0.8'}</priority></url>`)
     .join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
@@ -126,10 +168,9 @@ async function main() {
     .map((match) => match[0])
     .filter((tag) => tag.includes('/assets/'))
     .join('\n    ');
-  const body = template.match(/<body>[\s\S]*<\/body>/)?.[0] || '<body><div id="root"></div></body>';
 
   for (const page of allPages) {
-    const html = `<!doctype html>\n<html lang="en">\n  ${headFor(page, assetTags)}\n  ${body}\n</html>\n`;
+    const html = `<!doctype html>\n<html lang="en">\n  ${headFor(page, assetTags)}\n  ${bodyFor(page)}\n</html>\n`;
     const targetDir = page.path === '/' ? distDir : path.join(distDir, page.path.slice(1));
     await mkdir(targetDir, { recursive: true });
     await writeFile(path.join(targetDir, 'index.html'), html, 'utf8');

@@ -60,7 +60,7 @@ export default function Legal() {
           <span className="micro-label">{page.label}</span>
         </div>
         <h1 className="text-5xl md:text-7xl font-normal tracking-tight mb-6">{page.h1}</h1>
-        <p className="text-xl text-stone-200 font-light leading-relaxed">{page.description}</p>
+        <p className="text-xl text-white font-light leading-relaxed">{page.description}</p>
       </motion.div>
 
       <div className="glass-panel rounded-[32px] border border-white/10 p-8 md:p-12 mb-8">

@@ -4,6 +4,7 @@ export type LeadPayload = {
   website?: string;
   websiteUrl?: string;
   email?: string;
+  phoneCountryCode?: string;
   phone?: string;
   phoneNumber?: string;
   location?: string;
@@ -77,21 +78,21 @@ export const requiredLeadFields: Array<keyof LeadPayload> = [
 
 // Replace these with Jotform question IDs. Full Name controls usually use qid_first and qid_last.
 export const jotformFieldIds = {
-  fullNameFirst: 'REPLACE_WITH_FULL_NAME_FIRST_FIELD_ID',
-  fullNameLast: 'REPLACE_WITH_FULL_NAME_LAST_FIELD_ID',
-  agencyName: 'REPLACE_WITH_AGENCY_NAME_FIELD_ID',
-  websiteUrl: 'REPLACE_WITH_WEBSITE_URL_FIELD_ID',
-  email: 'REPLACE_WITH_EMAIL_FIELD_ID',
-  phoneNumber: 'REPLACE_WITH_PHONE_NUMBER_FIELD_ID',
-  cityState: 'REPLACE_WITH_CITY_STATE_FIELD_ID',
-  biggestChallenge: 'REPLACE_WITH_BIGGEST_CHALLENGE_FIELD_ID',
-  currentCrmTool: 'REPLACE_WITH_CURRENT_CRM_TOOL_FIELD_ID',
-  missAfterHoursCalls: 'REPLACE_WITH_MISS_AFTER_HOURS_CALLS_FIELD_ID',
-  helpNeeded: 'REPLACE_WITH_HELP_NEEDED_FIELD_ID',
-  preferredContactMethod: 'REPLACE_WITH_PREFERRED_CONTACT_METHOD_FIELD_ID',
-  preferredContactTime: 'REPLACE_WITH_PREFERRED_CONTACT_TIME_FIELD_ID',
-  message: 'REPLACE_WITH_MESSAGE_FIELD_ID',
-  consent: 'REPLACE_WITH_CONSENT_FIELD_ID',
+  fullNameFirst: '3_first',
+  fullNameLast: '3_last',
+  agencyName: '4',
+  websiteUrl: '5',
+  email: '6',
+  phoneNumber: '7',
+  cityState: '8',
+  biggestChallenge: '10',
+  currentCrmTool: '11',
+  missAfterHoursCalls: '12',
+  helpNeeded: '10',
+  preferredContactMethod: '14',
+  preferredContactTime: '15',
+  message: '',
+  consent: '',
 };
 
 export function clean(value: unknown, maxLength = 2000) {
@@ -113,12 +114,14 @@ export function validateLead(payload: LeadPayload) {
 
 export function normalizeLeadPayload(body: LeadPayload): NormalizedLeadPayload {
   const biggestChallenge = clean(body.biggestChallenge);
+  const phoneCountryCode = clean(body.phoneCountryCode, 10);
+  const phoneNumber = clean(body.phone || body.phoneNumber);
   return {
     fullName: clean(body.fullName),
     agencyName: clean(body.agencyName),
     website: clean(body.website || body.websiteUrl),
     email: clean(body.email),
-    phone: clean(body.phone || body.phoneNumber),
+    phone: phoneNumber.startsWith('+') || !phoneCountryCode ? phoneNumber : `${phoneCountryCode} ${phoneNumber}`.trim(),
     location: clean(body.location || body.cityState),
     biggestChallenge,
     currentCRM: clean(body.currentCRM || body.currentCrmTool),
@@ -249,7 +252,17 @@ function buildJotformSubmissionBody(payload: NormalizedLeadPayload) {
   appendJotformValue(body, jotformFieldIds.agencyName, payload.agencyName);
   appendJotformValue(body, jotformFieldIds.websiteUrl, payload.website);
   appendJotformValue(body, jotformFieldIds.email, payload.email);
-  appendJotformValue(body, jotformFieldIds.phoneNumber, payload.phone);
+
+  // Phone number sub-fields submission
+  const digits = payload.phone.replace(/\D/g, '');
+  const localUsDigits = digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : digits;
+  if (localUsDigits.length === 10) {
+    appendJotformValue(body, `${jotformFieldIds.phoneNumber}_area`, localUsDigits.slice(0, 3));
+    appendJotformValue(body, `${jotformFieldIds.phoneNumber}_phone`, localUsDigits.slice(3));
+  } else {
+    appendJotformValue(body, `${jotformFieldIds.phoneNumber}_phone`, payload.phone);
+  }
+
   appendJotformValue(body, jotformFieldIds.cityState, payload.location);
   appendJotformValue(body, jotformFieldIds.biggestChallenge, payload.biggestChallenge);
   appendJotformValue(body, jotformFieldIds.currentCrmTool, payload.currentCRM);

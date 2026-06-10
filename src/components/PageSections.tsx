@@ -33,7 +33,7 @@ export function Hero({
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.98] text-glow-strong max-w-6xl">
             {title}
           </h1>
-          <p className="text-xl md:text-2xl text-stone-200 max-w-3xl mb-10 leading-relaxed font-light text-glow-strong">{copy}</p>
+          <p className="text-xl md:text-2xl text-white max-w-3xl mb-10 leading-relaxed font-light text-glow-strong">{copy}</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
             <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
               {site.primaryCta}
@@ -53,7 +53,7 @@ export function Hero({
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.98] text-glow-strong">
           {title}
         </h1>
-        <p className="text-xl md:text-2xl text-stone-200 max-w-3xl mb-10 leading-relaxed font-light">{copy}</p>
+        <p className="text-xl md:text-2xl text-white max-w-3xl mb-10 leading-relaxed font-light">{copy}</p>
         <div className="flex flex-col sm:flex-row gap-4">
           <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
             {site.primaryCta}
@@ -72,7 +72,7 @@ export function ServiceGrid() {
     <section className="py-20 px-6 max-w-7xl mx-auto">
       <div className="mb-12 max-w-3xl">
         <h2 className="text-4xl md:text-5xl font-normal mb-5">Sell the next step before the lead disappears</h2>
-        <p className="text-stone-300 font-light leading-relaxed">
+        <p className="text-white font-light leading-relaxed">
           Every LyCore service is designed around one thing: get the right visitor to raise their hand, share the right details, and move into a follow-up path your team can actually use.
         </p>
       </div>
@@ -100,7 +100,7 @@ export function ShowcaseSection() {
           <h2 className="text-4xl md:text-6xl font-normal tracking-tight mb-5">
             The kind of digital presence bail bond agencies should be proud to send people to.
           </h2>
-          <p className="text-stone-300 text-lg font-light leading-relaxed">
+          <p className="text-white text-lg font-light leading-relaxed">
             These are concept visuals showing the types of websites, dashboards, mobile apps, and trust-building pages LyCore can create. They are not client results, rankings, reviews, or legal-service claims.
           </p>
         </div>
@@ -144,7 +144,7 @@ export function ProcessSection() {
     <section className="py-20 px-6 max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-14">
         <h2 className="text-4xl md:text-5xl font-normal mb-5">From missed interest to a measurable lead path</h2>
-        <p className="text-stone-300 font-light leading-relaxed">A pretty website is not enough. LyCore builds the path that helps visitors act and helps owners measure what happened.</p>
+        <p className="text-white font-light leading-relaxed">A pretty website is not enough. LyCore builds the path that helps visitors act and helps owners measure what happened.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         {steps.map(([number, title, body]) => (
@@ -181,7 +181,7 @@ export function TrustSection() {
       <div className="rounded-[36px] border border-white/10 bg-white/[0.05] p-8 md:p-12">
         <h2 className="text-3xl font-medium mb-5">Human-In-Control AI</h2>
         <p className="text-stone-300 leading-relaxed font-light">{site.aiDisclaimer}</p>
-        <p className="text-stone-400 text-sm leading-relaxed mt-5">
+        <p className="text-white text-sm leading-relaxed mt-5">
           LyCore does not guarantee rankings, revenue, client volume, reviews, legal outcomes, or bail outcomes. Analytics, CRM, chatbot, booking, email, and Search Console integrations require manual setup with real credentials.
         </p>
       </div>

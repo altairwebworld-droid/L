@@ -37,7 +37,7 @@ export default function ServiceDetail() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.12 }}
-            className="text-xl text-stone-200 font-light leading-relaxed max-w-3xl mb-10"
+            className="text-xl text-white font-light leading-relaxed max-w-3xl mb-10"
           >
             {service.description}
           </motion.p>
@@ -63,8 +63,8 @@ export default function ServiceDetail() {
                 <ShieldCheck className="text-white/80" size={28} />
               </div>
               <div>
-                <p className="micro-label text-white/50 mb-1">Primary Problem</p>
-                <h2 className="text-2xl font-medium">Where leads leak</h2>
+                <p className="micro-label text-white/50 mb-1">Pain Point</p>
+                <h2 className="text-2xl font-medium">What this fixes</h2>
               </div>
             </div>
             <p className="text-stone-200 font-light leading-relaxed mb-8">{service.problem}</p>
@@ -84,7 +84,7 @@ export default function ServiceDetail() {
         <div className="glass-panel rounded-[32px] p-8 md:p-10 border border-white/10">
           <div className="flex items-center gap-3 mb-6">
             <Layers className="text-white/70" size={24} />
-            <h2 className="text-3xl font-medium">What LyCore Builds</h2>
+            <h2 className="text-3xl font-medium">What you get</h2>
           </div>
           <p className="text-stone-200 font-light leading-relaxed mb-8">{service.explanation}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -97,7 +97,7 @@ export default function ServiceDetail() {
         </div>
 
         <div className="glass-panel rounded-[32px] p-8 md:p-10 border border-white/10">
-          <h2 className="text-3xl font-medium mb-8">Implementation Flow</h2>
+          <h2 className="text-3xl font-medium mb-8">How the lead path gets stronger</h2>
           <div className="space-y-6">
             {service.process.map((step, index) => (
               <div key={step} className="flex gap-5">
@@ -107,7 +107,7 @@ export default function ServiceDetail() {
                 <div>
                   <h3 className="text-lg font-medium mb-1">{step}</h3>
                   <p className="text-sm text-stone-400 font-light leading-relaxed">
-                    Each step is prepared for human review before live CRM, calendar, call, or automation credentials are connected.
+                    Built to make the next action clearer for visitors, staff, owners, and any CRM or calendar tools connected later.
                   </p>
                 </div>
               </div>
@@ -147,9 +147,9 @@ export default function ServiceDetail() {
         <div className="p-8 md:p-16 text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-normal mb-6">See the lead system gaps first.</h2>
+            <h2 className="text-4xl md:text-5xl font-normal mb-6">Find the leak before you buy another tool.</h2>
             <p className="text-stone-200 font-light leading-relaxed max-w-2xl mx-auto mb-10">
-              Request a free audit of your website, calls, intake, CRM handoff, follow-up, tracking, and missed opportunities.
+              Request a free audit of the website, calls, intake, CRM handoff, booking, dashboards, follow-up, tracking, and missed opportunities your agency depends on.
             </p>
             <Link to={site.auditPath} className="btn-3d gap-3">
               Start the Audit

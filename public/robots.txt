@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lycore.org/sitemap.xml
+Sitemap: https://www.lycore.org/sitemap.xml

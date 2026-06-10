@@ -12,7 +12,7 @@ const cell = (value: string) => value.replace(/\|/g, '\\|').replace(/\n/g, '<br>
 const table = (headers: string[], rows: string[][]) =>
   `| ${headers.map(cell).join(' | ')} |\n| ${headers.map(() => '---').join(' | ')} |\n${rows.map((row) => `| ${row.map(cell).join(' | ')} |`).join('\n')}\n`;
 
-const publicPages = allPages.filter((page) => page.kind !== 'legal' && page.kind !== 'system');
+const publicPages = allPages.filter((page) => page.kind !== 'system');
 
 function measurementPlan() {
   const rows = [
@@ -113,13 +113,13 @@ function simpleReport(title: string, body: string) {
 
 const reports: Record<string, string> = {
   'lycore-measurement-plan.md': measurementPlan(),
-  'positioning-implementation-report.md': simpleReport('Positioning Implementation Report', `- Original weakness: baseline copy used mixed CTA language and unsupported guarantee/revenue language.\n- Updated headline: AI Receptionist, SEO Websites, and Lead Automation for Bail Bond Agencies.\n- Updated supporting copy: ${site.coreStatement}\n- Updated CTA: ${site.primaryCta}\n- Files changed: src/siteData.ts, route pages, Navbar, Footer, Contact/Audit form.\n- Verification status: ${status}.`),
+  'positioning-implementation-report.md': simpleReport('Positioning Implementation Report', `- Original weakness: baseline copy used mixed CTA language and unsupported guarantee/revenue language.\n- Updated headline: Bail Bonds AI Receptionist, SEO Websites, and Lead Automation.\n- Updated supporting copy: ${site.coreStatement}\n- Updated CTA: ${site.primaryCta}\n- Files changed: src/siteData.ts, route pages, Navbar, Footer, Contact/Audit form.\n- Verification status: ${status}.`),
   'seo-implementation-report.md': seoReport(),
   'aeo-implementation-report.md': aeoReport(),
   'geo-implementation-report.md': geoReport(),
   'schema-implementation-report.md': schemaReport(),
   'tags-and-metadata-report.md': tagsReport(),
-  'crawl-indexing-report.md': simpleReport('Crawl And Indexing Report', `- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Pages included in sitemap: ${publicPages.map((page) => page.path).join(', ')}\n- Pages intentionally excluded: /privacy and /terms from sitemap focus, plus ${redirectPages.map((page) => page.path).join(', ')} because they are post-submit/post-booking confirmation pages and should not be indexed.\n- Indexing risks: Search Console/domain verification require manual setup.\n- Verification status: ${status} for files; ${manual} for submission.`),
+  'crawl-indexing-report.md': simpleReport('Crawl And Indexing Report', `- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Pages included in sitemap: ${publicPages.map((page) => page.path).join(', ')}\n- Pages intentionally excluded: ${redirectPages.map((page) => page.path).join(', ')} because they are post-submit/post-booking confirmation pages and should not be indexed.\n- Indexing risks: Search Console/domain verification require manual setup.\n- Verification status: ${status} for files; ${manual} for submission.`),
   'conversion-implementation-report.md': simpleReport('Conversion Implementation Report', `- CTA copy used: ${site.primaryCta}\n- Form fields added: ${formFieldNames.join(', ')}\n- Validation added: required fields, honeypot spam trap, consent, client states, and server validation.\n- Success/error/loading states: implemented in AuditLeadForm and optimized redirect result pages.\n- Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.\n- Lead journey: service page -> audit CTA -> built-in audit form or VITE_AUDIT_FORM_URL external intake form -> /api/leads when built-in form is used -> /audit-request-received after external form success -> /booking-confirmed or /booking-failed after calendar flow.\n- Verification status: ${status}; live CRM/calendar platform selection and production routing require manual setup.`),
   'backend-crm-readiness-report.md': simpleReport('Backend CRM Readiness Report', `- Payload fields: ${formFieldNames.join(', ')}\n- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.\n- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.\n- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.\n- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.\n- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.\n- Verification status: ${status} for readiness; ${manual} for live routing.`),
   'crm-readiness-report.md': simpleReport('CRM Readiness Report', table(['Field/Requirement', 'Status', 'Notes'], [
@@ -168,7 +168,7 @@ const reports: Record<string, string> = {
     page.path,
     page.title.split('|')[0].trim(),
     status
-  ])) + `\n\n- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Manual setup: verify lycore.org in Search Console and submit sitemap.\n`),
+  ])) + `\n\n- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Manual setup: verify ${site.domain.replace('https://', '')} in Search Console and submit sitemap.\n`),
   'trust-compliance-report.md': simpleReport('Trust Compliance Report', table(['Compliance Item', 'Status', 'Implementation Details'], [
     ['Privacy Policy', status, '/privacy route created'],
     ['Terms of Service', status, '/terms route created'],

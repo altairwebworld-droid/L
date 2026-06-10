@@ -2,7 +2,7 @@
 
 Created: 2026-06-02
 
-- Payload fields: fullName, agencyName, website, email, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, preferredContactTime, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
+- Payload fields: fullName, agencyName, website, email, phoneCountryCode, phone, location, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
 - API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.
 - Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.
 - Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.

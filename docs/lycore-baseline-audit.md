@@ -61,3 +61,16 @@ The imported project is a Vite/React/TypeScript single-page application served b
 ## Baseline Conclusion
 
 The site has a strong visual style and an existing LyCore bail-bond focus, but it is not yet a measurable, route-indexable, CRM-ready, compliant lead capture system. Implementation should preserve the dark premium style while replacing unverified claims, adding route-level metadata and schema, creating dedicated service/audit pages, connecting the form to a safer backend payload, removing public lead exposure, and documenting all manual setup requirements.
+
+## Follow-Up SEO Tool Baseline
+
+Audit date: 2026-06-02  
+Target page: `/`  
+Target keyword: `bail bonds`
+
+| Finding | Baseline status | Evidence |
+| --- | ---: | --- |
+| Keyword in title | Weak | Current title uses `AI Receptionist & SEO Websites for Bail Bond Agencies | LyCore`, which does not contain the exact phrase `bail bonds`. |
+| Title delimiter | Weak | Current title uses the pipe delimiter `|`. |
+| Raw HTML headings | Broken | Source `index.html` renders an empty `<div id="root"></div>` before JavaScript, so strict crawlers can report no page headers. |
+| Raw HTML content | Broken | Source `index.html` has no crawlable body copy before JavaScript, so strict crawlers can report 0 words and no keyword in content. |

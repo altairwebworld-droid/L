@@ -1,13 +1,13 @@
 export const site = {
   name: 'LyCore',
-  domain: 'https://lycore.org',
+  domain: 'https://www.lycore.org',
   email: 'services@lycore.org',
   primaryCta: 'Get a Free Bail Bond Lead System Audit',
   secondaryCta: 'See How It Works',
   auditPath: '/free-bail-bond-lead-system-audit',
   ogImage: '/og-image.png',
   coreStatement:
-    'LyCore helps bail bond agencies capture more leads with SEO websites, AI call answering, automated intake, CRM integration, and follow-up workflows.',
+    'LyCore helps agencies in the bail bonds industry capture more leads with SEO websites, AI call answering, automated intake, CRM integration, and follow-up workflows.',
   expandedServicesStatement:
     'LyCore also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps for bail bond agencies that need clearer operations and better lead visibility.',
   aiDisclaimer:
@@ -135,7 +135,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/ai-receptionist-for-bail-bonds',
     label: 'AI Receptionist',
-    title: 'AI Call Answering for Bail Bond Agencies | LyCore',
+    title: 'AI Call Answering for Bail Bond Agencies - LyCore',
     description:
       'AI call answering support for bail bond agencies that need to capture after-hours leads, collect intake details, and route summaries without replacing licensed agents.',
     h1: 'AI Call Answering for Bail Bond Agencies',
@@ -153,7 +153,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/bail-bond-website-design',
     label: 'Website Design',
-    title: 'Bail Bond Website Design for Lead Capture | LyCore',
+    title: 'Bail Bond Website Design for Lead Capture - LyCore',
     description:
       'Conversion-focused bail bond website design with clear service pages, audit CTAs, intake forms, metadata, schema, and CRM-ready lead capture.',
     h1: 'Bail Bond Website Design for Lead Capture',
@@ -171,7 +171,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/bail-bond-seo-services',
     label: 'SEO Services',
-    title: 'Bail Bond SEO Services for More Agency Leads | LyCore',
+    title: 'Bail Bond SEO Services for More Agency Leads - LyCore',
     description:
       'Bail bond SEO services that improve technical crawl readiness, service page clarity, answer content, metadata, schema, and measurable search visibility.',
     h1: 'Bail Bond SEO Services for More Agency Leads',
@@ -189,7 +189,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/bail-bond-intake-automation',
     label: 'Intake Automation',
-    title: 'Bail Bond Intake Automation Systems | LyCore',
+    title: 'Bail Bond Intake Automation Systems - LyCore',
     description:
       'Automated bail bond intake systems that collect qualified lead details, source data, consent, and CRM-ready information from forms, calls, and chat.',
     h1: 'Bail Bond Intake Automation Systems',
@@ -207,7 +207,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/bail-bond-crm-integration',
     label: 'CRM Integration',
-    title: 'Bail Bond CRM Integration & Intake Automation | LyCore',
+    title: 'Bail Bond CRM Integration & Intake Automation - LyCore',
     description:
       'CRM integration readiness for bail bond agencies, with structured lead payloads, webhook placeholders, UTM data, consent capture, and error handling.',
     h1: 'Bail Bond CRM Integration and Intake Automation',
@@ -225,7 +225,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/bail-bond-follow-up-automation',
     label: 'Follow-Up',
-    title: 'Automated Follow-Up Systems for Bail Bond Agencies | LyCore',
+    title: 'Automated Follow-Up Systems for Bail Bond Agencies - LyCore',
     description:
       'Follow-up automation readiness for bail bond agencies, including lead summaries, owner notifications, CRM tasks, and no-pressure next-step workflows.',
     h1: 'Automated Follow-Up Systems for Bail Bond Agencies',
@@ -243,7 +243,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/custom-dashboards-for-bail-bonds',
     label: 'Custom Dashboards',
-    title: 'Custom Dashboards for Bail Bond Agencies | LyCore',
+    title: 'Custom Dashboards for Bail Bond Agencies - LyCore',
     description:
       'Custom dashboard development for bail bond agencies that need lead visibility, source tracking, intake status, CRM handoff, follow-up activity, and operational reporting.',
     h1: 'Custom Dashboards for Bail Bond Agencies',
@@ -261,7 +261,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/appointment-setting-for-bail-bonds',
     label: 'Appointment Setting',
-    title: 'Appointment Setting for Bail Bond Agencies | LyCore',
+    title: 'Appointment Setting for Bail Bond Agencies - LyCore',
     description:
       'Appointment-setting workflow readiness for bail bond agencies, including qualified lead routing, booking prompts, reminders, staff handoff, and CRM updates.',
     h1: 'Appointment Setting for Bail Bond Agencies',
@@ -279,7 +279,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/mobile-apps-for-bail-bonds',
     label: 'Mobile Apps',
-    title: 'Mobile Apps for Bail Bond Agencies | LyCore',
+    title: 'Mobile Apps for Bail Bond Agencies - LyCore',
     description:
       'Mobile app planning and development for bail bond agency workflows such as lead review, intake visibility, follow-up tasks, appointment coordination, and internal operations.',
     h1: 'Mobile Apps for Bail Bond Agencies',
@@ -297,7 +297,7 @@ export const servicePages: ServicePage[] = [
   {
     path: '/ui-apps-for-bail-bonds',
     label: 'UI Apps',
-    title: 'Web UI Apps for Bail Bond Agencies | LyCore',
+    title: 'Web UI Apps for Bail Bond Agencies - LyCore',
     description:
       'Custom web UI app development for bail bond agencies, including internal tools, intake views, lead review screens, dashboard interfaces, and workflow apps.',
     h1: 'Web UI Apps for Bail Bond Agencies',
@@ -318,16 +318,16 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/',
     label: 'Home',
-    title: 'AI Receptionist & SEO Websites for Bail Bond Agencies | LyCore',
+    title: 'Bail Bonds AI Receptionist and SEO Websites - LyCore',
     description: site.coreStatement,
-    h1: 'AI Receptionist, SEO Websites, and Lead Automation for Bail Bond Agencies',
+    h1: 'Bail Bonds AI Receptionist, SEO Websites, and Lead Automation',
     kind: 'home',
     faqs: globalFaqs.slice(0, 6),
   },
   {
     path: '/services',
     label: 'Services',
-    title: 'Bail Bond Lead Capture Services | LyCore',
+    title: 'Bail Bond Lead Capture Services - LyCore',
     description:
       'Explore LyCore services for bail bond agencies, including SEO websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.',
     h1: 'Bail Bond Lead Capture Services',
@@ -337,7 +337,7 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/about',
     label: 'About',
-    title: 'About LyCore Bail Bond Lead Systems | LyCore',
+    title: 'About LyCore Bail Bond Lead Systems - LyCore',
     description:
       'Learn how LyCore supports bail bond agencies with measurable websites, AI-supported intake, CRM readiness, follow-up automation, dashboards, appointment setting, and apps.',
     h1: 'About LyCore',
@@ -347,7 +347,7 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/contact',
     label: 'Contact',
-    title: 'Request a Bail Bond Lead System Audit | LyCore',
+    title: 'Request a Bail Bond Lead System Audit - LyCore',
     description:
       'Request a free audit of your bail bond agency website, calls, intake, CRM readiness, follow-up workflows, and tracking.',
     h1: 'Request Your Free Bail Bond Lead System Audit',
@@ -357,7 +357,7 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/bail-bonds',
     label: 'Bail Bonds',
-    title: 'Lead Capture Systems for Bail Bond Agencies | LyCore',
+    title: 'Lead Capture Systems for Bail Bond Agencies - LyCore',
     description:
       'See how LyCore helps bail bond agencies connect websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.',
     h1: 'Lead Capture Systems for Bail Bond Agencies',
@@ -367,7 +367,7 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/book',
     label: 'Book a Call',
-    title: 'Book a Strategy Call | LyCore',
+    title: 'Book a Strategy Call - LyCore',
     description: 'Schedule a time to discuss how LyCore can help your bail bond agency capture more leads.',
     h1: 'Book a Strategy Call',
     kind: 'legacy',
@@ -378,7 +378,7 @@ export const legalPages: PageMeta[] = [
   {
     path: '/privacy',
     label: 'Privacy',
-    title: 'Privacy Policy | LyCore',
+    title: 'Privacy Policy - LyCore',
     description:
       'LyCore privacy policy placeholder covering audit form data, analytics readiness, CRM setup, consent, and manual legal review.',
     h1: 'Privacy Policy',
@@ -387,7 +387,7 @@ export const legalPages: PageMeta[] = [
   {
     path: '/terms',
     label: 'Terms',
-    title: 'Terms of Use | LyCore',
+    title: 'Terms of Use - LyCore',
     description:
       'LyCore terms placeholder covering informational content, no guarantees, no legal advice, and human-in-control AI positioning.',
     h1: 'Terms of Use',
@@ -398,7 +398,7 @@ export const legalPages: PageMeta[] = [
 export const auditPage: PageMeta = {
   path: site.auditPath,
   label: 'Free Audit',
-  title: 'Free Bail Bond Lead System Audit | LyCore',
+  title: 'Free Bail Bond Lead System Audit - LyCore',
   description:
     'Request a free LyCore audit of your bail bond agency lead system, including website, SEO, calls, intake, CRM, follow-up, and source tracking readiness.',
   h1: 'Get a Free Bail Bond Lead System Audit',
@@ -410,7 +410,7 @@ export const redirectPages: PageMeta[] = [
   {
     path: '/audit-request-received',
     label: 'Audit Request Received',
-    title: 'Audit Request Received | LyCore',
+    title: 'Audit Request Received - LyCore',
     description:
       'Confirmation page for LyCore bail bond lead system audit requests, with next steps for booking, CRM review, and human follow-up.',
     h1: 'Your lead system audit request is in.',
@@ -419,7 +419,7 @@ export const redirectPages: PageMeta[] = [
   {
     path: '/booking-confirmed',
     label: 'Booking Confirmed',
-    title: 'Strategy Call Booking Confirmed | LyCore',
+    title: 'Strategy Call Booking Confirmed - LyCore',
     description:
       'Confirmation page for a LyCore strategy call booking, with next steps for reviewing bail bond lead capture, intake, CRM, and follow-up workflows.',
     h1: 'Your strategy call is booked.',
@@ -428,7 +428,7 @@ export const redirectPages: PageMeta[] = [
   {
     path: '/booking-failed',
     label: 'Booking Not Completed',
-    title: 'Strategy Call Booking Not Completed | LyCore',
+    title: 'Strategy Call Booking Not Completed - LyCore',
     description:
       'Fallback page for interrupted LyCore booking flows, with options to retry scheduling or email LyCore for help.',
     h1: 'The meeting was not booked.',
@@ -454,13 +454,13 @@ export const formFieldNames = [
   'agencyName',
   'website',
   'email',
+  'phoneCountryCode',
   'phone',
   'location',
   'biggestChallenge',
   'currentCRM',
   'missedCalls',
   'preferredContactMethod',
-  'preferredContactTime',
   'message',
   'consent',
   'sourcePage',
