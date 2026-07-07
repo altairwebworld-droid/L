@@ -22,11 +22,11 @@ export default function Navbar() {
       aria-label="Primary navigation"
     >
       <div className="px-6 md:px-8 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2" aria-label="LyCore home">
+        <Link to="/" className="flex items-center gap-2" aria-label="LYCORE LLC home">
           <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
             <div className="w-2 h-2 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
           </div>
-          <span className="font-display font-bold text-2xl tracking-tighter">LyCore</span>
+          <span className="font-display font-bold text-xl tracking-tight whitespace-nowrap">{site.name}</span>
         </Link>
 
         <div className="hidden xl:flex items-center gap-2">
@@ -42,7 +42,7 @@ export default function Navbar() {
           <Link to="/book" className="btn-3d-dark px-6 py-2.5 ml-2 text-[10px]" data-track="book_call_click">
             Book a Call
           </Link>
-          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white hover:text-black transition-colors" aria-label={`Call LyCore at ${site.phone}`}>
+          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white hover:text-black transition-colors" aria-label={`Call LYCORE LLC at ${site.phone}`}>
             <Phone size={16} />
           </a>
         </div>

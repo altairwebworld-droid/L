@@ -21,7 +21,7 @@ export default function BailBonds() {
           </ul>
         </article>
         <article className="rounded-[32px] border border-white/10 bg-white/[0.04] p-8">
-          <h2 className="text-3xl font-medium mb-5">LyCore Lead System Readiness</h2>
+          <h2 className="text-3xl font-medium mb-5">LYCORE LLC Lead System Readiness</h2>
           <ul className="space-y-4 text-stone-300 font-light leading-relaxed">
             <li>SEO-ready service pages and direct answer content.</li>
             <li>AI-supported call and chat intake with human-control boundaries.</li>

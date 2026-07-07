@@ -91,7 +91,7 @@ function schemaFor(page: PageMeta) {
       { name: 'Bail Bond Website Design', path: '/bail-bond-website-design' },
       { name: 'Free Lead System Audit', path: site.auditPath },
       { name: 'Book a Call', path: '/book' },
-      { name: 'About LyCore', path: '/about' },
+      { name: 'About LYCORE LLC', path: '/about' },
       { name: 'Contact', path: '/contact' },
     ];
     blocks.push({
@@ -186,7 +186,7 @@ function fallbackFor(page: PageMeta) {
     page.path === '/'
       ? [
           site.coreStatement,
-          'Families looking for help may call, click, fill out a form, or leave within minutes. LyCore creates pages, intake questions, source tracking, and CRM-ready handoff paths so agency teams can respond with cleaner context while licensed professionals stay responsible for legal, financial, client, and bail outcome decisions.',
+          'Families looking for help may call, click, fill out a form, or leave within minutes. LYCORE LLC creates pages, intake questions, source tracking, and CRM-ready handoff paths so agency teams can respond with cleaner context while licensed professionals stay responsible for legal, financial, client, and bail outcome decisions.',
           'Services include bail bond website design, bail bond SEO services, AI receptionist support, intake automation, CRM integration, follow-up automation, dashboards, appointment-setting workflows, mobile apps, and web UI apps. Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.',
         ]
       : [page.description, service?.problem, service?.explanation].filter(present);
@@ -214,7 +214,7 @@ function fallbackFor(page: PageMeta) {
             <a href="/bail-bond-seo-services">Bail Bond SEO Services</a>
             <a href="/bail-bond-website-design">Bail Bond Website Design</a>
             <a href="/book">Book a Call</a>
-            <a href="/about">About LyCore</a>
+            <a href="/about">About LYCORE LLC</a>
             <a href="/contact">Contact</a>`
                 : ''
             }
@@ -316,8 +316,8 @@ async function main() {
   const notFoundPage: PageMeta = {
     path: '/404',
     label: 'Not Found',
-    title: 'Page Not Found - LyCore',
-    description: 'The page you requested does not exist. Explore LyCore services for bail bond agencies or request a free lead system audit.',
+    title: 'Page Not Found - LYCORE LLC',
+    description: 'The page you requested does not exist. Explore LYCORE LLC services for bail bond agencies or request a free lead system audit.',
     h1: 'Page Not Found',
     kind: 'system',
   };

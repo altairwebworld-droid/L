@@ -6,7 +6,7 @@ import TiltCard from './TiltCard';
 const trustNotes = [
   {
     title: 'No fake proof',
-    body: 'LyCore should only publish client results, reviews, ratings, or rankings after they are verified and approved for public use.',
+    body: 'LYCORE LLC should only publish client results, reviews, ratings, or rankings after they are verified and approved for public use.',
     status: 'Proof requires manual setup',
   },
   {

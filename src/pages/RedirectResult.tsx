@@ -15,10 +15,10 @@ const resultContent = {
     eyebrow: 'Audit Request Received',
     title: 'Your lead system audit request is in.',
     description:
-      'Thanks for sharing your agency details. LyCore will review your intake, website, CRM, follow-up, and booking context before the next step.',
+      'Thanks for sharing your agency details. LYCORE LLC will review your intake, website, CRM, follow-up, and booking context before the next step.',
     steps: [
       'Your intake form platform should show the submitted agency details.',
-      'LyCore can review the website, call handling, intake, CRM, and follow-up context you provided.',
+      'LYCORE LLC can review the website, call handling, intake, CRM, and follow-up context you provided.',
       'Book a strategy call when you are ready to walk through the audit together.',
     ],
     note: 'If this request came through an external form, make sure that form is mapped to your selected CRM or inbox before production launch.',
@@ -37,7 +37,7 @@ const resultContent = {
     steps: [
       'Check your email for the calendar confirmation from the booking platform.',
       'Have your website URL, CRM questions, intake process, and follow-up problems ready.',
-      'Review the LyCore service pages if you want to compare websites, AI answering, dashboards, apps, and automation before the call.',
+      'Review the LYCORE LLC service pages if you want to compare websites, AI answering, dashboards, apps, and automation before the call.',
     ],
     note: 'Calendar reminders, CRM updates, and owner notifications require manual setup inside the selected booking or automation platform.',
     primaryLabel: 'Review Services',
@@ -51,16 +51,16 @@ const resultContent = {
     eyebrow: 'Booking Not Completed',
     title: 'The meeting was not booked.',
     description:
-      'Something interrupted the booking flow. You can try again or email LyCore directly and we will help schedule the strategy call.',
+      'Something interrupted the booking flow. You can try again or email LYCORE LLC directly and we will help schedule the strategy call.',
     steps: [
       'Try the booking flow again if the calendar page was interrupted.',
-      'Email LyCore if the calendar tool does not load or the available times do not work.',
+      'Email LYCORE LLC if the calendar tool does not load or the available times do not work.',
       'If you already submitted the audit form, that form submission is separate from the calendar attempt.',
     ],
     note: 'This page is a fallback route. It does not mean your audit form failed unless the intake form itself showed an error.',
     primaryLabel: 'Try Booking Again',
     primaryPath: '/book',
-    secondaryLabel: 'Email LyCore',
+    secondaryLabel: 'Email LYCORE LLC',
     secondaryPath: `mailto:${site.email}`,
     eventName: 'booking_redirect_failed',
   },

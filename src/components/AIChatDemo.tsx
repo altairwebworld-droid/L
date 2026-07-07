@@ -18,16 +18,16 @@ const qualificationFlow = [
   'Which service sounds most relevant right now?',
   'Would you like the free bail bond lead system audit?',
   'What is the best email or phone number for follow-up?',
-  'Thanks. LyCore can review your details and prepare next steps for human review.',
+  'Thanks. LYCORE LLC can review your details and prepare next steps for human review.',
 ];
 
 function deterministicReply(message: string, step: number) {
   const normalized = message.toLowerCase();
   if (normalized.includes('legal') || normalized.includes('court') || normalized.includes('bail outcome')) {
-    return 'I cannot give legal advice or determine bail outcomes. LyCore AI supports intake, summaries, CRM updates, and follow-up while licensed professionals stay in control.';
+    return 'I cannot give legal advice or determine bail outcomes. LYCORE LLC AI supports intake, summaries, CRM updates, and follow-up while licensed professionals stay in control.';
   }
   if (step >= qualificationFlow.length) {
-    return 'The next best step is the free bail bond lead system audit. LyCore can review calls, website, intake, CRM handoff, dashboards, appointments, and follow-up readiness.';
+    return 'The next best step is the free bail bond lead system audit. LYCORE LLC can review calls, website, intake, CRM handoff, dashboards, appointments, and follow-up readiness.';
   }
   return qualificationFlow[step];
 }
@@ -86,7 +86,7 @@ export default function AIChatDemo() {
           <Bot size={20} className="text-white" />
         </div>
         <div>
-          <h3 className="text-sm font-medium tracking-wide">LyCore AI Intake Demo</h3>
+          <h3 className="text-sm font-medium tracking-wide">LYCORE LLC AI Intake Demo</h3>
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] uppercase tracking-widest text-ink-muted font-bold">Qualification support</span>

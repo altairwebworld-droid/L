@@ -9,7 +9,7 @@ export default function Home() {
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
           <div>
-            <p className="micro-label mb-4">The pain LyCore fixes</p>
+            <p className="micro-label mb-4">The pain LYCORE LLC fixes</p>
             <h2 className="text-4xl md:text-6xl font-normal tracking-tight leading-tight mb-6">
               Bail bond leads do not wait for a better time.
             </h2>
@@ -46,7 +46,7 @@ export default function Home() {
             Licensed agents stay in charge of every client, legal, financial, and bail decision. The AI just makes sure nothing reaches them cold.
           </p>
           <p className="text-white leading-relaxed font-light mt-5">
-            Need more than answering? LyCore also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps around your agency&apos;s operations.
+            Need more than answering? LYCORE LLC also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps around your agency&apos;s operations.
           </p>
         </div>
         <AIChatDemo />

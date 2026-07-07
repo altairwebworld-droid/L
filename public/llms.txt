@@ -1,8 +1,8 @@
-# LyCore
+# LYCORE LLC
 
-> LyCore helps agencies in the bail bonds industry capture more leads with SEO websites, AI call answering, automated intake, CRM integration, and follow-up workflows. LyCore also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps for bail bond agencies that need clearer operations and better lead visibility.
+> LYCORE LLC helps agencies in the bail bonds industry capture more leads with SEO websites, AI call answering, automated intake, CRM integration, and follow-up workflows. LYCORE LLC also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps for bail bond agencies that need clearer operations and better lead visibility.
 
-LyCore (LYCORE GROUP LLC) is based in Albuquerque, NM and works with bail bond agencies across the United States. Contact: services@lycore.org, +1 (917) 722-5646. LyCore's AI systems are designed to support call answering, intake, follow-up, summaries, and CRM updates. They do not replace licensed professionals, make legal decisions, or determine bail outcomes. Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
+LYCORE LLC (LYCORE GROUP LLC) is based in Albuquerque, NM and works with bail bond agencies across the United States. Contact: services@lycore.org, +1 (917) 722-5646. LYCORE LLC's AI systems are designed to support call answering, intake, follow-up, summaries, and CRM updates. They do not replace licensed professionals, make legal decisions, or determine bail outcomes. Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
 
 ## Services
 
@@ -19,14 +19,14 @@ LyCore (LYCORE GROUP LLC) is based in Albuquerque, NM and works with bail bond a
 
 ## Company
 
-- [Services](https://www.lycore.org/services): Explore LyCore services for bail bond agencies, including SEO websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.
-- [About](https://www.lycore.org/about): Learn how LyCore Group LLC supports bail bond agencies with AI receptionist workflows, SEO websites, intake automation, CRM readiness, dashboards, and follow-up systems.
+- [Services](https://www.lycore.org/services): Explore LYCORE LLC services for bail bond agencies, including SEO websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.
+- [About](https://www.lycore.org/about): Learn how LYCORE GROUP LLC supports bail bond agencies with AI receptionist workflows, SEO websites, intake automation, CRM readiness, dashboards, and follow-up systems.
 - [Contact](https://www.lycore.org/contact): Request a free audit of your bail bond agency website, calls, intake, CRM readiness, follow-up workflows, and tracking.
-- [Service Areas](https://www.lycore.org/service-areas): LyCore supports bail bond agencies across the United States with remote website design, AI receptionist workflows, intake automation, CRM readiness, dashboards, and follow-up systems.
-- [Albuquerque](https://www.lycore.org/albuquerque-bail-bond-marketing): LyCore Group LLC is based in Albuquerque, New Mexico and supports bail bond agencies with SEO websites, AI receptionist workflows, intake automation, CRM readiness, and lead tracking.
-- [Bail Bonds](https://www.lycore.org/bail-bonds): See how LyCore helps bail bond agencies connect websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.
-- [Book a Call](https://www.lycore.org/book): Schedule a time to discuss how LyCore can help your bail bond agency capture more leads.
-- [Free Audit](https://www.lycore.org/free-bail-bond-lead-system-audit): Request a free LyCore audit of your bail bond agency lead system, including website, SEO, calls, intake, CRM, follow-up, and source tracking readiness.
+- [Service Areas](https://www.lycore.org/service-areas): LYCORE LLC supports bail bond agencies across the United States with remote website design, AI receptionist workflows, intake automation, CRM readiness, dashboards, and follow-up systems.
+- [Albuquerque](https://www.lycore.org/albuquerque-bail-bond-marketing): LYCORE GROUP LLC is based in Albuquerque, New Mexico and supports bail bond agencies with SEO websites, AI receptionist workflows, intake automation, CRM readiness, and lead tracking.
+- [Bail Bonds](https://www.lycore.org/bail-bonds): See how LYCORE LLC helps bail bond agencies connect websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.
+- [Book a Call](https://www.lycore.org/book): Schedule a time to discuss how LYCORE LLC can help your bail bond agency capture more leads.
+- [Free Audit](https://www.lycore.org/free-bail-bond-lead-system-audit): Request a free LYCORE LLC audit of your bail bond agency lead system, including website, SEO, calls, intake, CRM, follow-up, and source tracking readiness.
 
 ## Frequently Asked Questions
 
@@ -44,11 +44,11 @@ LyCore (LYCORE GROUP LLC) is based in Albuquerque, NM and works with bail bond a
   A: A bail bond lead system audit reviews how an agency captures calls, website visitors, form leads, chat leads, CRM records, follow-up, tracking, and missed opportunities.
 - Q: What is the difference between a normal website and an automated lead capture system?
   A: A normal website mostly displays information. An automated lead capture system guides visitors, qualifies leads, captures source data, routes submissions, updates a CRM, and prepares follow-up.
-- Q: Can LyCore connect calls, forms, chat, and CRM into one workflow?
-  A: Yes. LyCore can prepare a connected workflow where calls, forms, chat, CRM updates, summaries, and follow-up steps share one structured lead payload after backend tools are connected.
-- Q: Can LyCore build custom dashboards for bail bond agencies?
-  A: Yes. LyCore can build custom dashboards that help bail bond agencies review leads, source data, intake status, CRM handoff, follow-up activity, and operational signals after the proper backend data sources are connected.
-- Q: Can LyCore help with appointment setting for bail bond agencies?
-  A: Yes. LyCore can prepare appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, and CRM updates. Booking tools and calendars require manual setup with real account access.
-- Q: Does LyCore build mobile apps and web UI apps for bail bond agencies?
-  A: Yes. LyCore can build mobile apps and web UI apps for bail bond agency workflows such as lead review, intake visibility, follow-up tasks, appointment coordination, and internal dashboards.
+- Q: Can LYCORE LLC connect calls, forms, chat, and CRM into one workflow?
+  A: Yes. LYCORE LLC can prepare a connected workflow where calls, forms, chat, CRM updates, summaries, and follow-up steps share one structured lead payload after backend tools are connected.
+- Q: Can LYCORE LLC build custom dashboards for bail bond agencies?
+  A: Yes. LYCORE LLC can build custom dashboards that help bail bond agencies review leads, source data, intake status, CRM handoff, follow-up activity, and operational signals after the proper backend data sources are connected.
+- Q: Can LYCORE LLC help with appointment setting for bail bond agencies?
+  A: Yes. LYCORE LLC can prepare appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, and CRM updates. Booking tools and calendars require manual setup with real account access.
+- Q: Does LYCORE LLC build mobile apps and web UI apps for bail bond agencies?
+  A: Yes. LYCORE LLC can build mobile apps and web UI apps for bail bond agency workflows such as lead review, intake visibility, follow-up tasks, appointment coordination, and internal dashboards.

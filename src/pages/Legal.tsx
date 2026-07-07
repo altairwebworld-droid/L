@@ -6,7 +6,7 @@ import { legalPages, site } from '../siteData';
 const privacySections = [
   {
     title: 'Information Collected',
-    body: 'LyCore may collect audit form details such as your name, agency, contact information, website, location, CRM context, message, source page, referrer, and UTM data.',
+    body: 'LYCORE LLC may collect audit form details such as your name, agency, contact information, website, location, CRM context, message, source page, referrer, and UTM data.',
   },
   {
     title: 'How Information Is Used',
@@ -29,7 +29,7 @@ const termsSections = [
   },
   {
     title: 'No Guaranteed Outcomes',
-    body: 'LyCore does not guarantee rankings, revenue, client volume, ad performance, bond outcomes, court outcomes, or CRM acceptance by third-party platforms.',
+    body: 'LYCORE LLC does not guarantee rankings, revenue, client volume, ad performance, bond outcomes, court outcomes, or CRM acceptance by third-party platforms.',
   },
   {
     title: 'Third-Party Services',

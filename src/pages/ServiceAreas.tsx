@@ -22,8 +22,8 @@ export default function ServiceAreas() {
   const isAlbuquerque = location.pathname === '/albuquerque-bail-bond-marketing';
   const title = isAlbuquerque ? 'Albuquerque Bail Bond Marketing and Lead Capture Systems' : 'Service Areas for Bail Bond Agency Websites and Automation';
   const copy = isAlbuquerque
-    ? 'LyCore Group LLC is based in Albuquerque, New Mexico and builds remote-ready website, AI receptionist, intake, CRM, dashboard, and follow-up systems for bail bond agencies.'
-    : 'LyCore supports bail bond agencies across the United States with remote-ready website design, AI receptionist workflows, intake automation, CRM readiness, dashboards, and follow-up systems.';
+    ? 'LYCORE GROUP LLC is based in Albuquerque, New Mexico and builds remote-ready website, AI receptionist, intake, CRM, dashboard, and follow-up systems for bail bond agencies.'
+    : 'LYCORE LLC supports bail bond agencies across the United States with remote-ready website design, AI receptionist workflows, intake automation, CRM readiness, dashboards, and follow-up systems.';
 
   return (
     <>
@@ -33,12 +33,12 @@ export default function ServiceAreas() {
           <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-8 md:p-10">
             <p className="micro-label mb-5">{isAlbuquerque ? 'Business base' : 'Remote service area'}</p>
             <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-5">
-              {isAlbuquerque ? 'Based in Albuquerque, built for agencies that need measurable lead systems' : 'United States bail bond agencies can work with LyCore remotely'}
+              {isAlbuquerque ? 'Based in Albuquerque, built for agencies that need measurable lead systems' : 'United States bail bond agencies can work with LYCORE LLC remotely'}
             </h2>
             <p className="text-stone-300 leading-relaxed font-light">
               {isAlbuquerque
                 ? `${site.legalName} lists ${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode} as its business address. Google Business Profile verification, local citations, and Search Console indexing still require manual setup.`
-                : 'LyCore does not need to be physically inside an agency office to build service pages, intake forms, AI receptionist scripts, CRM-ready payloads, dashboards, and follow-up workflows. Live credentials, calendars, phone systems, and CRM accounts still require manual setup with the agency.'}
+                : 'LYCORE LLC does not need to be physically inside an agency office to build service pages, intake forms, AI receptionist scripts, CRM-ready payloads, dashboards, and follow-up workflows. Live credentials, calendars, phone systems, and CRM accounts still require manual setup with the agency.'}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
@@ -67,7 +67,7 @@ export default function ServiceAreas() {
           <p className="micro-label mb-4">Location intent without fake offices</p>
           <h2 className="text-4xl md:text-5xl font-normal tracking-tight mb-5">Service-area coverage should be honest and specific.</h2>
           <p className="text-white font-light leading-relaxed">
-            LyCore can build pages and lead systems for agencies in multiple states, but the site should not claim local offices, reviews, or case studies that do not exist. These areas are listed as remote-service targets for future Search Console and Business Profile measurement.
+            LYCORE LLC can build pages and lead systems for agencies in multiple states, but the site should not claim local offices, reviews, or case studies that do not exist. These areas are listed as remote-service targets for future Search Console and Business Profile measurement.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

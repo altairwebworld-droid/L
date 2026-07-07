@@ -7,7 +7,7 @@ export default function Services() {
       <Hero
         compact
         title="Fix the lead leaks your agency cannot afford to ignore"
-        copy="LyCore builds the pieces that turn interest into action: websites that sell the next step, AI-supported call intake, CRM-ready forms, dashboards, appointment setting, mobile apps, and follow-up workflows."
+        copy="LYCORE LLC builds the pieces that turn interest into action: websites that sell the next step, AI-supported call intake, CRM-ready forms, dashboards, appointment setting, mobile apps, and follow-up workflows."
       />
       <section className="py-10 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

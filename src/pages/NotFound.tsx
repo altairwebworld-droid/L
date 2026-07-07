@@ -7,7 +7,7 @@ export default function NotFound() {
       <p className="text-sm uppercase tracking-widest text-stone-400">404</p>
       <h1 className="mt-4 text-4xl font-semibold">Page Not Found</h1>
       <p className="mt-6 text-lg text-stone-300">
-        The page you requested does not exist or has moved. Explore LyCore services for bail bond agencies or request a
+        The page you requested does not exist or has moved. Explore LYCORE LLC services for bail bond agencies or request a
         free lead system audit.
       </p>
       <nav aria-label="Helpful links" className="mt-10 flex flex-wrap justify-center gap-4">

@@ -4,12 +4,12 @@ import { globalFaqs, site } from '../siteData';
 export default function About() {
   return (
     <>
-      <Hero compact title="About LyCore" copy={site.coreStatement} />
+      <Hero compact title="About LYCORE LLC" copy={site.coreStatement} />
       <section className="py-16 px-6 max-w-5xl mx-auto space-y-10">
         <div>
           <h2 className="text-4xl font-normal mb-5">Built for Bail Bond Lead Operations</h2>
           <p className="text-white text-lg leading-relaxed font-light">
-            LyCore focuses on the operational side of bail bond lead capture: search-ready websites, AI-supported call answering, structured intake, CRM handoff, and follow-up readiness.
+            LYCORE LLC focuses on the operational side of bail bond lead capture: search-ready websites, AI-supported call answering, structured intake, CRM handoff, and follow-up readiness.
           </p>
           <p className="text-white text-lg leading-relaxed font-light mt-5">
             The same system can extend into custom dashboards, appointment-setting workflows, mobile apps, and web UI apps for agency teams that need better lead visibility and workflow control.

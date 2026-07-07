@@ -237,7 +237,7 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LyCore using this information to respond to my audit request.
+              I consent to LYCORE LLC using this information to respond to my audit request.
             </span>
           </label>
 

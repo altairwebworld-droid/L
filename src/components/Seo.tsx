@@ -8,10 +8,10 @@ export default function Seo() {
 
   useEffect(() => {
     const page = allPages.find((item) => item.path === location.pathname);
-    const title = page ? page.title : 'Page Not Found - LyCore';
+    const title = page ? page.title : 'Page Not Found - LYCORE LLC';
     const pageDescription = page
       ? page.description
-      : 'The page you requested does not exist. Explore LyCore services for bail bond agencies or request a free lead system audit.';
+      : 'The page you requested does not exist. Explore LYCORE LLC services for bail bond agencies or request a free lead system audit.';
     document.title = title;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute('content', pageDescription);

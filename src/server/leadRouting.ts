@@ -176,7 +176,7 @@ function calendarWebhookTargets(env: Env) {
 function buildCalendarPayload(payload: NormalizedLeadPayload, leadScore: number, env: Env) {
   return {
     eventType: 'lycore_audit_request',
-    title: `LyCore audit request: ${payload.agencyName}`,
+    title: `LYCORE LLC audit request: ${payload.agencyName}`,
     leadScore,
     contact: {
       fullName: payload.fullName,
@@ -435,7 +435,7 @@ async function sendLeadEmail(payload: NormalizedLeadPayload, leadScore: number, 
   if (!apiKey || !to) {
     throw new Error('Email channel is not configured. Add RESEND_API_KEY and LEADS_NOTIFY_EMAIL.');
   }
-  const from = clean(env.LEADS_FROM_EMAIL, 200) || 'LyCore Leads <onboarding@resend.dev>';
+  const from = clean(env.LEADS_FROM_EMAIL, 200) || 'LYCORE LLC Leads <onboarding@resend.dev>';
 
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -525,27 +525,27 @@ export async function submitLead(body: LeadPayload, env: Env = process.env) {
 export function fallbackChat(message: string) {
   const normalized = message.toLowerCase();
   if (normalized.includes('crm')) {
-    return 'LyCore can prepare a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. Live CRM routing requires manual setup with a real platform.';
+    return 'LYCORE LLC can prepare a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. Live CRM routing requires manual setup with a real platform.';
   }
   if (normalized.includes('form')) {
-    return 'LyCore can support either the built-in audit form or an external CRM intake form. The form should capture contact details, agency context, consent, source data, and the visitor challenge.';
+    return 'LYCORE LLC can support either the built-in audit form or an external CRM intake form. The form should capture contact details, agency context, consent, source data, and the visitor challenge.';
   }
   if (normalized.includes('dashboard')) {
-    return 'LyCore can build custom dashboards for bail bond agencies to review leads, intake status, source data, CRM handoff, follow-up activity, and operational signals after data sources are connected.';
+    return 'LYCORE LLC can build custom dashboards for bail bond agencies to review leads, intake status, source data, CRM handoff, follow-up activity, and operational signals after data sources are connected.';
   }
   if (normalized.includes('appointment') || normalized.includes('booking') || normalized.includes('calendar')) {
-    return 'LyCore can prepare appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, calendar updates, and CRM updates. Calendar and booking tools require manual setup.';
+    return 'LYCORE LLC can prepare appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, calendar updates, and CRM updates. Calendar and booking tools require manual setup.';
   }
   if (normalized.includes('mobile') || normalized.includes('app') || normalized.includes('ui')) {
-    return 'LyCore can build mobile apps and web UI apps for bail bond workflows such as lead review, intake queues, dashboards, appointment coordination, and follow-up tasks.';
+    return 'LYCORE LLC can build mobile apps and web UI apps for bail bond workflows such as lead review, intake queues, dashboards, appointment coordination, and follow-up tasks.';
   }
   if (normalized.includes('call') || normalized.includes('after')) {
-    return 'LyCore can support after-hours call answering by collecting lead details, preparing summaries, and routing next steps. AI does not replace licensed professionals or make legal decisions.';
+    return 'LYCORE LLC can support after-hours call answering by collecting lead details, preparing summaries, and routing next steps. AI does not replace licensed professionals or make legal decisions.';
   }
   if (normalized.includes('seo') || normalized.includes('website')) {
-    return 'LyCore builds SEO-ready bail bond websites with clear service pages, metadata, schema, FAQ content, internal links, and conversion-focused audit CTAs. Rankings are not guaranteed.';
+    return 'LYCORE LLC builds SEO-ready bail bond websites with clear service pages, metadata, schema, FAQ content, internal links, and conversion-focused audit CTAs. Rankings are not guaranteed.';
   }
-  return 'LyCore helps bail bond agencies capture more leads with SEO websites, AI call answering, automated intake, CRM integration, follow-up workflows, custom dashboards, appointment setting, and mobile or web UI apps. The free audit is the best next step.';
+  return 'LYCORE LLC helps bail bond agencies capture more leads with SEO websites, AI call answering, automated intake, CRM integration, follow-up workflows, custom dashboards, appointment setting, and mobile or web UI apps. The free audit is the best next step.';
 }
 
 export async function chatReply(message: string, env: Env = process.env) {
@@ -566,7 +566,7 @@ export async function chatReply(message: string, env: Env = process.env) {
       contents: safeMessage,
       config: {
         systemInstruction:
-          "You are LyCore's website intake assistant. You MUST guide visitors through a strict 10-step qualification flow. Ask exactly ONE question at a time. The flow is: 1. Welcome 2. Ask if they own/manage a bail bond agency 3. Ask what they need help with (calls, SEO, CRM, calendar, dashboards, apps, etc.) 4. Ask for their website URL 5. Ask for agency location 6. Ask whether they miss calls after hours 7. Recommend the relevant LyCore service 8. Offer the free lead system audit 9. Collect contact details 10. Confirm their info will be reviewed. Do not give legal advice, promise results, replace licensed professionals, or make bail outcome decisions. Keep replies under 50 words.",
+          "You are LYCORE LLC's website intake assistant. You MUST guide visitors through a strict 10-step qualification flow. Ask exactly ONE question at a time. The flow is: 1. Welcome 2. Ask if they own/manage a bail bond agency 3. Ask what they need help with (calls, SEO, CRM, calendar, dashboards, apps, etc.) 4. Ask for their website URL 5. Ask for agency location 6. Ask whether they miss calls after hours 7. Recommend the relevant LYCORE LLC service 8. Offer the free lead system audit 9. Collect contact details 10. Confirm their info will be reviewed. Do not give legal advice, promise results, replace licensed professionals, or make bail outcome decisions. Keep replies under 50 words.",
       },
     });
     return { status: 200, body: { success: true, text: response.text || fallbackChat(safeMessage), manualSetupRequired: false } };

@@ -15,7 +15,7 @@ export default function Contact() {
         <div className="space-y-8">
           <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-8">
             <Mail className="mb-5 text-white/80" />
-            <h2 className="text-3xl font-medium mb-4">Contact LyCore</h2>
+            <h2 className="text-3xl font-medium mb-4">Contact LYCORE LLC</h2>
             <p className="text-stone-300 font-light leading-relaxed mb-5">
               Use the audit form for the cleanest lead-system review request. Email remains available for general inquiries.
             </p>
