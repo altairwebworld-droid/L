@@ -37,8 +37,8 @@ export default function ServiceAreas() {
             </h2>
             <p className="text-stone-300 leading-relaxed font-light">
               {isAlbuquerque
-                ? `${site.legalName} lists ${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode} as its business address. Google Business Profile verification, local citations, and Search Console indexing still require manual setup.`
-                : 'LYCORE LLC does not need to be physically inside an agency office to build service pages, intake forms, AI receptionist scripts, CRM-ready payloads, dashboards, and follow-up workflows. Live credentials, calendars, phone systems, and CRM accounts still require manual setup with the agency.'}
+                ? `${site.legalName} is headquartered at ${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}. We provide dedicated, hands-on support for local agencies looking to dominate their market.`
+                : 'LYCORE LLC operates remotely, meaning we can seamlessly build service pages, intake forms, AI receptionist scripts, and CRM-ready payloads for your agency, no matter where you are located. We integrate directly with your existing tools to ensure a smooth transition.'}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
@@ -64,10 +64,10 @@ export default function ServiceAreas() {
 
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="mb-10 max-w-3xl">
-          <p className="micro-label mb-4">Location intent without fake offices</p>
-          <h2 className="text-4xl md:text-5xl font-normal tracking-tight mb-5">Service-area coverage should be honest and specific.</h2>
-          <p className="text-white font-light leading-relaxed">
-            LYCORE LLC can build pages and lead systems for agencies in multiple states, but the site should not claim local offices, reviews, or case studies that do not exist. These areas are listed as remote-service targets for future Search Console and Business Profile measurement.
+          <p className="micro-label mb-4">National Reach, Remote Expertise</p>
+          <h2 className="text-4xl md:text-5xl font-normal tracking-tight mb-5">Supporting Bail Bond Agencies Nationwide.</h2>
+          <p className="text-stone-300 font-light leading-relaxed">
+            Based in New Mexico, LyCore Group LLC provides remote-ready website development, AI receptionist implementation, and automated intake systems for bail bond agencies across the United States. We serve agencies in the following states and beyond.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

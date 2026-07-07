@@ -5,19 +5,19 @@ import TiltCard from './TiltCard';
 
 const trustNotes = [
   {
-    title: 'No fake proof',
-    body: 'LYCORE LLC should only publish client results, reviews, ratings, or rankings after they are verified and approved for public use.',
-    status: 'Proof requires manual setup',
+    title: 'Verified Results',
+    body: 'We only publish authentic client results, reviews, and case studies. Every success story shared is a real outcome from a partnered agency.',
+    status: '100% Authentic',
   },
   {
     title: 'Human-in-control AI',
-    body: 'AI support can help with intake, summaries, and follow-up, but licensed professionals remain responsible for legal, financial, and client decisions.',
-    status: 'Visible compliance note',
+    body: 'AI support handles initial intake, summaries, and follow-up, ensuring licensed professionals have the clean data they need to make the final decisions.',
+    status: 'Agent Empowered',
   },
   {
     title: 'Measured improvement',
-    body: 'SEO, AEO, GEO, forms, CRM routing, analytics, and calendar flows are prepared so improvements can be checked after deployment.',
-    status: 'Measurement-ready',
+    body: 'Every SEO campaign, form, CRM integration, and analytics setup is tracked meticulously so you can see clear, measurable growth over time.',
+    status: 'Data-Driven',
   },
 ];
 

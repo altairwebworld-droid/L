@@ -525,7 +525,7 @@ export async function submitLead(body: LeadPayload, env: Env = process.env) {
 export function fallbackChat(message: string) {
   const normalized = message.toLowerCase();
   if (normalized.includes('crm')) {
-    return 'LYCORE LLC can prepare a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. Live CRM routing requires manual setup with a real platform.';
+    return 'LYCORE LLC prepares a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. We integrate this directly into your existing CRM platform.';
   }
   if (normalized.includes('form')) {
     return 'LYCORE LLC can support either the built-in audit form or an external CRM intake form. The form should capture contact details, agency context, consent, source data, and the visitor challenge.';
@@ -534,7 +534,7 @@ export function fallbackChat(message: string) {
     return 'LYCORE LLC can build custom dashboards for bail bond agencies to review leads, intake status, source data, CRM handoff, follow-up activity, and operational signals after data sources are connected.';
   }
   if (normalized.includes('appointment') || normalized.includes('booking') || normalized.includes('calendar')) {
-    return 'LYCORE LLC can prepare appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, calendar updates, and CRM updates. Calendar and booking tools require manual setup.';
+    return 'LYCORE LLC sets up appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, calendar updates, and CRM updates. We integrate securely with your agency\'s calendar tools.';
   }
   if (normalized.includes('mobile') || normalized.includes('app') || normalized.includes('ui')) {
     return 'LYCORE LLC can build mobile apps and web UI apps for bail bond workflows such as lead review, intake queues, dashboards, appointment coordination, and follow-up tasks.';

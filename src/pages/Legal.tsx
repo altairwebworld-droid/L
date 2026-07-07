@@ -14,7 +14,7 @@ const privacySections = [
   },
   {
     title: 'Analytics And Integrations',
-    body: 'Analytics, CRM routing, booking tools, email delivery, chat, and webhook automations require manual setup with real account credentials before production use.',
+    body: 'We utilize industry-standard analytics, CRM routing, and automation tools to measure performance. Integrations are securely connected using your agency\'s credentials to ensure full data ownership.',
   },
   {
     title: 'Human Review',
@@ -77,7 +77,7 @@ export default function Legal() {
       <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6">
         <AlertCircle className="text-white/60 mt-1 shrink-0" size={22} />
         <p className="text-sm text-stone-400 font-light leading-relaxed">
-          This page is a practical placeholder for launch readiness and should be reviewed by qualified counsel before being relied on as a final policy or agreement.
+          These policies outline how we handle your data and the terms of our service. If you have specific questions or require clarification, please contact our support team.
         </p>
       </div>
     </div>

@@ -39,7 +39,7 @@ export default function Contact() {
               </p>
             </div>
             <p className="text-xs text-stone-400 mt-6 leading-relaxed">
-              Physical address, phone, CRM, analytics, booking, and chatbot integrations require manual setup or verification before production claims are made.
+              We look forward to helping you build a more efficient, automated lead capture system for your bail bond agency.
             </p>
           </div>
         </div>

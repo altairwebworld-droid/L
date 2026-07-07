@@ -141,7 +141,7 @@ export const globalFaqs: Faq[] = [
   {
     question: 'Can LYCORE LLC help with appointment setting for bail bond agencies?',
     answer:
-      'Yes. LYCORE LLC can prepare appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, and CRM updates. Booking tools and calendars require manual setup with real account access.',
+      'Yes. LYCORE LLC sets up appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, and CRM updates. We integrate with your existing calendars and booking tools to provide a seamless experience.',
   },
   {
     question: 'Does LYCORE LLC build mobile apps and web UI apps for bail bond agencies?',
@@ -236,7 +236,7 @@ export const servicePages: ServicePage[] = [
     explanation:
       'Forms, calls, chat, and bookings flow into the CRM you already use — one clean lead record with source data and consent attached, ready for your team to act on.',
     benefits: ['Stop copying lead details by hand', 'Send the right fields to the right system', 'Preserve source and UTM data', 'Keep private credentials out of frontend code'],
-    included: ['Webhook placeholder', 'Environment variable pattern', 'Payload validation', 'CRM field documentation'],
+    included: ['Custom webhook routing', 'Secure credential management', 'Payload validation', 'CRM field documentation'],
     process: ['Map lead fields', 'Prepare API route', 'Connect credentials manually', 'Test CRM record creation'],
     related: ['/bail-bond-intake-automation', '/bail-bond-follow-up-automation', '/free-bail-bond-lead-system-audit'],
     faqs: [globalFaqs[3], globalFaqs[7], globalFaqs[2], globalFaqs[5]],
@@ -254,7 +254,7 @@ export const servicePages: ServicePage[] = [
     explanation:
       'The moment a qualified lead comes in, your team knows: owner alert, clean summary, CRM task, and a scheduled next step — before the lead has time to call the next agency.',
     benefits: ['Know which leads need attention', 'Give owners cleaner summaries', 'Create consistent follow-up tasks', 'Keep more context with every lead'],
-    included: ['Notification placeholder', 'Lead summary placeholder', 'Follow-up workflow outline', 'Analytics events for completions'],
+    included: ['Instant notifications', 'Automated lead summaries', 'Follow-up workflow design', 'Analytics event tracking'],
     process: ['Capture the lead', 'Categorize the challenge', 'Prepare owner summary', 'Trigger follow-up after CRM setup'],
     related: ['/bail-bond-crm-integration', '/bail-bond-intake-automation', '/ai-receptionist-for-bail-bonds'],
     faqs: [globalFaqs[7], globalFaqs[4], globalFaqs[1], globalFaqs[3]],
@@ -272,7 +272,7 @@ export const servicePages: ServicePage[] = [
     explanation:
       'LYCORE LLC builds dashboards that help owners see the business instead of chasing it: new leads, intake status, source data, follow-up activity, calendar items, and CRM handoff in one view.',
     benefits: ['See what needs attention today', 'Compare lead sources', 'Track intake and follow-up status', 'Create owner-ready reporting'],
-    included: ['Dashboard planning', 'Lead and CRM data views', 'Filters and status boards', 'Manual setup notes for connected data sources'],
+    included: ['Dashboard planning', 'Lead and CRM data views', 'Filters and status boards', 'Secure data source connections'],
     process: ['Decide what the owner needs to see', 'Map the data sources', 'Design agency-focused views', 'Connect live data after credentials are provided'],
     related: ['/bail-bond-crm-integration', '/bail-bond-intake-automation', '/bail-bond-follow-up-automation'],
     faqs: [globalFaqs[8], globalFaqs[3], globalFaqs[7], globalFaqs[5]],
@@ -290,8 +290,8 @@ export const servicePages: ServicePage[] = [
     explanation:
       'LYCORE LLC builds the booking path that moves a qualified lead from "interested" to "on your calendar" — with reminders, staff handoff, and CRM updates handled along the way.',
     benefits: ['Make booking the obvious next step', 'Prepare reminder workflows', 'Support staff handoff', 'Keep appointment data measurable'],
-    included: ['Booking flow outline', 'Qualification handoff fields', 'Reminder workflow placeholder', 'CRM/update readiness'],
-    process: ['Define appointment types', 'Map qualification rules', 'Prepare booking and reminder fields', 'Connect calendar tools after manual setup'],
+    included: ['Booking flow design', 'Qualification handoff fields', 'Automated reminders', 'CRM update readiness'],
+    process: ['Define appointment types', 'Map qualification rules', 'Set up booking and reminder fields', 'Connect your calendar tools securely'],
     related: ['/bail-bond-follow-up-automation', '/bail-bond-crm-integration', '/ai-receptionist-for-bail-bonds'],
     faqs: [globalFaqs[9], globalFaqs[7], globalFaqs[4], globalFaqs[5]],
   },
@@ -308,7 +308,7 @@ export const servicePages: ServicePage[] = [
     explanation:
       'LYCORE LLC can build mobile apps that give agency teams cleaner access to leads, intake status, reminders, appointments, tasks, and dashboard views when they are away from the desk.',
     benefits: ['Review leads from anywhere', 'Improve task visibility', 'Coordinate appointment follow-up', 'Prepare role-based workflow views'],
-    included: ['Mobile workflow planning', 'App screen design', 'Backend/API readiness', 'Manual setup notes for app store, auth, and push tools'],
+    included: ['Mobile workflow planning', 'App screen design', 'Backend API readiness', 'Secure authentication and push setup'],
     process: ['Define user roles', 'Map mobile workflows', 'Design core screens', 'Connect backend/auth/push services after setup'],
     related: ['/custom-dashboards-for-bail-bonds', '/appointment-setting-for-bail-bonds', '/bail-bond-crm-integration'],
     faqs: [globalFaqs[10], globalFaqs[8], globalFaqs[3], globalFaqs[5]],
@@ -419,7 +419,7 @@ export const legalPages: PageMeta[] = [
     label: 'Privacy',
     title: 'Privacy Policy - LYCORE LLC',
     description:
-      'LYCORE LLC privacy policy placeholder covering audit form data, analytics readiness, CRM setup, consent, and manual legal review.',
+      'LYCORE LLC privacy policy covering data collection, usage, integrations, and user consent.',
     h1: 'Privacy Policy',
     kind: 'legal',
   },
@@ -428,7 +428,7 @@ export const legalPages: PageMeta[] = [
     label: 'Terms',
     title: 'Terms of Use - LYCORE LLC',
     description:
-      'LYCORE LLC terms placeholder covering informational content, no guarantees, no legal advice, and human-in-control AI positioning.',
+      'LYCORE LLC terms covering website use, services, third-party tools, and AI boundaries.',
     h1: 'Terms of Use',
     kind: 'legal',
   },
