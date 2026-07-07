@@ -17,6 +17,7 @@ import Book from './pages/Book';
 import Legal from './pages/Legal';
 import RedirectResult from './pages/RedirectResult';
 import ServiceAreas from './pages/ServiceAreas';
+import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 import { initAnalytics } from './lib/analytics';
 
@@ -54,6 +55,7 @@ export default function App() {
           <Route path="booking-failed" element={<RedirectResult type="booking-failed" />} />
           <Route path="privacy" element={<Legal />} />
           <Route path="terms" element={<Legal />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { allPages, servicePages, site, type PageMeta } from '../src/siteData';
+import { allPages, globalFaqs, servicePages, site, type PageMeta } from '../src/siteData';
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
@@ -13,17 +13,25 @@ const absoluteUrl = (route: string) => `${site.domain}${route === '/' ? '' : rou
 const robotsFor = (page: PageMeta) => (page.kind === 'system' ? 'noindex,follow' : 'index,follow');
 const present = (value: string | undefined): value is string => Boolean(value);
 
+const orgId = `${site.domain}/#organization`;
+const websiteId = `${site.domain}/#website`;
+const buildDate = new Date().toISOString().slice(0, 10);
+
 function schemaFor(page: PageMeta) {
+  const canonical = absoluteUrl(page.path);
   const blocks: unknown[] = [
     {
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
+      '@id': orgId,
       name: site.name,
       legalName: site.legalName,
       url: site.domain,
       description: site.coreStatement,
       email: site.email,
       telephone: site.phone,
+      logo: { '@type': 'ImageObject', url: `${site.domain}/lycore-logo.jpeg` },
+      image: `${site.domain}${site.ogImage}`,
       address: {
         '@type': 'PostalAddress',
         streetAddress: site.address.street,
@@ -32,17 +40,49 @@ function schemaFor(page: PageMeta) {
         postalCode: site.address.postalCode,
         addressCountry: site.address.country,
       },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: site.phone,
+        email: site.email,
+        contactType: 'sales',
+        areaServed: 'US',
+        availableLanguage: 'English',
+      },
+      areaServed: 'United States',
+      knowsAbout: [
+        'bail bond website design',
+        'bail bond SEO services',
+        'AI receptionist for bail bonds',
+        'bail bond intake automation',
+        'bail bond CRM integration',
+        'bail bond follow-up automation',
+        'custom dashboards for bail bond agencies',
+        'appointment setting for bail bond agencies',
+      ],
     },
-  ];
-  if (page.path === '/') {
-    blocks.push({
+    {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
+      '@id': websiteId,
       name: site.name,
       url: site.domain,
-      publisher: { '@type': 'Organization', name: site.name, url: site.domain },
-    });
-  }
+      publisher: { '@id': orgId },
+      inLanguage: 'en-US',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: page.title,
+      description: page.description,
+      isPartOf: { '@id': websiteId },
+      about: { '@id': orgId },
+      dateModified: buildDate,
+      inLanguage: 'en-US',
+      primaryImageOfPage: { '@type': 'ImageObject', url: `${site.domain}${site.ogImage}` },
+    },
+  ];
   const service = servicePages.find((item) => item.path === page.path);
   if (service || page.kind === 'audit') {
     blocks.push({
@@ -51,7 +91,7 @@ function schemaFor(page: PageMeta) {
       serviceType: page.h1,
       name: page.h1,
       description: service?.explanation || page.description,
-      provider: { '@type': 'Organization', name: site.name, url: site.domain },
+      provider: { '@id': orgId },
       audience: { '@type': 'BusinessAudience', audienceType: 'Bail bond agencies' },
       areaServed: 'United States',
       url: absoluteUrl(page.path),
@@ -166,10 +206,59 @@ function sitemapXml() {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
+function robotsTxt() {
+  const aiBots = [
+    'GPTBot',
+    'OAI-SearchBot',
+    'ChatGPT-User',
+    'ClaudeBot',
+    'Claude-User',
+    'Claude-SearchBot',
+    'PerplexityBot',
+    'Perplexity-User',
+    'Google-Extended',
+    'Applebot-Extended',
+    'CCBot',
+    'meta-externalagent',
+  ];
+  const aiSections = aiBots.map((bot) => `User-agent: ${bot}\nAllow: /`).join('\n\n');
+  return `User-agent: *\nAllow: /\n\n# AI assistants and answer engines are welcome to read this site.\n# Structured summary for LLMs: ${site.domain}/llms.txt\n\n${aiSections}\n\nSitemap: ${site.domain}/sitemap.xml\n`;
+}
+
+function llmsTxt() {
+  const serviceLines = servicePages
+    .map((page) => `- [${page.h1}](${absoluteUrl(page.path)}): ${page.description}`)
+    .join('\n');
+  const companyPages = allPages.filter((page) => ['legacy', 'home', 'audit'].includes(page.kind) && page.path !== '/');
+  const companyLines = companyPages
+    .map((page) => `- [${page.label}](${absoluteUrl(page.path)}): ${page.description}`)
+    .join('\n');
+  const faqLines = globalFaqs.map((faq) => `- Q: ${faq.question}\n  A: ${faq.answer}`).join('\n');
+  return `# ${site.name}
+
+> ${site.coreStatement} ${site.expandedServicesStatement}
+
+${site.name} (${site.legalName}) is based in ${site.address.locality}, ${site.address.region} and works with bail bond agencies across the United States. Contact: ${site.email}, ${site.phone}. ${site.aiDisclaimer} Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
+
+## Services
+
+${serviceLines}
+
+## Company
+
+${companyLines}
+
+## Frequently Asked Questions
+
+${faqLines}
+`;
+}
+
 async function writeCrawlFiles(targetDir: string) {
   await mkdir(targetDir, { recursive: true });
   await writeFile(path.join(targetDir, 'sitemap.xml'), sitemapXml(), 'utf8');
-  await writeFile(path.join(targetDir, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.domain}/sitemap.xml\n`, 'utf8');
+  await writeFile(path.join(targetDir, 'robots.txt'), robotsTxt(), 'utf8');
+  await writeFile(path.join(targetDir, 'llms.txt'), llmsTxt(), 'utf8');
 }
 
 async function main() {
@@ -189,6 +278,17 @@ async function main() {
     await mkdir(targetDir, { recursive: true });
     await writeFile(path.join(targetDir, 'index.html'), html, 'utf8');
   }
+
+  const notFoundPage: PageMeta = {
+    path: '/404',
+    label: 'Not Found',
+    title: 'Page Not Found - LyCore',
+    description: 'The page you requested does not exist. Explore LyCore services for bail bond agencies or request a free lead system audit.',
+    h1: 'Page Not Found',
+    kind: 'system',
+  };
+  const notFoundHtml = `<!doctype html>\n<html lang="en">\n  ${headFor(notFoundPage, assetTags)}\n  ${bodyFor(notFoundPage)}\n</html>\n`;
+  await writeFile(path.join(distDir, '404.html'), notFoundHtml, 'utf8');
 }
 
 main();

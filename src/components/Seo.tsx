@@ -7,14 +7,32 @@ export default function Seo() {
   const location = useLocation();
 
   useEffect(() => {
-    const page = allPages.find((item) => item.path === location.pathname) || allPages[0];
-    document.title = page.title;
+    const page = allPages.find((item) => item.path === location.pathname);
+    const title = page ? page.title : 'Page Not Found - LyCore';
+    const pageDescription = page
+      ? page.description
+      : 'The page you requested does not exist. Explore LyCore services for bail bond agencies or request a free lead system audit.';
+    document.title = title;
     const description = document.querySelector('meta[name="description"]');
-    if (description) description.setAttribute('content', page.description);
+    if (description) description.setAttribute('content', pageDescription);
     const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]') || document.createElement('meta');
     robots.name = 'robots';
-    robots.content = page.kind === 'system' ? 'noindex,follow' : 'index,follow';
+    robots.content = !page || page.kind === 'system' ? 'noindex,follow' : 'index,follow';
     document.head.appendChild(robots);
+    const setProperty = (property: string, content: string) => {
+      const tag = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
+      if (tag) tag.setAttribute('content', content);
+    };
+    const setName = (name: string, content: string) => {
+      const tag = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
+      if (tag) tag.setAttribute('content', content);
+    };
+    const canonicalUrl = `${site.domain}${location.pathname === '/' ? '' : location.pathname}`;
+    setProperty('og:title', title);
+    setProperty('og:description', pageDescription);
+    setProperty('og:url', canonicalUrl);
+    setName('twitter:title', title);
+    setName('twitter:description', pageDescription);
     trackEvent('service_page_view', { path: location.pathname });
   }, [location.pathname]);
 
@@ -69,11 +87,23 @@ export default function Seo() {
     schema.textContent = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
+      '@id': `${site.domain}/#organization`,
       name: site.name,
       legalName: site.legalName,
       url: site.domain,
       email: site.email,
       telephone: site.phone,
+      logo: { '@type': 'ImageObject', url: `${site.domain}/lycore-logo.jpeg` },
+      image: `${site.domain}${site.ogImage}`,
+      areaServed: 'United States',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: site.phone,
+        email: site.email,
+        contactType: 'sales',
+        areaServed: 'US',
+        availableLanguage: 'English',
+      },
       address: {
         '@type': 'PostalAddress',
         streetAddress: site.address.street,

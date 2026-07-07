@@ -76,22 +76,22 @@ export const requiredLeadFields: Array<keyof LeadPayload> = [
   'preferredContactMethod',
 ];
 
-// Replace these with Jotform question IDs. Full Name controls usually use qid_first and qid_last.
+// Question IDs from Jotform form 261873053708057 (fetched via /form/{id}/questions).
 export const jotformFieldIds = {
-  fullNameFirst: '3_first',
-  fullNameLast: '3_last',
-  agencyName: '4',
-  websiteUrl: '5',
-  email: '6',
-  phoneNumber: '7',
-  cityState: '8',
-  biggestChallenge: '10',
-  currentCrmTool: '11',
-  missAfterHoursCalls: '12',
-  helpNeeded: '10',
-  preferredContactMethod: '14',
-  preferredContactTime: '15',
-  message: '',
+  fullNameFirst: '2_first',
+  fullNameLast: '2_last',
+  agencyName: '3',
+  websiteUrl: '4',
+  email: '5',
+  phoneNumber: '6',
+  cityState: '7',
+  biggestChallenge: '8',
+  currentCrmTool: '9',
+  missAfterHoursCalls: '10',
+  helpNeeded: '',
+  preferredContactMethod: '11',
+  preferredContactTime: '',
+  message: '12',
   consent: '',
 };
 
@@ -161,6 +161,7 @@ function addTarget(targets: WebhookTarget[], target: WebhookTarget | null) {
 
 function leadWebhookTargets(env: Env) {
   const targets: WebhookTarget[] = [];
+  addTarget(targets, env.LEAD_WEBHOOK_URL ? { name: 'Lead webhook', url: env.LEAD_WEBHOOK_URL, kind: 'crm' } : null);
   addTarget(targets, env.ZOHO_CRM_WEBHOOK_URL ? { name: 'Zoho CRM webhook', url: env.ZOHO_CRM_WEBHOOK_URL, kind: 'crm' } : null);
   addTarget(targets, env.CRM_WEBHOOK_URL ? { name: 'CRM webhook', url: env.CRM_WEBHOOK_URL, kind: 'crm' } : null);
   return targets;
@@ -377,12 +378,14 @@ export async function routeLead(payload: NormalizedLeadPayload, leadScore: numbe
   const calendar = await forwardToWebhooks(calendarTargets, calendarPayload);
   const notifications = await forwardToWebhooks(notificationTargets, notificationPayload);
   const errors = [...crm.errors, ...calendar.errors, ...notifications.errors];
+  const forwardedTo = [...crm.sent, ...calendar.sent, ...notifications.sent];
 
-  if (errors.length) {
+  if (errors.length && forwardedTo.length === 0) {
     throw new Error(errors.join('; '));
   }
-
-  const forwardedTo = [...crm.sent, ...calendar.sent, ...notifications.sent];
+  if (errors.length) {
+    console.error('Partial webhook delivery failures:', errors.join('; '));
+  }
   return {
     manualSetupRequired: forwardedTo.length === 0,
     forwardedTo,
@@ -390,6 +393,65 @@ export async function routeLead(payload: NormalizedLeadPayload, leadScore: numbe
     calendarConfigured: calendarTargets.length > 0,
     notificationConfigured: notificationTargets.length > 0,
   };
+}
+
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char] || char));
+}
+
+function leadEmailHtml(payload: NormalizedLeadPayload, leadScore: number) {
+  const rows: Array<[string, string]> = [
+    ['Full name', payload.fullName],
+    ['Agency', payload.agencyName],
+    ['Website', payload.website],
+    ['Email', payload.email],
+    ['Phone', payload.phone],
+    ['Location', payload.location],
+    ['Biggest challenge', payload.biggestChallenge],
+    ['Current CRM/tool', payload.currentCRM],
+    ['Misses after-hours calls', payload.missedCalls],
+    ['Preferred contact', payload.preferredContactMethod],
+    ['Message', payload.message],
+    ['Lead score', String(leadScore)],
+    ['Source page', payload.sourcePage],
+    ['Landing page', payload.landingPage],
+    ['Referrer', payload.referrer],
+    ['UTM', [payload.utmSource, payload.utmMedium, payload.utmCampaign].filter(Boolean).join(' / ')],
+    ['Submitted at', payload.submittedAt],
+  ];
+  const cells = rows
+    .filter(([, value]) => value)
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:6px 12px;border:1px solid #ddd;font-weight:bold">${escapeHtml(label)}</td><td style="padding:6px 12px;border:1px solid #ddd">${escapeHtml(value)}</td></tr>`,
+    )
+    .join('');
+  return `<h2>New bail bond audit lead</h2><table style="border-collapse:collapse">${cells}</table>`;
+}
+
+async function sendLeadEmail(payload: NormalizedLeadPayload, leadScore: number, env: Env) {
+  const apiKey = clean(env.RESEND_API_KEY, 500);
+  const to = clean(env.LEADS_NOTIFY_EMAIL, 200);
+  if (!apiKey || !to) {
+    throw new Error('Email channel is not configured. Add RESEND_API_KEY and LEADS_NOTIFY_EMAIL.');
+  }
+  const from = clean(env.LEADS_FROM_EMAIL, 200) || 'LyCore Leads <onboarding@resend.dev>';
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      reply_to: payload.email,
+      subject: `New audit lead: ${payload.agencyName} (${payload.location}) — score ${leadScore}`,
+      html: leadEmailHtml(payload, leadScore),
+    }),
+  });
+  if (!response.ok) {
+    const detail = await response.text().catch(() => '');
+    throw new Error(`Resend rejected the lead email with status ${response.status}: ${detail.slice(0, 300)}`);
+  }
 }
 
 export async function submitLead(body: LeadPayload, env: Env = process.env) {
@@ -405,28 +467,59 @@ export async function submitLead(body: LeadPayload, env: Env = process.env) {
   const payload = normalizeLeadPayload(body);
   const leadScore = scoreLead(payload);
 
-  try {
-    const routing = await submitToJotform(payload, leadScore, env);
-    return {
-      status: 201,
-      body: {
-        success: true,
-        leadScore,
-        ...routing,
-      },
-    };
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Webhook routing failed';
-    console.error('Lead submission error:', message);
+  const jotformConfigured = Boolean(clean(env.JOTFORM_API_KEY, 500) && clean(env.JOTFORM_FORM_ID, 100));
+  const emailConfigured = Boolean(clean(env.RESEND_API_KEY, 500) && clean(env.LEADS_NOTIFY_EMAIL, 200));
+  const webhooksConfigured =
+    leadWebhookTargets(env).length > 0 ||
+    calendarWebhookTargets(env).length > 0 ||
+    Boolean(env.OWNER_NOTIFICATION_WEBHOOK || env.FOLLOW_UP_WEBHOOK_URL);
+
+  const channels: Array<{ name: string; run: () => Promise<unknown> }> = [];
+  if (webhooksConfigured) channels.push({ name: 'webhooks', run: () => routeLead(payload, leadScore, env) });
+  if (emailConfigured) channels.push({ name: 'email notification', run: () => sendLeadEmail(payload, leadScore, env) });
+  if (jotformConfigured) channels.push({ name: 'Jotform', run: () => submitToJotform(payload, leadScore, env) });
+
+  if (channels.length === 0) {
+    console.error('Lead received but no delivery channel is configured. Set LEAD_WEBHOOK_URL, RESEND_API_KEY + LEADS_NOTIFY_EMAIL, or JOTFORM_API_KEY + JOTFORM_FORM_ID.');
     return {
       status: 502,
       body: {
         success: false,
-        error: 'Lead validation passed, but background routing failed. Check Vercel function logs and Jotform setup.',
-        detail: message,
+        error: 'No lead backend is configured yet.',
+        detail: 'Set LEAD_WEBHOOK_URL, RESEND_API_KEY + LEADS_NOTIFY_EMAIL, or JOTFORM_API_KEY + JOTFORM_FORM_ID in the deployment environment.',
       },
     };
   }
+
+  const results = await Promise.allSettled(channels.map((channel) => channel.run()));
+  const delivered = channels.filter((_, index) => results[index].status === 'fulfilled').map((channel) => channel.name);
+  const errors = results
+    .map((result, index) => (result.status === 'rejected' ? `${channels[index].name}: ${result.reason instanceof Error ? result.reason.message : 'failed'}` : null))
+    .filter((value): value is string => Boolean(value));
+
+  if (errors.length) console.error('Lead delivery errors:', errors.join('; '));
+
+  if (delivered.length === 0) {
+    return {
+      status: 502,
+      body: {
+        success: false,
+        error: 'Lead validation passed, but every delivery channel failed. Check the function logs.',
+        detail: errors.join('; '),
+      },
+    };
+  }
+
+  return {
+    status: 201,
+    body: {
+      success: true,
+      leadScore,
+      forwardedTo: delivered,
+      partialFailures: errors.length ? errors : undefined,
+      manualSetupRequired: false,
+    },
+  };
 }
 
 export function fallbackChat(message: string) {

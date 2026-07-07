@@ -43,6 +43,7 @@ export default function Footer() {
             <li><Link to="/service-areas" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Service areas</Link></li>
             <li><Link to="/albuquerque-bail-bond-marketing" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Albuquerque</Link></li>
             <li><Link to={site.auditPath} className="text-sm text-ink/85 hover:text-white transition-colors font-light">Free audit</Link></li>
+            <li><Link to="/book" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Book a call</Link></li>
             <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
             <li><a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.phone}</a></li>
             <li><a href={`mailto:${site.email}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.email}</a></li>

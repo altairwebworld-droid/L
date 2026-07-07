@@ -17,6 +17,8 @@ export const site = {
   ogImage: '/og-image.png',
   coreStatement:
     'LyCore helps agencies in the bail bonds industry capture more leads with SEO websites, AI call answering, automated intake, CRM integration, and follow-up workflows.',
+  heroCopy:
+    'When a family needs a bail agent, they call the first number that answers. LyCore builds the SEO website, AI receptionist, and intake system that put your agency first in line — day, night, and weekends.',
   expandedServicesStatement:
     'LyCore also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps for bail bond agencies that need clearer operations and better lead visibility.',
   aiDisclaimer:
@@ -226,13 +228,13 @@ export const servicePages: ServicePage[] = [
     label: 'CRM Integration',
     title: 'Bail Bond CRM Integration & Intake Automation - LyCore',
     description:
-      'CRM integration readiness for bail bond agencies, with structured lead payloads, webhook placeholders, UTM data, consent capture, and error handling.',
+      'Bail bond CRM integration that sends every call, form, and chat lead into your CRM with contact details, source data, and consent already captured — no copy-paste intake.',
     h1: 'Bail Bond CRM Integration and Intake Automation',
     kind: 'service',
     problem:
       'Leads are harder to follow up when calls, forms, chat, and owner notes are scattered across disconnected tools.',
     explanation:
-      'LyCore prepares your lead data so forms, calls, chat, booking, and follow-up can move into the CRM or dashboard you choose once real account access is connected.',
+      'Forms, calls, chat, and bookings flow into the CRM you already use — one clean lead record with source data and consent attached, ready for your team to act on.',
     benefits: ['Stop copying lead details by hand', 'Send the right fields to the right system', 'Preserve source and UTM data', 'Keep private credentials out of frontend code'],
     included: ['Webhook placeholder', 'Environment variable pattern', 'Payload validation', 'CRM field documentation'],
     process: ['Map lead fields', 'Prepare API route', 'Connect credentials manually', 'Test CRM record creation'],
@@ -244,13 +246,13 @@ export const servicePages: ServicePage[] = [
     label: 'Follow-Up',
     title: 'Automated Follow-Up Systems for Bail Bond Agencies - LyCore',
     description:
-      'Follow-up automation readiness for bail bond agencies, including lead summaries, owner notifications, CRM tasks, and no-pressure next-step workflows.',
+      'Follow-up automation for bail bond agencies: instant owner alerts, clean lead summaries, CRM tasks, and next-step workflows so qualified leads never sit cold.',
     h1: 'Automated Follow-Up Systems for Bail Bond Agencies',
     kind: 'service',
     problem:
       'Qualified leads can go cold if follow-up depends on manual reminders, scattered notes, or delayed owner notifications.',
     explanation:
-      'LyCore prepares follow-up workflows so promising leads are easier to see, summarize, assign, and move to the next step once your email, CRM, calendar, or automation platform is connected.',
+      'The moment a qualified lead comes in, your team knows: owner alert, clean summary, CRM task, and a scheduled next step — before the lead has time to call the next agency.',
     benefits: ['Know which leads need attention', 'Give owners cleaner summaries', 'Create consistent follow-up tasks', 'Keep more context with every lead'],
     included: ['Notification placeholder', 'Lead summary placeholder', 'Follow-up workflow outline', 'Analytics events for completions'],
     process: ['Capture the lead', 'Categorize the challenge', 'Prepare owner summary', 'Trigger follow-up after CRM setup'],
@@ -280,13 +282,13 @@ export const servicePages: ServicePage[] = [
     label: 'Appointment Setting',
     title: 'Appointment Setting for Bail Bond Agencies - LyCore',
     description:
-      'Appointment-setting workflow readiness for bail bond agencies, including qualified lead routing, booking prompts, reminders, staff handoff, and CRM updates.',
+      'Appointment setting for bail bond agencies that turns qualified leads into booked calls, with booking prompts, reminders, staff handoff, and CRM updates.',
     h1: 'Appointment Setting for Bail Bond Agencies',
     kind: 'service',
     problem:
       'Qualified leads can stall when booking, reminders, staff handoff, and CRM updates are disconnected from the intake process.',
     explanation:
-      'LyCore prepares appointment-setting flows that move qualified leads from interest to a scheduled next step, while keeping consent, source data, staff handoff, and CRM updates ready.',
+      'LyCore builds the booking path that moves a qualified lead from "interested" to "on your calendar" — with reminders, staff handoff, and CRM updates handled along the way.',
     benefits: ['Make booking the obvious next step', 'Prepare reminder workflows', 'Support staff handoff', 'Keep appointment data measurable'],
     included: ['Booking flow outline', 'Qualification handoff fields', 'Reminder workflow placeholder', 'CRM/update readiness'],
     process: ['Define appointment types', 'Map qualification rules', 'Prepare booking and reminder fields', 'Connect calendar tools after manual setup'],

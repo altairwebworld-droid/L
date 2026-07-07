@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/",
@@ -24,12 +25,6 @@
       ],
       "destination": "https://www.lycore.org/:path*",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
     }
   ],
   "functions": {

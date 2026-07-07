@@ -5,7 +5,7 @@ import { globalFaqs, site } from '../siteData';
 export default function Home() {
   return (
     <>
-      <Hero title="Bail Bonds AI Receptionist, SEO Websites, and Lead Automation" copy={site.coreStatement} />
+      <Hero title="Bail Bonds AI Receptionist, SEO Websites, and Lead Automation" copy={site.heroCopy} />
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
           <div>
@@ -19,12 +19,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              ['Missed after-hours calls', 'AI-supported answering and safe intake flows help capture caller details when staff are unavailable.'],
-              ['A website that does not sell', 'Service pages, clear CTAs, FAQs, and trust copy make the next step obvious.'],
-              ['No idea where leads came from', 'UTM, landing page, referrer, and source fields prepare every form submission for measurement.'],
-              ['CRM notes scattered everywhere', 'Structured payloads prepare calls, forms, chat, and bookings for CRM or dashboard handoff.'],
-              ['Follow-up happens too late', 'Owner summaries, scoring placeholders, and follow-up routing make the next action easier to see.'],
-              ['No operational visibility', 'Dashboards and apps can show intake status, appointment context, source data, and open follow-up work.'],
+              ['The 2 AM call nobody answered', 'An AI receptionist picks up when your staff can’t, collects the caller’s details, and hands your team a clean summary — so the lead is waiting for you, not calling a competitor.'],
+              ['A website that just sits there', 'Service pages, clear CTAs, and direct answers turn your website from a brochure into the start of an intake conversation.'],
+              ['No idea which marketing works', 'Every lead arrives tagged with its source, landing page, and campaign — so you know exactly what to spend more on and what to cut.'],
+              ['Intake scribbled on sticky notes', 'Calls, forms, chat, and bookings land in your CRM as one structured record. Nothing gets retyped, nothing gets lost.'],
+              ['Follow-up that depends on memory', 'Owner alerts, lead summaries, and follow-up tasks fire the moment a qualified lead comes in.'],
+              ['Flying blind on operations', 'Dashboards and apps show intake status, appointments, lead sources, and open follow-up work at a glance.'],
             ].map(([title, body]) => (
               <article key={title} className="glass-panel rounded-[24px] border border-white/10 p-6">
                 <h3 className="text-xl font-medium mb-3">{title}</h3>
@@ -38,15 +38,15 @@ export default function Home() {
       <ShowcaseSection />
       <section className="py-20 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="text-4xl md:text-5xl font-normal mb-6">Support Calls, Intake, and Follow-Up Without Replacing Agents</h2>
+          <h2 className="text-4xl md:text-5xl font-normal mb-6">AI That Works the Front Desk, While Your Agents Work the Cases</h2>
           <p className="text-white text-lg leading-relaxed font-light mb-6">
-            LyCore positions AI as operational support: answering common questions, collecting intake details, summarizing conversations, and preparing CRM updates for human review.
+            The AI answers common questions, collects intake details, summarizes every conversation, and preps the CRM update. Your team reviews the summary and takes over — informed, not interrupted.
           </p>
           <p className="text-white leading-relaxed font-light">
-            The agency remains responsible for client decisions, legal decisions, financial decisions, and bail outcomes.
+            Licensed agents stay in charge of every client, legal, financial, and bail decision. The AI just makes sure nothing reaches them cold.
           </p>
           <p className="text-white leading-relaxed font-light mt-5">
-            LyCore can also build custom dashboards, appointment-setting workflows, mobile apps, and web UI apps for bail bond agency operations.
+            Need more than answering? LyCore also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps around your agency&apos;s operations.
           </p>
         </div>
         <AIChatDemo />

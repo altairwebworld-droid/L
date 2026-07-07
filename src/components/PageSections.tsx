@@ -64,8 +64,8 @@ export function Hero({
           <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="btn-3d-dark w-full sm:w-auto" data-track="phone_click">
             Call {site.phone}
           </a>
-          <Link to="/services" className="btn-3d-dark w-full sm:w-auto">
-            {site.secondaryCta}
+          <Link to="/book" className="btn-3d-dark w-full sm:w-auto" data-track="book_call_click">
+            Book a Strategy Call
           </Link>
         </div>
       </div>
@@ -142,7 +142,7 @@ export function ProcessSection() {
   const steps = [
     ['01', 'Find where good leads fall out', 'Review the website, calls, forms, chat, CRM handoff, booking, follow-up, and source tracking.'],
     ['02', 'Turn the offer into a lead path', 'Build pages, answers, forms, CTAs, visuals, and intake flows that make the next step obvious.'],
-    ['03', 'Route the lead so your team can act', 'Prepare CRM fields, owner summaries, booking context, and follow-up triggers for real account setup.'],
+    ['03', 'Route the lead so your team can act', 'Every lead arrives as a CRM record with an owner summary, booking context, and a follow-up trigger already attached.'],
     ['04', 'Measure what changes after launch', 'Use Search Console, analytics, form data, and lead quality signals to improve over 30, 60, and 90 days.'],
   ];
 

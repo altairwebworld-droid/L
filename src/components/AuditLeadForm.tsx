@@ -101,7 +101,7 @@ export default function AuditLeadForm() {
       setStarted(false);
       setStatus({
         type: 'success',
-        message: 'Thank you. Your audit request has been received.',
+        message: 'Your audit request is in — our team reviews every one personally. Want to skip the wait? Book your strategy call now.',
       });
       trackEvent('audit_form_submit_success', { manualSetupRequired: Boolean(result.manualSetupRequired) });
     } catch (error) {
@@ -129,7 +129,8 @@ export default function AuditLeadForm() {
           <div>
             <h2 className="text-3xl font-medium mb-3">Request Your Free Audit</h2>
             <p className="text-stone-300 font-light leading-relaxed">
-              Share how your agency captures leads today. Your request stays on this website while the backend saves it securely.
+              Tell us how leads reach your agency today — calls, website, forms, follow-up. We&apos;ll send back a plain-English
+              breakdown of where leads are slipping away and what to fix first. No pressure, no obligation.
             </p>
           </div>
 
@@ -171,7 +172,30 @@ export default function AuditLeadForm() {
               ]}
               required
             />
-            <Field label="Current CRM/tool" id="currentCRM" value={formData.currentCRM} onChange={(value) => updateField('currentCRM', value)} />
+            <Select
+              label="Current CRM/tool"
+              id="currentCRM"
+              value={formData.currentCRM}
+              onChange={(value) => updateField('currentCRM', value)}
+              options={[
+                'GoHighLevel (GHL)',
+                'HubSpot',
+                'Salesforce',
+                'Zoho CRM',
+                'Apollo',
+                'Pipedrive',
+                'Monday.com',
+                'Freshsales',
+                'Podio',
+                'LionDesk',
+                'Follow Up Boss',
+                'Clio',
+                'Spreadsheet / Google Sheets',
+                'Other',
+                'None — no CRM yet',
+              ]}
+              placeholder="Select your CRM"
+            />
             <Select
               label="Do you miss after-hours calls?"
               id="missedCalls"
