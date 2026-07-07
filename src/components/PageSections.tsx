@@ -154,7 +154,7 @@ export function ProcessSection() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         {steps.map(([number, title, body]) => (
-          <article key={number} className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
+          <article key={number} className="glass-panel rounded-[28px] border border-white/10 p-6">
             <p className="micro-label mb-6">{number}</p>
             <h3 className="text-xl font-medium mb-4">{title}</h3>
             <p className="text-sm text-stone-300 font-light leading-relaxed">{body}</p>
@@ -184,7 +184,7 @@ export function FaqSection({ faqs }: { faqs: Faq[] }) {
 export function TrustSection() {
   return (
     <section className="py-16 px-6 max-w-7xl mx-auto">
-      <div className="rounded-[36px] border border-white/10 bg-white/[0.05] p-8 md:p-12">
+      <div className="glass-panel rounded-[36px] border border-white/10 p-8 md:p-12">
         <h2 className="text-3xl font-medium mb-5">Human-In-Control AI</h2>
         <p className="text-stone-300 leading-relaxed font-light">{site.aiDisclaimer}</p>
         <p className="text-white text-sm leading-relaxed mt-5">

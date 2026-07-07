@@ -13,7 +13,7 @@ export default function Contact() {
       />
       <section className="pb-20 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
         <div className="space-y-8">
-          <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-8">
+          <div className="glass-panel rounded-[32px] border border-white/10 p-8">
             <Mail className="mb-5 text-white/80" />
             <h2 className="text-3xl font-medium mb-4">Contact LYCORE LLC</h2>
             <p className="text-stone-300 font-light leading-relaxed mb-5">

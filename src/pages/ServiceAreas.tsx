@@ -30,7 +30,7 @@ export default function ServiceAreas() {
       <Hero compact title={title} copy={copy} />
       <section className="pb-20 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
-          <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-8 md:p-10">
+          <div className="glass-panel rounded-[32px] border border-white/10 p-8 md:p-10">
             <p className="micro-label mb-5">{isAlbuquerque ? 'Business base' : 'Remote service area'}</p>
             <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-5">
               {isAlbuquerque ? 'Based in Albuquerque, built for agencies that need measurable lead systems' : 'United States bail bond agencies can work with LYCORE LLC remotely'}
@@ -52,7 +52,7 @@ export default function ServiceAreas() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {servicePages.slice(0, 8).map((page) => (
-              <Link key={page.path} to={page.path} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-6 hover:bg-white/[0.08] transition-colors">
+              <Link key={page.path} to={page.path} className="glass-panel rounded-[24px] border border-white/10 p-6 hover:border-white/25 transition-colors">
                 <p className="micro-label mb-4">{page.label}</p>
                 <h3 className="text-xl font-medium mb-3">{page.h1}</h3>
                 <p className="text-sm text-stone-300 font-light leading-relaxed">{page.description}</p>
@@ -72,7 +72,7 @@ export default function ServiceAreas() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {states.map((state) => (
-            <div key={state} className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-stone-200">
+            <div key={state} className="glass-panel rounded-xl border border-white/10 px-4 py-3 text-sm text-stone-200">
               {state}
             </div>
           ))}
