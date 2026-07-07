@@ -337,7 +337,7 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/',
     label: 'Home',
-    title: 'Bail Bonds AI Receptionist and SEO Websites - LyCore',
+    title: 'LyCore - Bail Bonds AI Receptionist, SEO Websites & Lead Automation',
     description: site.coreStatement,
     h1: 'Bail Bonds AI Receptionist, SEO Websites, and Lead Automation',
     kind: 'home',
@@ -481,12 +481,8 @@ export const navLinks = [
   { label: 'Services', path: '/services' },
   { label: 'AI Receptionist', path: '/ai-receptionist-for-bail-bonds' },
   { label: 'SEO', path: '/bail-bond-seo-services' },
-  { label: 'Dashboards', path: '/custom-dashboards-for-bail-bonds' },
-  { label: 'Apps', path: '/mobile-apps-for-bail-bonds' },
   { label: 'Bail Bonds', path: '/bail-bonds' },
   { label: 'Locations', path: '/service-areas' },
-  { label: 'Book a Call', path: '/book' },
-  { label: 'Contact', path: '/contact' },
   { label: 'About', path: '/about' },
 ];
 

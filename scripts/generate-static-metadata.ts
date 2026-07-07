@@ -83,6 +83,28 @@ function schemaFor(page: PageMeta) {
       primaryImageOfPage: { '@type': 'ImageObject', url: `${site.domain}${site.ogImage}` },
     },
   ];
+  if (page.path === '/') {
+    const sitelinkCandidates = [
+      { name: 'Services', path: '/services' },
+      { name: 'AI Receptionist', path: '/ai-receptionist-for-bail-bonds' },
+      { name: 'Bail Bond SEO Services', path: '/bail-bond-seo-services' },
+      { name: 'Bail Bond Website Design', path: '/bail-bond-website-design' },
+      { name: 'Free Lead System Audit', path: site.auditPath },
+      { name: 'Book a Call', path: '/book' },
+      { name: 'About LyCore', path: '/about' },
+      { name: 'Contact', path: '/contact' },
+    ];
+    blocks.push({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: sitelinkCandidates.map((item, index) => ({
+        '@type': 'SiteNavigationElement',
+        position: index + 1,
+        name: item.name,
+        url: absoluteUrl(item.path),
+      })),
+    });
+  }
   const service = servicePages.find((item) => item.path === page.path);
   if (service || page.kind === 'audit') {
     blocks.push({
@@ -129,7 +151,9 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="-G--OXjnQTRMBSyXvGwQlQHyUs-A4DWD8AKBNTXSjTQ" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -183,7 +207,17 @@ function fallbackFor(page: PageMeta) {
           <nav aria-label="Primary crawl links">
             <a href="${site.auditPath}">${esc(site.primaryCta)}</a>
             <a href="/services">${esc(site.secondaryCta)}</a>
-            <a href="/bail-bonds">Bail Bonds Lead Systems</a>
+            <a href="/bail-bonds">Bail Bonds Lead Systems</a>${
+              page.path === '/'
+                ? `
+            <a href="/ai-receptionist-for-bail-bonds">AI Receptionist for Bail Bonds</a>
+            <a href="/bail-bond-seo-services">Bail Bond SEO Services</a>
+            <a href="/bail-bond-website-design">Bail Bond Website Design</a>
+            <a href="/book">Book a Call</a>
+            <a href="/about">About LyCore</a>
+            <a href="/contact">Contact</a>`
+                : ''
+            }
           </nav>
         </section>
       </main>`;

@@ -29,9 +29,9 @@ export default function Navbar() {
           <span className="font-display font-bold text-2xl tracking-tighter">LyCore</span>
         </Link>
 
-        <div className="hidden xl:flex items-center gap-1">
+        <div className="hidden xl:flex items-center gap-2">
           {navLinks.map((item) => (
-            <Link key={item.path} to={item.path} className="px-3 py-2 text-[10px] tracking-[0.12em] uppercase font-bold text-ink-muted hover:text-ink transition-all relative group">
+            <Link key={item.path} to={item.path} className="px-3 py-2 text-[11px] tracking-[0.12em] uppercase font-bold text-ink-muted hover:text-ink transition-all relative group">
               {item.label}
               <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-white transition-all group-hover:w-4 rounded-full" />
             </Link>
