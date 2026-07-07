@@ -22,7 +22,7 @@ export default function ServiceAreas() {
   const isAlbuquerque = location.pathname === '/albuquerque-bail-bond-marketing';
   const title = isAlbuquerque ? 'Albuquerque Bail Bond Marketing and Lead Capture Systems' : 'Service Areas for Bail Bond Agency Websites and Automation';
   const copy = isAlbuquerque
-    ? 'LYCORE GROUP LLC is based in Albuquerque, New Mexico and builds remote-ready website, AI receptionist, intake, CRM, dashboard, and follow-up systems for bail bond agencies.'
+    ? 'LYCORE LLC is based in Albuquerque, New Mexico and builds remote-ready website, AI receptionist, intake, CRM, dashboard, and follow-up systems for bail bond agencies.'
     : 'LYCORE LLC supports bail bond agencies across the United States with remote-ready website design, AI receptionist workflows, intake automation, CRM readiness, dashboards, and follow-up systems.';
 
   return (
@@ -67,7 +67,7 @@ export default function ServiceAreas() {
           <p className="micro-label mb-4">National Reach, Remote Expertise</p>
           <h2 className="text-4xl md:text-5xl font-normal tracking-tight mb-5">Supporting Bail Bond Agencies Nationwide.</h2>
           <p className="text-stone-300 font-light leading-relaxed">
-            Based in New Mexico, LyCore Group LLC provides remote-ready website development, AI receptionist implementation, and automated intake systems for bail bond agencies across the United States. We serve agencies in the following states and beyond.
+            Based in New Mexico, LYCORE LLC provides remote-ready website development, AI receptionist implementation, and automated intake systems for bail bond agencies across the United States. We serve agencies in the following states and beyond.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

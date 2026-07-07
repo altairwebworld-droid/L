@@ -356,9 +356,9 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/about',
     label: 'About',
-    title: 'About LYCORE GROUP LLC - AI Receptionist and Lead Automation',
+    title: 'About LYCORE LLC - AI Receptionist and Lead Automation',
     description:
-      'Learn how LYCORE GROUP LLC supports bail bond agencies with AI receptionist workflows, SEO websites, intake automation, CRM readiness, dashboards, and follow-up systems.',
+      'Learn how LYCORE LLC supports bail bond agencies with AI receptionist workflows, SEO websites, intake automation, CRM readiness, dashboards, and follow-up systems.',
     h1: 'About LYCORE LLC',
     kind: 'legacy',
     faqs: [globalFaqs[4], globalFaqs[5]],
@@ -388,7 +388,7 @@ export const legacyPages: PageMeta[] = [
     label: 'Albuquerque',
     title: 'Albuquerque Bail Bond Marketing, Websites, and AI Receptionist Services - LYCORE LLC',
     description:
-      'LYCORE GROUP LLC is based in Albuquerque, New Mexico and supports bail bond agencies with SEO websites, AI receptionist workflows, intake automation, CRM readiness, and lead tracking.',
+      'LYCORE LLC is based in Albuquerque, New Mexico and supports bail bond agencies with SEO websites, AI receptionist workflows, intake automation, CRM readiness, and lead tracking.',
     h1: 'Albuquerque Bail Bond Marketing and Lead Capture Systems',
     kind: 'legacy',
     faqs: [globalFaqs[1], globalFaqs[2], globalFaqs[5]],
@@ -478,6 +478,7 @@ export const redirectPages: PageMeta[] = [
 export const allPages: PageMeta[] = [...legacyPages, ...servicePages, auditPage, ...redirectPages, ...legalPages];
 
 export const navLinks = [
+  { label: 'Home', path: '/' },
   { label: 'Services', path: '/services' },
   { label: 'AI Receptionist', path: '/ai-receptionist-for-bail-bonds' },
   { label: 'SEO', path: '/bail-bond-seo-services' },

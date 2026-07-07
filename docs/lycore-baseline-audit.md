@@ -1,4 +1,4 @@
-# LyCore Baseline Audit
+# LYCORE LLC Baseline Audit
 
 Audit date: 2026-06-01  
 Repository: `https://github.com/altairwebworld-droid/L.git`  
@@ -14,7 +14,7 @@ The imported project is a Vite/React/TypeScript single-page application served b
 | Item | Status | Current state |
 |---|---:|---|
 | 1. Current pages/routes found | Present | React routes exist for `/`, `/services`, `/about`, `/contact`, and `/bail-bonds` in `src/App.tsx`. |
-| 2. Current title tags | Weak | Only one global title exists in `index.html`: `Lycore Bail Bond AI | AI Automation for Bail Bond Companies`. No route-specific title tags exist. |
+| 2. Current title tags | Weak | Only one global title exists in `index.html`: `LYCORE LLC Bail Bond AI | AI Automation for Bail Bond Companies`. No route-specific title tags exist. |
 | 3. Current meta descriptions | Weak | Only one global meta description exists in `index.html`. No route-specific descriptions exist. |
 | 4. Current H1/H2/H3 structure | Weak | Pages contain headings, but there is not a validated one-H1-per-route SEO structure. The homepage uses a screen-reader-only H1 while the visible hero uses non-heading text. |
 | 5. Current canonical tags | Missing | No canonical tags were found in `index.html`. |
@@ -35,7 +35,7 @@ The imported project is a Vite/React/TypeScript single-page application served b
 | 20. Current trust/compliance content | Weak | Footer links to privacy and terms are placeholders. Existing content includes strong claims around guarantees, revenue, dominance, and Google Guaranteed without visible substantiation. |
 | 21. Current SEO weaknesses | Weak | No route-specific metadata, canonicals, robots meta, Twitter tags, dedicated service pages, or complete sitemap. |
 | 22. Current AEO weaknesses | Weak | FAQs exist in page content, but there is no systematic direct Q&A coverage or matching FAQPage schema. |
-| 23. Current GEO weaknesses | Weak | LyCore's niche is clear, but entity language is inconsistent and includes unsupported performance language rather than a stable AI-readable positioning statement. |
+| 23. Current GEO weaknesses | Weak | LYCORE LLC's niche is clear, but entity language is inconsistent and includes unsupported performance language rather than a stable AI-readable positioning statement. |
 | 24. Current conversion weaknesses | Broken | Primary CTA is not the audit CTA, form is simulated, no consent/UTM/source capture, and no CRM-ready payload exists. |
 | 25. Current backend/CRM readiness weaknesses | Broken | `GET /api/leads` publicly exposes leads, `leads.db` is committed, no CRM webhook placeholder exists, no environment-based routing exists, and payload fields are incomplete. |
 
@@ -60,7 +60,7 @@ The imported project is a Vite/React/TypeScript single-page application served b
 
 ## Baseline Conclusion
 
-The site has a strong visual style and an existing LyCore bail-bond focus, but it is not yet a measurable, route-indexable, CRM-ready, compliant lead capture system. Implementation should preserve the dark premium style while replacing unverified claims, adding route-level metadata and schema, creating dedicated service/audit pages, connecting the form to a safer backend payload, removing public lead exposure, and documenting all manual setup requirements.
+The site has a strong visual style and an existing LYCORE LLC bail-bond focus, but it is not yet a measurable, route-indexable, CRM-ready, compliant lead capture system. Implementation should preserve the dark premium style while replacing unverified claims, adding route-level metadata and schema, creating dedicated service/audit pages, connecting the form to a safer backend payload, removing public lead exposure, and documenting all manual setup requirements.
 
 ## Follow-Up SEO Tool Baseline
 
@@ -70,7 +70,7 @@ Target keyword: `bail bonds`
 
 | Finding | Baseline status | Evidence |
 | --- | ---: | --- |
-| Keyword in title | Weak | Current title uses `AI Receptionist & SEO Websites for Bail Bond Agencies | LyCore`, which does not contain the exact phrase `bail bonds`. |
+| Keyword in title | Weak | Current title uses `AI Receptionist & SEO Websites for Bail Bond Agencies | LYCORE LLC`, which does not contain the exact phrase `bail bonds`. |
 | Title delimiter | Weak | Current title uses the pipe delimiter `|`. |
 | Raw HTML headings | Broken | Source `index.html` renders an empty `<div id="root"></div>` before JavaScript, so strict crawlers can report no page headers. |
 | Raw HTML content | Broken | Source `index.html` has no crawlable body copy before JavaScript, so strict crawlers can report 0 words and no keyword in content. |

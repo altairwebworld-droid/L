@@ -85,6 +85,7 @@ function schemaFor(page: PageMeta) {
   ];
   if (page.path === '/') {
     const sitelinkCandidates = [
+      { name: 'Home', path: '/' },
       { name: 'Services', path: '/services' },
       { name: 'AI Receptionist', path: '/ai-receptionist-for-bail-bonds' },
       { name: 'Bail Bond SEO Services', path: '/bail-bond-seo-services' },
@@ -261,6 +262,7 @@ function robotsTxt() {
 }
 
 function llmsTxt() {
+  const legalNameSuffix = site.legalName === site.name ? '' : ` (${site.legalName})`;
   const serviceLines = servicePages
     .map((page) => `- [${page.h1}](${absoluteUrl(page.path)}): ${page.description}`)
     .join('\n');
@@ -273,7 +275,7 @@ function llmsTxt() {
 
 > ${site.coreStatement} ${site.expandedServicesStatement}
 
-${site.name} (${site.legalName}) is based in ${site.address.locality}, ${site.address.region} and works with bail bond agencies across the United States. Contact: ${site.email}, ${site.phone}. ${site.aiDisclaimer} Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
+${site.name}${legalNameSuffix} is based in ${site.address.locality}, ${site.address.region} and works with bail bond agencies across the United States. Contact: ${site.email}, ${site.phone}. ${site.aiDisclaimer} Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
 
 ## Services
 

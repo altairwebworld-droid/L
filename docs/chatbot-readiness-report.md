@@ -10,7 +10,7 @@ Created: 2026-06-02
 | 4. Website URL | Fully implemented | Prompt requests website |
 | 5. Location | Fully implemented | Prompt requests agency location |
 | 6. Missed calls check | Fully implemented | Prompt asks about after-hours calls |
-| 7. Recommend service | Fully implemented | AI recommends LyCore solutions |
+| 7. Recommend service | Fully implemented | AI recommends LYCORE LLC solutions |
 | 8. Offer audit | Fully implemented | Prompt directs to free audit |
 | 9. Collect contact | Fully implemented | Prompt asks for details |
 | 10. Confirm | Fully implemented | Prompt confirms review |

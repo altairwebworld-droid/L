@@ -33,10 +33,10 @@ function measurementPlan() {
     ['Form errors', 'Validation/backend errors.', 'Analytics/backend logs', 'Errors are tracked and reduced.', status],
     ['Lead source/UTM captured', 'Attribution readiness.', 'Payload/backend rows', 'Source and UTM fields persist.', status],
     ['Qualified leads', 'Lead quality after routing.', 'CRM/backend after setup', 'More agency-owner/manager leads.', manual],
-    ['Clear entity', 'Whether AI tools identify LyCore.', 'Manual GEO review', 'AI identifies niche and services accurately.', status],
+    ['Clear entity', 'Whether AI tools identify LYCORE LLC.', 'Manual GEO review', 'AI identifies niche and services accurately.', status],
     ['FAQ completeness', 'Direct buyer answers.', 'Visible content and schema', 'Answers match JSON-LD.', status],
   ];
-  return `# LyCore Measurement Plan\n\nCreated: ${date}\n\n${table(['Metric', 'What it measures', 'Where tracked', 'What counts as improvement', 'Setup status'], rows)}`;
+  return `# LYCORE LLC Measurement Plan\n\nCreated: ${date}\n\n${table(['Metric', 'What it measures', 'Where tracked', 'What counts as improvement', 'Setup status'], rows)}`;
 }
 
 function seoReport() {
@@ -70,7 +70,7 @@ function schemaReport() {
   const rows: string[][] = [];
   for (const page of allPages) {
     if (page.path === '/') {
-      rows.push([page.path, 'Organization', 'Identify LyCore', 'scripts/generate-static-metadata.ts', 'Yes', 'No fake ratings/reviews/address', status]);
+      rows.push([page.path, 'Organization', 'Identify LYCORE LLC', 'scripts/generate-static-metadata.ts', 'Yes', 'No fake ratings/reviews/address', status]);
       rows.push([page.path, 'WebSite', 'Identify publisher', 'scripts/generate-static-metadata.ts', 'Yes', 'No site search action added', status]);
     }
     if (page.kind === 'service' || page.kind === 'audit') rows.push([page.path, 'Service', 'Describe service/audit offer', 'scripts/generate-static-metadata.ts', 'Yes', 'Audience and URL match page content', status]);
@@ -136,7 +136,7 @@ const reports: Record<string, string> = {
     ['4. Website URL', status, 'Prompt requests website'],
     ['5. Location', status, 'Prompt requests agency location'],
     ['6. Missed calls check', status, 'Prompt asks about after-hours calls'],
-    ['7. Recommend service', status, 'AI recommends LyCore solutions'],
+    ['7. Recommend service', status, 'AI recommends LYCORE LLC solutions'],
     ['8. Offer audit', status, 'Prompt directs to free audit'],
     ['9. Collect contact', status, 'Prompt asks for details'],
     ['10. Confirm', status, 'Prompt confirms review'],
@@ -216,7 +216,7 @@ const reports: Record<string, string> = {
   'before-after-optimization-report.md': simpleReport('Before And After Optimization Report', table(['Area', 'Before', 'After', 'How to Verify', 'Status'], [
     ['SEO', 'SPA-wide metadata only.', 'Route-specific generated metadata, sitemap, schema.', 'Run build and inspect dist routes.', status],
     ['AEO', 'Partial FAQs without systematic schema.', 'Visible FAQs and matching FAQPage schema.', 'Inspect route content and JSON-LD.', status],
-    ['GEO', 'Mixed claims and entity language.', 'Consistent LyCore entity statement.', 'Manual AI summary review.', status],
+    ['GEO', 'Mixed claims and entity language.', 'Consistent LYCORE LLC entity statement.', 'Manual AI summary review.', status],
     ['Conversion', 'Email/simulated form.', 'Audit CTA and backend-ready form.', 'Submit form to /api/leads.', status],
     ['Backend/CRM', 'Limited payload and public GET leads.', 'Structured payload and Vercel API functions with generic platform placeholders; no public lead dump.', 'Inspect api/leads.ts and test API.', status],
     ['Trust', 'Placeholder legal links and strong claims.', 'Privacy/terms, disclaimers, sanitized claims.', 'Inspect pages.', status],

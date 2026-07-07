@@ -6,7 +6,7 @@ Created: 2026-06-02
 | --- | --- | --- |
 | / | LYCORE LLC - Bail Bonds AI Receptionist, SEO Websites & Lead Automation | Fully implemented |
 | /services | Bail Bond Lead Capture Services - LYCORE LLC | Fully implemented |
-| /about | About LYCORE GROUP LLC - AI Receptionist and Lead Automation | Fully implemented |
+| /about | About LYCORE LLC - AI Receptionist and Lead Automation | Fully implemented |
 | /contact | Request a Bail Bond Lead System Audit - LYCORE LLC | Fully implemented |
 | /service-areas | Bail Bond Website and AI Services Across the United States - LYCORE LLC | Fully implemented |
 | /albuquerque-bail-bond-marketing | Albuquerque Bail Bond Marketing, Websites, and AI Receptionist Services - LYCORE LLC | Fully implemented |
