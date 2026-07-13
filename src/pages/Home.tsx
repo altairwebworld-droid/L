@@ -75,7 +75,7 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {industries.map((industry) => (
             <div key={industry} className="glass-panel rounded-xl border border-white/10 px-4 py-3 text-sm text-stone-200">
-              {industry}
+              <span>{industry}</span>
             </div>
           ))}
         </div>
