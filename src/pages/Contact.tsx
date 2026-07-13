@@ -1,23 +1,23 @@
 import { Building2, Mail, MapPin, Phone } from 'lucide-react';
 import AuditLeadForm from '../components/AuditLeadForm';
-import { FaqSection, Hero } from '../components/PageSections';
-import { globalFaqs, site } from '../siteData';
+import { Hero } from '../components/PageSections';
+import { site } from '../siteData';
 
 export default function Contact() {
   return (
     <>
       <Hero
         compact
-        title="Request Your Free Bail Bond Lead System Audit"
-        copy="Review how your agency captures calls, website visitors, forms, chat leads, CRM records, follow-up, and source tracking."
+        title="Get in Touch"
+        copy="Tell us about your business. We will send back a plain-English breakdown of where leads are slipping away and what to fix first."
       />
       <section className="pb-20 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
         <div className="space-y-8">
           <div className="glass-panel rounded-[32px] border border-white/10 p-8">
             <Mail className="mb-5 text-white/80" />
-            <h2 className="text-3xl font-medium mb-4">Contact LYCORE LLC</h2>
+            <h2 className="text-3xl font-medium mb-4">Contact LYCORE</h2>
             <p className="text-stone-300 font-light leading-relaxed mb-5">
-              Use the audit form for the cleanest lead-system review request. Email remains available for general inquiries.
+              Use the form for a free review of your calls, website, and follow-up. Email or call for general questions.
             </p>
             <a href={`mailto:${site.email}`} className="text-xl hover:text-white/70 transition-colors font-light">
               {site.email}
@@ -38,14 +38,10 @@ export default function Contact() {
                 </span>
               </p>
             </div>
-            <p className="text-xs text-stone-400 mt-6 leading-relaxed">
-              We look forward to helping you build a more efficient, automated lead capture system for your bail bond agency.
-            </p>
           </div>
         </div>
         <AuditLeadForm />
       </section>
-      <FaqSection faqs={[globalFaqs[5], globalFaqs[7], globalFaqs[4]]} />
     </>
   );
 }

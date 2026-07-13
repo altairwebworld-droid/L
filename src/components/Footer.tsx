@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { servicePages, site } from '../siteData';
+import { site } from '../siteData';
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
         <div className="col-span-1 md:col-span-2">
-          <Link to="/" className="flex items-center gap-3 mb-8" aria-label="LYCORE LLC home">
+          <Link to="/" className="flex items-center gap-3 mb-8" aria-label="LYCORE home">
             <div className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
               <div className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
             </div>
@@ -19,19 +19,15 @@ export default function Footer() {
             <a href={`mailto:${site.email}`} className="hover:text-white transition-colors">{site.email}</a>
             <p>{site.address.street}, {site.address.locality}, {site.address.region} {site.address.postalCode}</p>
           </div>
-          <p className="text-ink/85 text-xs max-w-md leading-relaxed font-light mt-5">{site.aiDisclaimer}</p>
         </div>
 
         <div>
-          <h2 className="micro-label mb-6">Solutions</h2>
+          <h2 className="micro-label mb-6">Services</h2>
           <ul className="flex flex-col gap-4">
-            {servicePages.map((page) => (
-              <li key={page.path}>
-                <Link to={page.path} className="text-sm text-ink/85 hover:text-white transition-colors font-light">
-                  {page.label}
-                </Link>
-              </li>
-            ))}
+            <li><Link to="/what-we-build" className="text-sm text-ink/85 hover:text-white transition-colors font-light">What We Build</Link></li>
+            <li><Link to="/industries/towing" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Towing</Link></li>
+            <li><Link to="/industries/bail-bonds" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Bail Bonds</Link></li>
+            <li><Link to="/vision" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Vision</Link></li>
           </ul>
         </div>
 
@@ -39,12 +35,9 @@ export default function Footer() {
           <h2 className="micro-label mb-6">Company</h2>
           <ul className="flex flex-col gap-4">
             <li><Link to="/about" className="text-sm text-ink/85 hover:text-white transition-colors font-light">About</Link></li>
-            <li><Link to="/bail-bonds" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Bail bonds</Link></li>
-            <li><Link to="/service-areas" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Service areas</Link></li>
-            <li><Link to="/albuquerque-bail-bond-marketing" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Albuquerque</Link></li>
-            <li><Link to={site.auditPath} className="text-sm text-ink/85 hover:text-white transition-colors font-light">Free audit</Link></li>
-            <li><Link to="/book" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Book a call</Link></li>
+            <li><Link to="/faq" className="text-sm text-ink/85 hover:text-white transition-colors font-light">FAQ</Link></li>
             <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
+            <li><Link to="/book" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Book a call</Link></li>
             <li><a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.phone}</a></li>
             <li><a href={`mailto:${site.email}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.email}</a></li>
           </ul>

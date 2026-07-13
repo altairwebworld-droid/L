@@ -1,40 +1,41 @@
-import { CtaBand, FaqSection, Hero, ProcessSection, TrustSection } from '../components/PageSections';
-import { globalFaqs } from '../siteData';
+import { Hero } from '../components/PageSections';
+import { site } from '../siteData';
 
 export default function BailBonds() {
   return (
     <>
       <Hero
         compact
-        title="Lead Capture Systems for Bail Bond Agencies"
-        copy="Connect your website, calls, forms, chat, CRM records, and follow-up workflows into one measurable lead journey."
+        title="Bail Bond Agency Services"
+        copy="LYCORE serves bail bond agencies with 24/7 call answering and phone-first websites."
       />
-      <section className="py-16 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <article className="glass-panel rounded-[32px] border border-white/10 p-8">
-          <h2 className="text-3xl font-medium mb-5">Common Lead Capture Gaps</h2>
-          <ul className="space-y-4 text-stone-300 font-light leading-relaxed">
-            <li>After-hours calls and form submissions are not routed consistently.</li>
-            <li>Website pages do not clearly answer buyer questions.</li>
-            <li>Lead source and UTM data are not captured for measurement.</li>
-            <li>CRM records and follow-up tasks are created manually or inconsistently.</li>
-            <li>Dashboards, mobile tools, and appointment workflows are missing or disconnected.</li>
-          </ul>
-        </article>
-        <article className="glass-panel rounded-[32px] border border-white/10 p-8">
-          <h2 className="text-3xl font-medium mb-5">LYCORE LLC Lead System Readiness</h2>
-          <ul className="space-y-4 text-stone-300 font-light leading-relaxed">
-            <li>SEO-ready service pages and direct answer content.</li>
-            <li>AI-supported call and chat intake with human-control boundaries.</li>
-            <li>CRM-ready audit form payload and webhook placeholder.</li>
-            <li>Analytics events for CTA clicks, form starts, submissions, and service interest.</li>
-            <li>Custom dashboards, appointment-setting flows, mobile apps, and web UI apps for agency operations.</li>
-          </ul>
-        </article>
+      <section className="py-16 px-6 max-w-5xl mx-auto">
+        <div className="glass-panel rounded-[32px] border border-white/10 p-8 md:p-10">
+          <h2 className="text-3xl font-medium mb-5">We work with bail bond agencies</h2>
+          <p className="text-white text-lg leading-relaxed font-light mb-6">
+            Bail bonds was one of the first industries LYCORE served. We understand the urgency of after-hours calls, the importance of fast intake, and the operational complexity of running an agency.
+          </p>
+          <p className="text-white text-lg leading-relaxed font-light mb-8">
+            For full bail bond service details, pricing, and industry-specific features, visit our dedicated bail bonds site.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://www.lycore.org"
+              className="btn-3d w-full sm:w-auto text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit lycore.org for bail bond details
+            </a>
+            <a
+              href={`tel:${site.phone.replace(/[^\d+]/g, '')}`}
+              className="btn-3d-dark w-full sm:w-auto text-center"
+            >
+              Call {site.phone}
+            </a>
+          </div>
+        </div>
       </section>
-      <ProcessSection />
-      <TrustSection />
-      <FaqSection faqs={[globalFaqs[1], globalFaqs[2], globalFaqs[4]]} />
-      <CtaBand />
     </>
   );
 }

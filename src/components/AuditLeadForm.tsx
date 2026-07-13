@@ -6,7 +6,7 @@ import { usaCities } from '../data/usaCities';
 
 type LeadFormState = {
   fullName: string;
-  agencyName: string;
+  businessName: string;
   website: string;
   email: string;
   phoneCountryCode: string;
@@ -23,7 +23,7 @@ type LeadFormState = {
 
 const initialState: LeadFormState = {
   fullName: '',
-  agencyName: '',
+  businessName: '',
   website: '',
   email: '',
   phoneCountryCode: '+1',
@@ -67,18 +67,18 @@ export default function AuditLeadForm() {
       // Silently succeed to trick the bot
       setIsSubmitting(false);
       setFormData(initialState);
-      setStatus({ type: 'success', message: 'Thank you. Your audit request has been received.' });
+      setStatus({ type: 'success', message: 'Thank you. Your request has been received.' });
       return;
     }
     
     if (!formData.consent) {
-      setStatus({ type: 'error', message: 'Please confirm consent before requesting the audit.' });
+      setStatus({ type: 'error', message: 'Please confirm consent before requesting the review.' });
       trackEvent('audit_form_submit_error', { reason: 'missing_consent' });
       return;
     }
 
     setIsSubmitting(true);
-    setStatus({ type: 'idle', message: 'Submitting your audit request...' });
+    setStatus({ type: 'idle', message: 'Submitting your review request...' });
     const attribution = getAttribution();
     const payload = {
       ...formData,
@@ -101,7 +101,7 @@ export default function AuditLeadForm() {
       setStarted(false);
       setStatus({
         type: 'success',
-        message: 'Your audit request is in — our team reviews every one personally. Want to skip the wait? Book your strategy call now.',
+        message: 'Your review request is in — our team reviews every one personally. Want to skip the wait? Book your strategy call now.',
       });
       trackEvent('audit_form_submit_success', { manualSetupRequired: Boolean(result.manualSetupRequired) });
     } catch (error) {
@@ -127,22 +127,22 @@ export default function AuditLeadForm() {
       ) : (
         <>
           <div>
-            <h2 className="text-3xl font-medium mb-3">Request Your Free Audit</h2>
+            <h2 className="text-3xl font-medium mb-3">Request Your Free Review</h2>
             <p className="text-stone-300 font-light leading-relaxed">
-              Tell us how leads reach your agency today — calls, website, forms, follow-up. We&apos;ll send back a plain-English
+              Tell us how leads reach your business today — calls, website, forms, follow-up. We&apos;ll send back a plain-English
               breakdown of where leads are slipping away and what to fix first. No pressure, no obligation.
             </p>
           </div>
 
           {/* Honeypot field - hidden from real users */}
           <div className="hidden" aria-hidden="true">
-            <label htmlFor="company_fax">Company Fax</label>
-            <input id="company_fax" name="company_fax" type="text" tabIndex={-1} autoComplete="off" value={formData.honeypot} onChange={(event) => updateField('honeypot', event.target.value)} />
+            <label htmlFor="crm_reference_id">CRM Reference ID</label>
+            <input id="crm_reference_id" name="crm_reference_id" type="text" tabIndex={-1} autoComplete="off" value={formData.honeypot} onChange={(event) => updateField('honeypot', event.target.value)} />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Field label="Full name" id="fullName" value={formData.fullName} onChange={(value) => updateField('fullName', value)} required />
-            <Field label="Agency name" id="agencyName" value={formData.agencyName} onChange={(value) => updateField('agencyName', value)} required />
+            <Field label="Business name" id="businessName" value={formData.businessName} onChange={(value) => updateField('businessName', value)} required />
             <Field label="Website URL (optional)" id="website" type="url" value={formData.website} onChange={(value) => updateField('website', value)} />
             <Field label="Email" id="email" type="email" value={formData.email} onChange={(value) => updateField('email', value)} required />
             <PhoneField
@@ -223,7 +223,7 @@ export default function AuditLeadForm() {
               value={formData.message}
               onChange={(event) => updateField('message', event.target.value)}
               className="form-control resize-none"
-              placeholder="Tell us what happens when a lead contacts your agency today..."
+              placeholder="Tell us what happens when a lead contacts your business today..."
             />
           </label>
 
@@ -237,12 +237,12 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LYCORE LLC using this information to respond to my audit request.
+              I consent to LYCORE LLC using this information to respond to my request.
             </span>
           </label>
 
           <p className="text-xs text-stone-400 leading-relaxed">
-            No pressure. No ranking, revenue, client volume, or legal outcome guarantees. {site.aiDisclaimer}
+            No pressure. No ranking, revenue, client volume, or outcomes guarantees. {site.aiDisclaimer}
           </p>
 
           <button type="submit" disabled={isSubmitting} className="btn-3d w-full gap-3 disabled:opacity-60" data-track="audit_form_submit_click">
@@ -341,7 +341,7 @@ function CalendarEventCard() {
         <div>
           <h3 className="text-sm uppercase tracking-[0.1em] text-stone-200 font-medium mb-2">Preferred contact time</h3>
           <p className="text-sm text-stone-300 font-light leading-relaxed">
-            Use the Cal calendar to choose the best time for your audit review.
+            Use the calendar to choose the best time for your review.
           </p>
         </div>
       </div>

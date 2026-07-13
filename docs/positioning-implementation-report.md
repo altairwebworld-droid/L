@@ -4,8 +4,8 @@ Created: 2026-06-02
 
 - Original weakness: baseline copy used mixed CTA language and unsupported guarantee/revenue language.
 - Updated headline: Bail Bonds AI Receptionist, SEO Websites, and Lead Automation.
-- Updated supporting copy: LYCORE LLC helps agencies in the bail bonds industry capture more leads with SEO websites, AI call answering, automated intake, CRM integration, and follow-up workflows.
-- Updated CTA: Get a Free Bail Bond Lead System Audit
+- Updated supporting copy: LYCORE answers your phones 24/7, builds websites that convert callers, and handles the follow-up — so small service businesses stop losing jobs to missed calls.
+- Updated CTA: Get a Free Lead System Review
 - Files changed: src/siteData.ts, route pages, Navbar, Footer, Contact/Audit form.
 - Verification status: Fully implemented.
 

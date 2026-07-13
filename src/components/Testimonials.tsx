@@ -6,17 +6,17 @@ import TiltCard from './TiltCard';
 const trustNotes = [
   {
     title: 'Verified Results',
-    body: 'We only publish authentic client results, reviews, and case studies. Every success story shared is a real outcome from a partnered agency.',
+    body: 'We only publish authentic client results, reviews, and case studies. Every success story shared is a real outcome from a partnered business.',
     status: '100% Authentic',
   },
   {
-    title: 'Human-in-control AI',
-    body: 'AI support handles initial intake, summaries, and follow-up, ensuring licensed professionals have the clean data they need to make the final decisions.',
-    status: 'Agent Empowered',
+    title: 'Trained Receptionists',
+    body: 'Receptionist systems handle initial intake, summaries, and follow-up, ensuring your team has the clean data they need to make the final decisions.',
+    status: 'Team Empowered',
   },
   {
-    title: 'Measured improvement',
-    body: 'Every SEO campaign, form, CRM integration, and analytics setup is tracked meticulously so you can see clear, measurable growth over time.',
+    title: 'Measured Improvement',
+    body: 'Every campaign, form, CRM integration, and analytics setup is tracked meticulously so you can see clear, measurable growth over time.',
     status: 'Data-Driven',
   },
 ];

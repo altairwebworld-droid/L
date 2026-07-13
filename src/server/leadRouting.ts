@@ -1,6 +1,7 @@
 export type LeadPayload = {
   fullName?: string;
   agencyName?: string;
+  businessName?: string;
   website?: string;
   websiteUrl?: string;
   email?: string;
@@ -67,7 +68,6 @@ type WebhookTarget = {
 
 export const requiredLeadFields: Array<keyof LeadPayload> = [
   'fullName',
-  'agencyName',
   'email',
   'phone',
   'location',
@@ -76,7 +76,6 @@ export const requiredLeadFields: Array<keyof LeadPayload> = [
   'preferredContactMethod',
 ];
 
-// Question IDs from Jotform form 261873053708057 (fetched via /form/{id}/questions).
 export const jotformFieldIds = {
   fullNameFirst: '2_first',
   fullNameLast: '2_last',
@@ -108,6 +107,7 @@ export function validateLead(payload: LeadPayload) {
     if (field === 'missedCalls') return !clean(payload.missedCalls || payload.missAfterHoursCalls);
     return !clean(payload[field]);
   });
+  if (!clean(payload.agencyName || payload.businessName)) missing.push('businessName');
   if (payload.consent !== true) missing.push('consent');
   return missing;
 }
@@ -118,7 +118,7 @@ export function normalizeLeadPayload(body: LeadPayload): NormalizedLeadPayload {
   const phoneNumber = clean(body.phone || body.phoneNumber);
   return {
     fullName: clean(body.fullName),
-    agencyName: clean(body.agencyName),
+    agencyName: clean(body.businessName || body.agencyName),
     website: clean(body.website || body.websiteUrl),
     email: clean(body.email),
     phone: phoneNumber.startsWith('+') || !phoneCountryCode ? phoneNumber : `${phoneCountryCode} ${phoneNumber}`.trim(),
@@ -176,7 +176,7 @@ function calendarWebhookTargets(env: Env) {
 function buildCalendarPayload(payload: NormalizedLeadPayload, leadScore: number, env: Env) {
   return {
     eventType: 'lycore_audit_request',
-    title: `LYCORE LLC audit request: ${payload.agencyName}`,
+    title: `LYCORE audit request: ${payload.agencyName}`,
     leadScore,
     contact: {
       fullName: payload.fullName,
@@ -402,7 +402,7 @@ function escapeHtml(value: string) {
 function leadEmailHtml(payload: NormalizedLeadPayload, leadScore: number) {
   const rows: Array<[string, string]> = [
     ['Full name', payload.fullName],
-    ['Agency', payload.agencyName],
+    ['Business name', payload.agencyName],
     ['Website', payload.website],
     ['Email', payload.email],
     ['Phone', payload.phone],
@@ -426,7 +426,7 @@ function leadEmailHtml(payload: NormalizedLeadPayload, leadScore: number) {
         `<tr><td style="padding:6px 12px;border:1px solid #ddd;font-weight:bold">${escapeHtml(label)}</td><td style="padding:6px 12px;border:1px solid #ddd">${escapeHtml(value)}</td></tr>`,
     )
     .join('');
-  return `<h2>New bail bond audit lead</h2><table style="border-collapse:collapse">${cells}</table>`;
+  return `<h2>New lead review request</h2><table style="border-collapse:collapse">${cells}</table>`;
 }
 
 async function sendLeadEmail(payload: NormalizedLeadPayload, leadScore: number, env: Env) {
@@ -435,7 +435,7 @@ async function sendLeadEmail(payload: NormalizedLeadPayload, leadScore: number, 
   if (!apiKey || !to) {
     throw new Error('Email channel is not configured. Add RESEND_API_KEY and LEADS_NOTIFY_EMAIL.');
   }
-  const from = clean(env.LEADS_FROM_EMAIL, 200) || 'LYCORE LLC Leads <onboarding@resend.dev>';
+  const from = clean(env.LEADS_FROM_EMAIL, 200) || 'LYCORE Leads <onboarding@resend.dev>';
 
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -444,7 +444,7 @@ async function sendLeadEmail(payload: NormalizedLeadPayload, leadScore: number, 
       from,
       to: [to],
       reply_to: payload.email,
-      subject: `New audit lead: ${payload.agencyName} (${payload.location}) — score ${leadScore}`,
+      subject: `New lead review: ${payload.agencyName} (${payload.location}) — score ${leadScore}`,
       html: leadEmailHtml(payload, leadScore),
     }),
   });
@@ -525,27 +525,27 @@ export async function submitLead(body: LeadPayload, env: Env = process.env) {
 export function fallbackChat(message: string) {
   const normalized = message.toLowerCase();
   if (normalized.includes('crm')) {
-    return 'LYCORE LLC prepares a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. We integrate this directly into your existing CRM platform.';
+    return 'LYCORE prepares a CRM-ready lead payload with contact details, qualification answers, source data, UTM fields, consent, and calendar handoff fields. We integrate this directly into your CRM.';
   }
   if (normalized.includes('form')) {
-    return 'LYCORE LLC can support either the built-in audit form or an external CRM intake form. The form should capture contact details, agency context, consent, source data, and the visitor challenge.';
+    return 'LYCORE supports either the review form or an external CRM intake form. The form captures contact details, business context, consent, and source data.';
   }
   if (normalized.includes('dashboard')) {
-    return 'LYCORE LLC can build custom dashboards for bail bond agencies to review leads, intake status, source data, CRM handoff, follow-up activity, and operational signals after data sources are connected.';
+    return 'LYCORE builds dashboards for businesses to review leads, intake status, source data, and follow-up activity after data sources are connected.';
   }
   if (normalized.includes('appointment') || normalized.includes('booking') || normalized.includes('calendar')) {
-    return 'LYCORE LLC sets up appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, calendar updates, and CRM updates. We integrate securely with your agency\'s calendar tools.';
+    return 'LYCORE sets up appointment-setting workflows that route leads toward booking, reminders, calendar updates, and CRM updates. We integrate with your existing calendars.';
   }
   if (normalized.includes('mobile') || normalized.includes('app') || normalized.includes('ui')) {
-    return 'LYCORE LLC can build mobile apps and web UI apps for bail bond workflows such as lead review, intake queues, dashboards, appointment coordination, and follow-up tasks.';
+    return 'LYCORE can build mobile apps and web UI apps for workflows such as lead review, intake queues, dashboards, and follow-up tasks.';
   }
   if (normalized.includes('call') || normalized.includes('after')) {
-    return 'LYCORE LLC can support after-hours call answering by collecting lead details, preparing summaries, and routing next steps. AI does not replace licensed professionals or make legal decisions.';
+    return 'LYCORE answers calls 24/7. It greets the caller in your business name, captures caller details, and routes summaries to your team.';
   }
   if (normalized.includes('seo') || normalized.includes('website')) {
-    return 'LYCORE LLC builds SEO-ready bail bond websites with clear service pages, metadata, schema, FAQ content, internal links, and conversion-focused audit CTAs. Rankings are not guaranteed.';
+    return 'LYCORE builds websites with clear service pages, metadata, schema, FAQ content, internal links, and conversion-focused review CTAs. Rankings are not guaranteed.';
   }
-  return 'LYCORE LLC helps bail bond agencies capture more leads with SEO websites, AI call answering, automated intake, CRM integration, follow-up workflows, custom dashboards, appointment setting, and mobile or web UI apps. The free audit is the best next step.';
+  return 'LYCORE answers calls 24/7, builds phone-first websites, and recovers missed leads for small service businesses. The free review is the best next step.';
 }
 
 export async function chatReply(message: string, env: Env = process.env) {
@@ -566,7 +566,7 @@ export async function chatReply(message: string, env: Env = process.env) {
       contents: safeMessage,
       config: {
         systemInstruction:
-          "You are LYCORE LLC's website intake assistant. You MUST guide visitors through a strict 10-step qualification flow. Ask exactly ONE question at a time. The flow is: 1. Welcome 2. Ask if they own/manage a bail bond agency 3. Ask what they need help with (calls, SEO, CRM, calendar, dashboards, apps, etc.) 4. Ask for their website URL 5. Ask for agency location 6. Ask whether they miss calls after hours 7. Recommend the relevant LYCORE LLC service 8. Offer the free lead system audit 9. Collect contact details 10. Confirm their info will be reviewed. Do not give legal advice, promise results, replace licensed professionals, or make bail outcome decisions. Keep replies under 50 words.",
+          "You are LYCORE's website intake assistant. You guide visitors through a qualification flow. Ask exactly ONE question at a time. The flow is: 1. Welcome 2. Ask if they own/manage a small service business 3. Ask what they need help with (calls, website, Google Business Profile, etc.) 4. Ask for their website URL 5. Ask for location 6. Ask whether they miss calls after hours 7. Recommend the relevant LYCORE service 8. Offer the free lead system review 9. Collect contact details 10. Confirm their info will be reviewed. Do not promise rankings, revenue, or outcomes. Keep replies under 50 words.",
       },
     });
     return { status: 200, body: { success: true, text: response.text || fallbackChat(safeMessage), manualSetupRequired: false } };

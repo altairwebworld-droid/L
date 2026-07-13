@@ -6,35 +6,35 @@ import { trackEvent } from '../lib/analytics';
 interface Message {
   id: string;
   text: string;
-  sender: 'ai' | 'user';
+  sender: 'receptionist' | 'user';
 }
 
 const qualificationFlow = [
-  'Do you own or manage a bail bond agency?',
-  'What do you need help with most: calls, SEO, website, CRM, dashboards, appointment setting, mobile apps, or follow-up?',
-  'What is your agency website URL?',
-  'What city and state does your agency serve?',
+  'Do you own or manage a small service business?',
+  'What do you need help with most: calls, SEO, website, CRM, dashboards, appointment setting, or follow-up?',
+  'What is your website URL?',
+  'What city and state does your business serve?',
   'Do you miss calls after hours?',
   'Which service sounds most relevant right now?',
-  'Would you like the free bail bond lead system audit?',
+  'Would you like the free lead system review?',
   'What is the best email or phone number for follow-up?',
-  'Thanks. LYCORE LLC can review your details and prepare next steps for human review.',
+  'Thanks. LYCORE can review your details and prepare next steps.',
 ];
 
 function deterministicReply(message: string, step: number) {
   const normalized = message.toLowerCase();
-  if (normalized.includes('legal') || normalized.includes('court') || normalized.includes('bail outcome')) {
-    return 'I cannot give legal advice or determine bail outcomes. LYCORE LLC AI supports intake, summaries, CRM updates, and follow-up while licensed professionals stay in control.';
+  if (normalized.includes('guarantee') || normalized.includes('outcome')) {
+    return 'LYCORE receptionist workflows support intake, summaries, CRM updates, and follow-up. We do not guarantee rankings or operational outcomes.';
   }
   if (step >= qualificationFlow.length) {
-    return 'The next best step is the free bail bond lead system audit. LYCORE LLC can review calls, website, intake, CRM handoff, dashboards, appointments, and follow-up readiness.';
+    return 'The next best step is the free lead system review. LYCORE can review calls, website, GBP, intake, CRM, and follow-up readiness.';
   }
   return qualificationFlow[step];
 }
 
 export default function AIChatDemo() {
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', text: 'Hi, I can help you review your bail bond lead system. Do you own or manage a bail bond agency?', sender: 'ai' },
+    { id: '1', text: 'Hi, I can help you review your lead system. Do you own or manage a small service business?', sender: 'receptionist' },
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -66,9 +66,9 @@ export default function AIChatDemo() {
       });
       const result = await response.json().catch(() => ({}));
       const text = result.text || deterministicReply(userText, step);
-      setMessages((prev) => [...prev, { id: `${Date.now()}-ai`, text, sender: 'ai' }]);
+      setMessages((prev) => [...prev, { id: `${Date.now()}-receptionist`, text, sender: 'receptionist' }]);
     } catch {
-      setMessages((prev) => [...prev, { id: `${Date.now()}-fallback`, text: deterministicReply(userText, step), sender: 'ai' }]);
+      setMessages((prev) => [...prev, { id: `${Date.now()}-fallback`, text: deterministicReply(userText, step), sender: 'receptionist' }]);
     } finally {
       const nextStep = Math.min(step + 1, qualificationFlow.length);
       setStep(nextStep);
@@ -86,7 +86,7 @@ export default function AIChatDemo() {
           <Bot size={20} className="text-white" />
         </div>
         <div>
-          <h3 className="text-sm font-medium tracking-wide">LYCORE LLC AI Intake Demo</h3>
+          <h3 className="text-sm font-medium tracking-wide">LYCORE Answering Demo</h3>
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] uppercase tracking-widest text-ink-muted font-bold">Qualification support</span>

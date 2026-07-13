@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { allPages, site } from '../siteData';
+import { allPages, globalFaqs, site } from '../siteData';
 import { trackEvent } from '../lib/analytics';
 
 export default function Seo() {
@@ -8,10 +8,10 @@ export default function Seo() {
 
   useEffect(() => {
     const page = allPages.find((item) => item.path === location.pathname);
-    const title = page ? page.title : 'Page Not Found - LYCORE LLC';
+    const title = page ? page.title : 'Page Not Found — LYCORE';
     const pageDescription = page
       ? page.description
-      : 'The page you requested does not exist. Explore LYCORE LLC services for bail bond agencies or request a free lead system audit.';
+      : 'The page you requested does not exist. Explore LYCORE services for small service businesses or request a free lead system review.';
     document.title = title;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute('content', pageDescription);
@@ -81,21 +81,22 @@ export default function Seo() {
   }, [location.pathname]);
 
   useEffect(() => {
-    const schema = document.querySelector<HTMLScriptElement>('#lycore-organization-schema') || document.createElement('script');
-    schema.id = 'lycore-organization-schema';
-    schema.type = 'application/ld+json';
-    schema.textContent = JSON.stringify({
+    // Organization schema
+    const orgSchema = document.querySelector<HTMLScriptElement>('#lycore-organization-schema') || document.createElement('script');
+    orgSchema.id = 'lycore-organization-schema';
+    orgSchema.type = 'application/ld+json';
+    orgSchema.textContent = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
       '@id': `${site.domain}/#organization`,
-      name: site.name,
-      legalName: site.legalName,
+      name: site.legalName,
       url: site.domain,
       email: site.email,
       telephone: site.phone,
       logo: { '@type': 'ImageObject', url: `${site.domain}/lycore-logo.jpeg` },
       image: `${site.domain}${site.ogImage}`,
-      areaServed: 'United States',
+      areaServed: 'US',
+      description: 'LYCORE answers calls 24/7, builds phone-first websites, and recovers missed leads for small service businesses across the United States.',
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: site.phone,
@@ -113,7 +114,44 @@ export default function Seo() {
         addressCountry: site.address.country,
       },
     });
-    document.head.appendChild(schema);
+    document.head.appendChild(orgSchema);
+
+    // Service schemas
+    const services = [
+      { name: '24/7 AI Receptionist for Small Business', description: 'Round-the-clock AI-powered call answering service for small service businesses including towing, plumbing, HVAC, and more.' },
+      { name: 'Phone-First Website Design', description: 'Fast, mobile-optimized website design for service businesses, built to convert urgent callers.' },
+      { name: 'Google Business Profile Optimization', description: 'Google Business Profile optimization service for local service businesses to improve visibility in local search results.' },
+    ];
+    services.forEach((svc, i) => {
+      const id = `lycore-service-schema-${i}`;
+      const el = document.querySelector<HTMLScriptElement>(`#${id}`) || document.createElement('script');
+      el.id = id;
+      el.type = 'application/ld+json';
+      el.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: svc.name,
+        description: svc.description,
+        provider: { '@id': `${site.domain}/#organization` },
+        areaServed: 'US',
+      });
+      document.head.appendChild(el);
+    });
+
+    // FAQPage schema on /faq
+    const faqSchemaEl = document.querySelector<HTMLScriptElement>('#lycore-faq-schema') || document.createElement('script');
+    faqSchemaEl.id = 'lycore-faq-schema';
+    faqSchemaEl.type = 'application/ld+json';
+    faqSchemaEl.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: globalFaqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    });
+    document.head.appendChild(faqSchemaEl);
   }, []);
 
   return null;

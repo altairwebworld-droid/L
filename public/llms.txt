@@ -1,54 +1,44 @@
-# LYCORE LLC
+# LYCORE
 
-> LYCORE LLC helps agencies in the bail bonds industry capture more leads with SEO websites, AI call answering, automated intake, CRM integration, and follow-up workflows. LYCORE LLC also builds custom dashboards, appointment-setting workflows, mobile apps, and web UI apps for bail bond agencies that need clearer operations and better lead visibility.
+> LYCORE answers your phones 24/7, builds websites that convert callers, and handles the follow-up — so small service businesses stop losing jobs to missed calls. LYCORE also optimizes your Google Business Profile, automates intake and follow-up paperwork, and is building full operating systems for service industries.
 
-LYCORE LLC (LYCORE GROUP LLC) is based in Albuquerque, NM and works with bail bond agencies across the United States. Contact: services@lycore.org, +1 (917) 722-5646. LYCORE LLC's AI systems are designed to support call answering, intake, follow-up, summaries, and CRM updates. They do not replace licensed professionals, make legal decisions, or determine bail outcomes. Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
+LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with bail bond agencies across the United States. Contact: services@lycore.org, +1 (917) 722-5646. LYCORE's receptionist service is staffed by a trained system that answers calls, captures caller details, and routes information to your team. It does not replace licensed professionals or make decisions on your behalf. Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
 
 ## Services
 
-- [AI Call Answering for Bail Bond Agencies](https://www.lycore.org/ai-receptionist-for-bail-bonds): AI call answering support for bail bond agencies that need to capture after-hours leads, collect intake details, and route summaries without replacing licensed agents.
-- [Bail Bond Website Design for Lead Capture](https://www.lycore.org/bail-bond-website-design): Conversion-focused bail bond website design with clear service pages, audit CTAs, intake forms, metadata, schema, and CRM-ready lead capture.
-- [Bail Bond SEO Services for More Agency Leads](https://www.lycore.org/bail-bond-seo-services): Bail bond SEO services that improve technical crawl readiness, service page clarity, answer content, metadata, schema, and measurable search visibility.
-- [Bail Bond Intake Automation Systems](https://www.lycore.org/bail-bond-intake-automation): Automated bail bond intake systems that collect qualified lead details, source data, consent, and CRM-ready information from forms, calls, and chat.
-- [Bail Bond CRM Integration and Intake Automation](https://www.lycore.org/bail-bond-crm-integration): Bail bond CRM integration that sends every call, form, and chat lead into your CRM with contact details, source data, and consent already captured — no copy-paste intake.
-- [Automated Follow-Up Systems for Bail Bond Agencies](https://www.lycore.org/bail-bond-follow-up-automation): Follow-up automation for bail bond agencies: instant owner alerts, clean lead summaries, CRM tasks, and next-step workflows so qualified leads never sit cold.
-- [Custom Dashboards for Bail Bond Agencies](https://www.lycore.org/custom-dashboards-for-bail-bonds): Custom dashboard development for bail bond agencies that need lead visibility, source tracking, intake status, CRM handoff, follow-up activity, and operational reporting.
-- [Appointment Setting for Bail Bond Agencies](https://www.lycore.org/appointment-setting-for-bail-bonds): Appointment setting for bail bond agencies that turns qualified leads into booked calls, with booking prompts, reminders, staff handoff, and CRM updates.
-- [Mobile Apps for Bail Bond Agencies](https://www.lycore.org/mobile-apps-for-bail-bonds): Mobile app planning and development for bail bond agency workflows such as lead review, intake visibility, follow-up tasks, appointment coordination, and internal operations.
-- [Web UI Apps for Bail Bond Agencies](https://www.lycore.org/ui-apps-for-bail-bonds): Custom web UI app development for bail bond agencies, including internal tools, intake views, lead review screens, dashboard interfaces, and workflow apps.
+- [What We Build](https://www.lycoregroup.com/what-we-build): LYCORE answers calls 24/7, builds phone-first websites, optimizes Google Business Profiles, and automates intake for small service businesses that cannot afford to miss a call.
 
 ## Company
 
-- [Services](https://www.lycore.org/services): Explore LYCORE LLC services for bail bond agencies, including SEO websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.
-- [About](https://www.lycore.org/about): Learn how LYCORE LLC supports bail bond agencies with AI receptionist workflows, SEO websites, intake automation, CRM readiness, dashboards, and follow-up systems.
-- [Contact](https://www.lycore.org/contact): Request a free audit of your bail bond agency website, calls, intake, CRM readiness, follow-up workflows, and tracking.
-- [Service Areas](https://www.lycore.org/service-areas): LYCORE LLC supports bail bond agencies across the United States with remote website design, AI receptionist workflows, intake automation, CRM readiness, dashboards, and follow-up systems.
-- [Albuquerque](https://www.lycore.org/albuquerque-bail-bond-marketing): LYCORE LLC is based in Albuquerque, New Mexico and supports bail bond agencies with SEO websites, AI receptionist workflows, intake automation, CRM readiness, and lead tracking.
-- [Bail Bonds](https://www.lycore.org/bail-bonds): See how LYCORE LLC helps bail bond agencies connect websites, AI call answering, intake automation, CRM integration, follow-up workflows, dashboards, appointment setting, and apps.
-- [Book a Call](https://www.lycore.org/book): Schedule a time to discuss how LYCORE LLC can help your bail bond agency capture more leads.
-- [Free Audit](https://www.lycore.org/free-bail-bond-lead-system-audit): Request a free LYCORE LLC audit of your bail bond agency lead system, including website, SEO, calls, intake, CRM, follow-up, and source tracking readiness.
+- [Vision](https://www.lycoregroup.com/vision): LYCORE is building toward complete operating systems for service industries: from answered calls to automated paperwork to end-to-end business infrastructure.
+- [Bail Bonds](https://www.lycoregroup.com/industries/bail-bonds): LYCORE serves bail bond agencies with 24/7 call answering and phone-first websites. For full bail bond pricing and service details, visit lycore.org.
+- [About](https://www.lycoregroup.com/about): LYCORE started in bail bonds and towing, proved the model works, and is now building for every small service business where a missed call is a lost job.
+- [FAQ](https://www.lycoregroup.com/faq): Answers to common questions about LYCORE 24/7 call answering, websites, Google Business Profile optimization, pricing, and how it all works for service businesses.
+- [Contact](https://www.lycoregroup.com/contact): Get a free review of how your service business handles calls, website visitors, and follow-up. No pressure, no obligation.
+- [Book a Call](https://www.lycoregroup.com/book): Schedule a time to discuss how LYCORE can help your service business answer more calls and book more jobs.
+- [Free Review](https://www.lycoregroup.com/contact): Request a free LYCORE review of how your service business handles calls, website visitors, and follow-up — with a plain-English breakdown of what to fix first.
 
 ## Frequently Asked Questions
 
-- Q: Can AI answer calls for bail bond agencies?
-  A: Yes. AI can support bail bond agencies by answering common intake calls, collecting lead details, summarizing conversations, and preparing CRM updates. The agency remains responsible for legal, financial, and client decisions.
-- Q: How can bail bond agencies stop missing leads after hours?
-  A: Agencies can reduce missed opportunities by combining AI-supported call answering, website forms, automated intake, CRM updates, and follow-up workflows that capture lead details when staff are unavailable.
-- Q: What should a bail bond intake form collect?
-  A: A bail bond intake form should collect contact details, agency context, location, urgency, preferred contact method, consent, source page, and UTM data so follow-up can be measured.
-- Q: Can a bail bond website connect to a CRM?
-  A: Yes. A website can send qualified form, call, and chat leads into a CRM through an API route, webhook, or integration tool after credentials and field mapping are configured.
-- Q: Does AI replace bail agents?
-  A: No. AI supports call answering, intake, summaries, follow-up, and CRM updates. It does not replace licensed professionals, make legal decisions, or determine bail outcomes.
-- Q: What is a bail bond lead system audit?
-  A: A bail bond lead system audit reviews how an agency captures calls, website visitors, form leads, chat leads, CRM records, follow-up, tracking, and missed opportunities.
-- Q: What is the difference between a normal website and an automated lead capture system?
-  A: A normal website mostly displays information. An automated lead capture system guides visitors, qualifies leads, captures source data, routes submissions, updates a CRM, and prepares follow-up.
-- Q: Can LYCORE LLC connect calls, forms, chat, and CRM into one workflow?
-  A: Yes. LYCORE LLC can prepare a connected workflow where calls, forms, chat, CRM updates, summaries, and follow-up steps share one structured lead payload after backend tools are connected.
-- Q: Can LYCORE LLC build custom dashboards for bail bond agencies?
-  A: Yes. LYCORE LLC can build custom dashboards that help bail bond agencies review leads, source data, intake status, CRM handoff, follow-up activity, and operational signals after the proper backend data sources are connected.
-- Q: Can LYCORE LLC help with appointment setting for bail bond agencies?
-  A: Yes. LYCORE LLC sets up appointment-setting workflows that route qualified leads toward booking, reminders, staff handoff, and CRM updates. We integrate with your existing calendars and booking tools to provide a seamless experience.
-- Q: Does LYCORE LLC build mobile apps and web UI apps for bail bond agencies?
-  A: Yes. LYCORE LLC can build mobile apps and web UI apps for bail bond agency workflows such as lead review, intake visibility, follow-up tasks, appointment coordination, and internal dashboards.
+- Q: What kind of businesses does LYCORE work with?
+  A: LYCORE works with small service businesses where a missed call means lost revenue: towing companies, plumbers, roofers, HVAC contractors, electricians, restaurants, urgent care clinics, bail bond agencies, locksmiths, restoration companies, and similar businesses.
+- Q: How does LYCORE answer my calls?
+  A: When a call comes in and your team cannot pick up, our receptionist answers on your behalf. It greets the caller by your business name, captures the details you need (name, location, urgency, service type), and routes the information to your team by text, email, or dashboard. Your callers talk to a trained receptionist, not a voicemail box.
+- Q: Is the receptionist a real person or a computer?
+  A: The receptionist uses artificial intelligence to hold natural conversations, capture caller details, and route information. It is not a human, but it is trained on your business specifics — your services, your hours, your service area — so callers get accurate, helpful responses instead of a generic voicemail.
+- Q: Will callers know they are not talking to my staff?
+  A: The receptionist introduces itself as part of your team and answers using your business name. Most callers will not notice a difference. If a caller specifically asks, the receptionist will answer honestly.
+- Q: What happens after the call is answered?
+  A: Your team receives a summary with the caller name, phone number, service requested, location, and urgency level. You can receive this by text, email, or through your existing tools. Nothing falls through the cracks.
+- Q: Can LYCORE transfer live calls to my team?
+  A: Yes. When a call needs immediate human attention, the receptionist can transfer the caller directly to your on-call staff. You set the rules for when live transfers happen.
+- Q: How are the websites different from what I can build myself?
+  A: LYCORE websites are built specifically for service businesses that depend on phone calls. The phone number is tappable from the first screen, pages load in under two seconds on mobile, and every element is arranged to get an urgent searcher to call — not browse. We also connect Google Business Profile, call tracking, and lead routing so you can see which pages are generating calls.
+- Q: What does Google Business Profile optimization include?
+  A: We make sure your listing has the right categories, service areas, hours, photos, and description so that when someone nearby searches for what you do, your business appears in the local results. We also monitor and update the profile as Google makes changes.
+- Q: What is the intake and follow-up automation?
+  A: After a call or form submission, the system captures the details, sends confirmations to your caller, routes the lead to your team, and follows up if nobody has responded. At the end of each month, you receive a report showing how many leads came in, how many were handled, and where they came from. This feature is currently rolling out.
+- Q: What does LYCORE cost?
+  A: Pricing depends on what your business needs. Start with a free review — we will look at how your calls, website, and follow-up are working today and tell you plainly what would help and what it costs. No pressure, no obligation.
+- Q: Do I need to sign a long-term contract?
+  A: No. LYCORE does not require long-term contracts. We believe the work should speak for itself month over month.

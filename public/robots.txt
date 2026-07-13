@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # AI assistants and answer engines are welcome to read this site.
-# Structured summary for LLMs: https://www.lycore.org/llms.txt
+# Structured summary for LLMs: https://www.lycoregroup.com/llms.txt
 
 User-agent: GPTBot
 Allow: /
@@ -40,4 +40,4 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
-Sitemap: https://www.lycore.org/sitemap.xml
+Sitemap: https://www.lycoregroup.com/sitemap.xml

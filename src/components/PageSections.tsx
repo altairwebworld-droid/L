@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Faq, servicePages, showcaseItems, site } from '../siteData';
+import { Faq, showcaseItems, site } from '../siteData';
 import SplineScene from './SplineScene';
 
 const heroSplineUrl = 'https://my.spline.design/powercopycopy-KUOVCO8PM7olZbrkuid9HBWM-SEH/';
@@ -28,7 +28,7 @@ export function Hero({
 
         <div className="relative z-20 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <p className="micro-label mb-8 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-xl">
-            Built to capture, qualify, and route bail bond leads
+            24/7 answering, websites, and lead recovery for service businesses
           </p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.98] text-glow-strong max-w-6xl">
             {title}
@@ -41,7 +41,7 @@ export function Hero({
             <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="btn-3d-dark w-full sm:w-auto" data-track="phone_click">
               Call {site.phone}
             </a>
-            <Link to="/services" className="btn-3d-dark w-full sm:w-auto">
+            <Link to="/what-we-build" className="btn-3d-dark w-full sm:w-auto">
               {site.secondaryCta}
             </Link>
           </div>
@@ -73,45 +73,21 @@ export function Hero({
   );
 }
 
-export function ServiceGrid() {
-  return (
-    <section className="py-20 px-6 max-w-7xl mx-auto">
-      <div className="mb-12 max-w-3xl">
-        <h2 className="text-4xl md:text-5xl font-normal mb-5">Sell the next step before the lead disappears</h2>
-        <p className="text-white font-light leading-relaxed">
-          Every LYCORE LLC service is designed around one thing: get the right visitor to raise their hand, share the right details, and move into a follow-up path your team can actually use.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {servicePages.map((page) => (
-          <article key={page.path} className="glass-panel rounded-[28px] border border-white/10 p-7 flex flex-col min-h-[260px]">
-            <h3 className="text-2xl font-medium mb-4 tracking-wide">{page.label}</h3>
-            <p className="text-stone-300 font-light leading-relaxed flex-grow">{page.explanation}</p>
-            <Link to={page.path} className="mt-8 text-sm uppercase tracking-[0.12em] font-bold hover:text-white/70 transition-colors">
-              See the {page.label} offer
-            </Link>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export function ShowcaseSection() {
   return (
     <section className="py-20 px-6 max-w-7xl mx-auto">
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
         <div className="max-w-3xl">
-          <p className="micro-label mb-4">Concept showcase</p>
+          <p className="micro-label mb-4">Website concepts</p>
           <h2 className="text-4xl md:text-6xl font-normal tracking-tight mb-5">
-            Sample bail bond website directions LYCORE LLC can build from.
+            Sample website directions LYCORE can build from.
           </h2>
           <p className="text-white text-lg font-light leading-relaxed">
-            These sample website visuals show possible directions for premium bail bond homepages, service pages, and lead-capture experiences. They are concept references, not client results, rankings, reviews, or legal-service claims.
+            These visuals show possible directions for service business homepages and lead-capture experiences. They are concept references, not client results or performance claims.
           </p>
         </div>
         <Link to={site.auditPath} className="btn-3d shrink-0" data-track="cta_click">
-          Show Me What My Agency Needs
+          Show Me What My Business Needs
         </Link>
       </div>
 
@@ -140,17 +116,17 @@ export function ShowcaseSection() {
 
 export function ProcessSection() {
   const steps = [
-    ['01', 'Find where good leads fall out', 'Review the website, calls, forms, chat, CRM handoff, booking, follow-up, and source tracking.'],
-    ['02', 'Turn the offer into a lead path', 'Build pages, answers, forms, CTAs, visuals, and intake flows that make the next step obvious.'],
-    ['03', 'Route the lead so your team can act', 'Every lead arrives as a CRM record with an owner summary, booking context, and a follow-up trigger already attached.'],
-    ['04', 'Measure what changes after launch', 'Use Search Console, analytics, form data, and lead quality signals to improve over 30, 60, and 90 days.'],
+    ['01', 'Review your current system', 'We look at how your business handles calls, website visitors, and follow-up today — and find where jobs are falling through.'],
+    ['02', 'Set up the receptionist and website', 'Your receptionist gets trained on your business. Your website gets rebuilt around one goal: getting the caller to tap your number.'],
+    ['03', 'Route every lead to your team', 'Every answered call arrives as a clean summary with caller details, urgency, and service type — ready for your team to act on.'],
+    ['04', 'Measure what changes', 'After 30, 60, and 90 days: how many calls answered, how many jobs booked, and where they came from.'],
   ];
 
   return (
     <section className="py-20 px-6 max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-14">
-        <h2 className="text-4xl md:text-5xl font-normal mb-5">From missed interest to a measurable lead path</h2>
-        <p className="text-white font-light leading-relaxed">A pretty website is not enough. LYCORE LLC builds the path that helps visitors act and helps owners measure what happened.</p>
+        <h2 className="text-4xl md:text-5xl font-normal mb-5">From missed call to booked job</h2>
+        <p className="text-white font-light leading-relaxed">LYCORE builds the path that turns a ringing phone into revenue you can measure.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         {steps.map(([number, title, body]) => (
@@ -181,28 +157,14 @@ export function FaqSection({ faqs }: { faqs: Faq[] }) {
   );
 }
 
-export function TrustSection() {
-  return (
-    <section className="py-16 px-6 max-w-7xl mx-auto">
-      <div className="glass-panel rounded-[36px] border border-white/10 p-8 md:p-12">
-        <h2 className="text-3xl font-medium mb-5">Human-In-Control AI</h2>
-        <p className="text-stone-300 leading-relaxed font-light">{site.aiDisclaimer}</p>
-        <p className="text-white text-sm leading-relaxed mt-5">
-          LYCORE LLC does not guarantee rankings, revenue, client volume, reviews, legal outcomes, or bail outcomes. Analytics, CRM, chatbot, booking, email, and Search Console integrations require manual setup with real credentials.
-        </p>
-      </div>
-    </section>
-  );
-}
-
 export function CtaBand() {
   return (
     <section className="py-16 px-6 max-w-7xl mx-auto">
       <div className="rounded-[40px] border border-white/10 bg-white text-black p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
         <div className="max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Find the leaks before you spend more on marketing.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Find out how many calls your business is missing.</h2>
           <p className="text-stone-700 leading-relaxed">
-            Get a free review of how your agency captures calls, website visitors, intake details, CRM records, follow-up, booking, and source tracking.
+            Get a free review of how your business handles calls, website visitors, and follow-up — with a plain-English breakdown of what to fix first.
           </p>
         </div>
         <Link to={site.auditPath} className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white text-xs tracking-[0.1em] uppercase font-bold" data-track="cta_click">

@@ -4,32 +4,24 @@ Created: 2026-06-02
 
 | Page URL | Target Query | Readiness Status |
 | --- | --- | --- |
-| / | LYCORE LLC - Bail Bonds AI Receptionist, SEO Websites & Lead Automation | Fully implemented |
-| /services | Bail Bond Lead Capture Services - LYCORE LLC | Fully implemented |
-| /about | About LYCORE LLC - AI Receptionist and Lead Automation | Fully implemented |
-| /contact | Request a Bail Bond Lead System Audit - LYCORE LLC | Fully implemented |
-| /service-areas | Bail Bond Website and AI Services Across the United States - LYCORE LLC | Fully implemented |
-| /albuquerque-bail-bond-marketing | Albuquerque Bail Bond Marketing, Websites, and AI Receptionist Services - LYCORE LLC | Fully implemented |
-| /bail-bonds | Lead Capture Systems for Bail Bond Agencies - LYCORE LLC | Fully implemented |
-| /book | Book a Strategy Call - LYCORE LLC | Fully implemented |
-| /ai-receptionist-for-bail-bonds | AI Call Answering for Bail Bond Agencies - LYCORE LLC | Fully implemented |
-| /bail-bond-website-design | Bail Bond Website Design for Lead Capture - LYCORE LLC | Fully implemented |
-| /bail-bond-seo-services | Bail Bond SEO Services for More Agency Leads - LYCORE LLC | Fully implemented |
-| /bail-bond-intake-automation | Bail Bond Intake Automation Systems - LYCORE LLC | Fully implemented |
-| /bail-bond-crm-integration | Bail Bond CRM Integration & Intake Automation - LYCORE LLC | Fully implemented |
-| /bail-bond-follow-up-automation | Automated Follow-Up Systems for Bail Bond Agencies - LYCORE LLC | Fully implemented |
-| /custom-dashboards-for-bail-bonds | Custom Dashboards for Bail Bond Agencies - LYCORE LLC | Fully implemented |
-| /appointment-setting-for-bail-bonds | Appointment Setting for Bail Bond Agencies - LYCORE LLC | Fully implemented |
-| /mobile-apps-for-bail-bonds | Mobile Apps for Bail Bond Agencies - LYCORE LLC | Fully implemented |
-| /ui-apps-for-bail-bonds | Web UI Apps for Bail Bond Agencies - LYCORE LLC | Fully implemented |
-| /free-bail-bond-lead-system-audit | Free Bail Bond Lead System Audit - LYCORE LLC | Fully implemented |
-| /privacy | Privacy Policy - LYCORE LLC | Fully implemented |
-| /terms | Terms of Use - LYCORE LLC | Fully implemented |
+| / | LYCORE — 24/7 Answering, Websites & Lead Recovery | Fully implemented |
+| /what-we-build | 24/7 Receptionist, Websites & GBP for Service Businesses | Fully implemented |
+| /vision | Where LYCORE Is Building — Full Business Systems | Fully implemented |
+| /industries/towing | Towing Company Websites & 24/7 Call Answering — LYCORE | Fully implemented |
+| /industries/bail-bonds | Bail Bond Agency Services — LYCORE | Fully implemented |
+| /about | About LYCORE — Built for Service Businesses | Fully implemented |
+| /faq | Frequently Asked Questions — LYCORE | Fully implemented |
+| /contact | Contact LYCORE — Free Lead System Review | Fully implemented |
+| /book | Book a Strategy Call — LYCORE | Fully implemented |
+| /what-we-build | 24/7 Receptionist, Websites & GBP for Service Businesses | Fully implemented |
+| /contact | Free Lead System Review — LYCORE | Fully implemented |
+| /privacy | Privacy Policy — LYCORE | Fully implemented |
+| /terms | Terms of Use — LYCORE | Fully implemented |
 
 
-- Sitemap URL: https://www.lycore.org/sitemap.xml
-- Robots.txt URL: https://www.lycore.org/robots.txt
-- Manual setup: verify www.lycore.org in Search Console and submit sitemap.
+- Sitemap URL: https://www.lycoregroup.com/sitemap.xml
+- Robots.txt URL: https://www.lycoregroup.com/robots.txt
+- Manual setup: verify www.lycoregroup.com in Search Console and submit sitemap.
 
 ## Implementation Detail Matrix
 

@@ -25,7 +25,7 @@ const privacySections = [
 const termsSections = [
   {
     title: 'Informational Use',
-    body: 'The website describes digital marketing, intake, automation, and CRM-readiness services for bail bond agencies. Content is informational and is not legal, financial, or compliance advice.',
+    body: 'The website describes digital marketing, intake, automation, and CRM-readiness services for small service businesses. Content is informational and is not legal, financial, or compliance advice.',
   },
   {
     title: 'No Guaranteed Outcomes',

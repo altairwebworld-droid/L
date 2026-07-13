@@ -7,16 +7,16 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Services from './pages/Services';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import WhatWeBuild from './pages/WhatWeBuild';
+import Vision from './pages/Vision';
+import Towing from './pages/Towing';
 import BailBonds from './pages/BailBonds';
-import ServiceDetail from './pages/ServiceDetail';
-import Audit from './pages/Audit';
+import About from './pages/About';
+import Faq from './pages/Faq';
+import Contact from './pages/Contact';
 import Book from './pages/Book';
 import Legal from './pages/Legal';
 import RedirectResult from './pages/RedirectResult';
-import ServiceAreas from './pages/ServiceAreas';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 import { initAnalytics } from './lib/analytics';
@@ -32,23 +32,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="services" element={<Services />} />
+          <Route path="what-we-build" element={<WhatWeBuild />} />
+          <Route path="vision" element={<Vision />} />
+          <Route path="industries/towing" element={<Towing />} />
+          <Route path="industries/bail-bonds" element={<BailBonds />} />
           <Route path="about" element={<About />} />
+          <Route path="faq" element={<Faq />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="service-areas" element={<ServiceAreas />} />
-          <Route path="albuquerque-bail-bond-marketing" element={<ServiceAreas />} />
-          <Route path="bail-bonds" element={<BailBonds />} />
-          <Route path="ai-receptionist-for-bail-bonds" element={<ServiceDetail />} />
-          <Route path="bail-bond-website-design" element={<ServiceDetail />} />
-          <Route path="bail-bond-seo-services" element={<ServiceDetail />} />
-          <Route path="bail-bond-intake-automation" element={<ServiceDetail />} />
-          <Route path="bail-bond-crm-integration" element={<ServiceDetail />} />
-          <Route path="bail-bond-follow-up-automation" element={<ServiceDetail />} />
-          <Route path="custom-dashboards-for-bail-bonds" element={<ServiceDetail />} />
-          <Route path="appointment-setting-for-bail-bonds" element={<ServiceDetail />} />
-          <Route path="mobile-apps-for-bail-bonds" element={<ServiceDetail />} />
-          <Route path="ui-apps-for-bail-bonds" element={<ServiceDetail />} />
-          <Route path="free-bail-bond-lead-system-audit" element={<Audit />} />
           <Route path="book" element={<Book />} />
           <Route path="audit-request-received" element={<RedirectResult type="audit-success" />} />
           <Route path="booking-confirmed" element={<RedirectResult type="booking-success" />} />

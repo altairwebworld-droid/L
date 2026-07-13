@@ -4,16 +4,7 @@ Created: 2026-06-02
 
 | Page | Related links | Audit link | Verification |
 | --- | --- | --- | --- |
-| /ai-receptionist-for-bail-bonds | /bail-bond-intake-automation, /bail-bond-crm-integration, /bail-bond-follow-up-automation | /free-bail-bond-lead-system-audit | Fully implemented |
-| /bail-bond-website-design | /bail-bond-seo-services, /bail-bond-intake-automation, /free-bail-bond-lead-system-audit | /free-bail-bond-lead-system-audit | Fully implemented |
-| /bail-bond-seo-services | /bail-bond-website-design, /ai-receptionist-for-bail-bonds, /free-bail-bond-lead-system-audit | /free-bail-bond-lead-system-audit | Fully implemented |
-| /bail-bond-intake-automation | /bail-bond-crm-integration, /bail-bond-follow-up-automation, /ai-receptionist-for-bail-bonds | /free-bail-bond-lead-system-audit | Fully implemented |
-| /bail-bond-crm-integration | /bail-bond-intake-automation, /bail-bond-follow-up-automation, /free-bail-bond-lead-system-audit | /free-bail-bond-lead-system-audit | Fully implemented |
-| /bail-bond-follow-up-automation | /bail-bond-crm-integration, /bail-bond-intake-automation, /ai-receptionist-for-bail-bonds | /free-bail-bond-lead-system-audit | Fully implemented |
-| /custom-dashboards-for-bail-bonds | /bail-bond-crm-integration, /bail-bond-intake-automation, /bail-bond-follow-up-automation | /free-bail-bond-lead-system-audit | Fully implemented |
-| /appointment-setting-for-bail-bonds | /bail-bond-follow-up-automation, /bail-bond-crm-integration, /ai-receptionist-for-bail-bonds | /free-bail-bond-lead-system-audit | Fully implemented |
-| /mobile-apps-for-bail-bonds | /custom-dashboards-for-bail-bonds, /appointment-setting-for-bail-bonds, /bail-bond-crm-integration | /free-bail-bond-lead-system-audit | Fully implemented |
-| /ui-apps-for-bail-bonds | /custom-dashboards-for-bail-bonds, /mobile-apps-for-bail-bonds, /bail-bond-crm-integration | /free-bail-bond-lead-system-audit | Fully implemented |
+| /what-we-build | /industries/towing, /industries/bail-bonds, /vision | /contact | Fully implemented |
 
 ## Implementation Detail Matrix
 
