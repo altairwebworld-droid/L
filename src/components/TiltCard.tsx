@@ -70,7 +70,7 @@ export default function TiltCard({ children, className = '', variant = "default"
             transform: "translateZ(20px)", 
             transformStyle: "preserve-3d" 
           }}
-          className="relative h-full w-full rounded-xl md:rounded-2xl overflow-hidden bg-[#0c0c0c] border border-white/10"
+          className="lycore-card relative h-full w-full rounded-xl md:rounded-2xl"
         >
           {children}
         </div>

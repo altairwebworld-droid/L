@@ -4,7 +4,7 @@ Created: 2026-06-02
 
 | Page URL | Schema type | Purpose | Location in code | Matches visible content | Validation notes | Verification status |
 | --- | --- | --- | --- | --- | --- | --- |
-| / | Organization | Identify LYCORE LLC | scripts/generate-static-metadata.ts | Yes | No fake ratings/reviews/address | Fully implemented |
+| / | Organization | Identify LYCORE GROUP LLC | scripts/generate-static-metadata.ts | Yes | No fake ratings/reviews/address | Fully implemented |
 | / | WebSite | Identify publisher | scripts/generate-static-metadata.ts | Yes | No site search action added | Fully implemented |
 | / | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /what-we-build | Service | Describe service/audit offer | scripts/generate-static-metadata.ts | Yes | Audience and URL match page content | Fully implemented |

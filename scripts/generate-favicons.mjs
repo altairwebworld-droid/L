@@ -1,8 +1,8 @@
 import sharp from 'sharp';
-import { readFileSync, writeFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 import { resolve } from 'path';
 
-const src = resolve('public/favicon.png');
+const src = resolve('public/lycore-logo.jpeg');
 const publicDir = resolve('public');
 
 const sizes = [
@@ -16,6 +16,12 @@ const sizes = [
 ];
 
 async function generate() {
+  await sharp(src)
+    .resize(512, 512, { fit: 'cover' })
+    .png()
+    .toFile(resolve(publicDir, 'favicon.png'));
+  console.log('✓ favicon.png (512x512)');
+
   for (const { name, size } of sizes) {
     await sharp(src)
       .resize(size, size, { fit: 'cover' })
@@ -62,7 +68,32 @@ async function generate() {
   writeFileSync(resolve(publicDir, 'favicon.ico'), ico);
   console.log('✓ favicon.ico (16+32+48)');
 
-  console.log('\nAll favicons regenerated!');
+  const previewBackground = await sharp(src)
+    .resize(1200, 630, { fit: 'cover' })
+    .blur(24)
+    .modulate({ brightness: 0.78, saturation: 1.05 })
+    .png()
+    .toBuffer();
+  const previewMask = Buffer.from(`
+    <svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+      <defs><filter id="feather"><feGaussianBlur stdDeviation="22" /></filter></defs>
+      <rect x="24" y="24" width="552" height="552" rx="48" fill="white" filter="url(#feather)" />
+    </svg>
+  `);
+  const previewMark = await sharp(src)
+    .resize(600, 600, { fit: 'contain' })
+    .ensureAlpha()
+    .composite([{ input: previewMask, blend: 'dest-in' }])
+    .png()
+    .toBuffer();
+
+  await sharp(previewBackground)
+    .composite([{ input: previewMark, left: 300, top: 15 }])
+    .png()
+    .toFile(resolve(publicDir, 'og-image.png'));
+  console.log('✓ og-image.png (1200x630)');
+
+  console.log('\nAll brand assets regenerated!');
 }
 
 generate().catch(console.error);

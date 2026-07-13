@@ -43,7 +43,7 @@ export default function Towing() {
               ['03', 'Build or improve your site', 'Your website gets rebuilt around one goal: getting the stranded driver to tap your number. Fast load, big number, clear service area.'],
               ['04', 'Measure what changes', 'After 30, 60, and 90 days: how many calls were answered, how many were dispatched, and where they came from.'],
             ].map(([number, title, body]) => (
-              <div key={number} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div key={number} className="lycore-card rounded-2xl p-5">
                 <p className="micro-label mb-4">{number}</p>
                 <h3 className="text-lg font-medium mb-2">{title}</h3>
                 <p className="text-sm text-stone-300 font-light leading-relaxed">{body}</p>

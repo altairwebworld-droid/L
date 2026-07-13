@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import { Hero } from '../components/PageSections';
-import { site } from '../siteData';
 
 export default function BailBonds() {
   return (
@@ -27,12 +27,12 @@ export default function BailBonds() {
             >
               Visit lycore.org for bail bond details
             </a>
-            <a
-              href={`tel:${site.phone.replace(/[^\d+]/g, '')}`}
+            <Link
+              to="/contact"
               className="btn-3d-dark w-full sm:w-auto text-center"
             >
-              Call {site.phone}
-            </a>
+              Request a Free Review
+            </Link>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Instagram } from 'lucide-react';
 import { site } from '../siteData';
+import SocialLinks from './SocialLinks';
 
 export default function Footer() {
   return (
@@ -16,7 +16,6 @@ export default function Footer() {
           </Link>
           <p className="text-ink text-sm max-w-md leading-relaxed font-light">{site.coreStatement}</p>
           <div className="mt-6 flex flex-col gap-3 text-sm text-ink/90">
-            <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="hover:text-white transition-colors">{site.phone}</a>
             <a href={`mailto:${site.email}`} className="hover:text-white transition-colors">{site.email}</a>
             <p>{site.address.street}, {site.address.locality}, {site.address.region} {site.address.postalCode}</p>
           </div>
@@ -40,18 +39,10 @@ export default function Footer() {
             <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
             <li><Link to="/commitments" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Commitments</Link></li>
             <li><Link to="/book" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Book a call</Link></li>
-            <li><a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.phone}</a></li>
             <li><a href={`mailto:${site.email}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.email}</a></li>
           </ul>
-          <a
-            href={site.socials.instagram}
-            target="_blank"
-            rel="noopener"
-            aria-label="LYCORE on Instagram"
-            className="mt-7 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-ink/85 transition-colors hover:border-white/40 hover:text-white"
-          >
-            <Instagram className="h-4 w-4" aria-hidden="true" />
-          </a>
+          <h2 className="micro-label mt-9 mb-4">Follow us</h2>
+          <SocialLinks />
         </div>
       </div>
 

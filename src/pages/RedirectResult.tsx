@@ -96,7 +96,7 @@ export default function RedirectResult({ type }: RedirectResultProps) {
 
         <div className="grid md:grid-cols-3 gap-4 text-left mb-8">
           {content.steps.map((step, index) => (
-            <div key={step} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div key={step} className="lycore-card rounded-2xl p-5">
               <div className="text-xs font-bold tracking-[0.2em] uppercase text-white/40 mb-3">
                 Step {index + 1}
               </div>

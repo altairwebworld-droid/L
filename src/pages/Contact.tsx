@@ -1,6 +1,7 @@
-import { Building2, Mail, MapPin, Phone } from 'lucide-react';
+import { Building2, Mail, MapPin } from 'lucide-react';
 import AuditLeadForm from '../components/AuditLeadForm';
 import { Hero } from '../components/PageSections';
+import SocialLinks from '../components/SocialLinks';
 import { site } from '../siteData';
 
 export default function Contact() {
@@ -17,7 +18,7 @@ export default function Contact() {
             <Mail className="mb-5 text-white/80" />
             <h2 className="text-3xl font-medium mb-4">Contact LYCORE</h2>
             <p className="text-stone-300 font-light leading-relaxed mb-5">
-              Use the form for a free review of your calls, website, and follow-up. Email or call for general questions.
+              Use the form for a free review of your calls, website, and follow-up. Email us for general questions.
             </p>
             <a href={`mailto:${site.email}`} className="text-xl hover:text-white/70 transition-colors font-light">
               {site.email}
@@ -27,10 +28,6 @@ export default function Contact() {
                 <Building2 className="mt-0.5 h-5 w-5 shrink-0 text-white/70" />
                 <span>{site.legalName}</span>
               </p>
-              <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="flex gap-3 hover:text-white transition-colors">
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-white/70" />
-                <span>{site.phone}</span>
-              </a>
               <p className="flex gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-white/70" />
                 <span>
@@ -39,15 +36,8 @@ export default function Contact() {
               </p>
             </div>
             <div className="mt-8 border-t border-white/10 pt-6">
-              <h3 className="text-sm font-medium text-white">Follow LYCORE</h3>
-              <a
-                href={site.socials.instagram}
-                target="_blank"
-                rel="noopener"
-                className="mt-3 inline-flex text-sm text-stone-300 underline decoration-white/30 underline-offset-4 hover:text-white hover:decoration-white"
-              >
-                LYCORE on Instagram
-              </a>
+              <h3 className="text-sm font-medium text-white">Follow us</h3>
+              <SocialLinks className="mt-4" />
             </div>
           </div>
         </div>

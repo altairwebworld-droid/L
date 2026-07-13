@@ -3,7 +3,6 @@ export const site = {
   legalName: 'LYCORE GROUP LLC',
   domain: 'https://www.lycore.org',
   email: 'services@lycore.org',
-  phone: '+1 (917) 722-5646',
   address: {
     street: '1209 Mountain Road Pl NE, Ste N',
     locality: 'Albuquerque',
@@ -24,7 +23,12 @@ export const site = {
   aiDisclaimer:
     "LYCORE's receptionist service is staffed by a trained system that answers calls, captures caller details, and routes information to your team. It does not replace licensed professionals or make decisions on your behalf.",
   socials: {
+    x: 'https://x.com/LYCOREGROUP',
+    facebookLycore: 'https://www.facebook.com/share/1BTyGMNYRh/',
+    facebookBrenda: 'https://www.facebook.com/share/1Emrd1fN6T/',
     instagram: 'https://www.instagram.com/brendalycore',
+    threads: 'https://www.threads.com/@brendalycore',
+    linkedin: 'https://www.linkedin.com/company/lycore-group',
   },
 };
 
@@ -193,9 +197,9 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/',
     label: 'Home',
-    title: 'LYCORE — 24/7 Answering, Websites & Lead Recovery',
+    title: 'LYCORE GROUP LLC - Customer Communication Systems',
     description:
-      'LYCORE answers calls 24/7, builds phone-first websites, and recovers missed leads for towing, plumbing, HVAC, roofing, clinics, and other small service businesses.',
+      '24/7 call handling, lead capture, appointment booking, follow-up, SMS automation, CRM integration and workflow systems for service businesses.',
     h1: 'Stop losing jobs to missed calls',
     kind: 'home',
     faqs: globalFaqs.slice(0, 6),
@@ -241,9 +245,9 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/about',
     label: 'About',
-    title: 'About LYCORE — Built for Service Businesses',
+    title: 'About LYCORE GROUP LLC - Service Business Systems',
     description:
-      'LYCORE started in bail bonds and towing, proved the model works, and is now building for every small service business where a missed call is a lost job.',
+      'Learn how LYCORE GROUP LLC builds customer communication and workflow systems for service businesses that need reliable response and follow-up.',
     h1: 'About LYCORE',
     kind: 'legacy',
     faqs: [globalFaqs[0], globalFaqs[10]],

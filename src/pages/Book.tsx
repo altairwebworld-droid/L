@@ -64,7 +64,7 @@ export default function Book() {
             <p className="text-stone-300 font-light mx-auto mb-8">
               The sales page is ready for appointments, but the live booking calendar still needs your public calendar link.
             </p>
-            <div className="p-5 bg-black/40 rounded-xl text-left border border-white/10 w-full">
+            <div className="lycore-card p-5 rounded-xl text-left w-full">
               <p className="text-sm text-stone-400 font-medium mb-3">Setup instructions:</p>
               <code className="text-sm text-accent-blue break-all block leading-relaxed">
                 1. Create or publish your CRM appointment calendar link<br/>

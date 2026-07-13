@@ -37,27 +37,97 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.01em;
 }
 
-/* The $100M Floating Card */
-.floating-card {
-  background: linear-gradient(145deg, rgba(25, 25, 25, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 
-    0 40px 80px -20px rgba(0, 0, 0, 1),
-    0 20px 40px -10px rgba(0, 0, 0, 0.8),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  transform-style: preserve-3d;
+/* Brand adaptation of the Uiverse ElSombrero2 animated-border card. */
+.lycore-card,
+.floating-card,
+.glass-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #171717;
+  border: 0;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.55),
+    0 18px 44px rgba(0, 0, 0, 0.34);
 }
 
-.glass-panel {
-  background: linear-gradient(145deg, rgba(20, 24, 42, 0.8) 0%, rgba(10, 10, 12, 0.95) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+.lycore-card::before,
+.floating-card::before,
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 7rem;
+  height: max(32rem, 180%);
+  background: linear-gradient(180deg, #ff3d00 0%, #ff8a3d 48%, #fff0df 100%);
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: center;
+  transition: opacity 300ms ease;
+  animation: lycore-card-rotation 8000ms linear infinite;
+  animation-play-state: paused;
+  pointer-events: none;
+}
+
+.lycore-card::after,
+.floating-card::after,
+.glass-panel::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 2px;
+  border-radius: inherit;
+  background: rgba(23, 23, 23, 0.88);
+  backdrop-filter: blur(50px);
+  pointer-events: none;
+}
+
+.lycore-card > *,
+.floating-card > *,
+.glass-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+.lycore-card:hover::before,
+.lycore-card:focus-within::before,
+.floating-card:hover::before,
+.floating-card:focus-within::before,
+.glass-panel:hover::before,
+.glass-panel:focus-within::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.lycore-card::selection,
+.floating-card::selection,
+.glass-panel::selection {
+  background: rgba(255, 90, 31, 0.35);
+}
+
+@keyframes lycore-card-rotation {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (hover: none) {
+  .lycore-card::before,
+  .floating-card::before,
+  .glass-panel::before {
+    opacity: 0.58;
+    animation-play-state: running;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lycore-card::before,
+  .floating-card::before,
+  .glass-panel::before {
+    animation: none;
+  }
 }
 
 .form-control {

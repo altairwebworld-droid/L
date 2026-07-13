@@ -74,7 +74,7 @@ export default function WhatWeBuild() {
             <p className="text-white text-lg leading-relaxed font-light mb-6">{offering.description}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               {offering.details.map((detail) => (
-                <div key={detail} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <div key={detail} className="lycore-card rounded-2xl p-5">
                   <p className="text-sm text-stone-200 font-light leading-relaxed">{detail}</p>
                 </div>
               ))}

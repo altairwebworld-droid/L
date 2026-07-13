@@ -38,9 +38,6 @@ export function Hero({
             <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
               {site.primaryCta}
             </Link>
-            <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="btn-3d-dark w-full sm:w-auto" data-track="phone_click">
-              Call {site.phone}
-            </a>
             <Link to="/what-we-build" className="btn-3d-dark w-full sm:w-auto">
               {site.secondaryCta}
             </Link>
@@ -61,9 +58,6 @@ export function Hero({
           <Link to={site.auditPath} className="btn-3d w-full sm:w-auto" data-track="cta_click">
             {site.primaryCta}
           </Link>
-          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="btn-3d-dark w-full sm:w-auto" data-track="phone_click">
-            Call {site.phone}
-          </a>
           <Link to="/book" className="btn-3d-dark w-full sm:w-auto" data-track="book_call_click">
             Book a Strategy Call
           </Link>
@@ -160,14 +154,14 @@ export function FaqSection({ faqs }: { faqs: Faq[] }) {
 export function CtaBand() {
   return (
     <section className="py-16 px-6 max-w-7xl mx-auto">
-      <div className="rounded-[40px] border border-white/10 bg-white text-black p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+      <div className="lycore-card rounded-[40px] p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 text-white">
         <div className="max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Find out how many calls your business is missing.</h2>
-          <p className="text-stone-700 leading-relaxed">
+          <p className="text-stone-300 leading-relaxed">
             Get a free review of how your business handles calls, website visitors, and follow-up — with a plain-English breakdown of what to fix first.
           </p>
         </div>
-        <Link to={site.auditPath} className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white text-xs tracking-[0.1em] uppercase font-bold" data-track="cta_click">
+        <Link to={site.auditPath} className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-black text-xs tracking-[0.1em] uppercase font-bold" data-track="cta_click">
           {site.primaryCta}
         </Link>
       </div>

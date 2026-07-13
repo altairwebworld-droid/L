@@ -6,7 +6,7 @@ import { legalPages, site } from '../siteData';
 const privacySections = [
   {
     title: 'Information Collected',
-    body: 'LYCORE LLC may collect audit form details such as your name, agency, contact information, website, location, CRM context, message, source page, referrer, and UTM data.',
+    body: 'LYCORE GROUP LLC may collect audit form details such as your name, business, contact information, website, location, CRM context, message, source page, referrer, and UTM data.',
   },
   {
     title: 'How Information Is Used',
@@ -29,7 +29,7 @@ const termsSections = [
   },
   {
     title: 'No Guaranteed Outcomes',
-    body: 'LYCORE LLC does not guarantee rankings, revenue, client volume, ad performance, bond outcomes, court outcomes, or CRM acceptance by third-party platforms.',
+    body: 'LYCORE GROUP LLC does not guarantee rankings, revenue, client volume, advertising performance, business outcomes, or CRM acceptance by third-party platforms.',
   },
   {
     title: 'Third-Party Services',
@@ -74,7 +74,7 @@ export default function Legal() {
         </div>
       </div>
 
-      <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6">
+      <div className="lycore-card flex items-start gap-4 rounded-2xl p-6">
         <AlertCircle className="text-white/60 mt-1 shrink-0" size={22} />
         <p className="text-sm text-stone-400 font-light leading-relaxed">
           These policies outline how we handle your data and the terms of our service. If you have specific questions or require clarification, please contact our support team.

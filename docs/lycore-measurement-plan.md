@@ -1,4 +1,4 @@
-# LYCORE LLC Measurement Plan
+# LYCORE GROUP LLC Measurement Plan
 
 Created: 2026-06-02
 
@@ -21,5 +21,5 @@ Created: 2026-06-02
 | Form errors | Validation/backend errors. | Analytics/backend logs | Errors are tracked and reduced. | Fully implemented |
 | Lead source/UTM captured | Attribution readiness. | Payload/backend rows | Source and UTM fields persist. | Fully implemented |
 | Qualified leads | Lead quality after routing. | CRM/backend after setup | More agency-owner/manager leads. | Requires manual setup |
-| Clear entity | Whether AI tools identify LYCORE LLC. | Manual GEO review | AI identifies niche and services accurately. | Fully implemented |
+| Clear entity | Whether AI tools identify LYCORE GROUP LLC. | Manual GEO review | AI identifies the company and services accurately. | Fully implemented |
 | FAQ completeness | Direct buyer answers. | Visible content and schema | Answers match JSON-LD. | Fully implemented |

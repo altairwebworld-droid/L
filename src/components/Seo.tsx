@@ -49,7 +49,6 @@ export default function Seo() {
       const link = target.closest<HTMLAnchorElement>('a[href]');
       if (!link) return;
       if (link.href.startsWith('mailto:')) trackEvent('email_click', { href: link.href });
-      if (link.href.startsWith('tel:')) trackEvent('phone_click', { href: link.href });
       if (link.hostname && link.hostname !== window.location.hostname) trackEvent('outbound_click', { href: link.href });
     };
 
@@ -87,20 +86,25 @@ export default function Seo() {
     orgSchema.type = 'application/ld+json';
     orgSchema.textContent = JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'ProfessionalService',
+      '@type': 'Organization',
       '@id': `${site.domain}/#organization`,
       name: site.legalName,
+      alternateName: site.name,
       url: site.domain,
       email: site.email,
-      telephone: site.phone,
-      logo: { '@type': 'ImageObject', url: `${site.domain}/lycore-logo.jpeg` },
+      logo: {
+        '@type': 'ImageObject',
+        url: `${site.domain}/lycore-logo.jpeg`,
+        contentUrl: `${site.domain}/lycore-logo.jpeg`,
+        width: 1254,
+        height: 1254,
+      },
       image: `${site.domain}${site.ogImage}`,
       areaServed: 'US',
       description: 'LYCORE answers calls 24/7, builds phone-first websites, and recovers missed leads for small service businesses across the United States.',
       sameAs: Object.values(site.socials),
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: site.phone,
         email: site.email,
         contactType: 'sales',
         areaServed: 'US',

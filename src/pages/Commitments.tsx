@@ -327,7 +327,7 @@ function CommitmentLinks({ current }: { current?: CommitmentKey }) {
             <TextLink to="/contact">Contact LYCORE</TextLink>
           </div>
         </div>
-        <div className="overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.025]">
+        <div className="lycore-card overflow-hidden rounded-[24px]">
           {commitmentOrder.filter((key) => key !== current).map((key) => (
             <Link
               key={key}
@@ -384,7 +384,7 @@ export function CommitmentsIndex() {
             <Link
               key={key}
               to={`/commitments/${key}`}
-              className={`group relative flex min-h-[310px] flex-col justify-between overflow-hidden rounded-[28px] border border-white/10 bg-[#111216] p-7 transition-[transform,border-color,background-color] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-[#15161b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0 md:p-9 ${commitmentCardStyles[key]}`}
+              className={`lycore-card group relative flex min-h-[310px] flex-col justify-between rounded-[28px] p-7 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0 md:p-9 ${commitmentCardStyles[key]}`}
             >
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00d2ff]/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
               <div className="flex items-start justify-between gap-6">
@@ -436,7 +436,7 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
             <section
               key={section.title}
               className={section.variant === 'highlight'
-                ? 'my-10 rounded-[28px] border border-white/15 bg-[#141416] p-7 md:p-10'
+                ? 'lycore-card my-10 rounded-[28px] p-7 md:p-10'
                 : 'grid gap-6 border-b border-white/10 py-12 md:grid-cols-[0.36fr_0.64fr] md:gap-12'}
               aria-labelledby={`${page}-section-${index}`}
             >
@@ -471,7 +471,7 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
           ))}
 
           {page === 'social-impact' && (
-            <section className="relative my-10 overflow-hidden rounded-[28px] border border-white/15 bg-[#111216] p-7 text-white md:p-10" aria-labelledby="pledge-details-title">
+            <section className="lycore-card relative my-10 rounded-[28px] p-7 text-white md:p-10" aria-labelledby="pledge-details-title">
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00d2ff]/55 to-transparent" aria-hidden="true" />
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">Public pledge record</p>
               <h2 id="pledge-details-title" className="text-3xl font-bold md:text-4xl">Pledge details</h2>
@@ -485,7 +485,7 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
             </section>
           )}
 
-          <aside className="my-16 rounded-[28px] border border-white/15 bg-gradient-to-br from-white/[0.09] to-transparent p-7 md:p-10" aria-labelledby={`${page}-summary-title`}>
+          <aside className="lycore-card my-16 rounded-[28px] p-7 md:p-10" aria-labelledby={`${page}-summary-title`}>
             <div className="flex items-center justify-between gap-4">
               <p className="micro-label">LinkedIn-ready summary</p>
               <Quote className="h-5 w-5 text-white/50" aria-hidden="true" />

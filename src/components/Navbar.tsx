@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Menu, Phone, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { navLinks, site } from '../siteData';
 
@@ -42,9 +42,6 @@ export default function Navbar() {
           <Link to="/book" className="btn-3d-dark px-6 py-2.5 ml-2 text-[10px]" data-track="book_call_click">
             Book a Call
           </Link>
-          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white hover:text-black transition-colors" aria-label={`Call LYCORE at ${site.phone}`}>
-            <Phone size={16} />
-          </a>
         </div>
 
         <button
@@ -74,9 +71,6 @@ export default function Navbar() {
           <Link to="/book" onClick={() => setIsOpen(false)} className="btn-3d-dark px-6 py-4 w-full text-center" data-track="book_call_click">
             Book a Call
           </Link>
-          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-lg tracking-wide font-medium text-ink hover:text-white transition-colors">
-            Call {site.phone}
-          </a>
           <a href={`mailto:${site.email}`} className="text-lg tracking-wide font-medium text-ink hover:text-white transition-colors">
             {site.email}
           </a>

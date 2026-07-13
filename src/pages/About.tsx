@@ -7,18 +7,18 @@ export default function About() {
       <Hero compact title="About LYCORE" copy={site.coreStatement} />
       <section className="py-16 px-6 max-w-5xl mx-auto space-y-10">
         <div>
-          <h2 className="text-4xl font-normal mb-5">Started with bail bonds and towing</h2>
+          <h2 className="text-4xl font-normal mb-5">Built around the missed-call problem</h2>
           <p className="text-white text-lg leading-relaxed font-light">
-            LYCORE began by solving one problem for bail bond agencies and towing companies: every call that went unanswered was a lost job. We built a receptionist that answers those calls 24/7, and websites that make the phone number the first thing a visitor sees.
+            LYCORE GROUP LLC builds customer communication and workflow systems for service businesses. The work starts with a practical problem: when a call goes unanswered or follow-up is delayed, the customer often moves on.
           </p>
           <p className="text-white text-lg leading-relaxed font-light mt-5">
-            Those two industries proved the method. The pattern — urgent caller, missed phone, lost revenue — is the same across plumbing, HVAC, electrical, roofing, restaurants, clinics, locksmiths, and restoration companies. The system works anywhere that pattern exists.
+            Our systems support 24/7 call handling, lead capture, appointment booking, customer follow-up, SMS automation, CRM integration and related business workflows. Each setup is shaped around the way the client actually operates.
           </p>
         </div>
         <div>
-          <h2 className="text-4xl font-normal mb-5">Proof of method, not the ceiling</h2>
+          <h2 className="text-4xl font-normal mb-5">Industry experience, broader direction</h2>
           <p className="text-white text-lg leading-relaxed font-light">
-            Bail bonds and towing are where LYCORE learned the operational patterns of service businesses. They are proof that the approach works — not a limit on where we go next.
+            LYCORE first learned these operational patterns through work in bail bonds and towing. Today the company serves the broader service-business market, including home services, roadside services, clinics, restaurants and other teams where timely communication matters.
           </p>
         </div>
         <div>

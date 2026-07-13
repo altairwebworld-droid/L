@@ -22,15 +22,21 @@ function schemaFor(page: PageMeta) {
   const blocks: unknown[] = [
     {
       '@context': 'https://schema.org',
-      '@type': 'ProfessionalService',
+      '@type': 'Organization',
       '@id': orgId,
-      name: site.name,
+      name: site.legalName,
+      alternateName: site.name,
       legalName: site.legalName,
       url: site.domain,
       description: site.coreStatement,
       email: site.email,
-      telephone: site.phone,
-      logo: { '@type': 'ImageObject', url: `${site.domain}/lycore-logo.jpeg` },
+      logo: {
+        '@type': 'ImageObject',
+        url: `${site.domain}/lycore-logo.jpeg`,
+        contentUrl: `${site.domain}/lycore-logo.jpeg`,
+        width: 1254,
+        height: 1254,
+      },
       image: `${site.domain}${site.ogImage}`,
       sameAs: Object.values(site.socials),
       address: {
@@ -43,7 +49,6 @@ function schemaFor(page: PageMeta) {
       },
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: site.phone,
         email: site.email,
         contactType: 'sales',
         areaServed: 'US',
@@ -51,14 +56,16 @@ function schemaFor(page: PageMeta) {
       },
       areaServed: 'United States',
       knowsAbout: [
-        'bail bond website design',
-        'bail bond SEO services',
-        'AI receptionist for bail bonds',
-        'bail bond intake automation',
-        'bail bond CRM integration',
-        'bail bond follow-up automation',
-        'custom dashboards for bail bond agencies',
-        'appointment setting for bail bond agencies',
+        '24/7 call handling',
+        'lead capture',
+        'appointment booking',
+        'customer follow-up',
+        'SMS automation',
+        'CRM integration',
+        'workflow automation',
+        'phone-first website design',
+        'Google Business Profile optimization',
+        'customer communication systems for service businesses',
       ],
     },
     {
@@ -88,12 +95,12 @@ function schemaFor(page: PageMeta) {
     const sitelinkCandidates = [
       { name: 'Home', path: '/' },
       { name: 'What We Build', path: '/what-we-build' },
-      { name: 'Towing', path: '/industries/towing' },
-      { name: 'Bail Bonds', path: '/industries/bail-bonds' },
+      { name: 'Vision', path: '/vision' },
       { name: 'Our Commitments', path: '/commitments' },
       { name: 'Free Lead System Audit', path: site.auditPath },
       { name: 'Book a Call', path: '/book' },
       { name: 'About LYCORE', path: '/about' },
+      { name: 'Frequently Asked Questions', path: '/faq' },
       { name: 'Contact', path: '/contact' },
     ];
     blocks.push({
@@ -116,7 +123,7 @@ function schemaFor(page: PageMeta) {
       name: page.h1,
       description: service?.explanation || page.description,
       provider: { '@id': orgId },
-      audience: { '@type': 'BusinessAudience', audienceType: 'Bail bond agencies' },
+      audience: { '@type': 'BusinessAudience', audienceType: 'Service businesses' },
       areaServed: 'United States',
       url: absoluteUrl(page.path),
     });
@@ -171,11 +178,15 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:image" content="${image}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LYCORE logo" />
     <meta property="og:site_name" content="${site.name}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(page.title)}" />
     <meta name="twitter:description" content="${esc(page.description)}" />
     <meta name="twitter:image" content="${image}" />
+    <meta name="twitter:image:alt" content="LYCORE logo" />
     <meta name="theme-color" content="#0c0a09" />
     <meta name="application-name" content="${site.name}" />
     ${schemaFor(page).map((block) => `<script type="application/ld+json">${JSON.stringify(block)}</script>`).join('\n    ')}
@@ -189,8 +200,8 @@ function fallbackFor(page: PageMeta) {
     page.path === '/'
       ? [
           site.coreStatement,
-          'Families looking for help may call, click, fill out a form, or leave within minutes. LYCORE LLC creates pages, intake questions, source tracking, and CRM-ready handoff paths so agency teams can respond with cleaner context while licensed professionals stay responsible for legal, financial, client, and bail outcome decisions.',
-          'Services include bail bond website design, bail bond SEO services, AI receptionist support, intake automation, CRM integration, follow-up automation, dashboards, appointment-setting workflows, mobile apps, and web UI apps. Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.',
+          'Service businesses lose opportunities when calls go unanswered, booking takes too long, or follow-up stops. LYCORE GROUP LLC builds customer communication systems that help teams respond consistently and keep each lead moving.',
+          'Services include 24/7 call handling, lead capture, appointment booking, customer follow-up, SMS automation, CRM integration, workflow automation, phone-first websites and related business systems. Rankings, revenue, call volume and client outcomes are never guaranteed.',
         ]
       : [page.description, service?.problem, service?.explanation].filter(present);
   const faqItems = page.faqs?.slice(0, 3) || [];
@@ -200,7 +211,7 @@ function fallbackFor(page: PageMeta) {
           <p>${esc(site.name)}</p>
           <h1>${esc(page.h1)}</h1>
           ${paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('\n          ')}
-          ${page.path === '/' ? '<h2>Bail bonds lead capture built for urgent decisions</h2>' : ''}
+          ${page.path === '/' ? '<h2>Customer communication systems for service businesses</h2>' : ''}
           ${
             faqItems.length
               ? `<h2>Common Questions</h2>
@@ -210,10 +221,8 @@ function fallbackFor(page: PageMeta) {
           <nav aria-label="Primary crawl links">
             <a href="${site.auditPath}">${esc(site.primaryCta)}</a>
             <a href="/what-we-build">${esc(site.secondaryCta)}</a>
-            <a href="/industries/bail-bonds">Bail Bond Agency Services</a>${
-              page.path === '/'
+            ${page.path === '/'
                 ? `
-            <a href="/industries/towing">Towing Services</a>
             <a href="/vision">Where LYCORE Is Building</a>
             <a href="/commitments">LYCORE Commitments</a>
             <a href="/book">Book a Call</a>
@@ -276,7 +285,7 @@ function llmsTxt() {
 
 > ${site.coreStatement} ${site.expandedServicesStatement}
 
-${site.name}${legalNameSuffix} is based in ${site.address.locality}, ${site.address.region} and works with bail bond agencies across the United States. Contact: ${site.email}, ${site.phone}. ${site.aiDisclaimer} Rankings, revenue, client volume, legal outcomes, and bail outcomes are never guaranteed.
+${site.name}${legalNameSuffix} is based in ${site.address.locality}, ${site.address.region} and works with service businesses across the United States. Contact: ${site.email}. ${site.aiDisclaimer} Rankings, revenue, call volume and client outcomes are never guaranteed.
 
 ## Services
 
@@ -320,8 +329,8 @@ async function main() {
   const notFoundPage: PageMeta = {
     path: '/404',
     label: 'Not Found',
-    title: 'Page Not Found - LYCORE LLC',
-    description: 'The page you requested does not exist. Explore LYCORE LLC services for bail bond agencies or request a free lead system audit.',
+    title: 'Page Not Found | LYCORE GROUP LLC',
+    description: 'The page you requested does not exist. Explore LYCORE GROUP LLC customer communication systems or request a free lead system review.',
     h1: 'Page Not Found',
     kind: 'system',
   };

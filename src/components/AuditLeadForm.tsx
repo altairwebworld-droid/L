@@ -237,7 +237,7 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LYCORE LLC using this information to respond to my request.
+              I consent to LYCORE GROUP LLC using this information to respond to my request.
             </span>
           </label>
 
@@ -335,7 +335,7 @@ function CalendarEventCard() {
   const isExternalBookingUrl = /^https?:\/\//i.test(bookingUrl);
 
   return (
-    <div className="md:col-span-2 rounded-2xl border border-white/10 bg-white/[0.06] p-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div className="lycore-card md:col-span-2 rounded-2xl p-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div className="flex gap-3">
         <Calendar className="mt-1 h-5 w-5 shrink-0 text-accent-blue" />
         <div>

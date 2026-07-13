@@ -2,11 +2,11 @@
 
 Created: 2026-06-02
 
-- Original weakness: baseline copy used mixed CTA language and unsupported guarantee/revenue language.
-- Updated headline: Bail Bonds AI Receptionist, SEO Websites, and Lead Automation.
+- Original weakness: baseline copy used narrow industry positioning and inconsistent company naming.
+- Updated headline: Customer communication systems for service businesses.
 - Updated supporting copy: LYCORE answers your phones 24/7, builds websites that convert callers, and handles the follow-up — so small service businesses stop losing jobs to missed calls.
 - Updated CTA: Get a Free Lead System Review
-- Files changed: src/siteData.ts, route pages, Navbar, Footer, Contact/Audit form.
+- Files changed: src/siteData.ts, route pages, metadata generator, Navbar, Footer, Contact/Audit form.
 - Verification status: Fully implemented.
 
 ## Implementation Detail Matrix

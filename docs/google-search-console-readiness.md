@@ -4,12 +4,12 @@ Created: 2026-06-02
 
 | Page URL | Target Query | Readiness Status |
 | --- | --- | --- |
-| / | LYCORE — 24/7 Answering, Websites & Lead Recovery | Fully implemented |
+| / | LYCORE GROUP LLC - Customer Communication Systems | Fully implemented |
 | /what-we-build | 24/7 Receptionist, Websites & GBP for Service Businesses | Fully implemented |
 | /vision | Where LYCORE Is Building — Full Business Systems | Fully implemented |
 | /industries/towing | Towing Company Websites & 24/7 Call Answering — LYCORE | Fully implemented |
 | /industries/bail-bonds | Bail Bond Agency Services — LYCORE | Fully implemented |
-| /about | About LYCORE — Built for Service Businesses | Fully implemented |
+| /about | About LYCORE GROUP LLC - Service Business Systems | Fully implemented |
 | /faq | Frequently Asked Questions — LYCORE | Fully implemented |
 | /contact | Contact LYCORE — Free Lead System Review | Fully implemented |
 | /book | Book a Strategy Call — LYCORE | Fully implemented |
