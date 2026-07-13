@@ -97,6 +97,7 @@ export default function Seo() {
       image: `${site.domain}${site.ogImage}`,
       areaServed: 'US',
       description: 'LYCORE answers calls 24/7, builds phone-first websites, and recovers missed leads for small service businesses across the United States.',
+      sameAs: Object.values(site.socials),
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: site.phone,

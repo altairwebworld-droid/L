@@ -38,6 +38,17 @@ export default function Contact() {
                 </span>
               </p>
             </div>
+            <div className="mt-8 border-t border-white/10 pt-6">
+              <h3 className="text-sm font-medium text-white">Follow LYCORE</h3>
+              <a
+                href={site.socials.instagram}
+                target="_blank"
+                rel="noopener"
+                className="mt-3 inline-flex text-sm text-stone-300 underline decoration-white/30 underline-offset-4 hover:text-white hover:decoration-white"
+              >
+                LYCORE on Instagram
+              </a>
+            </div>
           </div>
         </div>
         <AuditLeadForm />

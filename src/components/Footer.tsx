@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Instagram } from 'lucide-react';
 import { site } from '../siteData';
 
 export default function Footer() {
@@ -37,10 +38,20 @@ export default function Footer() {
             <li><Link to="/about" className="text-sm text-ink/85 hover:text-white transition-colors font-light">About</Link></li>
             <li><Link to="/faq" className="text-sm text-ink/85 hover:text-white transition-colors font-light">FAQ</Link></li>
             <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
+            <li><Link to="/commitments" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Commitments</Link></li>
             <li><Link to="/book" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Book a call</Link></li>
             <li><a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.phone}</a></li>
             <li><a href={`mailto:${site.email}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.email}</a></li>
           </ul>
+          <a
+            href={site.socials.instagram}
+            target="_blank"
+            rel="noopener"
+            aria-label="LYCORE on Instagram"
+            className="mt-7 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-ink/85 transition-colors hover:border-white/40 hover:text-white"
+          >
+            <Instagram className="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
 

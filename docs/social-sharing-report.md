@@ -4,7 +4,7 @@ Created: 2026-06-02
 
 | Sharing Element | Status | Implementation Details |
 | --- | --- | --- |
-| Open Graph Image | Fully implemented | https://www.lycoregroup.com/og-image.png (Converted from SVG) |
+| Open Graph Image | Fully implemented | https://www.lycore.org/og-image.png (Converted from SVG) |
 | OG Title/Description | Fully implemented | Generated uniquely per route |
 | Canonical URL | Fully implemented | Generated per route |
 | Twitter Card | Fully implemented | summary_large_image set |

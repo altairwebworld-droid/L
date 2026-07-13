@@ -18,6 +18,7 @@ import Book from './pages/Book';
 import Legal from './pages/Legal';
 import RedirectResult from './pages/RedirectResult';
 import NotFound from './pages/NotFound';
+import { CommitmentPage, CommitmentsIndex } from './pages/Commitments';
 import ScrollToTop from './components/ScrollToTop';
 import { initAnalytics } from './lib/analytics';
 
@@ -40,6 +41,11 @@ export default function App() {
           <Route path="faq" element={<Faq />} />
           <Route path="contact" element={<Contact />} />
           <Route path="book" element={<Book />} />
+          <Route path="commitments" element={<CommitmentsIndex />} />
+          <Route path="commitments/career-growth" element={<CommitmentPage page="career-growth" />} />
+          <Route path="commitments/work-life-balance" element={<CommitmentPage page="work-life-balance" />} />
+          <Route path="commitments/social-impact" element={<CommitmentPage page="social-impact" />} />
+          <Route path="commitments/how-we-work" element={<CommitmentPage page="how-we-work" />} />
           <Route path="audit-request-received" element={<RedirectResult type="audit-success" />} />
           <Route path="booking-confirmed" element={<RedirectResult type="booking-success" />} />
           <Route path="booking-failed" element={<RedirectResult type="booking-failed" />} />

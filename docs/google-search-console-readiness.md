@@ -13,15 +13,18 @@ Created: 2026-06-02
 | /faq | Frequently Asked Questions — LYCORE | Fully implemented |
 | /contact | Contact LYCORE — Free Lead System Review | Fully implemented |
 | /book | Book a Strategy Call — LYCORE | Fully implemented |
-| /what-we-build | 24/7 Receptionist, Websites & GBP for Service Businesses | Fully implemented |
-| /contact | Free Lead System Review — LYCORE | Fully implemented |
 | /privacy | Privacy Policy — LYCORE | Fully implemented |
 | /terms | Terms of Use — LYCORE | Fully implemented |
+| /commitments | Our Commitments — LYCORE | Fully implemented |
+| /commitments/career-growth | Career Growth and Continuous Learning — LYCORE | Fully implemented |
+| /commitments/work-life-balance | Remote Work and Work-Life Balance — LYCORE | Fully implemented |
+| /commitments/social-impact | Our Social Impact Commitment — LYCORE | Fully implemented |
+| /commitments/how-we-work | How We Work — LYCORE | Fully implemented |
 
 
-- Sitemap URL: https://www.lycoregroup.com/sitemap.xml
-- Robots.txt URL: https://www.lycoregroup.com/robots.txt
-- Manual setup: verify www.lycoregroup.com in Search Console and submit sitemap.
+- Sitemap URL: https://www.lycore.org/sitemap.xml
+- Robots.txt URL: https://www.lycore.org/robots.txt
+- Manual setup: verify www.lycore.org in Search Console and submit sitemap.
 
 ## Implementation Detail Matrix
 

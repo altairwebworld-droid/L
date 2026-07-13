@@ -1,7 +1,7 @@
 export const site = {
   name: 'LYCORE',
   legalName: 'LYCORE GROUP LLC',
-  domain: 'https://www.lycoregroup.com',
+  domain: 'https://www.lycore.org',
   email: 'services@lycore.org',
   phone: '+1 (917) 722-5646',
   address: {
@@ -23,6 +23,9 @@ export const site = {
     'LYCORE also optimizes your Google Business Profile, automates intake and follow-up paperwork, and is building full operating systems for service industries.',
   aiDisclaimer:
     "LYCORE's receptionist service is staffed by a trained system that answers calls, captures caller details, and routes information to your team. It does not replace licensed professionals or make decisions on your behalf.",
+  socials: {
+    instagram: 'https://www.instagram.com/brendalycore',
+  },
 };
 
 export type Faq = {
@@ -36,7 +39,7 @@ export type PageMeta = {
   title: string;
   description: string;
   h1: string;
-  kind: 'home' | 'legacy' | 'service' | 'audit' | 'legal' | 'system';
+  kind: 'home' | 'legacy' | 'service' | 'audit' | 'legal' | 'commitment' | 'system';
   faqs?: Faq[];
 };
 
@@ -295,6 +298,49 @@ export const legalPages: PageMeta[] = [
   },
 ];
 
+export const commitmentPages: PageMeta[] = [
+  {
+    path: '/commitments',
+    label: 'Commitments',
+    title: 'Our Commitments — LYCORE',
+    description: 'How LYCORE approaches its work, people and wider responsibilities as a remote-first, early-stage company.',
+    h1: 'How We Intend to Grow',
+    kind: 'commitment',
+  },
+  {
+    path: '/commitments/career-growth',
+    label: 'Career Growth',
+    title: 'Career Growth and Continuous Learning — LYCORE',
+    description: 'How LYCORE approaches practical learning, feedback, responsibility and career development as the company grows.',
+    h1: 'Career Growth and Continuous Learning',
+    kind: 'commitment',
+  },
+  {
+    path: '/commitments/work-life-balance',
+    label: 'Work-Life Balance',
+    title: 'Remote Work and Work-Life Balance — LYCORE',
+    description: 'The LYCORE remote-first working arrangement, flexibility expectations and work-life balance commitments.',
+    h1: 'Remote Work and Work-Life Balance',
+    kind: 'commitment',
+  },
+  {
+    path: '/commitments/social-impact',
+    label: 'Social Impact',
+    title: 'Our Social Impact Commitment — LYCORE',
+    description: 'The public LYCORE pledge for responsible technology, fair access, privacy, inclusive communication and practical support.',
+    h1: 'Our Social Impact Commitment',
+    kind: 'commitment',
+  },
+  {
+    path: '/commitments/how-we-work',
+    label: 'How We Work',
+    title: 'How We Work — LYCORE',
+    description: 'The principles that guide how LYCORE approaches ownership, communication, learning and client work.',
+    h1: 'How We Work',
+    kind: 'commitment',
+  },
+];
+
 export const auditPage: PageMeta = {
   path: site.auditPath,
   label: 'Free Review',
@@ -336,7 +382,7 @@ export const redirectPages: PageMeta[] = [
   },
 ];
 
-export const allPages: PageMeta[] = [...legacyPages, ...servicePages, auditPage, ...redirectPages, ...legalPages];
+export const allPages: PageMeta[] = [...legacyPages, ...redirectPages, ...legalPages, ...commitmentPages];
 
 export const navLinks = [
   { label: 'Home', path: '/' },

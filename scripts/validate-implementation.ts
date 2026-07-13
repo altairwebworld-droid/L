@@ -69,10 +69,10 @@ for (const page of allPages) {
   if (page.path === '/') {
     const rootBody = html.match(/<div id="root">([\s\S]*?)<\/div>/)?.[1] || '';
     const visibleText = stripHtml(rootBody).toLowerCase();
-    expect(page.title.toLowerCase().includes('bail bonds'), '/: title must contain target keyword "bail bonds"');
+    expect(page.title.includes('LYCORE'), '/: title must identify LYCORE');
     expect((rootBody.match(/<h1[\s>]/gi) || []).length >= 1, '/: raw HTML must include an H1 fallback');
-    expect(/<h1[\s\S]*?bail bonds[\s\S]*?<\/h1>/i.test(rootBody), '/: raw HTML H1 must contain target keyword "bail bonds"');
-    expect(visibleText.includes('bail bonds'), '/: raw HTML body content must contain target keyword "bail bonds"');
+    expect(/<h1[\s\S]*?missed calls[\s\S]*?<\/h1>/i.test(rootBody), '/: raw HTML H1 must reflect the missed-calls positioning');
+    expect(visibleText.includes('service businesses'), '/: raw HTML body content must identify the intended audience');
     expect(wordCount(visibleText) >= 100, '/: raw HTML fallback content should contain at least 100 crawlable words');
   }
 }

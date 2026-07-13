@@ -6,17 +6,21 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with bail bond a
 
 ## Services
 
-- [What We Build](https://www.lycoregroup.com/what-we-build): LYCORE answers calls 24/7, builds phone-first websites, optimizes Google Business Profiles, and automates intake for small service businesses that cannot afford to miss a call.
+- [What We Build](https://www.lycore.org/what-we-build): LYCORE answers calls 24/7, builds phone-first websites, optimizes Google Business Profiles, and automates intake for small service businesses that cannot afford to miss a call.
 
 ## Company
 
-- [Vision](https://www.lycoregroup.com/vision): LYCORE is building toward complete operating systems for service industries: from answered calls to automated paperwork to end-to-end business infrastructure.
-- [Bail Bonds](https://www.lycoregroup.com/industries/bail-bonds): LYCORE serves bail bond agencies with 24/7 call answering and phone-first websites. For full bail bond pricing and service details, visit lycore.org.
-- [About](https://www.lycoregroup.com/about): LYCORE started in bail bonds and towing, proved the model works, and is now building for every small service business where a missed call is a lost job.
-- [FAQ](https://www.lycoregroup.com/faq): Answers to common questions about LYCORE 24/7 call answering, websites, Google Business Profile optimization, pricing, and how it all works for service businesses.
-- [Contact](https://www.lycoregroup.com/contact): Get a free review of how your service business handles calls, website visitors, and follow-up. No pressure, no obligation.
-- [Book a Call](https://www.lycoregroup.com/book): Schedule a time to discuss how LYCORE can help your service business answer more calls and book more jobs.
-- [Free Review](https://www.lycoregroup.com/contact): Request a free LYCORE review of how your service business handles calls, website visitors, and follow-up — with a plain-English breakdown of what to fix first.
+- [Vision](https://www.lycore.org/vision): LYCORE is building toward complete operating systems for service industries: from answered calls to automated paperwork to end-to-end business infrastructure.
+- [Bail Bonds](https://www.lycore.org/industries/bail-bonds): LYCORE serves bail bond agencies with 24/7 call answering and phone-first websites. For full bail bond pricing and service details, visit lycore.org.
+- [About](https://www.lycore.org/about): LYCORE started in bail bonds and towing, proved the model works, and is now building for every small service business where a missed call is a lost job.
+- [FAQ](https://www.lycore.org/faq): Answers to common questions about LYCORE 24/7 call answering, websites, Google Business Profile optimization, pricing, and how it all works for service businesses.
+- [Contact](https://www.lycore.org/contact): Get a free review of how your service business handles calls, website visitors, and follow-up. No pressure, no obligation.
+- [Book a Call](https://www.lycore.org/book): Schedule a time to discuss how LYCORE can help your service business answer more calls and book more jobs.
+- [Commitments](https://www.lycore.org/commitments): How LYCORE approaches its work, people and wider responsibilities as a remote-first, early-stage company.
+- [Career Growth](https://www.lycore.org/commitments/career-growth): How LYCORE approaches practical learning, feedback, responsibility and career development as the company grows.
+- [Work-Life Balance](https://www.lycore.org/commitments/work-life-balance): The LYCORE remote-first working arrangement, flexibility expectations and work-life balance commitments.
+- [Social Impact](https://www.lycore.org/commitments/social-impact): The public LYCORE pledge for responsible technology, fair access, privacy, inclusive communication and practical support.
+- [How We Work](https://www.lycore.org/commitments/how-we-work): The principles that guide how LYCORE approaches ownership, communication, learning and client work.
 
 ## Frequently Asked Questions
 

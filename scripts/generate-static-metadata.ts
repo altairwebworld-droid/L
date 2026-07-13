@@ -32,6 +32,7 @@ function schemaFor(page: PageMeta) {
       telephone: site.phone,
       logo: { '@type': 'ImageObject', url: `${site.domain}/lycore-logo.jpeg` },
       image: `${site.domain}${site.ogImage}`,
+      sameAs: Object.values(site.socials),
       address: {
         '@type': 'PostalAddress',
         streetAddress: site.address.street,
@@ -86,13 +87,13 @@ function schemaFor(page: PageMeta) {
   if (page.path === '/') {
     const sitelinkCandidates = [
       { name: 'Home', path: '/' },
-      { name: 'Services', path: '/services' },
-      { name: 'AI Receptionist', path: '/ai-receptionist-for-bail-bonds' },
-      { name: 'Bail Bond SEO Services', path: '/bail-bond-seo-services' },
-      { name: 'Bail Bond Website Design', path: '/bail-bond-website-design' },
+      { name: 'What We Build', path: '/what-we-build' },
+      { name: 'Towing', path: '/industries/towing' },
+      { name: 'Bail Bonds', path: '/industries/bail-bonds' },
+      { name: 'Our Commitments', path: '/commitments' },
       { name: 'Free Lead System Audit', path: site.auditPath },
       { name: 'Book a Call', path: '/book' },
-      { name: 'About LYCORE LLC', path: '/about' },
+      { name: 'About LYCORE', path: '/about' },
       { name: 'Contact', path: '/contact' },
     ];
     blocks.push({
@@ -208,15 +209,15 @@ function fallbackFor(page: PageMeta) {
           }
           <nav aria-label="Primary crawl links">
             <a href="${site.auditPath}">${esc(site.primaryCta)}</a>
-            <a href="/services">${esc(site.secondaryCta)}</a>
-            <a href="/bail-bonds">Bail Bonds Lead Systems</a>${
+            <a href="/what-we-build">${esc(site.secondaryCta)}</a>
+            <a href="/industries/bail-bonds">Bail Bond Agency Services</a>${
               page.path === '/'
                 ? `
-            <a href="/ai-receptionist-for-bail-bonds">AI Receptionist for Bail Bonds</a>
-            <a href="/bail-bond-seo-services">Bail Bond SEO Services</a>
-            <a href="/bail-bond-website-design">Bail Bond Website Design</a>
+            <a href="/industries/towing">Towing Services</a>
+            <a href="/vision">Where LYCORE Is Building</a>
+            <a href="/commitments">LYCORE Commitments</a>
             <a href="/book">Book a Call</a>
-            <a href="/about">About LYCORE LLC</a>
+            <a href="/about">About LYCORE</a>
             <a href="/contact">Contact</a>`
                 : ''
             }
@@ -266,7 +267,7 @@ function llmsTxt() {
   const serviceLines = servicePages
     .map((page) => `- [${page.h1}](${absoluteUrl(page.path)}): ${page.description}`)
     .join('\n');
-  const companyPages = allPages.filter((page) => ['legacy', 'home', 'audit'].includes(page.kind) && page.path !== '/');
+  const companyPages = allPages.filter((page) => ['legacy', 'home', 'audit', 'commitment'].includes(page.kind) && page.path !== '/');
   const companyLines = companyPages
     .map((page) => `- [${page.label}](${absoluteUrl(page.path)}): ${page.description}`)
     .join('\n');
