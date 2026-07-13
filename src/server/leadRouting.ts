@@ -69,11 +69,9 @@ type WebhookTarget = {
 export const requiredLeadFields: Array<keyof LeadPayload> = [
   'fullName',
   'email',
-  'phone',
   'location',
   'biggestChallenge',
   'missedCalls',
-  'preferredContactMethod',
 ];
 
 export const jotformFieldIds = {

@@ -3,7 +3,7 @@
 Created: 2026-06-02
 
 - CTA copy used: Get a Free Lead System Review
-- Form fields added: fullName, businessName, website, email, phoneCountryCode, phone, location, industry, biggestChallenge, currentCRM, missedCalls, preferredContactMethod, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
+- Form fields added: fullName, businessName, website, email, location, industry, biggestChallenge, currentCRM, missedCalls, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
 - Validation added: required fields, honeypot spam trap, consent, client states, and server validation.
 - Success/error/loading states: implemented in AuditLeadForm and optimized redirect result pages.
 - Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.

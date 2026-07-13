@@ -29,6 +29,7 @@ export const site = {
     instagram: 'https://www.instagram.com/brendalycore',
     threads: 'https://www.threads.com/@brendalycore',
     linkedin: 'https://www.linkedin.com/company/lycore-group',
+    whatsapp: 'https://wa.me/19178145066',
   },
 };
 
@@ -401,14 +402,11 @@ export const formFieldNames = [
   'businessName',
   'website',
   'email',
-  'phoneCountryCode',
-  'phone',
   'location',
   'industry',
   'biggestChallenge',
   'currentCRM',
   'missedCalls',
-  'preferredContactMethod',
   'message',
   'consent',
   'sourcePage',

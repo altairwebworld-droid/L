@@ -9,13 +9,10 @@ type LeadFormState = {
   businessName: string;
   website: string;
   email: string;
-  phoneCountryCode: string;
-  phone: string;
   location: string;
   biggestChallenge: string;
   currentCRM: string;
   missedCalls: string;
-  preferredContactMethod: string;
   message: string;
   consent: boolean;
   honeypot: string;
@@ -26,24 +23,14 @@ const initialState: LeadFormState = {
   businessName: '',
   website: '',
   email: '',
-  phoneCountryCode: '+1',
-  phone: '',
   location: '',
   biggestChallenge: '',
   currentCRM: '',
   missedCalls: '',
-  preferredContactMethod: '',
   message: '',
   consent: false,
   honeypot: '',
 };
-
-const countryCodes = [
-  { value: '+1', label: '+1' },
-  { value: '+44', label: '+44' },
-  { value: '+52', label: '+52' },
-  { value: '+61', label: '+61' },
-];
 
 export default function AuditLeadForm() {
   const [formData, setFormData] = useState<LeadFormState>(initialState);
@@ -82,7 +69,6 @@ export default function AuditLeadForm() {
     const attribution = getAttribution();
     const payload = {
       ...formData,
-      phone: `${formData.phoneCountryCode} ${formData.phone}`.trim(),
       ...attribution,
       submittedAt: new Date().toISOString(),
     };
@@ -114,7 +100,7 @@ export default function AuditLeadForm() {
   };
 
   return (
-    <form className="glass-panel rounded-[32px] border border-white/10 p-6 md:p-10 space-y-6" onSubmit={handleSubmit}>
+    <form className="lycore-card rounded-[36px] p-6 md:p-10 space-y-7" onSubmit={handleSubmit}>
       {status.type === 'success' ? (
         <div className="py-12 text-center">
           <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
@@ -126,11 +112,11 @@ export default function AuditLeadForm() {
         </div>
       ) : (
         <>
-          <div>
-            <h2 className="text-3xl font-medium mb-3">Request Your Free Review</h2>
+          <div className="border-b border-white/10 pb-7">
+            <p className="micro-label mb-4 text-[#ffad78]">Free systems review</p>
+            <h2 className="text-3xl font-medium mb-3 md:text-4xl">Show us where leads get stuck.</h2>
             <p className="text-stone-300 font-light leading-relaxed">
-              Tell us how leads reach your business today — calls, website, forms, follow-up. We&apos;ll send back a plain-English
-              breakdown of where leads are slipping away and what to fix first. No pressure, no obligation.
+              Tell us how customers reach your business today. We&apos;ll send back a plain-English breakdown of where the experience breaks and what to fix first.
             </p>
           </div>
 
@@ -145,13 +131,6 @@ export default function AuditLeadForm() {
             <Field label="Business name" id="businessName" value={formData.businessName} onChange={(value) => updateField('businessName', value)} required />
             <Field label="Website URL (optional)" id="website" type="url" value={formData.website} onChange={(value) => updateField('website', value)} />
             <Field label="Email" id="email" type="email" value={formData.email} onChange={(value) => updateField('email', value)} required />
-            <PhoneField
-              countryCode={formData.phoneCountryCode}
-              phone={formData.phone}
-              onCountryCodeChange={(value) => updateField('phoneCountryCode', value)}
-              onPhoneChange={(value) => updateField('phone', value)}
-              required
-            />
             <CityField value={formData.location} onChange={(value) => updateField('location', value)} required />
             <Select
               label="Biggest challenge"
@@ -202,14 +181,6 @@ export default function AuditLeadForm() {
               value={formData.missedCalls}
               onChange={(value) => updateField('missedCalls', value)}
               options={['Yes', 'No', 'Not sure']}
-              required
-            />
-            <Select
-              label="Preferred contact method"
-              id="preferredContactMethod"
-              value={formData.preferredContactMethod}
-              onChange={(value) => updateField('preferredContactMethod', value)}
-              options={['Email', 'Phone', 'Text']}
               required
             />
             <CalendarEventCard />
@@ -290,43 +261,6 @@ function CityField({
         ))}
       </datalist>
     </label>
-  );
-}
-
-function PhoneField({
-  countryCode,
-  phone,
-  onCountryCodeChange,
-  onPhoneChange,
-  required = false,
-}: {
-  countryCode: string;
-  phone: string;
-  onCountryCodeChange: (value: string) => void;
-  onPhoneChange: (value: string) => void;
-  required?: boolean;
-}) {
-  return (
-    <fieldset className="block">
-      <legend className="block text-sm uppercase tracking-[0.1em] text-stone-200 mb-3 font-medium">Phone number</legend>
-      <div className="grid grid-cols-[minmax(7rem,0.34fr)_minmax(0,1fr)] gap-3">
-        <select
-          name="phoneCountryCode"
-          value={countryCode}
-          onChange={(event) => onCountryCodeChange(event.target.value)}
-          className="form-control"
-          aria-label="Phone country code"
-          required={required}
-        >
-          {countryCodes.map((option) => (
-            <option key={`${option.label}-${option.value}`} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <input name="phone" type="tel" value={phone} onChange={(event) => onPhoneChange(event.target.value)} className="form-control" autoComplete="tel-national" required={required} />
-      </div>
-    </fieldset>
   );
 }
 

@@ -1,58 +1,87 @@
+import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { site } from '../siteData';
-import SocialLinks from './SocialLinks';
+import SocialLinks, { WhatsAppLink } from './SocialLinks';
+
+const footerLinkClass = 'text-sm font-light text-stone-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-bg-alt/50 pt-24 pb-12 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-        <div className="col-span-1 md:col-span-2">
-          <Link to="/" className="flex items-center gap-3 mb-8" aria-label="LYCORE home">
-            <div className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
-              <div className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#0f0e0d] pb-10 pt-14 md:pt-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ff8a3d]/55 to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-[#ff5a1f]/[0.055] blur-3xl" aria-hidden="true" />
+
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="lycore-card mb-16 flex flex-col gap-8 rounded-[32px] p-7 md:p-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="micro-label mb-4 text-[#ffad78]">Talk to LYCORE</p>
+            <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">Ready to stop losing leads after the first ring?</h2>
+            <p className="mt-4 max-w-xl text-sm font-light leading-relaxed text-stone-300">Tell us what happens when a customer contacts your business. We will help you find the gaps and decide what to fix first.</p>
+          </div>
+          <WhatsAppLink className="w-full shrink-0 sm:w-auto" />
+        </div>
+
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="sm:col-span-2 lg:col-span-5 lg:pr-12">
+            <Link to="/" className="inline-flex items-center gap-4" aria-label="LYCORE home">
+              <img src="/lycore-logo.jpeg" alt="LYCORE GROUP logo" className="h-12 w-12 rounded-xl object-cover shadow-[0_10px_30px_rgba(0,0,0,0.35)]" />
+              <span>
+                <span className="block font-display text-xl font-medium tracking-wide">{site.name}</span>
+                <span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-stone-400">Customer communication systems</span>
+              </span>
+            </Link>
+            <p className="mt-7 max-w-md text-sm font-light leading-relaxed text-stone-300">{site.coreStatement}</p>
+            <Link to={site.auditPath} className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:text-[#ffad78]">
+              Get a free review <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <nav className="lg:col-span-2" aria-label="Footer services">
+            <h2 className="micro-label mb-6">Services</h2>
+            <ul className="flex flex-col gap-4">
+              <li><Link to="/what-we-build#call-answering" className={footerLinkClass}>24/7 Receptionist</Link></li>
+              <li><Link to="/what-we-build#conversion-websites" className={footerLinkClass}>Conversion Websites</Link></li>
+              <li><Link to="/what-we-build#local-search" className={footerLinkClass}>Local Search Profiles</Link></li>
+              <li><Link to="/what-we-build#lead-follow-up" className={footerLinkClass}>Intake &amp; Follow-Up</Link></li>
+              <li><Link to="/what-we-build#business-systems" className={footerLinkClass}>Business Systems</Link></li>
+            </ul>
+          </nav>
+
+          <nav className="lg:col-span-2" aria-label="Footer company">
+            <h2 className="micro-label mb-6">Company</h2>
+            <ul className="flex flex-col gap-4">
+              <li><Link to="/about" className={footerLinkClass}>About</Link></li>
+              <li><Link to="/faq" className={footerLinkClass}>FAQ</Link></li>
+              <li><Link to="/contact" className={footerLinkClass}>Contact</Link></li>
+              <li><Link to="/commitments" className={footerLinkClass}>Commitments</Link></li>
+              <li><Link to="/book" className={footerLinkClass}>Book a call</Link></li>
+            </ul>
+          </nav>
+
+          <div className="sm:col-span-2 lg:col-span-3">
+            <h2 className="micro-label mb-6">Contact</h2>
+            <div className="space-y-4 text-sm font-light text-stone-300">
+              <a href={`mailto:${site.email}`} className="flex items-start gap-3 transition-colors hover:text-white">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#ffad78]" aria-hidden="true" />
+                <span className="break-all">{site.email}</span>
+              </a>
+              <p className="flex items-start gap-3 leading-relaxed">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#ffad78]" aria-hidden="true" />
+                <span>{site.address.street}<br />{site.address.locality}, {site.address.region} {site.address.postalCode}</span>
+              </p>
             </div>
-            <span className="font-display font-medium text-xl tracking-wide">{site.name}</span>
-          </Link>
-          <p className="text-ink text-sm max-w-md leading-relaxed font-light">{site.coreStatement}</p>
-          <div className="mt-6 flex flex-col gap-3 text-sm text-ink/90">
-            <a href={`mailto:${site.email}`} className="hover:text-white transition-colors">{site.email}</a>
-            <p>{site.address.street}, {site.address.locality}, {site.address.region} {site.address.postalCode}</p>
+            <WhatsAppLink className="mt-6 w-full px-4 text-xs" />
+            <h2 className="micro-label mb-4 mt-9">Follow us</h2>
+            <SocialLinks />
           </div>
         </div>
 
-        <div>
-          <h2 className="micro-label mb-6">Services</h2>
-          <ul className="flex flex-col gap-4">
-            <li><Link to="/what-we-build" className="text-sm text-ink/85 hover:text-white transition-colors font-light">What We Build</Link></li>
-            <li><Link to="/industries/towing" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Towing</Link></li>
-            <li><Link to="/industries/bail-bonds" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Bail Bonds</Link></li>
-            <li><Link to="/vision" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Vision</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="micro-label mb-6">Company</h2>
-          <ul className="flex flex-col gap-4">
-            <li><Link to="/about" className="text-sm text-ink/85 hover:text-white transition-colors font-light">About</Link></li>
-            <li><Link to="/faq" className="text-sm text-ink/85 hover:text-white transition-colors font-light">FAQ</Link></li>
-            <li><Link to="/contact" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Contact</Link></li>
-            <li><Link to="/commitments" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Commitments</Link></li>
-            <li><Link to="/book" className="text-sm text-ink/85 hover:text-white transition-colors font-light">Book a call</Link></li>
-            <li><a href={`mailto:${site.email}`} className="text-sm text-ink/85 hover:text-white transition-colors font-light">{site.email}</a></li>
-          </ul>
-          <h2 className="micro-label mt-9 mb-4">Follow us</h2>
-          <SocialLinks />
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-ink/75 font-light tracking-wide">
-          &copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.
-        </p>
-        <div className="flex items-center gap-8">
-          <Link to="/privacy" className="text-xs text-ink/85 hover:text-white transition-colors font-light tracking-wide">Privacy Policy</Link>
-          <Link to="/terms" className="text-xs text-ink/85 hover:text-white transition-colors font-light tracking-wide">Terms of Use</Link>
+        <div className="mt-16 flex flex-col gap-5 border-t border-white/8 pt-8 md:flex-row md:items-center md:justify-between">
+          <p className="text-xs font-light tracking-wide text-stone-400">&copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            <Link to="/privacy" className="text-xs font-light tracking-wide text-stone-400 transition-colors hover:text-white">Privacy Policy</Link>
+            <Link to="/terms" className="text-xs font-light tracking-wide text-stone-400 transition-colors hover:text-white">Terms of Use</Link>
+          </div>
         </div>
       </div>
     </footer>
