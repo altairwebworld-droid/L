@@ -388,7 +388,6 @@ export const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'What We Build', path: '/what-we-build' },
   { label: 'Vision', path: '/vision' },
-  { label: 'Towing', path: '/industries/towing' },
   { label: 'About', path: '/about' },
   { label: 'FAQ', path: '/faq' },
 ];

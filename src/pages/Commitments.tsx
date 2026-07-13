@@ -298,6 +298,13 @@ export const commitments: Record<CommitmentKey, Commitment> = {
 
 const commitmentOrder: CommitmentKey[] = ['how-we-work', 'career-growth', 'work-life-balance', 'social-impact'];
 
+const commitmentCardStyles: Record<CommitmentKey, string> = {
+  'how-we-work': 'md:col-span-7 md:min-h-[370px]',
+  'career-growth': 'md:col-span-5 md:min-h-[370px]',
+  'work-life-balance': 'md:col-span-5 md:min-h-[340px]',
+  'social-impact': 'md:col-span-7 md:min-h-[340px]',
+};
+
 function TextLink({ to, children }: { to: string; children: React.ReactNode }) {
   return (
     <Link to={to} className="group inline-flex items-center gap-2 text-sm text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white">
@@ -310,26 +317,26 @@ function TextLink({ to, children }: { to: string; children: React.ReactNode }) {
 function CommitmentLinks({ current }: { current?: CommitmentKey }) {
   return (
     <section className="px-6 py-20" aria-labelledby="commitment-links-title">
-      <div className="mx-auto max-w-7xl border-t border-white/10 pt-12">
-        <div className="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <div>
-            <p className="micro-label mb-3">Continue reading</p>
-            <h2 id="commitment-links-title" className="text-3xl font-medium md:text-4xl">Related commitments</h2>
-          </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-3">
+      <div className="mx-auto grid max-w-7xl gap-10 border-t border-white/10 pt-12 lg:grid-cols-[0.34fr_0.66fr] lg:gap-16">
+        <div>
+          <p className="micro-label mb-3">Continue reading</p>
+          <h2 id="commitment-links-title" className="max-w-sm text-3xl font-medium md:text-4xl">Related commitments</h2>
+          <div className="mt-7 flex flex-col items-start gap-3">
             <TextLink to="/">LYCORE homepage</TextLink>
             <TextLink to="/what-we-build">Customer communication services</TextLink>
             <TextLink to="/contact">Contact LYCORE</TextLink>
           </div>
         </div>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.025]">
           {commitmentOrder.filter((key) => key !== current).map((key) => (
-            <Link key={key} to={`/commitments/${key}`} className="glass-panel group rounded-[24px] border border-white/10 p-6 transition-transform hover:-translate-y-1">
-              <p className="micro-label mb-4">{commitments[key].eyebrow}</p>
-              <h3 className="mb-3 text-xl font-medium">{commitments[key].title}</h3>
-              <span className="inline-flex items-center gap-2 text-sm text-stone-300">
-                Read this commitment <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </span>
+            <Link
+              key={key}
+              to={`/commitments/${key}`}
+              className="group grid gap-3 border-b border-white/10 p-6 transition-colors last:border-b-0 hover:bg-white/[0.055] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white md:grid-cols-[0.28fr_0.62fr_auto] md:items-center md:p-7"
+            >
+              <p className="text-xs font-medium text-stone-400">{commitments[key].eyebrow}</p>
+              <h3 className="text-xl font-medium tracking-tight md:text-2xl">{commitments[key].title}</h3>
+              <ArrowUpRight className="h-5 w-5 text-stone-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" aria-hidden="true" />
             </Link>
           ))}
         </div>
@@ -359,38 +366,48 @@ function CompanyLinks() {
 export function CommitmentsIndex() {
   return (
     <>
-      <header className="relative overflow-hidden px-6 pb-16 pt-36">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,210,255,0.08),transparent_45%)]" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl">
+      <header className="relative overflow-hidden px-6 pb-14 pt-32">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,210,255,0.055),transparent_42%)]" aria-hidden="true" />
+        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.7fr_0.3fr] lg:items-end">
+          <div>
           <p className="micro-label mb-7">LYCORE commitments</p>
-          <h1 className="max-w-5xl text-5xl font-bold leading-[0.98] tracking-tight md:text-7xl lg:text-8xl">How we intend to grow</h1>
-          <p className="mt-8 max-w-3xl text-xl font-light leading-relaxed text-white md:text-2xl">
-            These commitments describe how LYCORE GROUP LLC approaches its work, people and wider responsibilities as a remote-first, early-stage company.
+            <h1 className="max-w-4xl text-5xl font-bold leading-[0.98] tracking-tight md:text-7xl lg:text-[5.25rem]">How we intend to grow</h1>
+          </div>
+          <p className="max-w-xl text-lg font-light leading-relaxed text-stone-200 lg:pb-2">
+            How LYCORE GROUP LLC approaches its work, people and wider responsibilities as a remote-first, early-stage company.
           </p>
         </div>
       </header>
-      <div className="px-6 pb-12 pt-8">
-        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2">
-          {commitmentOrder.map((key, index) => (
-            <Link key={key} to={`/commitments/${key}`} className="glass-panel group flex min-h-[280px] flex-col justify-between rounded-[32px] border border-white/10 p-7 transition-transform hover:-translate-y-1 md:p-9">
-              <div>
-                <div className="mb-10 flex items-center justify-between">
-                  <p className="micro-label">{commitments[key].eyebrow}</p>
-                  <span className="text-xs text-stone-500">0{index + 1}</span>
-                </div>
-                <h2 className="max-w-xl text-3xl font-medium tracking-tight md:text-4xl">{commitments[key].title}</h2>
+      <div className="px-6 pb-10 pt-8">
+        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-12">
+          {commitmentOrder.map((key) => (
+            <Link
+              key={key}
+              to={`/commitments/${key}`}
+              className={`group relative flex min-h-[310px] flex-col justify-between overflow-hidden rounded-[28px] border border-white/10 bg-[#111216] p-7 transition-[transform,border-color,background-color] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-[#15161b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0 md:p-9 ${commitmentCardStyles[key]}`}
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00d2ff]/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
+              <div className="flex items-start justify-between gap-6">
+                <p className="text-xs font-medium uppercase tracking-[0.16em] text-stone-400">{commitments[key].eyebrow}</p>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/[0.035] text-stone-300 transition-colors group-hover:border-white/30 group-hover:bg-white group-hover:text-black">
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                </span>
               </div>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm text-stone-300">
-                Read this commitment <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-              </span>
+              <div className="mt-16 max-w-2xl">
+                <h2 className={`font-medium leading-[1.02] tracking-tight ${key === 'how-we-work' || key === 'social-impact' ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl'}`}>{commitments[key].title}</h2>
+                <p className="mt-5 max-w-xl text-base font-light leading-relaxed text-stone-400 transition-colors group-hover:text-stone-300">{commitments[key].description}</p>
+              </div>
             </Link>
           ))}
         </div>
-        <div className="mx-auto mt-12 max-w-7xl rounded-[28px] border border-white/10 bg-white/[0.04] p-7 md:p-9">
-          <p className="max-w-3xl text-lg font-light leading-relaxed text-stone-200">
-            These commitments will evolve as LYCORE grows. We will update them when our practices, responsibilities or public commitments materially change.
-          </p>
-          <p className="mt-5 text-sm text-stone-400">Last updated {lastUpdated}</p>
+        <div className="mx-auto mt-14 grid max-w-7xl gap-5 border-t border-white/10 pt-8 md:grid-cols-[0.3fr_0.7fr]">
+          <h2 className="text-xl font-medium">A living commitment</h2>
+          <div className="max-w-3xl">
+            <p className="text-lg font-light leading-relaxed text-stone-300">
+              These commitments will evolve as LYCORE grows. We will update them when our practices, responsibilities or public commitments materially change.
+            </p>
+            <p className="mt-4 text-sm text-stone-500">Last updated {lastUpdated}</p>
+          </div>
         </div>
       </div>
       <CompanyLinks />
@@ -403,8 +420,8 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
 
   return (
     <>
-      <header className="relative overflow-hidden px-6 pb-20 pt-36">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(127,0,255,0.09),transparent_46%)]" aria-hidden="true" />
+      <header className="relative overflow-hidden px-6 pb-20 pt-32">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,210,255,0.045),transparent_44%)]" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl">
           <Link to="/commitments" className="micro-label inline-flex items-center gap-2 hover:text-white">Commitments / {commitment.eyebrow}</Link>
           <h1 className="mt-8 max-w-6xl text-5xl font-bold leading-[0.98] tracking-tight md:text-7xl lg:text-8xl">{commitment.title}</h1>
@@ -419,12 +436,11 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
             <section
               key={section.title}
               className={section.variant === 'highlight'
-                ? 'my-10 rounded-[32px] border border-white/15 bg-white/[0.07] p-7 md:p-10'
+                ? 'my-10 rounded-[28px] border border-white/15 bg-[#141416] p-7 md:p-10'
                 : 'grid gap-6 border-b border-white/10 py-12 md:grid-cols-[0.36fr_0.64fr] md:gap-12'}
               aria-labelledby={`${page}-section-${index}`}
             >
               <div>
-                <p className="micro-label mb-4">{String(index + 1).padStart(2, '0')}</p>
                 <h2 id={`${page}-section-${index}`} className="text-3xl font-medium leading-tight md:text-4xl">{section.title}</h2>
               </div>
               <div className={section.variant === 'highlight' ? 'mt-7' : ''}>
@@ -455,20 +471,21 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
           ))}
 
           {page === 'social-impact' && (
-            <section className="my-10 rounded-[32px] border border-white/15 bg-white text-black p-7 md:p-10" aria-labelledby="pledge-details-title">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-stone-600">Public pledge record</p>
+            <section className="relative my-10 overflow-hidden rounded-[28px] border border-white/15 bg-[#111216] p-7 text-white md:p-10" aria-labelledby="pledge-details-title">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00d2ff]/55 to-transparent" aria-hidden="true" />
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">Public pledge record</p>
               <h2 id="pledge-details-title" className="text-3xl font-bold md:text-4xl">Pledge details</h2>
               <dl className="mt-8 grid gap-6 sm:grid-cols-2">
-                <div><dt className="text-sm text-stone-600">Pledge owner</dt><dd className="mt-1 font-medium">LYCORE GROUP LLC</dd></div>
-                <div><dt className="text-sm text-stone-600">Scope</dt><dd className="mt-1 font-medium">Company operations, client delivery and future community initiatives</dd></div>
-                <div><dt className="text-sm text-stone-600">Review frequency</dt><dd className="mt-1 font-medium">At least annually</dd></div>
-                <div><dt className="text-sm text-stone-600">Current status</dt><dd className="mt-1 font-medium">Foundational commitment</dd></div>
-                <div><dt className="text-sm text-stone-600">Last updated</dt><dd className="mt-1 font-medium">{lastUpdated}</dd></div>
+                <div><dt className="text-sm text-stone-400">Pledge owner</dt><dd className="mt-1 font-medium">LYCORE GROUP LLC</dd></div>
+                <div><dt className="text-sm text-stone-400">Scope</dt><dd className="mt-1 font-medium">Company operations, client delivery and future community initiatives</dd></div>
+                <div><dt className="text-sm text-stone-400">Review frequency</dt><dd className="mt-1 font-medium">At least annually</dd></div>
+                <div><dt className="text-sm text-stone-400">Current status</dt><dd className="mt-1 font-medium">Foundational commitment</dd></div>
+                <div><dt className="text-sm text-stone-400">Last updated</dt><dd className="mt-1 font-medium">{lastUpdated}</dd></div>
               </dl>
             </section>
           )}
 
-          <aside className="my-16 rounded-[32px] border border-white/15 bg-gradient-to-br from-white/[0.09] to-transparent p-7 md:p-10" aria-labelledby={`${page}-summary-title`}>
+          <aside className="my-16 rounded-[28px] border border-white/15 bg-gradient-to-br from-white/[0.09] to-transparent p-7 md:p-10" aria-labelledby={`${page}-summary-title`}>
             <div className="flex items-center justify-between gap-4">
               <p className="micro-label">LinkedIn-ready summary</p>
               <Quote className="h-5 w-5 text-white/50" aria-hidden="true" />
