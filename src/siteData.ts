@@ -13,6 +13,7 @@ export const site = {
   primaryCta: 'Get a Free Lead System Review',
   secondaryCta: 'See What We Build',
   auditPath: '/contact',
+  privacyRequestFormUrl: 'https://form.jotform.com/261947648151061',
   ogImage: '/og-image.png',
   coreStatement:
     'LYCORE answers your phones 24/7, builds websites that convert callers, and handles the follow-up — so small service businesses stop losing jobs to missed calls.',

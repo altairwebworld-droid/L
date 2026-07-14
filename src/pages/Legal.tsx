@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { AlertCircle, FileText, LockKeyhole } from 'lucide-react';
@@ -47,7 +47,7 @@ const privacySections: PolicySection[] = [
     title: '5. How we disclose information',
     paragraphs: ['We do not sell personal information for money, and we do not use information submitted through this site to create cross-context behavioral advertising audiences. We may disclose information only as needed for the purposes described above.'],
     items: [
-      'Service providers: hosting, security, analytics, form, email, CRM, calendar, automation, and communications providers. Depending on which integrations are enabled, this may include Google Analytics, Google Gemini, Jotform, Resend, and configured CRM or workflow providers.',
+      'Service providers: hosting, security, analytics, form, email, CRM, calendar, automation, and communications providers. This includes Jotform for the hosted privacy-request form, and may include Google Analytics, Google Gemini, Resend, and configured CRM or workflow providers depending on the integrations enabled.',
       'Professional advisers, insurers, regulators, law enforcement, or other parties when reasonably necessary to comply with law, protect rights and safety, or respond to a lawful request.',
       'A successor organization in connection with a merger, financing, sale, reorganization, or acquisition, subject to applicable law.',
     ],
@@ -166,81 +166,13 @@ function AnalyticsChoices() {
   );
 }
 
-type PrivacyRequestFormState = {
-  name: string;
-  email: string;
-  requestType: 'access' | 'correct' | 'delete' | 'opt-out' | 'other' | '';
-  details: string;
-  consent: boolean;
-};
-
-const emptyPrivacyRequest: PrivacyRequestFormState = { name: '', email: '', requestType: '', details: '', consent: false };
-
 function PrivacyRequestForm() {
-  const [form, setForm] = useState<PrivacyRequestFormState>(emptyPrivacyRequest);
-  const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({ type: 'idle', message: '' });
-  const [submitting, setSubmitting] = useState(false);
-
-  const submit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitting(true);
-    setStatus({ type: 'idle', message: '' });
-    try {
-      const response = await fetch('/api/privacy-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok || !result.success) throw new Error(result.error || 'Unable to submit your request.');
-      setForm(emptyPrivacyRequest);
-      setStatus({ type: 'success', message: 'Your privacy request was received. We will respond after verifying the request where required.' });
-    } catch (error) {
-      setStatus({ type: 'error', message: error instanceof Error ? error.message : 'Unable to submit your request. Please email services@lycore.org.' });
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
   return (
     <section className="lycore-card mt-8 rounded-2xl p-6 md:p-8" aria-labelledby="privacy-request-title">
       <h2 id="privacy-request-title" className="text-xl font-medium">Submit a privacy request</h2>
-      <p className="mt-3 text-sm font-light leading-relaxed text-stone-300">Use this form only for a privacy request. Do not include passwords, payment details, health information, or government ID numbers.</p>
-      <form className="mt-6 grid gap-5" onSubmit={submit}>
-        <div className="grid gap-5 md:grid-cols-2">
-          <label className="block">
-            <span className="mb-2 block text-sm text-stone-200">Name (optional)</span>
-            <input value={form.name} onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))} className="form-control" autoComplete="name" />
-          </label>
-          <label className="block">
-            <span className="mb-2 block text-sm text-stone-200">Email</span>
-            <input type="email" value={form.email} onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))} className="form-control" autoComplete="email" required />
-          </label>
-        </div>
-        <label className="block">
-          <span className="mb-2 block text-sm text-stone-200">Request type</span>
-          <select value={form.requestType} onChange={(event) => setForm((current) => ({ ...current, requestType: event.target.value as PrivacyRequestFormState['requestType'] }))} className="form-control" required>
-            <option value="">Select one</option>
-            <option value="access">Access my information</option>
-            <option value="correct">Correct my information</option>
-            <option value="delete">Delete my information</option>
-            <option value="opt-out">Opt out of processing</option>
-            <option value="other">Other privacy request</option>
-          </select>
-        </label>
-        <label className="block">
-          <span className="mb-2 block text-sm text-stone-200">Details (optional)</span>
-          <textarea value={form.details} onChange={(event) => setForm((current) => ({ ...current, details: event.target.value }))} className="form-control min-h-28 resize-y" maxLength={2000} />
-        </label>
-        <label className="flex items-start gap-3 text-sm font-light leading-relaxed text-stone-300">
-          <input type="checkbox" checked={form.consent} onChange={(event) => setForm((current) => ({ ...current, consent: event.target.checked }))} className="mt-1 h-4 w-4" required />
-          <span>I confirm that I am submitting a privacy request and authorize LYCORE to use this information to verify and respond to it.</span>
-        </label>
-        <div className="flex flex-wrap items-center gap-4">
-          <button type="submit" disabled={submitting} className="btn-3d disabled:opacity-60">{submitting ? 'Submitting…' : 'Submit privacy request'}</button>
-          {status.type !== 'idle' && <p className={status.type === 'success' ? 'text-sm text-emerald-300' : 'text-sm text-red-300'} role="status">{status.message}</p>}
-        </div>
-      </form>
+      <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-stone-300">The request form is securely hosted by Jotform. Use it only for privacy requests and do not include passwords, payment details, health information, or government ID numbers.</p>
+      <a href={site.privacyRequestFormUrl} target="_blank" rel="noreferrer" className="btn-3d mt-6 inline-flex">Open privacy request form</a>
+      <p className="mt-4 text-xs font-light leading-relaxed text-stone-400">If you cannot access the form, email <a href={`mailto:${site.email}?subject=Privacy%20Request`} className="underline decoration-white/30 underline-offset-2 hover:decoration-white">{site.email}</a> with the subject “Privacy Request.”</p>
     </section>
   );
 }

@@ -177,8 +177,8 @@ const reports: Record<string, string> = {
     ['Human in Control', status, 'Trust section emphasizes AI as support tool'],
     ['Data Consent', status, 'Mandatory checkbox on lead form'],
     ['Analytics Privacy Controls', status, 'Analytics requires visitor opt-in; Global Privacy Control keeps optional analytics off'],
-    ['Privacy Request Intake', 'Partially implemented', '/api/privacy-request has validation and rate limiting; private webhook or email delivery requires environment setup'],
-    ['Privacy Operations Checklist', manual, 'See docs/privacy-operations-checklist.md for vendor inventory, retention, and request-handling decisions'],
+    ['Privacy Request Intake', status, 'Jotform-hosted privacy request form is linked from /privacy-policy'],
+    ['Privacy Operations Checklist', manual, 'See docs/privacy-operations-checklist.md for vendor inventory, retention, Jotform notifications, and request-handling decisions'],
     ['Legal Review', manual, 'Qualified counsel should review the final policy, live vendor settings, retention schedule, and contracts before publication']
   ])),
   'accessibility-report.md': simpleReport('Accessibility Report', table(['Accessibility Requirement', 'Status', 'Implementation Details'], [

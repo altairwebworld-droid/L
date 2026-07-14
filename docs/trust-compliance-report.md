@@ -11,8 +11,8 @@ Created: 2026-06-02
 | Human in Control | Fully implemented | Trust section emphasizes AI as support tool |
 | Data Consent | Fully implemented | Mandatory checkbox on lead form |
 | Analytics Privacy Controls | Fully implemented | Analytics requires visitor opt-in; Global Privacy Control keeps optional analytics off |
-| Privacy Request Intake | Partially implemented | /api/privacy-request has validation and rate limiting; private webhook or email delivery requires environment setup |
-| Privacy Operations Checklist | Requires manual setup | See docs/privacy-operations-checklist.md for vendor inventory, retention, and request-handling decisions |
+| Privacy Request Intake | Fully implemented | Jotform-hosted privacy request form is linked from /privacy-policy |
+| Privacy Operations Checklist | Requires manual setup | See docs/privacy-operations-checklist.md for vendor inventory, retention, Jotform notifications, and request-handling decisions |
 | Legal Review | Requires manual setup | Qualified counsel should review the final policy, live vendor settings, retention schedule, and contracts before publication |
 
 ## Implementation Detail Matrix

@@ -9,8 +9,8 @@ Status: Requires manual setup before relying on the public policy as final legal
 | Hosting and deployment | Vercel or another configured host | Provider, account owner, region, retention, security contacts |
 | Analytics | Google Analytics only when `VITE_GA4_MEASUREMENT_ID` is configured and a visitor opts in | Measurement ID, retention, Google Signals/advertising settings, data-sharing settings |
 | AI chat | Google Gemini only when `GEMINI_API_KEY` is configured | Provider account, model, API retention and training settings |
-| Lead and privacy requests | Resend when configured | Sender domain, recipient inbox, retention, access controls |
-| Forms | Jotform when configured | Form, retention, access controls, deletion process |
+| Lead requests | Resend when configured | Sender domain, recipient inbox, retention, access controls |
+| Privacy requests | Jotform form `261947648151061` | Recipient notifications, retention, access controls, deletion process |
 | CRM and automation | Webhook, CRM, calendar, notification, and follow-up URLs when configured | Every live destination, data fields sent, contract/DPA, owner |
 | Social and messaging links | Facebook, Instagram, Threads, LinkedIn, X, WhatsApp | Confirm links are intentional; these platforms govern data after a visitor leaves the site |
 
@@ -27,15 +27,9 @@ Set and document the actual period, deletion owner, and backup behavior for each
 | Analytics | Configure provider retention and confirm advertising features stay off unless separately disclosed |
 | Security logs and backups | Retention, access owner, restore/deletion process |
 
-## 3. Configure the privacy-request route
+## 3. Configure the Jotform privacy-request workflow
 
-The policy form posts to `/api/privacy-request`. Configure at least one of the following private environment variables:
-
-- `PRIVACY_REQUEST_WEBHOOK_URL` for a private, authenticated case-management workflow.
-- `RESEND_API_KEY` plus `PRIVACY_REQUEST_EMAIL` (or `LEADS_NOTIFY_EMAIL`) for a dedicated inbox.
-- Optional: `PRIVACY_FROM_EMAIL` for the sender identity.
-
-Test one access, correction, deletion, opt-out, and appeal request. Document the identity-verification method, response deadline, owner, and escalation path.
+The policy page links to Jotform form `261947648151061`. In Jotform, configure the recipient notification, access permissions, retention, and any secure case-management automation. Test one access, correction, deletion, opt-out, and appeal request. Document the identity-verification method, response deadline, owner, and escalation path.
 
 ## 4. Review regularly
 

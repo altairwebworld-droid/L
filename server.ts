@@ -4,7 +4,6 @@ import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { chatReply, submitLead, type LeadPayload } from './src/server/leadRouting';
-import { submitPrivacyRequest, type PrivacyRequestPayload } from './src/server/privacyRequests';
 import { checkRateLimit } from './src/server/requestProtection';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -55,16 +54,6 @@ async function startServer() {
     }
     const result = await chatReply(req.body?.message);
     res.status(result.status).json(result.body);
-  });
-
-  app.post('/api/privacy-request', async (req, res) => {
-    const limit = checkRateLimit(req, 'privacy-request', 5, 15 * 60 * 1000);
-    if (!limit.allowed) {
-      res.setHeader('Retry-After', String(limit.retryAfterSeconds));
-      return res.status(429).json({ success: false, error: 'Too many requests. Please try again later.' });
-    }
-    const result = await submitPrivacyRequest(req.body as PrivacyRequestPayload);
-    return res.status(result.status).json(result.body);
   });
 
   if (process.env.NODE_ENV !== 'production') {
