@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, CheckCircle2, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { getAttribution, trackEvent } from '../lib/analytics';
 import { site } from '../siteData';
 import { usaCities } from '../data/usaCities';
@@ -208,7 +209,7 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LYCORE GROUP LLC using this information to respond to my request.
+              I consent to LYCORE GROUP LLC using this information to respond to my request, as described in the <Link to="/privacy-policy" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Privacy Policy</Link>.
             </span>
           </label>
 

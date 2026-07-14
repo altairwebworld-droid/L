@@ -23,10 +23,36 @@ const attributionKeys = {
 } as const;
 
 const storageKey = 'lycore_attribution';
+const consentKey = 'lycore_analytics_consent';
 let gaInitialized = false;
 
+export type AnalyticsConsent = 'granted' | 'denied';
+
+export function hasGlobalPrivacyControl() {
+  return typeof navigator !== 'undefined' && Boolean((navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl);
+}
+
+export function getAnalyticsConsent(): AnalyticsConsent | null {
+  if (typeof window === 'undefined' || hasGlobalPrivacyControl()) return 'denied';
+  try {
+    const value = window.localStorage.getItem(consentKey);
+    return value === 'granted' || value === 'denied' ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+export function setAnalyticsConsent(consent: AnalyticsConsent) {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(consentKey, consent);
+  } catch {
+    // A visitor can still use the site if browser storage is unavailable.
+  }
+}
+
 export function initAnalytics(measurementId?: string) {
-  if (typeof window === 'undefined' || !measurementId || gaInitialized) {
+  if (typeof window === 'undefined' || !measurementId || gaInitialized || getAnalyticsConsent() !== 'granted') {
     return;
   }
 

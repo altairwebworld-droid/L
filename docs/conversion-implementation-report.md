@@ -6,7 +6,7 @@ Created: 2026-06-02
 - Form fields added: fullName, businessName, website, email, location, industry, biggestChallenge, currentCRM, missedCalls, message, consent, sourcePage, landingPage, referrer, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, submittedAt
 - Validation added: required fields, honeypot spam trap, consent, client states, and server validation.
 - Success/error/loading states: implemented in AuditLeadForm and optimized redirect result pages.
-- Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.
+- Pages where CTA appears: homepage, services, service detail pages, contact/audit, navigation, footer.
 - Lead journey: service page -> audit CTA -> built-in audit form or VITE_AUDIT_FORM_URL external intake form -> /api/leads when built-in form is used -> /audit-request-received after external form success -> /booking-confirmed or /booking-failed after calendar flow.
 - Verification status: Fully implemented; live CRM/calendar platform selection and production routing require manual setup.
 

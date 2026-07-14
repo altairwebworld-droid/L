@@ -448,7 +448,7 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
                   <p key={paragraph} className="mb-5 text-lg font-light leading-relaxed text-stone-200 last:mb-0">{paragraph}</p>
                 ))}
                 {section.title === 'Privacy and data responsibility' && (
-                  <p className="mt-5"><TextLink to="/privacy">Read the LYCORE privacy policy</TextLink></p>
+                  <p className="mt-5"><TextLink to="/privacy-policy">Read the LYCORE privacy policy</TextLink></p>
                 )}
                 {page === 'how-we-work' && section.title === 'Flexibility, in service of the work' && (
                   <p className="mt-5"><TextLink to="/commitments/work-life-balance">Remote work and work-life balance</TextLink></p>

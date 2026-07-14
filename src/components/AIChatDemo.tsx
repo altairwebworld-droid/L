@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Bot, Send, User } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { trackEvent } from '../lib/analytics';
 
 interface Message {
@@ -17,8 +18,8 @@ const qualificationFlow = [
   'Do you miss calls after hours?',
   'Which service sounds most relevant right now?',
   'Would you like the free lead system review?',
-  'What is the best email or phone number for follow-up?',
-  'Thanks. LYCORE can review your details and prepare next steps.',
+  'For a review, please use the contact form or email services@lycore.org. Do not send personal contact details in chat.',
+  'Thanks. LYCORE can review your details and prepare next steps once you contact the team securely.',
 ];
 
 function deterministicReply(message: string, step: number) {
@@ -73,7 +74,7 @@ export default function AIChatDemo() {
       const nextStep = Math.min(step + 1, qualificationFlow.length);
       setStep(nextStep);
       if (/audit|crm|after-hours|calls|seo|dashboard|appointment|booking|mobile|app|email|phone/i.test(userText)) {
-        trackEvent('chatbot_lead_captured', { step: nextStep, topic: userText.slice(0, 80) });
+        trackEvent('chatbot_lead_captured', { step: nextStep });
       }
       setIsTyping(false);
     }
@@ -146,6 +147,9 @@ export default function AIChatDemo() {
           <Send size={16} />
         </button>
       </form>
+      <p className="border-t border-white/5 px-4 pb-3 text-[10px] leading-relaxed text-stone-500">
+        Do not share payment, health, government-ID, or other sensitive information here. See our <Link to="/privacy-policy" className="underline hover:text-stone-300">Privacy Policy</Link>.
+      </p>
     </div>
   );
 }

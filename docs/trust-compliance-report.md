@@ -4,13 +4,16 @@ Created: 2026-06-02
 
 | Compliance Item | Status | Implementation Details |
 | --- | --- | --- |
-| Privacy Policy | Fully implemented | /privacy route created |
+| Privacy Policy | Fully implemented | /privacy-policy route created; /privacy permanently redirects |
 | Terms of Service | Fully implemented | /terms route created |
 | AI Disclaimer | Fully implemented | Visible on site and form |
 | No False Guarantees | Fully implemented | Scrubbed revenue/ranking claims |
 | Human in Control | Fully implemented | Trust section emphasizes AI as support tool |
 | Data Consent | Fully implemented | Mandatory checkbox on lead form |
-| Legal Review | Requires manual setup | Agency lawyer should review placeholder policies |
+| Analytics Privacy Controls | Fully implemented | Analytics requires visitor opt-in; Global Privacy Control keeps optional analytics off |
+| Privacy Request Intake | Partially implemented | /api/privacy-request has validation and rate limiting; private webhook or email delivery requires environment setup |
+| Privacy Operations Checklist | Requires manual setup | See docs/privacy-operations-checklist.md for vendor inventory, retention, and request-handling decisions |
+| Legal Review | Requires manual setup | Qualified counsel should review the final policy, live vendor settings, retention schedule, and contracts before publication |
 
 ## Implementation Detail Matrix
 

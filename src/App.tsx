@@ -4,13 +4,12 @@
  */
 
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import WhatWeBuild from './pages/WhatWeBuild';
 import Vision from './pages/Vision';
 import Towing from './pages/Towing';
-import BailBonds from './pages/BailBonds';
 import About from './pages/About';
 import Faq from './pages/Faq';
 import Contact from './pages/Contact';
@@ -21,6 +20,7 @@ import NotFound from './pages/NotFound';
 import { CommitmentPage, CommitmentsIndex } from './pages/Commitments';
 import ScrollToTop from './components/ScrollToTop';
 import { initAnalytics } from './lib/analytics';
+import PrivacyControls from './components/PrivacyControls';
 
 export default function App() {
   useEffect(() => {
@@ -30,13 +30,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <PrivacyControls measurementId={import.meta.env.VITE_GA4_MEASUREMENT_ID} />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="what-we-build" element={<WhatWeBuild />} />
           <Route path="vision" element={<Vision />} />
           <Route path="industries/towing" element={<Towing />} />
-          <Route path="industries/bail-bonds" element={<BailBonds />} />
+          <Route path="industries/bail-bonds" element={<Navigate to="/what-we-build" replace />} />
           <Route path="about" element={<About />} />
           <Route path="faq" element={<Faq />} />
           <Route path="contact" element={<Contact />} />
@@ -49,7 +50,8 @@ export default function App() {
           <Route path="audit-request-received" element={<RedirectResult type="audit-success" />} />
           <Route path="booking-confirmed" element={<RedirectResult type="booking-success" />} />
           <Route path="booking-failed" element={<RedirectResult type="booking-failed" />} />
-          <Route path="privacy" element={<Legal />} />
+          <Route path="privacy-policy" element={<Legal />} />
+          <Route path="privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="terms" element={<Legal />} />
           <Route path="*" element={<NotFound />} />
         </Route>

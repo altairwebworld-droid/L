@@ -8,12 +8,11 @@ Created: 2026-06-02
 | /what-we-build | 24/7 Receptionist, Websites & GBP for Service Businesses | Fully implemented |
 | /vision | Where LYCORE Is Building — Full Business Systems | Fully implemented |
 | /industries/towing | Towing Company Websites & 24/7 Call Answering — LYCORE | Fully implemented |
-| /industries/bail-bonds | Bail Bond Agency Services — LYCORE | Fully implemented |
 | /about | About LYCORE GROUP LLC - Service Business Systems | Fully implemented |
 | /faq | Frequently Asked Questions — LYCORE | Fully implemented |
 | /contact | Contact LYCORE — Free Lead System Review | Fully implemented |
 | /book | Book a Strategy Call — LYCORE | Fully implemented |
-| /privacy | Privacy Policy — LYCORE | Fully implemented |
+| /privacy-policy | Privacy Policy — LYCORE | Fully implemented |
 | /terms | Terms of Use — LYCORE | Fully implemented |
 | /commitments | Our Commitments — LYCORE | Fully implemented |
 | /commitments/career-growth | Career Growth and Continuous Learning — LYCORE | Fully implemented |

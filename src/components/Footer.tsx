@@ -79,7 +79,7 @@ export default function Footer() {
         <div className="mt-16 flex flex-col gap-5 border-t border-white/8 pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-xs font-light tracking-wide text-stone-400">&copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            <Link to="/privacy" className="text-xs font-light tracking-wide text-stone-400 transition-colors hover:text-white">Privacy Policy</Link>
+            <Link to="/privacy-policy" className="text-xs font-light tracking-wide text-stone-400 transition-colors hover:text-white">Privacy Policy</Link>
             <Link to="/terms" className="text-xs font-light tracking-wide text-stone-400 transition-colors hover:text-white">Terms of Use</Link>
           </div>
         </div>

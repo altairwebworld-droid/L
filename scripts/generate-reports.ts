@@ -120,7 +120,7 @@ const reports: Record<string, string> = {
   'schema-implementation-report.md': schemaReport(),
   'tags-and-metadata-report.md': tagsReport(),
   'crawl-indexing-report.md': simpleReport('Crawl And Indexing Report', `- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Pages included in sitemap: ${publicPages.map((page) => page.path).join(', ')}\n- Pages intentionally excluded: ${redirectPages.map((page) => page.path).join(', ')} because they are post-submit/post-booking confirmation pages and should not be indexed.\n- Indexing risks: Search Console/domain verification require manual setup.\n- Verification status: ${status} for files; ${manual} for submission.`),
-  'conversion-implementation-report.md': simpleReport('Conversion Implementation Report', `- CTA copy used: ${site.primaryCta}\n- Form fields added: ${formFieldNames.join(', ')}\n- Validation added: required fields, honeypot spam trap, consent, client states, and server validation.\n- Success/error/loading states: implemented in AuditLeadForm and optimized redirect result pages.\n- Pages where CTA appears: homepage, services, service detail pages, bail bonds, contact/audit, navigation, footer.\n- Lead journey: service page -> audit CTA -> built-in audit form or VITE_AUDIT_FORM_URL external intake form -> /api/leads when built-in form is used -> /audit-request-received after external form success -> /booking-confirmed or /booking-failed after calendar flow.\n- Verification status: ${status}; live CRM/calendar platform selection and production routing require manual setup.`),
+  'conversion-implementation-report.md': simpleReport('Conversion Implementation Report', `- CTA copy used: ${site.primaryCta}\n- Form fields added: ${formFieldNames.join(', ')}\n- Validation added: required fields, honeypot spam trap, consent, client states, and server validation.\n- Success/error/loading states: implemented in AuditLeadForm and optimized redirect result pages.\n- Pages where CTA appears: homepage, services, service detail pages, contact/audit, navigation, footer.\n- Lead journey: service page -> audit CTA -> built-in audit form or VITE_AUDIT_FORM_URL external intake form -> /api/leads when built-in form is used -> /audit-request-received after external form success -> /booking-confirmed or /booking-failed after calendar flow.\n- Verification status: ${status}; live CRM/calendar platform selection and production routing require manual setup.`),
   'backend-crm-readiness-report.md': simpleReport('Backend CRM Readiness Report', `- Payload fields: ${formFieldNames.join(', ')}\n- API routes: api/leads.ts and api/chat.ts for Vercel, with server.ts retained for local development.\n- Webhook placeholders in code: generic CRM/calendar/owner notification/follow-up routing can be connected after a real platform is selected.\n- Validation: required fields, honeypot, sanitization, consent, lead scoring, and safe error handling.\n- Missing credentials: CRM platform, calendar platform, analytics, email/SMS, chatbot provider, booking provider.\n- Manual setup required: choose a real CRM/calendar platform and add production credentials or external form links.\n- Verification status: ${status} for readiness; ${manual} for live routing.`),
   'crm-readiness-report.md': simpleReport('CRM Readiness Report', table(['Field/Requirement', 'Status', 'Notes'], [
     ['Structured Payload', status, 'CRM-friendly field names used'],
@@ -170,13 +170,16 @@ const reports: Record<string, string> = {
     status
   ])) + `\n\n- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Manual setup: verify ${site.domain.replace('https://', '')} in Search Console and submit sitemap.\n`),
   'trust-compliance-report.md': simpleReport('Trust Compliance Report', table(['Compliance Item', 'Status', 'Implementation Details'], [
-    ['Privacy Policy', status, '/privacy route created'],
+    ['Privacy Policy', status, '/privacy-policy route created; /privacy permanently redirects'],
     ['Terms of Service', status, '/terms route created'],
     ['AI Disclaimer', status, 'Visible on site and form'],
     ['No False Guarantees', status, 'Scrubbed revenue/ranking claims'],
     ['Human in Control', status, 'Trust section emphasizes AI as support tool'],
     ['Data Consent', status, 'Mandatory checkbox on lead form'],
-    ['Legal Review', manual, 'Agency lawyer should review placeholder policies']
+    ['Analytics Privacy Controls', status, 'Analytics requires visitor opt-in; Global Privacy Control keeps optional analytics off'],
+    ['Privacy Request Intake', 'Partially implemented', '/api/privacy-request has validation and rate limiting; private webhook or email delivery requires environment setup'],
+    ['Privacy Operations Checklist', manual, 'See docs/privacy-operations-checklist.md for vendor inventory, retention, and request-handling decisions'],
+    ['Legal Review', manual, 'Qualified counsel should review the final policy, live vendor settings, retention schedule, and contracts before publication']
   ])),
   'accessibility-report.md': simpleReport('Accessibility Report', table(['Accessibility Requirement', 'Status', 'Implementation Details'], [
     ['Form Labels', status, 'All inputs have associated <label> tags'],

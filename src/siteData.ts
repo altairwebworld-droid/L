@@ -104,7 +104,7 @@ export const globalFaqs: Faq[] = [
   {
     question: 'What kind of businesses does LYCORE work with?',
     answer:
-      'LYCORE works with small service businesses where a missed call means lost revenue: towing companies, plumbers, roofers, HVAC contractors, electricians, restaurants, urgent care clinics, bail bond agencies, locksmiths, restoration companies, and similar businesses.',
+      'LYCORE works with small service businesses where a missed call means lost revenue: towing companies, plumbers, roofers, HVAC contractors, electricians, restaurants, urgent care clinics, locksmiths, restoration companies, and similar businesses.',
   },
   {
     question: 'How does LYCORE answer my calls?',
@@ -189,7 +189,7 @@ export const servicePages: ServicePage[] = [
       'Build or rebuild your website around phone conversions',
       'Measure answered calls, booked jobs, and lead sources after 30, 60, 90 days',
     ],
-    related: ['/industries/towing', '/industries/bail-bonds', '/vision'],
+    related: ['/industries/towing', '/vision'],
     faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[6], globalFaqs[9]],
   },
 ];
@@ -235,15 +235,6 @@ export const legacyPages: PageMeta[] = [
     faqs: [globalFaqs[1], globalFaqs[4], globalFaqs[5], globalFaqs[6]],
   },
   {
-    path: '/industries/bail-bonds',
-    label: 'Bail Bonds',
-    title: 'Bail Bond Agency Services — LYCORE',
-    description:
-      'LYCORE serves bail bond agencies with 24/7 call answering and phone-first websites. For full bail bond pricing and service details, visit lycore.org.',
-    h1: 'Bail Bond Agency Services',
-    kind: 'legacy',
-  },
-  {
     path: '/about',
     label: 'About',
     title: 'About LYCORE GROUP LLC - Service Business Systems',
@@ -284,11 +275,11 @@ export const legacyPages: PageMeta[] = [
 
 export const legalPages: PageMeta[] = [
   {
-    path: '/privacy',
-    label: 'Privacy',
+    path: '/privacy-policy',
+    label: 'Privacy Policy',
     title: 'Privacy Policy — LYCORE',
     description:
-      'LYCORE privacy policy covering data collection, usage, integrations, and user consent.',
+      'Learn how LYCORE GROUP LLC collects, uses, shares, protects, and retains personal information from this website, and how to exercise your privacy choices.',
     h1: 'Privacy Policy',
     kind: 'legal',
   },

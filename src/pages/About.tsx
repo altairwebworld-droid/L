@@ -18,7 +18,7 @@ export default function About() {
         <div>
           <h2 className="text-4xl font-normal mb-5">Industry experience, broader direction</h2>
           <p className="text-white text-lg leading-relaxed font-light">
-            LYCORE first learned these operational patterns through work in bail bonds and towing. Today the company serves the broader service-business market, including home services, roadside services, clinics, restaurants and other teams where timely communication matters.
+            LYCORE applies practical experience from high-urgency service industries to the broader service-business market, including home services, roadside services, clinics, restaurants and other teams where timely communication matters.
           </p>
         </div>
         <div>

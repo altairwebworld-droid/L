@@ -11,7 +11,6 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 ## Company
 
 - [Vision](https://www.lycore.org/vision): LYCORE is building toward complete operating systems for service industries: from answered calls to automated paperwork to end-to-end business infrastructure.
-- [Bail Bonds](https://www.lycore.org/industries/bail-bonds): LYCORE serves bail bond agencies with 24/7 call answering and phone-first websites. For full bail bond pricing and service details, visit lycore.org.
 - [About](https://www.lycore.org/about): Learn how LYCORE GROUP LLC builds customer communication and workflow systems for service businesses that need reliable response and follow-up.
 - [FAQ](https://www.lycore.org/faq): Answers to common questions about LYCORE 24/7 call answering, websites, Google Business Profile optimization, pricing, and how it all works for service businesses.
 - [Contact](https://www.lycore.org/contact): Get a free review of how your service business handles calls, website visitors, and follow-up. No pressure, no obligation.
@@ -25,7 +24,7 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 ## Frequently Asked Questions
 
 - Q: What kind of businesses does LYCORE work with?
-  A: LYCORE works with small service businesses where a missed call means lost revenue: towing companies, plumbers, roofers, HVAC contractors, electricians, restaurants, urgent care clinics, bail bond agencies, locksmiths, restoration companies, and similar businesses.
+  A: LYCORE works with small service businesses where a missed call means lost revenue: towing companies, plumbers, roofers, HVAC contractors, electricians, restaurants, urgent care clinics, locksmiths, restoration companies, and similar businesses.
 - Q: How does LYCORE answer my calls?
   A: When a call comes in and your team cannot pick up, our receptionist answers on your behalf. It greets the caller by your business name, captures the details you need (name, location, urgency, service type), and routes the information to your team by text, email, or dashboard. Your callers talk to a trained receptionist, not a voicemail box.
 - Q: Is the receptionist a real person or a computer?

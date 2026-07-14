@@ -1,8 +1,10 @@
 import { chatReply, clean } from '../src/server/leadRouting';
+import { checkRateLimit } from '../src/server/requestProtection';
 
 type ApiRequest = {
   method?: string;
   body?: unknown;
+  headers?: Record<string, string | string[] | undefined>;
 };
 
 type ApiResponse = {
@@ -34,6 +36,13 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
 
   if (req.method !== 'POST') {
     res.status(405).json({ success: false, error: 'Method not allowed' });
+    return;
+  }
+
+  const limit = checkRateLimit(req, 'chat', 30, 10 * 60 * 1000);
+  if (!limit.allowed) {
+    res.setHeader('Retry-After', String(limit.retryAfterSeconds));
+    res.status(429).json({ success: false, error: 'Too many requests. Please try again later.' });
     return;
   }
 

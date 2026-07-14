@@ -4,7 +4,7 @@ Created: 2026-06-02
 
 | Page | Related links | Audit link | Verification |
 | --- | --- | --- | --- |
-| /what-we-build | /industries/towing, /industries/bail-bonds, /vision | /contact | Fully implemented |
+| /what-we-build | /industries/towing, /vision | /contact | Fully implemented |
 
 ## Implementation Detail Matrix
 

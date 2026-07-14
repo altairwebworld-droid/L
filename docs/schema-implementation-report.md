@@ -14,7 +14,6 @@ Created: 2026-06-02
 | /industries/towing | Service | Describe service/audit offer | scripts/generate-static-metadata.ts | Yes | Audience and URL match page content | Fully implemented |
 | /industries/towing | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /industries/towing | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
-| /industries/bail-bonds | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /about | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /about | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /faq | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
@@ -25,7 +24,7 @@ Created: 2026-06-02
 | /audit-request-received | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /booking-confirmed | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /booking-failed | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
-| /privacy | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /privacy-policy | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /terms | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /commitments | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /commitments/career-growth | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |

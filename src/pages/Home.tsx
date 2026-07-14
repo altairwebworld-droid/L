@@ -4,7 +4,7 @@ import { globalFaqs, site } from '../siteData';
 
 const industries = [
   'Towing', 'Plumbing', 'Roofing', 'HVAC', 'Electrical',
-  'Restaurants', 'Urgent Care', 'Bail Bonds', 'Locksmiths',
+  'Restaurants', 'Urgent Care', 'Locksmiths',
   'Restoration', 'Auto Repair', 'Pest Control',
 ];
 
