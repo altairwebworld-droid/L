@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAnalyticsConsent, hasGlobalPrivacyControl, initAnalytics, setAnalyticsConsent, type AnalyticsConsent } from '../lib/analytics';
+import { getAnalyticsConsent, hasGlobalPrivacyControl, updateAnalyticsConsent, type AnalyticsConsent } from '../lib/analytics';
 
 export default function PrivacyControls({ measurementId }: { measurementId?: string }) {
   const [showNotice, setShowNotice] = useState(Boolean(measurementId) && getAnalyticsConsent() === null && !hasGlobalPrivacyControl());
@@ -11,9 +11,8 @@ export default function PrivacyControls({ measurementId }: { measurementId?: str
   }, []);
 
   const choose = (consent: AnalyticsConsent) => {
-    setAnalyticsConsent(consent);
+    updateAnalyticsConsent(consent, measurementId);
     setShowNotice(false);
-    if (consent === 'granted') initAnalytics(measurementId);
   };
 
   if (!measurementId || !showNotice) return null;

@@ -14,6 +14,8 @@ type DataLayerWindow = Window & {
   gtag?: (...args: unknown[]) => void;
 };
 
+type AnalyticsWindow = DataLayerWindow & Record<string, unknown>;
+
 const attributionKeys = {
   utm_source: 'utmSource',
   utm_medium: 'utmMedium',
@@ -51,12 +53,25 @@ export function setAnalyticsConsent(consent: AnalyticsConsent) {
   }
 }
 
+export function updateAnalyticsConsent(consent: AnalyticsConsent, measurementId?: string) {
+  setAnalyticsConsent(consent);
+  if (typeof window === 'undefined' || !measurementId) return;
+
+  const analyticsWindow = window as unknown as AnalyticsWindow;
+  analyticsWindow[`ga-disable-${measurementId}`] = consent === 'denied';
+  if (typeof analyticsWindow.gtag === 'function') {
+    analyticsWindow.gtag('consent', 'update', { analytics_storage: consent });
+  }
+  if (consent === 'granted') initAnalytics(measurementId);
+}
+
 export function initAnalytics(measurementId?: string) {
   if (typeof window === 'undefined' || !measurementId || gaInitialized || getAnalyticsConsent() !== 'granted') {
     return;
   }
 
-  const analyticsWindow = window as DataLayerWindow;
+  const analyticsWindow = window as unknown as AnalyticsWindow;
+  analyticsWindow[`ga-disable-${measurementId}`] = false;
   analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
   analyticsWindow.gtag =
     analyticsWindow.gtag ||
@@ -73,6 +88,7 @@ export function initAnalytics(measurementId?: string) {
   }
 
   analyticsWindow.gtag('js', new Date());
+  analyticsWindow.gtag('consent', 'default', { analytics_storage: 'granted' });
   analyticsWindow.gtag('config', measurementId, {
     page_path: window.location.pathname,
     page_location: window.location.href,
@@ -110,7 +126,7 @@ export function getAttribution(): Attribution {
 }
 
 export function trackEvent(name: string, properties: Record<string, unknown> = {}) {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || getAnalyticsConsent() !== 'granted') {
     return;
   }
 

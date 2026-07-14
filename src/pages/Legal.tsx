@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { AlertCircle, FileText, LockKeyhole } from 'lucide-react';
-import { getAnalyticsConsent, hasGlobalPrivacyControl, initAnalytics, setAnalyticsConsent, type AnalyticsConsent } from '../lib/analytics';
+import { getAnalyticsConsent, hasGlobalPrivacyControl, updateAnalyticsConsent, type AnalyticsConsent } from '../lib/analytics';
 import { legalPages, site } from '../siteData';
 
 type PolicySection = {
@@ -130,6 +130,7 @@ const termsSections: PolicySection[] = [
 
 function AnalyticsChoices() {
   const [choice, setChoice] = useState<AnalyticsConsent | null>(() => getAnalyticsConsent());
+  const [savedMessage, setSavedMessage] = useState('');
   const globalPrivacyControl = hasGlobalPrivacyControl();
 
   useEffect(() => {
@@ -139,9 +140,9 @@ function AnalyticsChoices() {
   }, []);
 
   const updateChoice = (next: AnalyticsConsent) => {
-    setAnalyticsConsent(next);
+    updateAnalyticsConsent(next, import.meta.env.VITE_GA4_MEASUREMENT_ID);
     setChoice(next);
-    if (next === 'granted') initAnalytics(import.meta.env.VITE_GA4_MEASUREMENT_ID);
+    setSavedMessage(next === 'granted' ? 'Saved: optional analytics is enabled in this browser.' : 'Saved: optional analytics is disabled in this browser.');
   };
 
   return (
@@ -158,10 +159,11 @@ function AnalyticsChoices() {
       </p>
       {!globalPrivacyControl && (
         <div className="mt-5 flex flex-wrap gap-3">
-          <button type="button" onClick={() => updateChoice('denied')} className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white transition hover:border-white/50">Decline analytics</button>
-          <button type="button" onClick={() => updateChoice('granted')} className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-black transition hover:bg-stone-200">Allow analytics</button>
+          <button type="button" onClick={() => updateChoice('denied')} aria-pressed={choice === 'denied'} className={`rounded-full border px-4 py-2 text-xs font-semibold transition ${choice === 'denied' ? 'border-white bg-white text-black' : 'border-white/20 text-white hover:border-white/50'}`}>Decline analytics</button>
+          <button type="button" onClick={() => updateChoice('granted')} aria-pressed={choice === 'granted'} className={`rounded-full border px-4 py-2 text-xs font-semibold transition ${choice === 'granted' ? 'border-white bg-white text-black' : 'border-white/20 text-white hover:border-white/50'}`}>Allow analytics</button>
         </div>
       )}
+      {savedMessage && <p className="mt-4 text-sm text-emerald-300" role="status" aria-live="polite">{savedMessage}</p>}
     </section>
   );
 }
