@@ -1,83 +1,160 @@
+import { ArrowUpRight, Check, Clock3, PhoneIncoming } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CtaBand, FaqSection, Hero, ProcessSection, ShowcaseSection } from '../components/PageSections';
 import { globalFaqs, site } from '../siteData';
 
 const industries = [
   'Towing', 'Plumbing', 'Roofing', 'HVAC', 'Electrical',
-  'Restaurants', 'Urgent Care', 'Locksmiths',
-  'Restoration', 'Auto Repair', 'Pest Control',
+  'Restaurants', 'Urgent care', 'Locksmiths',
+  'Restoration', 'Auto repair', 'Pest control',
+];
+
+const gaps = [
+  {
+    number: '01',
+    title: 'The call nobody answered',
+    body: 'A customer needs help now. Voicemail gives them a reason to call the next business. Your LYCORE receptionist answers, captures the job, and alerts your team.',
+  },
+  {
+    number: '02',
+    title: 'The website that hides the phone number',
+    body: 'We rebuild the mobile journey around the one action that matters: a fast, obvious tap to call from the first screen.',
+  },
+  {
+    number: '03',
+    title: 'The follow-up that depends on memory',
+    body: 'Every lead arrives with the source, service request, location, and urgency. Confirmations and follow-up happen without sticky notes.',
+  },
+];
+
+const services = [
+  {
+    label: 'Core system',
+    title: '24/7 call answering',
+    body: 'A receptionist trained on your hours, service area, and routing rules answers when your team cannot. Live transfers handle the calls that need a person now.',
+    link: '/what-we-build',
+    featured: true,
+  },
+  {
+    label: 'Conversion',
+    title: 'Websites built to earn the call',
+    body: 'Fast, phone-first pages where urgent customers can understand, trust, and contact you in seconds.',
+    link: '/what-we-build',
+  },
+  {
+    label: 'Local demand',
+    title: 'Google Business Profile',
+    body: 'The right categories, service areas, hours, and content so nearby customers can find you.',
+    link: '/what-we-build',
+  },
+  {
+    label: 'Operations',
+    title: 'Intake and follow-up',
+    body: 'Clean summaries, confirmations, lead routing, and reporting that keep the job moving after the call.',
+    link: '/what-we-build',
+  },
+  {
+    label: 'The longer arc',
+    title: 'Complete business systems',
+    body: 'Industry-specific systems that connect the first ring to dispatch, invoicing, reporting, and repeat business.',
+    link: '/vision',
+  },
 ];
 
 export default function Home() {
   return (
     <>
       <Hero title="Stop losing jobs to missed calls" copy={site.heroCopy} />
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
-          <div>
-            <p className="micro-label mb-4">The problem LYCORE fixes</p>
-            <h2 className="text-4xl md:text-6xl font-normal tracking-tight leading-tight mb-6">
-              A missed call is a lost job. Every time.
+
+      <section className="section-shell py-24 md:py-32" aria-labelledby="problem-heading">
+        <div className="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <p className="micro-label mb-5">Where revenue leaks</p>
+            <h2 id="problem-heading" className="section-title max-w-xl">
+              The job is usually lost before your team sees it.
             </h2>
-            <p className="text-white text-lg leading-relaxed font-light">
-              Your phone rings at 2 a.m. and goes to voicemail. A homeowner with a burst pipe, a driver stranded on the highway, a patient looking for help — they do not leave a message. They call the next number. That job is gone.
+            <p className="mt-7 max-w-md text-base leading-7 text-ink-muted md:text-lg">
+              LYCORE closes the gaps between a customer searching for help and your team booking the work.
             </p>
+            <div className="mt-9 inline-flex items-center gap-3 border-l-2 border-accent px-4 py-2 text-sm text-stone-200">
+              <Clock3 className="h-4 w-4 text-accent" aria-hidden="true" />
+              Built for the call that comes after hours
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              ['The 2 a.m. call nobody answered', 'A tow truck driver misses the call. A plumber misses the call. The customer calls someone else. Our receptionist picks up, captures the details, and your team gets a clean summary before the next ring.'],
-              ['A website that just sits there', 'Your site looks fine on desktop but on a phone at midnight, the number is buried. We build sites where the first thing a caller sees is a tappable phone number.'],
-              ['No idea which marketing works', 'Every lead arrives tagged with its source — so you know whether the call came from Google, a yard sign, or a referral.'],
-              ['Follow-up that depends on memory', 'The caller is captured, the summary is sent, and the follow-up fires automatically. No sticky notes, no forgotten callbacks.'],
-            ].map(([title, body]) => (
-              <article key={title} className="glass-panel rounded-[24px] border border-white/10 p-6">
-                <h3 className="text-xl font-medium mb-3">{title}</h3>
-                <p className="text-sm text-stone-300 font-light leading-relaxed">{body}</p>
+
+          <div className="divide-y divide-white/10 border-y border-white/10">
+            {gaps.map((gap) => (
+              <article key={gap.number} className="group grid gap-5 py-8 sm:grid-cols-[4rem_1fr] md:py-10">
+                <span className="font-mono text-xs tracking-[0.18em] text-accent">{gap.number}</span>
+                <div>
+                  <h3 className="text-2xl font-medium tracking-tight transition-transform duration-300 group-hover:translate-x-1 md:text-3xl">
+                    {gap.title}
+                  </h3>
+                  <p className="mt-4 max-w-2xl text-base font-light leading-7 text-stone-300">{gap.body}</p>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* What LYCORE does — the five offerings */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="mb-12 max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-normal mb-5">More answered calls. More booked jobs. No lost leads.</h2>
-          <p className="text-white font-light leading-relaxed">
-            LYCORE handles the chain from ring to revenue: your calls get answered, your website earns the call, your listing gets found, and the paperwork takes care of itself.
+      <section className="section-shell py-20 md:py-28" aria-labelledby="services-heading">
+        <div className="mb-12 grid gap-7 lg:grid-cols-[1fr_0.65fr] lg:items-end">
+          <div>
+            <p className="micro-label mb-5">One connected system</p>
+            <h2 id="services-heading" className="section-title max-w-3xl">From first ring to a lead your team can act on.</h2>
+          </div>
+          <p className="max-w-xl text-base font-light leading-7 text-stone-300 lg:justify-self-end">
+            Start with the gap costing you the most. Add the rest as your business grows.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            ['24/7 Receptionist', 'Every call answered, day or night. Caller details captured and sent to your team. Live transfers when it matters. Missed calls become booked jobs.', '/what-we-build'],
-            ['Websites That Convert Callers', 'Fast, phone-first sites built so an urgent searcher taps and calls. Your number is tappable from the first screen, and every page is built to earn the call.', '/what-we-build'],
-            ['Google Business Profile', 'The listing that decides whether you get found and called in local search. We optimize categories, photos, hours, and service areas so the right searches find you.', '/what-we-build'],
-            ['Intake + Follow-Up Automation', 'The paperwork behind the call fills itself. Confirmations and follow-ups send themselves. A monthly report shows what the system brought in. Currently rolling out.', '/what-we-build'],
-            ['Business Systems', 'The longer arc: one system per industry that runs the office end to end — from the first call through dispatch, invoicing, and repeat business. This is where we are building toward.', '/vision'],
-          ].map(([title, body, link]) => (
-            <article key={title} className="glass-panel rounded-[28px] border border-white/10 p-7 flex flex-col min-h-[260px]">
-              <h3 className="text-2xl font-medium mb-4 tracking-wide">{title}</h3>
-              <p className="text-stone-300 font-light leading-relaxed flex-grow">{body}</p>
-              <Link to={link!} className="mt-8 text-sm uppercase tracking-[0.12em] font-bold hover:text-white/70 transition-colors">
-                How it works
+
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-12">
+          {services.map((service, index) => (
+            <article
+              key={service.title}
+              className={`service-card ${service.featured ? 'service-card--featured lg:col-span-7 lg:row-span-2' : index < 3 ? 'lg:col-span-5' : 'lg:col-span-6'}`}
+            >
+              <div>
+                <p className="micro-label mb-6 text-accent">{service.label}</p>
+                {service.featured && (
+                  <div className="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-[#17120f] shadow-[0_14px_34px_rgba(255,107,53,0.2)]">
+                    <PhoneIncoming className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                )}
+                <h3 className={`${service.featured ? 'text-4xl md:text-5xl' : 'text-2xl md:text-3xl'} max-w-xl font-medium leading-tight tracking-tight`}>
+                  {service.title}
+                </h3>
+                <p className={`${service.featured ? 'max-w-xl text-base md:text-lg' : 'max-w-md text-sm md:text-base'} mt-5 font-light leading-7 text-stone-300`}>
+                  {service.body}
+                </p>
+              </div>
+              <Link to={service.link} className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-accent">
+                See how it works <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </article>
           ))}
         </div>
       </section>
 
-      {/* Industries strip */}
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="mb-8 max-w-3xl">
-          <p className="micro-label mb-4">Built for businesses like yours</p>
-          <h2 className="text-4xl md:text-5xl font-normal mb-5">Any service business where a missed call is lost revenue</h2>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {industries.map((industry) => (
-            <div key={industry} className="glass-panel rounded-xl border border-white/10 px-4 py-3 text-sm text-stone-200">
-              <span>{industry}</span>
+      <section className="overflow-hidden border-y border-white/8 bg-white/[0.025] py-10" aria-labelledby="industries-heading">
+        <div className="section-shell">
+          <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-center">
+            <div>
+              <p className="micro-label mb-4">Built for urgent demand</p>
+              <h2 id="industries-heading" className="text-2xl font-medium tracking-tight md:text-3xl">
+                If the customer calls the next number, we can help.
+              </h2>
             </div>
-          ))}
+            <ul className="flex flex-wrap gap-x-6 gap-y-4" aria-label="Industries served">
+              {industries.map((industry) => (
+                <li key={industry} className="inline-flex items-center gap-2 text-sm text-stone-300 md:text-base">
+                  <Check className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                  {industry}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
