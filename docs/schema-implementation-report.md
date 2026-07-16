@@ -26,6 +26,7 @@ Created: 2026-06-02
 | /booking-failed | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /privacy-policy | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /terms | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /data-deletion | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /commitments | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /commitments/career-growth | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /commitments/work-life-balance | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |

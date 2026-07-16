@@ -293,6 +293,15 @@ export const legalPages: PageMeta[] = [
     h1: 'Terms of Use',
     kind: 'legal',
   },
+  {
+    path: '/data-deletion',
+    label: 'Data Deletion',
+    title: 'Data Deletion Instructions — LYCORE',
+    description:
+      'How to request deletion of personal information or data connected to your account through LYCORE-operated applications and integrations.',
+    h1: 'Data Deletion Instructions',
+    kind: 'legal',
+  },
 ];
 
 export const commitmentPages: PageMeta[] = [

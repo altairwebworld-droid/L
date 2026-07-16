@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { AlertCircle, FileText, LockKeyhole } from 'lucide-react';
+import { AlertCircle, FileText, LockKeyhole, Trash2 } from 'lucide-react';
 import { getAnalyticsConsent, hasGlobalPrivacyControl, updateAnalyticsConsent, type AnalyticsConsent } from '../lib/analytics';
 import { legalPages, site } from '../siteData';
 
@@ -128,6 +128,36 @@ const termsSections: PolicySection[] = [
   },
 ];
 
+const dataDeletionSections: PolicySection[] = [
+  {
+    title: '1. Scope',
+    paragraphs: [
+      'These instructions explain how to request deletion of personal information or account data connected to applications and integrations operated by LYCORE GROUP LLC ("LYCORE," "we," "us," or "our"), including social media management and automation tools we operate for our own business use.',
+    ],
+  },
+  {
+    title: '2. What data may be deleted',
+    items: [
+      'Access tokens and authorization credentials connecting a third-party platform account to a LYCORE-operated application.',
+      'Cached profile information, page or account identifiers, and posting history retrieved through such an integration.',
+      'Any personal information submitted directly to us in connection with such an integration.',
+    ],
+  },
+  {
+    title: '3. How to request deletion',
+    paragraphs: [
+      `Email ${'services@lycore.org'} with the subject line "Data Deletion Request." Identify the platform account or integration involved and, if applicable, the app or username connected to the request.`,
+      'We will verify the request and permanently delete the associated data from our systems within 7 days.',
+    ],
+  },
+  {
+    title: '4. Contact',
+    paragraphs: [
+      'Questions about this process can be sent to the same address above. LYCORE GROUP LLC, 1209 Mountain Road Pl NE, Ste N, Albuquerque, NM 87110, United States.',
+    ],
+  },
+];
+
 function AnalyticsChoices() {
   const [choice, setChoice] = useState<AnalyticsConsent | null>(() => getAnalyticsConsent());
   const [savedMessage, setSavedMessage] = useState('');
@@ -183,8 +213,9 @@ export default function Legal() {
   const { pathname } = useLocation();
   const page = legalPages.find((legalPage) => legalPage.path === pathname) ?? legalPages[0];
   const isPrivacyPolicy = page.path === '/privacy-policy';
-  const sections = isPrivacyPolicy ? privacySections : termsSections;
-  const Icon = isPrivacyPolicy ? LockKeyhole : FileText;
+  const isDataDeletion = page.path === '/data-deletion';
+  const sections = isPrivacyPolicy ? privacySections : isDataDeletion ? dataDeletionSections : termsSections;
+  const Icon = isPrivacyPolicy ? LockKeyhole : isDataDeletion ? Trash2 : FileText;
 
   return (
     <div className="mx-auto max-w-5xl px-6 pb-20 pt-32">

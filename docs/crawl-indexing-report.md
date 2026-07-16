@@ -4,7 +4,7 @@ Created: 2026-06-02
 
 - Sitemap URL: https://www.lycore.org/sitemap.xml
 - Robots.txt URL: https://www.lycore.org/robots.txt
-- Pages included in sitemap: /, /what-we-build, /vision, /industries/towing, /about, /faq, /contact, /book, /privacy-policy, /terms, /commitments, /commitments/career-growth, /commitments/work-life-balance, /commitments/social-impact, /commitments/how-we-work
+- Pages included in sitemap: /, /what-we-build, /vision, /industries/towing, /about, /faq, /contact, /book, /privacy-policy, /terms, /data-deletion, /commitments, /commitments/career-growth, /commitments/work-life-balance, /commitments/social-impact, /commitments/how-we-work
 - Pages intentionally excluded: /audit-request-received, /booking-confirmed, /booking-failed because they are post-submit/post-booking confirmation pages and should not be indexed.
 - Indexing risks: Search Console/domain verification require manual setup.
 - Verification status: Fully implemented for files; Requires manual setup for submission.

@@ -14,6 +14,7 @@ Created: 2026-06-02
 | /book | Book a Strategy Call — LYCORE | Fully implemented |
 | /privacy-policy | Privacy Policy — LYCORE | Fully implemented |
 | /terms | Terms of Use — LYCORE | Fully implemented |
+| /data-deletion | Data Deletion Instructions — LYCORE | Fully implemented |
 | /commitments | Our Commitments — LYCORE | Fully implemented |
 | /commitments/career-growth | Career Growth and Continuous Learning — LYCORE | Fully implemented |
 | /commitments/work-life-balance | Remote Work and Work-Life Balance — LYCORE | Fully implemented |

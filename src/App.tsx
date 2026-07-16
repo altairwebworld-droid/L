@@ -53,6 +53,7 @@ export default function App() {
           <Route path="privacy-policy" element={<Legal />} />
           <Route path="privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="terms" element={<Legal />} />
+          <Route path="data-deletion" element={<Legal />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
