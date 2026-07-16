@@ -7,14 +7,14 @@ const footerLinkClass = 'text-sm font-light text-stone-300 transition-colors hov
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-[#0f0e0d] pb-10 pt-14 md:pt-20">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ff8a3d]/55 to-transparent" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-[#ff5a1f]/[0.055] blur-3xl" aria-hidden="true" />
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#041738] pb-10 pt-14 md:pt-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-[#2f83f5]/15 blur-3xl" aria-hidden="true" />
 
       <div className="mx-auto max-w-7xl px-6">
         <div className="lycore-card mb-16 flex flex-col gap-8 rounded-[32px] p-7 md:p-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
-            <p className="micro-label mb-4 text-[#ffad78]">Talk to LYCORE</p>
+            <p className="micro-label mb-4 text-white">Talk to LYCORE</p>
             <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">Ready to stop losing leads after the first ring?</h2>
             <p className="mt-4 max-w-xl text-sm font-light leading-relaxed text-stone-300">Tell us what happens when a customer contacts your business. We will help you find the gaps and decide what to fix first.</p>
           </div>
@@ -31,7 +31,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-7 max-w-md text-sm font-light leading-relaxed text-stone-300">{site.coreStatement}</p>
-            <Link to={site.auditPath} className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:text-[#ffad78]">
+            <Link to={site.auditPath} className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:text-[#8dc2ff]">
               Get a free review <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -62,11 +62,11 @@ export default function Footer() {
             <h2 className="micro-label mb-6">Contact</h2>
             <div className="space-y-4 text-sm font-light text-stone-300">
               <a href={`mailto:${site.email}`} className="flex items-start gap-3 transition-colors hover:text-white">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#ffad78]" aria-hidden="true" />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#8dc2ff]" aria-hidden="true" />
                 <span className="break-all">{site.email}</span>
               </a>
               <p className="flex items-start gap-3 leading-relaxed">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#ffad78]" aria-hidden="true" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#8dc2ff]" aria-hidden="true" />
                 <span>{site.address.street}<br />{site.address.locality}, {site.address.region} {site.address.postalCode}</span>
               </p>
             </div>

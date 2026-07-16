@@ -118,7 +118,7 @@ export default function Home() {
               <div>
                 <p className="micro-label mb-6 text-accent">{service.label}</p>
                 {service.featured && (
-                  <div className="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-[#17120f] shadow-[0_14px_34px_rgba(255,107,53,0.2)]">
+                  <div className="mb-8 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-[#0b4b9f] shadow-[0_14px_34px_rgba(0,32,92,0.22)]">
                     <PhoneIncoming className="h-6 w-6" aria-hidden="true" />
                   </div>
                 )}

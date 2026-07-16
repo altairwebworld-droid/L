@@ -1,4 +1,4 @@
-import { ArrowRight, Check, ChevronDown, PhoneCall } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, BadgeCheck, CalendarCheck2, ChevronDown, Crosshair, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Faq, showcaseItems, site } from '../siteData';
 
@@ -32,103 +32,72 @@ export function Hero({
     );
   }
 
+  const benefits = [
+    { icon: Crosshair, label: 'Capture more opportunities' },
+    { icon: BadgeCheck, label: 'Qualify with confidence' },
+    { icon: CalendarCheck2, label: 'Book more appointments' },
+    { icon: RefreshCw, label: 'Follow up that converts' },
+  ];
+
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden border-b border-white/8 pt-32">
-      <div className="hero-grid absolute inset-0" aria-hidden="true" />
-      <div className="hero-orb -right-48 -top-40" aria-hidden="true" />
-      <div className="section-shell relative z-10 grid min-h-[calc(100dvh-8rem)] items-center gap-16 pb-20 pt-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:pb-24">
-        <div>
-          <div className="mb-7 inline-flex items-center gap-3 border border-white/10 bg-white/[0.035] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-stone-300 backdrop-blur-md">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-50" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            Calls answered around the clock
-          </div>
-          <h1 className="display-title max-w-4xl">{title}</h1>
-          <p className="mt-7 max-w-2xl text-lg font-light leading-8 text-stone-300 md:text-xl">{copy}</p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link to={site.auditPath} className="btn-primary w-full sm:w-auto" data-track="cta_click">
-              {site.primaryCta}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link to="/what-we-build" className="btn-text w-full sm:w-auto">
-              {site.secondaryCta}
-            </Link>
-          </div>
-          <div className="mt-12 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-6 text-xs tracking-wide text-stone-400">
-            <span>No long-term contract</span>
-            <span>Built for service businesses</span>
-            <span>Setup around your rules</span>
-          </div>
+    <section className="dispatch-hero" aria-labelledby="dispatch-hero-title">
+      <div className="dispatch-frame">
+        <div className="dispatch-wordmark" aria-hidden="true">LYCORE</div>
+
+        <Link className="dispatch-side-tab dispatch-side-tab--left" to="/vision" aria-label="Explore the LYCORE vision">
+          <ArrowLeft aria-hidden="true" />
+        </Link>
+        <Link className="dispatch-side-tab dispatch-side-tab--right" to="/what-we-build" aria-label="Explore LYCORE systems">
+          <ArrowRight aria-hidden="true" />
+        </Link>
+
+        <div className="dispatch-copy">
+          <h1 id="dispatch-hero-title">
+            <span>Capture. </span><span>Qualify. </span><span>Dispatch. </span><span>Follow up.</span>
+          </h1>
+          <p>The lead system that keeps your pipeline moving and your calendar full.</p>
+          <Link to="/what-we-build" className="dispatch-cta">
+            See how it works <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[34rem] lg:justify-self-end" aria-label="Example of a captured incoming lead">
-          <div className="absolute -inset-8 rounded-full bg-accent/[0.07] blur-3xl" aria-hidden="true" />
-          <div className="lead-console relative">
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-[#17120f]">
-                  <PhoneCall className="h-4 w-4" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="text-sm font-medium text-white">Incoming call answered</p>
-                  <p className="mt-0.5 text-xs text-stone-400">12:42 AM · 01:18 duration</p>
-                </div>
-              </div>
-              <span className="status-chip">Live</span>
-            </div>
-
-            <div className="space-y-4 p-5 md:p-6">
-              <div className="rounded-2xl bg-white/[0.045] p-5">
-                <div className="mb-5 flex items-start justify-between gap-4">
-                  <div>
-                    <p className="micro-label mb-2">New lead</p>
-                    <p className="text-xl font-medium">Emergency roadside tow</p>
-                  </div>
-                  <span className="text-xs font-medium text-accent">High urgency</span>
-                </div>
-                <dl className="grid grid-cols-2 gap-x-5 gap-y-4 text-sm">
-                  <div>
-                    <dt className="text-xs text-stone-500">Location</dt>
-                    <dd className="mt-1 text-stone-200">I-40, Exit 159</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs text-stone-500">Vehicle</dt>
-                    <dd className="mt-1 text-stone-200">Ford F-150</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs text-stone-500">Issue</dt>
-                    <dd className="mt-1 text-stone-200">Won&apos;t start</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs text-stone-500">Source</dt>
-                    <dd className="mt-1 text-stone-200">Google profile</dd>
-                  </div>
-                </dl>
-              </div>
-
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="console-stat">
-                  <span className="console-stat__value">00:14</span>
-                  <span className="console-stat__label">answer time</span>
-                </div>
-                <div className="console-stat">
-                  <span className="console-stat__value">Sent</span>
-                  <span className="console-stat__label">team alert</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 border-t border-white/8 pt-4 text-xs text-stone-400">
-                <Check className="h-4 w-4 text-accent" aria-hidden="true" />
-                Caller details captured and routed automatically
-              </div>
-            </div>
-          </div>
-          <div className="absolute -bottom-5 -left-4 hidden border border-white/10 bg-[#17191a] px-4 py-3 shadow-2xl sm:block">
-            <p className="text-xs text-stone-400">The job stays with you.</p>
-          </div>
+        <div className="dispatch-media">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster="/lycore-dispatch-poster.webp"
+            aria-label="Animated LYCORE dispatch carousel moving leads from capture to qualification, booking, and follow-up"
+          >
+            <source src="/lycore-dispatch-carousel.mp4" type="video/mp4" />
+          </video>
         </div>
+
+        <div className="dispatch-note">
+          <p>Designed to turn more leads into booked jobs. Automatically.</p>
+          <span><span aria-hidden="true">+</span> Follow up</span>
+        </div>
+
+        <div className="dispatch-points" aria-hidden="true">
+          <span className="dispatch-point dispatch-point--capture">Capture</span>
+          <span className="dispatch-point dispatch-point--qualify">Qualify</span>
+          <span className="dispatch-point dispatch-point--book">Book</span>
+        </div>
+
+        <ul className="dispatch-benefits" aria-label="LYCORE system benefits">
+          {benefits.map(({ icon: Icon, label }) => (
+            <li key={label}>
+              <span><Icon aria-hidden="true" /></span>
+              {label}
+            </li>
+          ))}
+        </ul>
+
+        <a className="dispatch-scroll" href="#problem-heading" aria-label="Scroll to learn more">
+          <ArrowDown aria-hidden="true" />
+        </a>
       </div>
     </section>
   );
@@ -240,11 +209,11 @@ export function CtaBand() {
     <section className="section-shell pb-24 md:pb-32">
       <div className="cta-panel">
         <div className="relative z-10 max-w-3xl">
-          <p className="micro-label mb-5 text-[#4f2a1c]">Your next step</p>
-          <h2 className="text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-[#17120f] md:text-6xl">
+          <p className="micro-label mb-5 text-[#225a9f]">Your next step</p>
+          <h2 className="text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-[#082f68] md:text-6xl">
             Find the calls and leads slipping through.
           </h2>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-[#4f2a1c] md:text-lg">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-[#225a9f] md:text-lg">
             Get a free, plain-English review of your call handling, website, and follow-up. We will show you what to fix first.
           </p>
         </div>

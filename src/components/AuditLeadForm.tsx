@@ -114,7 +114,7 @@ export default function AuditLeadForm() {
       ) : (
         <>
           <div className="border-b border-white/10 pb-7">
-            <p className="micro-label mb-4 text-[#ffad78]">Free systems review</p>
+            <p className="micro-label mb-4 text-white">Free systems review</p>
             <h2 className="text-3xl font-medium mb-3 md:text-4xl">Show us where leads get stuck.</h2>
             <p className="text-stone-300 font-light leading-relaxed">
               Tell us how customers reach your business today. We&apos;ll send back a plain-English breakdown of where the experience breaks and what to fix first.
