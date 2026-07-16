@@ -1,6 +1,87 @@
-import { ArrowDown, ArrowLeft, ArrowRight, BadgeCheck, CalendarCheck2, ChevronDown, Crosshair, RefreshCw } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowDown, ArrowRight, BadgeCheck, CalendarCheck2, ChevronDown, Crosshair, RefreshCw } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Faq, showcaseItems, site } from '../siteData';
+
+export function Reveal({
+  children,
+  className = '',
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      className={className}
+      initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function DispatchMedia() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [ready, setReady] = useState(false);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || reduceMotion) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          void video.play().catch(() => undefined);
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.18 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [reduceMotion]);
+
+  return (
+    <div className={`dispatch-media ${ready ? 'dispatch-media--ready' : ''}`}>
+      <img
+        src="/lycore-dispatch-poster.webp"
+        alt=""
+        className="dispatch-media__poster"
+        aria-hidden="true"
+      />
+      {!reduceMotion && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/lycore-dispatch-poster.webp"
+          onCanPlay={() => setReady(true)}
+          aria-label="Animated LYCORE dispatch carousel moving leads from capture to qualification, booking, and follow-up"
+        >
+          <source src="/lycore-dispatch-carousel.mp4" type="video/mp4" />
+        </video>
+      )}
+      <div className="dispatch-media__status" aria-hidden="true">
+        <span />
+        {reduceMotion ? 'Static preview' : ready ? 'System live' : 'Preparing demonstration'}
+      </div>
+    </div>
+  );
+}
 
 export function Hero({
   title,
@@ -13,13 +94,13 @@ export function Hero({
 }) {
   if (compact) {
     return (
-      <section className="section-shell relative overflow-hidden pb-20 pt-40 md:pb-24 md:pt-48">
-        <div className="hero-orb -left-32 top-10" aria-hidden="true" />
-        <div className="relative z-10 max-w-5xl">
-          <p className="micro-label mb-6 text-accent">LYCORE customer systems</p>
-          <h1 className="display-title max-w-5xl">{title}</h1>
-          <p className="mt-8 max-w-3xl text-lg font-light leading-8 text-stone-300 md:text-xl">{copy}</p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+      <section className="page-intro">
+        <div className="page-intro__index" aria-hidden="true">LY / SYSTEMS</div>
+        <Reveal className="page-intro__content">
+          <p className="micro-label mb-6">LYCORE customer systems</p>
+          <h1 className="display-title">{title}</h1>
+          <p className="page-intro__copy">{copy}</p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link to={site.auditPath} className="btn-primary w-full sm:w-auto" data-track="cta_click">
               {site.primaryCta}
             </Link>
@@ -27,7 +108,8 @@ export function Hero({
               Book a strategy call
             </Link>
           </div>
-        </div>
+        </Reveal>
+        <div className="page-intro__rule" aria-hidden="true"><span /></div>
       </section>
     );
   }
@@ -42,14 +124,8 @@ export function Hero({
   return (
     <section className="dispatch-hero" aria-labelledby="dispatch-hero-title">
       <div className="dispatch-frame">
+        <p className="dispatch-kicker">Customer communication, connected</p>
         <div className="dispatch-wordmark" aria-hidden="true">LYCORE</div>
-
-        <Link className="dispatch-side-tab dispatch-side-tab--left" to="/vision" aria-label="Explore the LYCORE vision">
-          <ArrowLeft aria-hidden="true" />
-        </Link>
-        <Link className="dispatch-side-tab dispatch-side-tab--right" to="/what-we-build" aria-label="Explore LYCORE systems">
-          <ArrowRight aria-hidden="true" />
-        </Link>
 
         <div className="dispatch-copy">
           <h1 id="dispatch-hero-title">
@@ -61,29 +137,11 @@ export function Hero({
           </Link>
         </div>
 
-        <div className="dispatch-media">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/lycore-dispatch-poster.webp"
-            aria-label="Animated LYCORE dispatch carousel moving leads from capture to qualification, booking, and follow-up"
-          >
-            <source src="/lycore-dispatch-carousel.mp4" type="video/mp4" />
-          </video>
-        </div>
+        <DispatchMedia />
 
         <div className="dispatch-note">
-          <p>Designed to turn more leads into booked jobs. Automatically.</p>
-          <span><span aria-hidden="true">+</span> Follow up</span>
-        </div>
-
-        <div className="dispatch-points" aria-hidden="true">
-          <span className="dispatch-point dispatch-point--capture">Capture</span>
-          <span className="dispatch-point dispatch-point--qualify">Qualify</span>
-          <span className="dispatch-point dispatch-point--book">Book</span>
+          <span className="dispatch-note__number">01</span>
+          <p>One connected route from incoming lead to booked job.</p>
         </div>
 
         <ul className="dispatch-benefits" aria-label="LYCORE system benefits">
@@ -177,16 +235,18 @@ export function ProcessSection() {
   );
 }
 
-export function FaqSection({ faqs }: { faqs: Faq[] }) {
+export function FaqSection({ faqs, showAllLink = true }: { faqs: Faq[]; showAllLink?: boolean }) {
   return (
     <section id="faq" className="section-shell py-24 md:py-32" aria-labelledby="faq-heading">
       <div className="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24">
         <div>
           <p className="micro-label mb-5">Straight answers</p>
           <h2 id="faq-heading" className="section-title">Questions before we get to work.</h2>
-          <Link to="/faq" className="btn-text mt-8 px-0">
-            View all questions <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
+          {showAllLink && (
+            <Link to="/faq" className="btn-text mt-8 px-0">
+              View all questions <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          )}
         </div>
         <div className="border-t border-white/10">
           {faqs.map((faq) => (

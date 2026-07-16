@@ -1,32 +1,53 @@
-import { CtaBand, FaqSection, Hero } from '../components/PageSections';
+import { CtaBand, FaqSection, Hero, Reveal } from '../components/PageSections';
 import { globalFaqs, site } from '../siteData';
 
 export default function About() {
   return (
     <>
       <Hero compact title="About LYCORE" copy={site.coreStatement} />
-      <section className="py-16 px-6 max-w-5xl mx-auto space-y-10">
-        <div>
-          <h2 className="text-4xl font-normal mb-5">Built around the missed-call problem</h2>
-          <p className="text-white text-lg leading-relaxed font-light">
-            LYCORE GROUP LLC builds customer communication and workflow systems for service businesses. The work starts with a practical problem: when a call goes unanswered or follow-up is delayed, the customer often moves on.
+      <section className="about-manifesto section-shell py-20 md:py-28" aria-labelledby="about-principles-title">
+        <Reveal className="about-manifesto__lead">
+          <p className="micro-label">Why LYCORE exists</p>
+          <p className="about-manifesto__statement">
+            A good service business should not lose the job simply because everyone was already helping someone else.
           </p>
-          <p className="text-white text-lg leading-relaxed font-light mt-5">
-            Our systems support 24/7 call handling, lead capture, appointment booking, customer follow-up, SMS automation, CRM integration and related business workflows. Each setup is shaped around the way the client actually operates.
-          </p>
+        </Reveal>
+
+        <div className="about-principles">
+          <h2 id="about-principles-title" className="sr-only">How LYCORE works</h2>
+          {[
+            {
+              title: 'Start with the missed-call problem',
+              body: 'LYCORE GROUP LLC builds customer communication and workflow systems for service businesses. The work starts where revenue usually disappears: an unanswered call or delayed follow-up.',
+            },
+            {
+              title: 'Shape the system around the operation',
+              body: 'Call handling, lead capture, booking, SMS, CRM integration, and follow-up are configured around the way the client actually works—not around a generic software template.',
+            },
+            {
+              title: 'Measure the work honestly',
+              body: 'We do not guarantee rankings, revenue, or call volume. We measure answered calls, booked opportunities, lead sources, and system performance so the numbers can tell the story.',
+            },
+          ].map((principle, index) => (
+            <Reveal key={principle.title} delay={index * 0.06}>
+              <article className="about-principle">
+                <span>0{index + 1}</span>
+                <h3>{principle.title}</h3>
+                <p>{principle.body}</p>
+              </article>
+            </Reveal>
+          ))}
         </div>
-        <div>
-          <h2 className="text-4xl font-normal mb-5">Industry experience, broader direction</h2>
-          <p className="text-white text-lg leading-relaxed font-light">
-            LYCORE applies practical experience from high-urgency service industries to the broader service-business market, including home services, roadside services, clinics, restaurants and other teams where timely communication matters.
-          </p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-normal mb-5">Measurement, not marketing claims</h2>
-          <p className="text-white text-lg leading-relaxed font-light">
-            We do not guarantee rankings, revenue, or call volume. What we do is measure: answered calls, booked jobs, lead sources, and system performance. The numbers tell the story.
-          </p>
-        </div>
+
+        <Reveal className="measurement-strip">
+          <div>
+            <p className="micro-label mb-3">The operating view</p>
+            <h2>Four signals we keep visible.</h2>
+          </div>
+          <ul role="list">
+            {['Answered calls', 'Booked opportunities', 'Lead sources', 'System performance'].map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </Reveal>
       </section>
       <FaqSection faqs={[globalFaqs[0], globalFaqs[10]]} />
       <CtaBand />

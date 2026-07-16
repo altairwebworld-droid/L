@@ -1,4 +1,31 @@
-import { CtaBand, Hero } from '../components/PageSections';
+import { CtaBand, Hero, Reveal } from '../components/PageSections';
+
+const roadmap = [
+  {
+    phase: 'Now',
+    title: 'Start with the phone',
+    body: 'Most small service businesses lose revenue the same way: the phone rings and nobody answers. LYCORE fixes that first with 24/7 call handling, a phone-first website, and structured intake.',
+    status: 'Available now',
+  },
+  {
+    phase: 'Next',
+    title: 'Automate the paperwork',
+    body: 'Call details move into confirmations, routing, follow-up, and reporting without the owner touching a spreadsheet.',
+    status: 'Rolling out to early partners',
+  },
+  {
+    phase: 'Direction',
+    title: 'Build the operating system',
+    body: 'One system per industry, connecting the first call to dispatch, invoicing, repeat-business follow-up, and reporting.',
+    status: 'Direction—not a product available today',
+  },
+  {
+    phase: 'Long term',
+    title: 'Move beyond the screen',
+    body: 'As LYCORE understands each industry more deeply, the ambition can extend into physical infrastructure, logistics, and services that software alone cannot replace.',
+    status: 'Long-term ambition',
+  },
+];
 
 export default function Vision() {
   return (
@@ -8,34 +35,29 @@ export default function Vision() {
         title="Where We Are Building"
         copy="LYCORE starts with the call. The ambition goes further."
       />
-      <section className="py-16 px-6 max-w-5xl mx-auto space-y-12">
-        <div>
-          <h2 className="text-4xl font-normal mb-5">Start with the phone</h2>
-          <p className="text-white text-lg leading-relaxed font-light">
-            Most small service businesses lose revenue the same way: the phone rings and nobody answers. The website does not convert. The follow-up does not happen. LYCORE fixes that first — a receptionist that answers every call, a website built for callers, and intake that runs itself.
-          </p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-normal mb-5">Then automate the paperwork</h2>
-          <p className="text-white text-lg leading-relaxed font-light">
-            After the call, details need to go somewhere: dispatch, invoicing, customer records. Today that work is manual for most service businesses. LYCORE is building the layer that moves call data into action — confirmations, routing, follow-up, and reporting — without the owner touching a spreadsheet.
-          </p>
-          <p className="text-sm text-stone-400 font-light mt-3 italic">This layer is currently rolling out to early partners.</p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-normal mb-5">Then build the operating system</h2>
-          <p className="text-white text-lg leading-relaxed font-light">
-            The long-term direction: one system per industry that runs the office end to end. From the first call through dispatch, invoicing, repeat-business follow-up, and reporting. The system knows the industry because it was built for it — not adapted from generic software.
-          </p>
-          <p className="text-sm text-stone-400 font-light mt-3 italic">This is direction, not a product available today.</p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-normal mb-5">Eventually, past software</h2>
-          <p className="text-white text-lg leading-relaxed font-light">
-            Software is a starting point. As LYCORE understands the operational patterns of each industry deeply enough, the ambition extends into physical infrastructure, logistics, and services that cannot be replaced by a screen. How that unfolds depends on what we learn building the layers above.
-          </p>
-          <p className="text-sm text-stone-400 font-light mt-3 italic">This is long-term direction.</p>
-        </div>
+      <section className="vision-roadmap section-shell py-20 md:py-28" aria-labelledby="roadmap-title">
+        <header className="vision-roadmap__intro">
+          <p className="micro-label mb-5">Build sequence</p>
+          <h2 id="roadmap-title" className="section-title">Useful now. Ambitious over time.</h2>
+          <p>Each layer earns the right to exist by making the previous one work better.</p>
+        </header>
+        <ol className="vision-roadmap__steps">
+          {roadmap.map((step, index) => (
+            <li key={step.phase}>
+              <Reveal>
+                <article className="vision-step">
+                  <div className="vision-step__marker"><span>0{index + 1}</span></div>
+                  <div className="vision-step__copy">
+                    <p className="micro-label">{step.phase}</p>
+                    <h3>{step.title}</h3>
+                    <p>{step.body}</p>
+                  </div>
+                  <p className="vision-step__status">{step.status}</p>
+                </article>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
       </section>
       <CtaBand />
     </>

@@ -9,7 +9,6 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-[#041738] pb-10 pt-14 md:pt-20">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-[#2f83f5]/15 blur-3xl" aria-hidden="true" />
 
       <div className="mx-auto max-w-7xl px-6">
         <div className="lycore-card mb-16 flex flex-col gap-8 rounded-[32px] p-7 md:p-10 lg:flex-row lg:items-center lg:justify-between">

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { CtaBand, FaqSection, Hero, ProcessSection } from '../components/PageSections';
-import { globalFaqs, site } from '../siteData';
+import { Check } from 'lucide-react';
+import { CtaBand, FaqSection, Hero, ProcessSection, Reveal } from '../components/PageSections';
+import { globalFaqs } from '../siteData';
 
 const offerings = [
   {
@@ -72,23 +72,45 @@ export default function WhatWeBuild() {
         title="What We Build"
         copy="LYCORE handles the chain from ring to revenue. Here is what your business gets."
       />
-      <section className="py-10 px-6 max-w-7xl mx-auto space-y-10">
-        {offerings.map((offering) => (
-          <article id={offering.id} key={offering.title} className="glass-panel scroll-mt-28 rounded-[32px] border border-white/10 p-8 md:p-10">
-            <h2 className="text-3xl font-medium mb-4">{offering.title}</h2>
-            <p className="text-white text-lg leading-relaxed font-light mb-6">{offering.description}</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              {offering.details.map((detail) => (
-                <div key={detail} className="lycore-card rounded-2xl p-5">
-                  <p className="text-sm text-stone-200 font-light leading-relaxed">{detail}</p>
+      <section className="offerings-ledger section-shell py-20 md:py-28" aria-labelledby="offerings-heading">
+        <aside className="offerings-ledger__nav">
+          <p className="micro-label mb-5">The system</p>
+          <h2 id="offerings-heading" className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">Five layers. Add only what the operation needs.</h2>
+          <nav className="mt-8 hidden border-l border-white/12 pl-5 lg:block" aria-label="What LYCORE builds">
+            {offerings.map((offering, index) => (
+              <a key={offering.id} href={`#${offering.id}`} className="block py-2 text-sm text-stone-400 transition-colors hover:text-white">
+                0{index + 1} / {offering.title}
+              </a>
+            ))}
+          </nav>
+        </aside>
+
+        <div className="offerings-ledger__rows">
+          {offerings.map((offering, index) => (
+            <Reveal key={offering.title}>
+              <article id={offering.id} className="offering-row scroll-mt-32">
+                <div className="offering-row__heading">
+                  <span>0{index + 1}</span>
+                  <div>
+                    <h3>{offering.title}</h3>
+                    {offering.note && <p className="offering-row__status">{offering.note}</p>}
+                  </div>
                 </div>
-              ))}
-            </div>
-            {offering.note && (
-              <p className="text-sm text-stone-400 font-light italic">{offering.note}</p>
-            )}
-          </article>
-        ))}
+                <div>
+                  <p className="offering-row__description">{offering.description}</p>
+                  <ul className="offering-row__details" role="list">
+                    {offering.details.map((detail) => (
+                      <li key={detail}>
+                        <Check aria-hidden="true" />
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </section>
       <ProcessSection />
       <FaqSection faqs={[globalFaqs[1], globalFaqs[6], globalFaqs[7], globalFaqs[8]]} />

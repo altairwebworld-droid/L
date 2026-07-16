@@ -1,0 +1,36 @@
+{
+  "directions": [
+  {
+    "name": "Operational Theatre",
+    "metaphor": "A dispatch floor where one live system is demonstrated clearly, then unpacked chapter by chapter.",
+    "material": "Deep cobalt field, warm-white structural frame, crisp rules, restrained translucent surfaces.",
+    "composition": "One dominant hero stage followed by open ledgers, split narratives, and vertical operating sequences.",
+    "typography": "Large direct sans-serif headlines with compact operational labels and readable editorial body copy.",
+    "motion": "Poster-first video reveal, short in-view chapter entrances, and small directional feedback on controls.",
+    "conversion": "A visible primary route to book a demo, with contextual proof and secondary contact options.",
+    "risk": "Can feel too technical if the copy loses its human and revenue-focused language."
+  },
+  {
+    "name": "Signal Atlas",
+    "metaphor": "A network map tracing every customer signal from first contact to booked work.",
+    "material": "Blueprint blue, plotted lines, coordinate ticks, small luminous nodes, and data-dense panels.",
+    "composition": "Diagram-led sections with lateral routes, branching pathways, and compact modular readouts.",
+    "typography": "Condensed display type paired with technical monospace annotations.",
+    "motion": "Lines draw between nodes and labels activate as the visitor scrolls through the route.",
+    "conversion": "Interactive route ends at a diagnostic audit invitation.",
+    "risk": "It doubles down on the geometric decoration the current design already overuses."
+  },
+  {
+    "name": "Human Dispatch",
+    "metaphor": "A documentary story about the people behind urgent calls and the relief of a reliable response.",
+    "material": "Ink blue, paper-white editorial fields, candid service photography, and soft grain.",
+    "composition": "Magazine-like image and quote sequences with generous whitespace and fewer interface elements.",
+    "typography": "Expressive editorial serif headlines with quiet sans-serif supporting text.",
+    "motion": "Slow image dissolves, restrained text reveals, and nearly static controls.",
+    "conversion": "Trust-building stories lead into a personal consultation invitation.",
+    "risk": "It requires a strong library of authentic client photography and underuses the supplied dispatch video."
+  }
+  ],
+  "selected": "Operational Theatre",
+  "selection_reason": "It preserves the supplied dispatch video and recognizable blue frame while directly fixing the overlap, decorative-control, and repeated-card problems found in the audit."
+}
