@@ -1,81 +1,135 @@
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { primaryNavigation } from '../content/navigation';
+import { gsap } from '../lib/gsap';
 import { site } from '../siteData';
 
-const primaryLinks = [
-  { label: 'Product', path: '/what-we-build' },
-  { label: 'Solutions', path: '/vision' },
-  { label: 'Customers', path: '/industries/towing' },
-  { label: 'Resources', path: '/faq' },
-];
-
+/**
+ * Standard top navigation bar. Small logo mark on the left (no wordmark —
+ * "Home" is a link like everything else), links centre-left, one rounded CTA
+ * on the right. Transparent over the hero, tinted glass once scrolled.
+ */
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation();
-  const isHome = pathname === '/';
+  const [spotlightOn, setSpotlightOn] = useState(false);
+  const { pathname, hash } = useLocation();
+  const navRef = useRef<HTMLDivElement>(null);
+  const ambience = useRef({ x: 0 });
+
+  useEffect(() => setIsOpen(false), [pathname, hash]);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 28);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => setIsOpen(false), [pathname]);
+  // Mouse-follow spotlight over the link row (fine-pointer devices only).
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav || !window.matchMedia('(pointer: fine)').matches) return;
+
+    const onMove = (event: MouseEvent) => {
+      const rect = nav.getBoundingClientRect();
+      nav.style.setProperty('--spotlight-x', `${event.clientX - rect.left}px`);
+      setSpotlightOn(true);
+    };
+    const onLeave = () => setSpotlightOn(false);
+
+    nav.addEventListener('mousemove', onMove);
+    nav.addEventListener('mouseleave', onLeave);
+    return () => {
+      nav.removeEventListener('mousemove', onMove);
+      nav.removeEventListener('mouseleave', onLeave);
+    };
+  }, []);
+
+  // A persistent accent "ambience" light springs to whichever link is active,
+  // so the current page stays marked even when nothing is hovered.
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const active = nav.querySelector<HTMLElement>('a.is-active');
+    if (!active) {
+      nav.style.setProperty('--ambience-x', '-200px');
+      return;
+    }
+
+    const navBox = nav.getBoundingClientRect();
+    const activeBox = active.getBoundingClientRect();
+    const target = activeBox.left - navBox.left + activeBox.width / 2;
+
+    gsap.to(ambience.current, {
+      x: target,
+      duration: 0.6,
+      ease: 'elastic.out(1, 0.65)',
+      onUpdate: () => nav.style.setProperty('--ambience-x', `${ambience.current.x}px`),
+    });
+  }, [pathname, scrolled]);
 
   return (
-    <nav
-      className={`site-nav ${isHome ? 'site-nav--home' : 'site-nav--inner'} ${scrolled ? 'site-nav--scrolled' : ''}`}
-      aria-label="Primary navigation"
-    >
+    <nav className={`site-nav${scrolled ? ' site-nav--scrolled' : ''}`} aria-label="Primary navigation">
       <div className="site-nav__inner">
-        <div className="site-nav__links site-nav__links--left">
-          {primaryLinks.map((item) => (
-            <NavLink key={item.path} to={item.path} className={({ isActive }) => isActive ? 'is-active' : ''}>
+        <Link to="/" className="site-nav__brand" aria-label="Home">
+          <img src="/lycore-logo.jpeg" alt="" aria-hidden="true" />
+        </Link>
+
+        <div ref={navRef} className={`site-nav__links${spotlightOn ? ' is-spotlit' : ''}`}>
+          <span className="site-nav__spotlight" aria-hidden="true" />
+          <span className="site-nav__ambience" aria-hidden="true" />
+          {primaryNavigation.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === '/'}
+              className={({ isActive }) => (isActive ? 'is-active' : '')}
+            >
               {item.label}
             </NavLink>
           ))}
         </div>
 
-        <Link to="/" className="site-nav__brand" aria-label="LYCORE home">
-          {site.name}
-        </Link>
-
-        <div className="site-nav__links site-nav__links--right">
-          <NavLink to="/about" className={({ isActive }) => isActive ? 'is-active' : ''}>About</NavLink>
-          <NavLink to="/contact" className={({ isActive }) => isActive ? 'is-active' : ''}>Contact</NavLink>
-          <Link to="/book" className="site-nav__demo" data-track="book_call_click">
-            Book a demo <ArrowRight aria-hidden="true" />
+        <div className="site-nav__actions">
+          <Link to={site.auditPath} className="site-nav__demo" data-track="cta_click">
+            Get a free review
+            <ArrowRight aria-hidden="true" />
           </Link>
+          <button
+            className="site-nav__toggle"
+            onClick={() => setIsOpen((open) => !open)}
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            type="button"
+          >
+            {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
         </div>
-
-        <button
-          className="site-nav__toggle"
-          onClick={() => setIsOpen((open) => !open)}
-          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={isOpen}
-          type="button"
-        >
-          {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-        </button>
       </div>
 
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -10, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
           className="site-nav__mobile"
+          data-lenis-prevent
         >
-          {[...primaryLinks, { label: 'About', path: '/about' }, { label: 'Contact', path: '/contact' }].map((item) => (
-            <Link key={item.path} to={item.path}>{item.label}</Link>
+          {primaryNavigation.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) => (isActive ? 'is-active' : '')}
+            >
+              {item.label}
+            </NavLink>
           ))}
-          <Link to="/book" className="site-nav__mobile-demo" data-track="book_call_click">
-            Book a demo <ArrowRight aria-hidden="true" />
-          </Link>
-          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <div className="site-nav__mobile-divider" />
+          <Link to="/book">Book a strategy call</Link>
+          <p className="site-nav__mobile-meta">{site.email}</p>
         </motion.div>
       )}
     </nav>

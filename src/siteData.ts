@@ -51,44 +51,92 @@ export type PageMeta = {
 
 export const showcaseItems = [
   {
-    title: 'Towing company homepage with tap-to-call',
-    eyebrow: 'Sample Website 01',
-    image: '/showcase/sample-verdict-strategic-bail.jpeg',
-    alt: 'Sample towing company website concept with a clean editorial layout, large headline, and tap-to-call button.',
+    title: 'Crave Atelier — beauty salon',
+    eyebrow: 'Concept 01',
+    image: '/showcase/concept-01.png',
+    alt: 'Website concept for a beauty salon with a clean editorial layout and booking action.',
     copy:
-      'A clean, phone-first homepage built for urgency. The call button is visible from the first screen, service areas are clear, and the page loads fast on any phone.',
+      'A phone-first salon homepage built around booking, not browsing — the request-appointment action stays visible from the first screen.',
   },
   {
-    title: 'Plumbing service landing page',
-    eyebrow: 'Sample Website 02',
-    image: '/showcase/sample-aegis-bail-bonds-agency.jpeg',
-    alt: 'Sample plumbing service website concept with bold typography, black and white styling, and call-now action.',
+    title: 'Lumina Cleaning Co — cleaning services',
+    eyebrow: 'Concept 02',
+    image: '/showcase/concept-02.png',
+    alt: 'Website concept for a residential cleaning company with a bold hero and call-to-book action.',
     copy:
-      'A bold homepage direction with oversized typography, an instant call action, and a layout that tells a homeowner exactly what you do in three seconds.',
+      'A bold homepage direction for a cleaning company, with a clear service area, pricing signals, and an instant quote action above the fold.',
   },
   {
-    title: 'HVAC repair conversion-focused hero',
-    eyebrow: 'Sample Website 03',
-    image: '/showcase/sample-bail-relief-freedom-secured.jpeg',
-    alt: 'Sample HVAC repair website concept with large headline, request service button, and service callouts.',
+    title: 'Terra Well Chiropractic — chiropractic clinic',
+    eyebrow: 'Concept 03',
+    image: '/showcase/concept-03.png',
+    alt: 'Website concept for a chiropractic clinic with a calm layout and appointment request button.',
     copy:
-      'A high-impact landing page built for urgent visitors. The request-service button sits above the fold, and service callouts answer the most common questions immediately.',
+      'A calm, trust-building homepage for a health clinic, with the appointment button and clinic hours visible without scrolling.',
   },
   {
-    title: 'Restoration company service page',
-    eyebrow: 'Sample Website 04',
-    image: '/showcase/sample-aegis-secured-freedom.jpeg',
-    alt: 'Sample restoration company website concept with a structured layout showing process steps and service areas.',
+    title: 'Auto Studio — car detailing',
+    eyebrow: 'Concept 04',
+    image: '/showcase/concept-04.png',
+    alt: 'Website concept for a car detailing business with a structured layout showing services and booking.',
     copy:
-      'A structured service page that explains process, response times, coverage areas, and next steps in a layout built for someone in the middle of an emergency.',
+      'A structured service page that lays out packages, turnaround time, and a booking action for a visitor who wants their car handled today.',
   },
   {
-    title: 'Locksmith premium brand page',
-    eyebrow: 'Sample Website 05',
-    image: '/showcase/sample-aegis-underwriter.jpeg',
-    alt: 'Sample locksmith website concept with strong brand presence, contact actions, and process steps.',
+    title: 'Verde Pest Control — pest control',
+    eyebrow: 'Concept 05',
+    image: '/showcase/concept-05.png',
+    alt: 'Website concept for a pest control company with a strong hero and request-service action.',
     copy:
-      'A polished direction with visible contact actions, process steps, and stronger brand personality for businesses that want a more distinctive look online.',
+      'A direct-response homepage for an urgent home-service call, with the request-service button and coverage area answered immediately.',
+  },
+  {
+    title: 'Harborview Veterinary Care — veterinary clinic',
+    eyebrow: 'Concept 06',
+    image: '/showcase/concept-06.png',
+    alt: 'Website concept for a veterinary clinic with a warm layout and appointment request action.',
+    copy:
+      'A warm, reassuring homepage for a veterinary practice, built so a worried pet owner can find the phone number and book in seconds.',
+  },
+  {
+    title: 'Bright Smiles Pediatric Dentistry — pediatric dental practice',
+    eyebrow: 'Concept 07',
+    image: '/showcase/concept-07.png',
+    alt: 'Website concept for a pediatric dental practice with a friendly layout and booking call to action.',
+    copy:
+      'A friendly, family-facing homepage for a pediatric practice, with appointment booking and new-patient information front and center.',
+  },
+  {
+    title: 'Precision Garage Doors — garage door repair',
+    eyebrow: 'Concept 08',
+    image: '/showcase/concept-08.png',
+    alt: 'Website concept for a garage door repair company with a bold hero and call-now action.',
+    copy:
+      'A no-nonsense homepage for a repair business, with a tappable phone number, service list, and response-time promise up top.',
+  },
+  {
+    title: 'Verdeo Landscape & Outdoor Living — landscaping',
+    eyebrow: 'Concept 09',
+    image: '/showcase/concept-09.png',
+    alt: 'Website concept for a landscaping and outdoor living company with a premium visual layout.',
+    copy:
+      'A premium, visual-first homepage for a landscaping company, using large project imagery alongside a clear quote-request action.',
+  },
+  {
+    title: 'Lumière Med Spa — medical spa',
+    eyebrow: 'Concept 10',
+    image: '/showcase/concept-10.png',
+    alt: 'Website concept for a medical spa with an elegant layout and consultation booking action.',
+    copy:
+      'An elegant homepage direction for a med spa, balancing brand personality with a straightforward consultation-booking path.',
+  },
+  {
+    title: 'Crestflow Plumbing — plumbing services',
+    eyebrow: 'Concept 11',
+    image: '/showcase/concept-11.png',
+    alt: 'Website concept for a plumbing company with a direct hero and emergency call action.',
+    copy:
+      'An emergency-ready homepage for a plumbing business, with the call action, service area, and availability answered in the first screen.',
   },
 ];
 

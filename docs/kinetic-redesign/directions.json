@@ -1,0 +1,42 @@
+{
+  "directions": [
+    {
+      "name": "Kinetic Dispatch Theatre",
+      "metaphor": "A physical dispatch machine turns an unanswered signal into a structured opportunity",
+      "material": "Matte cobalt enamel, opaque ivory frame, paper cards, rubber rails and restrained indicator light",
+      "composition": "Product theatre with one pinned machine stage and continuous mechanical chapters",
+      "typography": "Bold geometric grotesk display with durable neutral reading text and sparse mono operational data",
+      "motion": "Cards advance, rails fill and modules lock into place through scrubbed mechanical movement",
+      "palette": "Cobalt depth, matte ivory, ink navy and controlled module accents",
+      "media": "Existing pre-rendered dispatch-machine loop with poster and coded SVG frame",
+      "navigation": "Transparent frame-aligned navigation that compresses into a denser blue bar after hero movement",
+      "conversion": "Free lead-system review remains visible before and after the narrative"
+    },
+    {
+      "name": "Operational Blueprint",
+      "metaphor": "A lead is traced across an accountable routing plan",
+      "material": "Uncoated blueprint paper, plotted ink, registration marks and annotated service records",
+      "composition": "Operational atlas with split ledgers, route diagrams and data-first editorial pages",
+      "typography": "Condensed engineered display, humanist text and dense mono annotations",
+      "motion": "Paths draw, annotations resolve and route states switch with short precise reveals",
+      "palette": "Blueprint navy, chalk white, signal cyan and paper grey",
+      "media": "Top-down diagrams and static machine details",
+      "navigation": "Persistent utility rail with route state",
+      "conversion": "Diagnostic audit framed as a system inspection"
+    },
+    {
+      "name": "Human Relay",
+      "metaphor": "A chain of people and moments keeps a customer request from being dropped",
+      "material": "Documentary daylight, warm paper, handwritten shift notes and practical service environments",
+      "composition": "Human-perspective editorial narrative with image-led handoffs and quieter reading chapters",
+      "typography": "Warm humanist display with highly legible sans text and minimal labels",
+      "motion": "Slow image dissolves, handoff cuts and restrained text reveals",
+      "palette": "Ink blue, warm ivory, daylight neutrals and one safety accent",
+      "media": "Authentic staff and service-business documentary photography",
+      "navigation": "Simple editorial masthead with direct contact action",
+      "conversion": "Trust-led consultation after the operating story"
+    }
+  ],
+  "selected": "Kinetic Dispatch Theatre",
+  "selection_reason": "It is the user-approved system, uses the supplied machine asset, makes the customer journey understandable, and preserves LYCORE's distinctive cobalt identity without unrelated SaaS motifs."
+}

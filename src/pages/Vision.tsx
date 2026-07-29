@@ -1,4 +1,8 @@
+import { Container, Section } from '../components/home/Section';
+import { NightToDawnField } from '../components/home/NightToDawnField';
 import { CtaBand, Hero, Reveal } from '../components/PageSections';
+import { Badge } from '../components/ui/badge';
+import { accentFor } from '../content/palette';
 
 const roadmap = [
   {
@@ -17,7 +21,7 @@ const roadmap = [
     phase: 'Direction',
     title: 'Build the operating system',
     body: 'One system per industry, connecting the first call to dispatch, invoicing, repeat-business follow-up, and reporting.',
-    status: 'Direction—not a product available today',
+    status: 'Direction — not a product available today',
   },
   {
     phase: 'Long term',
@@ -29,37 +33,46 @@ const roadmap = [
 
 export default function Vision() {
   return (
-    <>
-      <Hero
-        compact
-        title="Where We Are Building"
-        copy="LYCORE starts with the call. The ambition goes further."
-      />
-      <section className="vision-roadmap section-shell py-20 md:py-28" aria-labelledby="roadmap-title">
-        <header className="vision-roadmap__intro">
-          <p className="micro-label mb-5">Build sequence</p>
-          <h2 id="roadmap-title" className="section-title">Useful now. Ambitious over time.</h2>
-          <p>Each layer earns the right to exist by making the previous one work better.</p>
-        </header>
-        <ol className="vision-roadmap__steps">
-          {roadmap.map((step, index) => (
-            <li key={step.phase}>
-              <Reveal>
-                <article className="vision-step">
-                  <div className="vision-step__marker"><span>0{index + 1}</span></div>
-                  <div className="vision-step__copy">
-                    <p className="micro-label">{step.phase}</p>
-                    <h3>{step.title}</h3>
-                    <p>{step.body}</p>
-                  </div>
-                  <p className="vision-step__status">{step.status}</p>
-                </article>
-              </Reveal>
-            </li>
-          ))}
-        </ol>
-      </section>
+    <NightToDawnField>
+      <Hero title="Where We Are Building" copy="LYCORE starts with the call. The ambition goes further." />
+
+      <Section divider={false} surface="ivory">
+        <Container className="max-w-4xl">
+          <div className="mb-14 text-center">
+            <p className="micro-label mb-5 text-ink-muted">Build sequence</p>
+            <h2 className="section-title text-ink">Useful now. Ambitious over time.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-base font-light leading-relaxed text-ink-muted">
+              Each layer earns the right to exist by making the previous one work better.
+            </p>
+          </div>
+
+          <ol className="relative border-l border-[#092f69]/15 pl-8">
+            {roadmap.map((step, index) => {
+              const accent = accentFor(index);
+              return (
+                <Reveal key={step.phase} delay={index * 0.08}>
+                  <li className="relative pb-14 last:pb-0">
+                    <span
+                      className="absolute -left-[2.65rem] flex h-9 w-9 items-center justify-center rounded-full border text-xs font-bold"
+                      style={{ borderColor: `${accent}55`, backgroundColor: '#0b3478', color: accent }}
+                    >
+                      {index + 1}
+                    </span>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="micro-label" style={{ color: accent }}>{step.phase}</p>
+                      <Badge>{step.status}</Badge>
+                    </div>
+                    <h3 className="mt-2 text-2xl font-medium tracking-tight text-ink md:text-3xl">{step.title}</h3>
+                    <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-ink-muted md:text-base">{step.body}</p>
+                  </li>
+                </Reveal>
+              );
+            })}
+          </ol>
+        </Container>
+      </Section>
+
       <CtaBand />
-    </>
+    </NightToDawnField>
   );
 }

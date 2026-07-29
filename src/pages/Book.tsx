@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { trackEvent } from '../lib/analytics';
 import { motion } from 'motion/react';
 import { Calendar, CheckCircle2 } from 'lucide-react';
+import TiltCard from '../components/TiltCard';
+import { accentFor, signalAccent } from '../content/palette';
 
 export default function Book() {
   const [bookingUrl, setBookingUrl] = useState('');
@@ -14,29 +16,36 @@ export default function Book() {
   }, []);
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-8 max-w-7xl mx-auto min-h-screen">
+    <div className="relative overflow-hidden pt-24 pb-14 px-6 md:px-8 max-w-7xl mx-auto min-h-screen md:pt-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-16 right-[-6%] h-[26rem] w-[26rem] rounded-full opacity-20 blur-[110px]"
+        style={{ background: `radial-gradient(circle, ${signalAccent}, transparent 70%)` }}
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mx-auto text-center mb-12"
+        className="relative max-w-3xl mx-auto text-center mb-12"
       >
-        <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">Book the call that finds your biggest lead leak</h1>
+        <h1 className="display-title mb-5">Book the call that finds your biggest lead leak</h1>
         <p className="text-white text-lg font-light leading-relaxed">
           We will look at where your current system loses attention: website clarity, missed calls, intake friction, booking, CRM handoff, follow-up, dashboards, and source tracking.
         </p>
       </motion.div>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto mb-10">
+      <section className="relative grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto mb-10">
         {[
           'Find out whether your website tells visitors what to do next.',
           'Review whether your intake and calendar flow captures enough detail.',
           'Map what should happen after a form, call, chat, or booking comes in.',
-        ].map((item) => (
-          <div key={item} className="glass-panel rounded-2xl border border-white/10 p-5 flex gap-3">
-            <CheckCircle2 className="text-white/70 mt-1 shrink-0" size={18} />
-            <p className="text-sm text-stone-300 leading-relaxed font-light">{item}</p>
-          </div>
+        ].map((item, index) => (
+          <TiltCard key={item}>
+            <div className="flex gap-3 p-5">
+              <CheckCircle2 className="mt-1 shrink-0" style={{ color: accentFor(index) }} size={18} />
+              <p className="text-sm text-stone-300 leading-relaxed font-light">{item}</p>
+            </div>
+          </TiltCard>
         ))}
       </section>
 
@@ -57,8 +66,8 @@ export default function Book() {
           />
         ) : (
           <div className="text-center p-8 z-10 w-full max-w-lg">
-            <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Calendar className="w-8 h-8 text-accent-blue" />
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: `${signalAccent}26` }}>
+              <Calendar className="w-8 h-8" style={{ color: signalAccent }} />
             </div>
             <h3 className="text-2xl font-medium mb-3">Calendar Not Connected</h3>
             <p className="text-stone-300 font-light mx-auto mb-8">
@@ -66,7 +75,7 @@ export default function Book() {
             </p>
             <div className="lycore-card p-5 rounded-xl text-left w-full">
               <p className="text-sm text-stone-400 font-medium mb-3">Setup instructions:</p>
-              <code className="text-sm text-accent-blue break-all block leading-relaxed">
+              <code className="text-sm break-all block leading-relaxed" style={{ color: signalAccent }}>
                 1. Create or publish your CRM appointment calendar link<br/>
                 2. Set VITE_BOOKING_URL to that public link<br/>
                 3. Restart local dev or redeploy Vercel

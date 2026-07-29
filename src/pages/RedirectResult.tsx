@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { AlertCircle, ArrowRight, CalendarCheck, CheckCircle2, Mail } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
+import { signalAccent } from '../content/palette';
 import { site } from '../siteData';
 
 type RedirectResultProps = {
@@ -12,6 +13,7 @@ type RedirectResultProps = {
 const resultContent = {
   'audit-success': {
     icon: CheckCircle2,
+    accent: signalAccent,
     eyebrow: 'Review Request Received',
     title: 'Your review request is in.',
     description:
@@ -30,6 +32,7 @@ const resultContent = {
   },
   'booking-success': {
     icon: CalendarCheck,
+    accent: signalAccent,
     eyebrow: 'Meeting Booked',
     title: 'Your strategy call is booked.',
     description:
@@ -48,6 +51,7 @@ const resultContent = {
   },
   'booking-failed': {
     icon: AlertCircle,
+    accent: 'rgba(255,255,255,0.65)',
     eyebrow: 'Booking Not Completed',
     title: 'The meeting was not booked.',
     description:
@@ -82,32 +86,44 @@ export default function RedirectResult({ type }: RedirectResultProps) {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="glass-panel rounded-[32px] border border-white/10 p-8 md:p-14 w-full text-center"
+        className="glass-panel relative overflow-hidden rounded-[32px] border border-white/10 p-8 md:p-14 w-full text-center"
       >
-        <div className="w-16 h-16 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mx-auto mb-8">
-          <Icon className="text-white/80" size={30} />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-25 blur-[100px]"
+          style={{ background: `radial-gradient(circle, ${content.accent}, transparent 70%)` }}
+        />
+
+        <div
+          className="relative mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full border"
+          style={{ borderColor: `${content.accent}40`, backgroundColor: `${content.accent}1f` }}
+        >
+          <Icon style={{ color: content.accent }} size={30} />
         </div>
 
-        <p className="micro-label mb-5">{content.eyebrow}</p>
-        <h1 className="text-4xl md:text-6xl font-normal tracking-tight leading-tight mb-6">{content.title}</h1>
-        <p className="text-lg text-stone-300 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+        <p className="micro-label mb-5" style={{ color: content.accent }}>{content.eyebrow}</p>
+        <h1 className="display-title relative mb-6">{content.title}</h1>
+        <p className="relative text-lg text-stone-300 font-light leading-relaxed max-w-2xl mx-auto mb-10">
           {content.description}
         </p>
 
-        <div className="grid md:grid-cols-3 gap-4 text-left mb-8">
+        <div className="relative grid md:grid-cols-3 gap-4 text-left mb-8">
           {content.steps.map((step, index) => (
             <div key={step} className="lycore-card rounded-2xl p-5">
-              <div className="text-xs font-bold tracking-[0.2em] uppercase text-white/40 mb-3">
-                Step {index + 1}
+              <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em]" style={{ color: content.accent }}>
+                <span className="flex h-5 w-5 items-center justify-center rounded-full text-[10px]" style={{ backgroundColor: `${content.accent}26` }}>
+                  {index + 1}
+                </span>
+                Step
               </div>
               <p className="text-sm leading-relaxed text-stone-300">{step}</p>
             </div>
           ))}
         </div>
 
-        <p className="text-sm text-stone-400 leading-relaxed max-w-3xl mx-auto mb-10">{content.note}</p>
+        <p className="relative text-sm text-stone-400 leading-relaxed max-w-3xl mx-auto mb-10">{content.note}</p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+        <div className="relative flex flex-col sm:flex-row items-center justify-center gap-5">
           <Link to={content.primaryPath} className="btn-3d gap-3 w-full sm:w-auto">
             {content.primaryLabel}
             <ArrowRight size={18} />

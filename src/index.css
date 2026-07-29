@@ -1,9 +1,9 @@
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&f[]=general-sans@700,500,300,600,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "General Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Georgia", serif;
 
   --color-bg: #061b42;
   --color-bg-alt: #08295f;
@@ -14,6 +14,65 @@
   --color-accent-blue: #2f83f5;
   --color-accent-violet: #4b72ff;
   --color-accent-pink: #76b7ff;
+
+  /* Industry / state accents. Kept in sync with content/palette.ts. */
+  --color-signal-cyan: #5ec8d8;
+  --color-signal-amber: #e8a54b;
+  --color-signal-coral: #e8785c;
+  --color-signal-violet: #8b7ce8;
+  --color-signal-teal: #4fb0a4;
+  --color-signal-gold: #d9b04e;
+
+  /* Content measure. Hero and major sections use the full 1280px. */
+  --shell: 80rem;
+
+  /* Vertical rhythm: major / minor / mobile. */
+  --pad-major: 8rem;
+  --pad-minor: 4.5rem;
+
+  --animate-accordion-down: accordion-down 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-accordion-up: accordion-up 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 html {
@@ -42,7 +101,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.9'/%3E%3C/svg%3E");
-  opacity: 0.018;
+  opacity: 0.035;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,6 +111,18 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   text-wrap: pretty;
+}
+
+/* Body copy sits at 17–18px with a comfortable measure — no small grey text. */
+body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 64rem) {
+  body {
+    font-size: 1.125rem;
+  }
 }
 
 a,
@@ -71,24 +142,94 @@ summary {
 }
 
 .section-shell {
-  width: min(100% - 2rem, 80rem);
+  width: min(100% - 2rem, var(--shell));
   margin-inline: auto;
 }
 
+/* Editorial scale — deliberately compact. Headlines carry character through
+   the serif, not through size, so no heading forces an extra screen of
+   scrolling on its own. */
 .display-title {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 8vw, 7.75rem);
-  font-weight: 600;
-  line-height: 0.9;
-  letter-spacing: -0.065em;
+  font-size: clamp(2.5rem, 4.4vw, 4.1rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.55rem, 5vw, 4.75rem);
+  font-size: clamp(1.85rem, 3.1vw, 2.8rem);
   font-weight: 500;
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.section-title--sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+/* Tabular figures for anything reading as data (call times, counters). */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cream surface. Sections opting into the light treatment carry their own
+   background rather than depending on the page field being light where they
+   land — that coupling caused dark-on-dark text.
+
+   The fades sit OUTSIDE the section (overlapping the neighbour above/below) so
+   they never cover content, and they are suppressed between two adjacent cream
+   sections so a run of them reads as one continuous light chapter instead of
+   banding at every boundary. */
+.surface-cream {
+  position: relative;
+  background: #f4efe4;
+}
+
+.surface-cream::before,
+.surface-cream::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  pointer-events: none;
+}
+
+.surface-cream::before {
+  top: -5rem;
+  background: linear-gradient(to bottom, rgba(244, 239, 228, 0), #f4efe4);
+}
+
+.surface-cream::after {
+  bottom: -5rem;
+  background: linear-gradient(to top, rgba(244, 239, 228, 0), #f4efe4);
+}
+
+/* Adjacent cream sections: drop the seam between them. */
+.surface-cream + .surface-cream::before {
+  display: none;
+}
+
+.surface-cream:has(+ .surface-cream)::after {
+  display: none;
+}
+
+/* Ambient radial light used to lift a section's centre of gravity without
+   drawing a box around it. */
+.ambient-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(120px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  transition: background-color 700ms ease;
 }
 
 .hero-grid {
@@ -165,14 +306,16 @@ summary {
   background: white;
 }
 
+/* Cards must read as a distinctly lighter surface than the navy field —
+   never the same value as the background behind them. */
 .lycore-card,
 .floating-card,
 .glass-panel {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background: rgba(8, 42, 96, 0.82);
-  box-shadow: 0 28px 80px rgba(1, 14, 39, 0.3);
+  border: 1px solid rgba(178, 208, 250, 0.18);
+  background: linear-gradient(165deg, rgba(23, 72, 148, 0.95), rgba(12, 48, 106, 0.95));
+  box-shadow: 0 24px 70px rgba(1, 14, 39, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: border-color 250ms ease, background-color 250ms ease, transform 250ms ease;
 }
 
@@ -180,7 +323,6 @@ summary {
 .floating-card:hover,
 .glass-panel:hover {
   border-color: rgba(130, 185, 255, 0.5);
-  background: rgba(10, 53, 119, 0.94);
 }
 
 .form-control {
@@ -214,10 +356,10 @@ summary {
 }
 
 .form-control:focus {
-  border-color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(240, 203, 82, 0.85);
   background: rgba(255, 255, 255, 0.26);
   box-shadow:
-    0 0 0 4px rgba(255, 255, 255, 0.18),
+    0 0 0 4px rgba(240, 203, 82, 0.22),
     0 16px 38px rgba(0, 0, 0, 0.3);
 }
 
@@ -266,17 +408,16 @@ textarea.form-control {
 .btn-3d-dark,
 .btn-text {
   display: inline-flex;
-  min-height: 3.25rem;
+  min-height: 3rem;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  padding: 0.85rem 1.35rem;
-  border-radius: 0.75rem;
-  font-size: 0.72rem;
+  gap: 0.6rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
   line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
   transition: transform 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease;
 }
 
@@ -305,7 +446,7 @@ textarea.form-control {
   min-height: auto;
   border: 0;
   background: transparent;
-  color: white;
+  color: var(--color-ink);
 }
 
 .btn-primary:hover,
@@ -354,6 +495,62 @@ textarea.form-control {
 .btn-text:hover svg,
 .dispatch-cta:hover svg {
   transform: translateX(0.22rem);
+}
+
+/* Hero CTAs. Sentence case and larger than the uppercase micro-buttons used
+   deeper in the page — this is the page's primary action, not a label. */
+.hero-cta {
+  display: inline-flex;
+  min-height: 3.15rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 0.9rem 1.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 220ms ease;
+}
+
+.hero-cta--primary {
+  border: 1px solid var(--color-signal-amber);
+  background: var(--color-signal-amber);
+  color: #12213f;
+  box-shadow: 0 14px 34px rgba(232, 165, 75, 0.26);
+}
+
+.hero-cta--primary:hover {
+  background: #f0b45f;
+  border-color: #f0b45f;
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px rgba(232, 165, 75, 0.34);
+}
+
+.hero-cta--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-cta--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.075);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.hero-cta:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.hero-cta svg {
+  transition: transform 180ms ease;
+}
+
+.hero-cta:hover svg {
+  transform: translateX(0.2rem);
 }
 
 .text-glow-strong {
@@ -507,58 +704,86 @@ textarea.form-control {
   box-shadow: 0 0 0 4rem rgba(8, 47, 104, 0.045), 0 0 0 8rem rgba(8, 47, 104, 0.03);
 }
 
-/* Sculpted navigation and video hero based on the LYCORE dispatch-carousel art direction. */
+/* Normal top navigation bar — full-width, links left-of-centre, one rounded
+   CTA on the right. Gains a solid tint and hairline once scrolled. */
 .site-nav {
   position: fixed;
   z-index: 60;
-  top: clamp(1.15rem, 3.7vw, 3.5rem);
-  left: 50%;
-  width: min(calc(100% - 8rem), 82rem);
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  width: 100%;
   color: white;
-  transition: top 240ms ease, width 240ms ease;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 280ms ease, border-color 280ms ease, backdrop-filter 280ms ease;
+}
+
+.site-nav--scrolled {
+  background-color: rgba(6, 24, 56, 0.88);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(1.35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
 }
 
 .site-nav__inner {
   position: relative;
   display: grid;
-  min-height: 3.75rem;
   grid-template-columns: 1fr auto 1fr;
+  min-height: 4rem;
   align-items: center;
-  gap: 2rem;
-  padding-inline: 1.3rem;
-  transition: background-color 240ms ease, box-shadow 240ms ease, border-radius 240ms ease;
+  gap: 1.5rem;
+  width: min(100% - 2.5rem, var(--shell));
+  margin-inline: auto;
+  transition: min-height 280ms ease;
+}
+
+.site-nav--scrolled .site-nav__inner {
+  min-height: 3.5rem;
 }
 
 .site-nav__links {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: clamp(1.2rem, 2.6vw, 2.8rem);
-  font-size: 0.76rem;
+  justify-content: center;
+  gap: clamp(1.1rem, 2.2vw, 2.1rem);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
   font-weight: 500;
 }
 
-.site-nav__links--right {
-  justify-content: flex-end;
+/* Mouse-follow spotlight (hover only) + a persistent single-accent ambience
+   light that springs to the active link. Both driven by CSS custom
+   properties set from Navbar.tsx. */
+.site-nav__spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  background: radial-gradient(90px circle at var(--spotlight-x, 50%) 100%, rgba(255, 255, 255, 0.14) 0%, transparent 65%);
+}
+
+.site-nav__links.is-spotlit .site-nav__spotlight {
+  opacity: 1;
+}
+
+.site-nav__ambience {
+  position: absolute;
+  bottom: -0.55rem;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 3px;
+  background: radial-gradient(46px circle at var(--ambience-x, -100px) 0%, #e8a54b 0%, transparent 75%);
 }
 
 .site-nav__links a {
   position: relative;
-  color: rgba(255, 255, 255, 0.86);
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.8);
   transition: color 180ms ease;
-}
-
-.site-nav__links a:not(.site-nav__demo)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -0.45rem;
-  left: 0;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 180ms ease;
 }
 
 .site-nav__links a:hover,
@@ -566,73 +791,71 @@ textarea.form-control {
   color: white;
 }
 
-.site-nav__links a:hover::after,
-.site-nav__links a.is-active::after {
-  transform: scaleX(1);
-}
-
 .site-nav__brand {
   position: relative;
   z-index: 2;
-  color: #0b4b9f;
-  font-family: var(--font-display);
-  font-size: clamp(1.65rem, 2.8vw, 2.55rem);
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
 }
 
+.site-nav__brand img {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.6rem;
+  object-fit: cover;
+}
+
+/* The single nav CTA. This is the only "free review" control in the header —
+   the old duplicate outside the nav is gone. */
 .site-nav__demo {
   display: inline-flex;
-  min-height: 2.55rem;
+  min-height: 2.5rem;
   align-items: center;
-  gap: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.62);
+  gap: 0.5rem;
   border-radius: 999px;
-  padding: 0.55rem 0.7rem 0.55rem 1.25rem;
+  background: var(--color-signal-amber);
+  padding: 0.55rem 1.05rem;
+  color: #12213f;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(232, 165, 75, 0.24);
+  transition: background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
 .site-nav__demo svg {
-  width: 1.7rem;
-  height: 1.7rem;
-  border-radius: 999px;
-  background: white;
-  padding: 0.42rem;
-  color: #0b4b9f;
+  width: 0.95rem;
+  height: 0.95rem;
   transition: transform 180ms ease;
+}
+
+.site-nav__demo:hover {
+  background: #f0b45f;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(232, 165, 75, 0.32);
 }
 
 .site-nav__demo:hover svg {
   transform: translateX(2px);
 }
 
+.site-nav__demo:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.site-nav__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  gap: 0.5rem;
+}
+
 .site-nav__toggle,
 .site-nav__mobile {
   display: none;
-}
-
-.site-nav--inner,
-.site-nav--scrolled {
-  top: 1rem;
-  width: min(calc(100% - 2rem), 82rem);
-}
-
-.site-nav--inner .site-nav__inner,
-.site-nav--scrolled .site-nav__inner {
-  border: 1px solid rgba(11, 75, 159, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 18px 55px rgba(0, 27, 78, 0.16);
-  backdrop-filter: blur(20px);
-}
-
-.site-nav--inner .site-nav__links a,
-.site-nav--scrolled .site-nav__links a {
-  color: #164d91;
-}
-
-.site-nav--inner .site-nav__demo,
-.site-nav--scrolled .site-nav__demo {
-  border-color: rgba(11, 75, 159, 0.28);
 }
 
 .dispatch-hero {
@@ -1248,95 +1471,100 @@ textarea.form-control {
 }
 
 @media (max-width: 74rem) {
-  .site-nav {
-    width: calc(100% - 5rem);
-  }
-
   .site-nav__links {
-    gap: 1.2rem;
-    font-size: 0.7rem;
-  }
-
-  .dispatch-note {
-    display: none;
-  }
-
-  .dispatch-media {
-    width: min(72vw, 57rem);
-    transform: translateX(-45%);
+    gap: 1rem;
+    font-size: 0.76rem;
   }
 }
 
 @media (max-width: 54rem) {
-  .site-nav {
-    top: 1.25rem;
-    width: calc(100% - 3.4rem);
-  }
-
   .site-nav__inner {
-    display: flex;
-    min-height: 3.25rem;
-    justify-content: center;
-    padding-inline: 0.6rem;
+    min-height: 3.5rem;
+    width: min(100% - 1.75rem, var(--shell));
   }
 
+  /* Desktop link row collapses; the CTA stays visible at all times. */
   .site-nav__links {
     display: none;
   }
 
-  .site-nav__brand {
-    font-size: 1.55rem;
+  .site-nav__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.4rem;
+  }
+
+  .site-nav__demo {
+    min-height: 2.35rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.74rem;
   }
 
   .site-nav__toggle {
-    position: absolute;
-    right: 0;
     display: inline-flex;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    flex: none;
     align-items: center;
     justify-content: center;
     border: 0;
-    border-radius: 50%;
-    background: transparent;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
     color: white;
+    transition: background-color 200ms ease;
   }
 
-  .site-nav--inner .site-nav__toggle,
-  .site-nav--scrolled .site-nav__toggle {
-    color: #0b4b9f;
+  .site-nav__toggle:hover {
+    background: rgba(255, 255, 255, 0.14);
   }
 
+  .site-nav__toggle svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  /* Floating panel below the bar. */
   .site-nav__mobile {
     position: absolute;
-    top: 4.3rem;
-    right: 0;
-    left: 0;
+    top: 3.9rem;
+    right: 0.9rem;
+    left: 0.9rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 1.4rem;
-    background: rgba(5, 31, 72, 0.96);
-    padding: 1.5rem;
-    box-shadow: 0 24px 70px rgba(0, 18, 58, 0.36);
-    backdrop-filter: blur(20px);
+    gap: 0.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.5rem;
+    background: rgba(7, 26, 60, 0.97);
+    padding: 1rem;
+    box-shadow: 0 28px 70px rgba(0, 12, 38, 0.5);
+    backdrop-filter: blur(24px);
   }
 
   .site-nav__mobile a {
-    color: white;
+    border-radius: 0.85rem;
+    padding: 0.85rem 0.9rem;
+    color: rgba(255, 255, 255, 0.86);
     font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 180ms ease, color 180ms ease;
   }
 
-  .site-nav__mobile-demo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 999px;
-    background: white;
-    padding: 0.85rem 1rem;
-    color: #0b4b9f !important;
-    font-weight: 600;
+  .site-nav__mobile a:hover,
+  .site-nav__mobile a.is-active {
+    background: rgba(255, 255, 255, 0.07);
+    color: white;
+  }
+
+  .site-nav__mobile-divider {
+    margin: 0.5rem 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .site-nav__mobile-meta {
+    padding: 0.35rem 0.9rem 0.5rem;
+    color: rgba(169, 197, 236, 0.75);
+    font-size: 0.85rem;
   }
 
   .dispatch-hero {

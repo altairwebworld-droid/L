@@ -12,4 +12,6 @@ coverage/
 # Screenshots & test results
 tmp-l-intake-*.png
 test-results/
+artifacts/
+mobile-qa.png
 

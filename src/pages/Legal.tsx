@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { AlertCircle, FileText, LockKeyhole, Trash2 } from 'lucide-react';
 import { getAnalyticsConsent, hasGlobalPrivacyControl, updateAnalyticsConsent, type AnalyticsConsent } from '../lib/analytics';
+import { signalAccent } from '../content/palette';
 import { legalPages, site } from '../siteData';
 
 type PolicySection = {
@@ -53,9 +54,9 @@ const privacySections: PolicySection[] = [
     ],
   },
   {
-    title: '6. AI-supported chat and automation',
+    title: '6. Automated chat and intake',
     paragraphs: [
-      'The website chat is an optional intake and information tool. If an AI provider is configured, chat messages may be sent to that provider to generate a response. AI-generated responses can be incomplete or inaccurate and are not legal, financial, medical, or professional advice.',
+      'The website chat is an optional intake and information tool. If an automation provider is configured, chat messages may be sent to that provider to generate a response. Automated responses can be incomplete or inaccurate and are not legal, financial, medical, or professional advice.',
       'Do not provide sensitive personal information through chat. The chat is not an emergency service, and it is not designed to receive confidential client, customer, patient, or payment information.',
     ],
   },
@@ -123,7 +124,7 @@ const termsSections: PolicySection[] = [
     paragraphs: ['Calendars, CRMs, email tools, analytics platforms, AI providers, and automation services are controlled by their own terms and setup requirements.'],
   },
   {
-    title: 'AI Boundaries',
+    title: 'Automation Boundaries',
     paragraphs: [site.aiDisclaimer],
   },
 ];
@@ -216,44 +217,52 @@ export default function Legal() {
   const isDataDeletion = page.path === '/data-deletion';
   const sections = isPrivacyPolicy ? privacySections : isDataDeletion ? dataDeletionSections : termsSections;
   const Icon = isPrivacyPolicy ? LockKeyhole : isDataDeletion ? Trash2 : FileText;
+  const accent = signalAccent;
 
   return (
-    <div className="mx-auto max-w-5xl px-6 pb-20 pt-32">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mb-14">
-        <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-md">
-          <Icon size={16} className="text-white/70" />
-          <span className="micro-label">{page.label}</span>
+    <div className="relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 right-[-8%] h-[26rem] w-[26rem] rounded-full opacity-20 blur-[110px]"
+        style={{ background: `radial-gradient(circle, ${accent}, transparent 70%)` }}
+      />
+      <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-32">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mb-14">
+          <div className="mb-8 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 backdrop-blur-md" style={{ borderColor: `${accent}40`, backgroundColor: `${accent}1a` }}>
+            <Icon size={16} style={{ color: accent }} />
+            <span className="micro-label" style={{ color: accent }}>{page.label}</span>
+          </div>
+          <h1 className="display-title mb-6">{page.h1}</h1>
+          <p className="text-xl font-light leading-relaxed text-white">{page.description}</p>
+          {isPrivacyPolicy && <p className="mt-5 text-sm text-stone-400">Last updated: July 15, 2026</p>}
+        </motion.div>
+
+        <div className="glass-panel mb-8 rounded-[32px] border border-white/10 p-8 md:p-12">
+          <div className="space-y-11">
+            {sections.map((section) => (
+              <section key={section.title} className="border-l-2 pl-6" style={{ borderColor: `${accent}45` }}>
+                <h2 className="mb-4 text-2xl font-medium">{section.title}</h2>
+                <div className="space-y-4 text-stone-300">
+                  {section.paragraphs?.map((paragraph) => <p key={paragraph} className="font-light leading-relaxed">{paragraph}</p>)}
+                  {section.items && (
+                    <ul className="grid gap-3 pl-5 font-light leading-relaxed marker:text-white" role="list">
+                      {section.items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  )}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
-        <h1 className="mb-6 text-5xl font-normal tracking-tight md:text-7xl">{page.h1}</h1>
-        <p className="text-xl font-light leading-relaxed text-white">{page.description}</p>
-        {isPrivacyPolicy && <p className="mt-5 text-sm text-stone-400">Last updated: July 15, 2026</p>}
-      </motion.div>
 
-      <div className="glass-panel mb-8 rounded-[32px] border border-white/10 p-8 md:p-12">
-        <div className="space-y-11">
-          {sections.map((section) => (
-            <section key={section.title}>
-              <h2 className="mb-4 text-2xl font-medium">{section.title}</h2>
-              <div className="space-y-4 text-stone-300">
-                {section.paragraphs?.map((paragraph) => <p key={paragraph} className="font-light leading-relaxed">{paragraph}</p>)}
-                {section.items && (
-                  <ul className="grid gap-3 pl-5 font-light leading-relaxed marker:text-white" role="list">
-                    {section.items.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
-                )}
-              </div>
-            </section>
-          ))}
+        {isPrivacyPolicy && <><AnalyticsChoices /><PrivacyRequestForm /></>}
+
+        <div className="lycore-card mt-8 flex items-start gap-4 rounded-2xl p-6">
+          <AlertCircle className="mt-1 shrink-0" style={{ color: accent }} size={22} />
+          <p className="text-sm font-light leading-relaxed text-stone-400">
+            Questions about this policy, active service providers, or your information? Contact <a className="underline decoration-white/30 underline-offset-2 hover:decoration-white" href={`mailto:${site.email}`}>{site.email}</a>.
+          </p>
         </div>
-      </div>
-
-      {isPrivacyPolicy && <><AnalyticsChoices /><PrivacyRequestForm /></>}
-
-      <div className="lycore-card mt-8 flex items-start gap-4 rounded-2xl p-6">
-        <AlertCircle className="mt-1 shrink-0 text-white/60" size={22} />
-        <p className="text-sm font-light leading-relaxed text-stone-400">
-          Questions about this policy, active service providers, or your information? Contact <a className="underline decoration-white/30 underline-offset-2 hover:decoration-white" href={`mailto:${site.email}`}>{site.email}</a>.
-        </p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { ArrowUpRight, Check, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { accentFor } from '../content/palette';
 
 type CommitmentKey = 'career-growth' | 'work-life-balance' | 'social-impact' | 'how-we-work';
 
@@ -371,7 +372,7 @@ export function CommitmentsIndex() {
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.7fr_0.3fr] lg:items-end">
           <div>
           <p className="micro-label mb-7">LYCORE commitments</p>
-            <h1 className="max-w-4xl text-5xl font-bold leading-[0.98] tracking-tight md:text-7xl lg:text-[5.25rem]">How we intend to grow</h1>
+            <h1 className="display-title max-w-4xl">How we intend to grow</h1>
           </div>
           <p className="max-w-xl text-lg font-light leading-relaxed text-stone-200 lg:pb-2">
             How LYCORE GROUP LLC approaches its work, people and wider responsibilities as a remote-first, early-stage company.
@@ -380,13 +381,17 @@ export function CommitmentsIndex() {
       </header>
       <div className="px-6 pb-10 pt-8">
         <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-12">
-          {commitmentOrder.map((key) => (
+          {commitmentOrder.map((key, index) => (
             <Link
               key={key}
               to={`/commitments/${key}`}
               className={`lycore-card group relative flex min-h-[310px] flex-col justify-between rounded-[28px] p-7 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0 md:p-9 ${commitmentCardStyles[key]}`}
             >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00d2ff]/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
+              <div
+                className="absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{ background: `linear-gradient(to right, transparent, ${accentFor(index)}80, transparent)` }}
+                aria-hidden="true"
+              />
               <div className="flex items-start justify-between gap-6">
                 <p className="text-xs font-medium uppercase tracking-[0.16em] text-stone-400">{commitments[key].eyebrow}</p>
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/[0.035] text-stone-300 transition-colors group-hover:border-white/30 group-hover:bg-white group-hover:text-black">
@@ -417,15 +422,20 @@ export function CommitmentsIndex() {
 
 export function CommitmentPage({ page }: { page: CommitmentKey }) {
   const commitment = commitments[page];
+  const accent = accentFor(commitmentOrder.indexOf(page));
 
   return (
     <>
       <header className="relative overflow-hidden px-6 pb-20 pt-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,210,255,0.045),transparent_44%)]" aria-hidden="true" />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: `radial-gradient(ellipse at top right, ${accent}26, transparent 44%)` }}
+          aria-hidden="true"
+        />
         <div className="relative mx-auto max-w-7xl">
-          <Link to="/commitments" className="micro-label inline-flex items-center gap-2 hover:text-white">Commitments / {commitment.eyebrow}</Link>
-          <h1 className="mt-8 max-w-6xl text-5xl font-bold leading-[0.98] tracking-tight md:text-7xl lg:text-8xl">{commitment.title}</h1>
-          <p className="mt-8 max-w-4xl text-xl font-light leading-relaxed text-white md:text-2xl">{commitment.intro}</p>
+          <Link to="/commitments" className="micro-label inline-flex items-center gap-2 transition-colors" style={{ color: accent }}>Commitments / {commitment.eyebrow}</Link>
+          <h1 className="display-title mt-8 max-w-6xl">{commitment.title}</h1>
+          <p className="mt-6 max-w-4xl text-lg font-light leading-relaxed text-white md:text-xl">{commitment.intro}</p>
           <p className="mt-8 text-sm text-stone-400">Last updated {lastUpdated}</p>
         </div>
       </header>
@@ -436,10 +446,17 @@ export function CommitmentPage({ page }: { page: CommitmentKey }) {
             <section
               key={section.title}
               className={section.variant === 'highlight'
-                ? 'lycore-card my-10 rounded-[28px] p-7 md:p-10'
+                ? 'lycore-card relative my-10 overflow-hidden rounded-[28px] p-7 md:p-10'
                 : 'grid gap-6 border-b border-white/10 py-12 md:grid-cols-[0.36fr_0.64fr] md:gap-12'}
               aria-labelledby={`${page}-section-${index}`}
             >
+              {section.variant === 'highlight' && (
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px"
+                  style={{ background: `linear-gradient(to right, transparent, ${accent}80, transparent)` }}
+                  aria-hidden="true"
+                />
+              )}
               <div>
                 <h2 id={`${page}-section-${index}`} className="text-3xl font-medium leading-tight md:text-4xl">{section.title}</h2>
               </div>

@@ -107,9 +107,9 @@ export default function AuditLeadForm() {
           <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
           <h3 className="text-3xl font-display font-medium text-white mb-4">Request Received</h3>
           <p className="text-stone-300 mb-10 leading-relaxed max-w-md mx-auto">{status.message}</p>
-          <a href="/book" className="btn-3d w-full max-w-sm mx-auto">
+          <Link to="/book" className="btn-3d w-full max-w-sm mx-auto">
             Book Your Strategy Call
-          </a>
+          </Link>
         </div>
       ) : (
         <>

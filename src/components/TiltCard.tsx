@@ -65,12 +65,16 @@ export default function TiltCard({ children, className = '', variant = "default"
           inactiveZone={0.01}
           borderWidth={3}
         />
-        <div 
-          style={{ 
-            transform: "translateZ(20px)", 
-            transformStyle: "preserve-3d" 
+        <div
+          style={{
+            transform: "translateZ(20px)",
+            transformStyle: "preserve-3d"
           }}
-          className="lycore-card relative h-full w-full rounded-xl md:rounded-2xl"
+          className={`relative h-full w-full rounded-xl md:rounded-2xl ${
+            variant === "white"
+              ? "border border-black/5 bg-white text-[#0b3478] shadow-[0_20px_60px_rgba(3,12,32,0.18)]"
+              : "lycore-card"
+          }`}
         >
           {children}
         </div>

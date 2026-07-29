@@ -7,11 +7,11 @@ const footerLinkClass = 'text-sm font-light text-stone-300 transition-colors hov
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#041738] pb-10 pt-14 md:pt-20">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#041738] pb-8 pt-12 md:pt-14">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" aria-hidden="true" />
 
       <div className="mx-auto max-w-7xl px-6">
-        <div className="lycore-card mb-16 flex flex-col gap-8 rounded-[32px] p-7 md:p-10 lg:flex-row lg:items-center lg:justify-between">
+        <div className="lycore-card mb-10 flex flex-col gap-8 rounded-[32px] p-7 md:p-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
             <p className="micro-label mb-4 text-white">Talk to LYCORE</p>
             <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">Ready to stop losing leads after the first ring?</h2>
@@ -50,6 +50,7 @@ export default function Footer() {
             <h2 className="micro-label mb-6">Company</h2>
             <ul className="flex flex-col gap-4">
               <li><Link to="/about" className={footerLinkClass}>About</Link></li>
+              <li><Link to="/vision" className={footerLinkClass}>Vision</Link></li>
               <li><Link to="/faq" className={footerLinkClass}>FAQ</Link></li>
               <li><Link to="/contact" className={footerLinkClass}>Contact</Link></li>
               <li><Link to="/commitments" className={footerLinkClass}>Commitments</Link></li>
@@ -75,7 +76,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-5 border-t border-white/8 pt-8 md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-5 border-t border-white/8 pt-7 md:flex-row md:items-center md:justify-between">
           <p className="text-xs font-light tracking-wide text-stone-400">&copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
             <Link to="/privacy-policy" className="text-xs font-light tracking-wide text-stone-400 transition-colors hover:text-white">Privacy Policy</Link>
