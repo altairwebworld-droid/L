@@ -40,14 +40,14 @@ export function Section({
       className={cn(
         'relative py-12 md:py-16 lg:py-20',
         tint && !isIvory && 'bg-white/[0.02]',
-        isIvory && 'surface-cream text-[#092f69]',
+        isIvory && 'surface-cream text-[#171513]',
         className,
       )}
       style={
         isIvory
           ? ({
-              '--color-ink': '#092f69',
-              '--color-ink-muted': '#4a5f8a',
+              '--color-ink': '#171513',
+              '--color-ink-muted': '#665f58',
             } as React.CSSProperties)
           : undefined
       }

@@ -44,20 +44,18 @@ export function AccentChip({ index, accent, children }: { index?: number; accent
 
 export function Hero({ title, copy }: { title: string; copy: string }) {
   return (
-    <section className="relative overflow-hidden px-6 pb-10 pt-28 md:pb-12 md:pt-32">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-24 right-[-10%] h-[28rem] w-[28rem] rounded-full opacity-30 blur-[110px]"
-        style={{ background: 'radial-gradient(circle, #4b8df8, transparent 70%)' }}
-      />
-      <Reveal className="relative mx-auto max-w-4xl text-center">
-        <p className="micro-label mb-5 inline-flex items-center gap-2 text-ink-muted">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" aria-hidden="true" />
+    <section className="page-hero relative overflow-hidden px-6 pb-14 pt-32 md:pb-20 md:pt-40">
+      <div className="page-hero__geometry" aria-hidden="true">
+        <i /><i /><i />
+      </div>
+      <Reveal className="page-hero__inner relative mx-auto w-full max-w-7xl">
+        <p className="micro-label mb-7 inline-flex items-center gap-3 text-ink-muted">
+          <span className="h-2 w-2 bg-[#ff6b22]" aria-hidden="true" />
           Customer systems
         </p>
-        <h1 className="display-title text-ink">{title}</h1>
-        <p className="mx-auto mt-5 max-w-2xl text-lg font-light leading-relaxed text-ink-muted">{copy}</p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <h1 className="page-hero__title display-title text-ink">{title}</h1>
+        <p className="page-hero__copy mt-7 max-w-2xl text-lg font-light leading-relaxed text-ink-muted">{copy}</p>
+        <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row">
           <Link to={site.auditPath} className="btn-primary w-full sm:w-auto" data-track="cta_click">
             {site.primaryCta}
           </Link>
@@ -135,7 +133,7 @@ export function CtaBand() {
   return (
     <section className="px-6 pb-14 md:pb-20">
       <div className="mx-auto max-w-7xl">
-        <div className="cta-panel">
+        <div className="cta-panel signal-cta-panel">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full opacity-40 blur-[90px]"
@@ -143,10 +141,10 @@ export function CtaBand() {
           />
           <div className="relative z-10 max-w-3xl">
             <p className="micro-label mb-5">Your next step</p>
-            <h2 className="section-title text-[#082f68]">
+            <h2 className="section-title text-black">
               Find the calls and leads slipping through.
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-[#225a9f] md:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-black/65 md:text-lg">
               Get a free, plain-English review of your call handling, website, and follow-up. We will show you what to fix first.
             </p>
           </div>

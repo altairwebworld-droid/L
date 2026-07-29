@@ -7,7 +7,7 @@ const footerLinkClass = 'text-sm font-light text-stone-300 transition-colors hov
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#041738] pb-8 pt-12 md:pt-14">
+    <footer className="site-footer relative overflow-hidden border-t border-white/10 bg-[#090909] pb-8 pt-12 md:pt-14">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" aria-hidden="true" />
 
       <div className="mx-auto max-w-7xl px-6">
@@ -30,7 +30,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-7 max-w-md text-sm font-light leading-relaxed text-stone-300">{site.coreStatement}</p>
-            <Link to={site.auditPath} className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:text-[#8dc2ff]">
+            <Link to={site.auditPath} className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:text-[#ff6b22]">
               Get a free review <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -62,11 +62,11 @@ export default function Footer() {
             <h2 className="micro-label mb-6">Contact</h2>
             <div className="space-y-4 text-sm font-light text-stone-300">
               <a href={`mailto:${site.email}`} className="flex items-start gap-3 transition-colors hover:text-white">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#8dc2ff]" aria-hidden="true" />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#ff6b22]" aria-hidden="true" />
                 <span className="break-all">{site.email}</span>
               </a>
               <p className="flex items-start gap-3 leading-relaxed">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#8dc2ff]" aria-hidden="true" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#ff6b22]" aria-hidden="true" />
                 <span>{site.address.street}<br />{site.address.locality}, {site.address.region} {site.address.postalCode}</span>
               </p>
             </div>

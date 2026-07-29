@@ -1,20 +1,27 @@
 import { LineChart, Route, Search, Settings2 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useRef } from 'react';
 import { implementationSteps } from '../../content/implementation';
 import { Container, Section, SectionHeading } from './Section';
+import { SliderControls } from './SliderControls';
 
 const icons = [Search, Settings2, Route, LineChart];
 
 export default function ImplementationSteps() {
-  return (
-    <Section surface="ivory">
-      <Container className="max-w-5xl">
-        <SectionHeading
-          eyebrow="How the system is installed"
-          title="One continuous route from review to measurement."
-        />
+  const railRef = useRef<HTMLOListElement>(null);
 
-        <ol className="relative border-l border-[#092f69]/15 pl-8">
+  return (
+    <Section surface="ivory" className="home-process-section">
+      <Container className="max-w-5xl">
+        <div className="signal-slider-heading">
+          <SectionHeading
+            eyebrow="How the system is installed"
+            title="One continuous route from review to measurement."
+          />
+          <SliderControls railRef={railRef} label="implementation steps" />
+        </div>
+
+        <ol ref={railRef} className="signal-slider signal-slider--steps relative border-l border-[#092f69]/15 pl-8">
           {implementationSteps.map((step, index) => {
             const Icon = icons[index] ?? Search;
             return (
@@ -26,7 +33,7 @@ export default function ImplementationSteps() {
                 transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="relative pb-12 last:pb-0"
               >
-                <span className="absolute -left-[2.65rem] flex h-9 w-9 items-center justify-center rounded-full border border-[#092f69]/15 bg-[#0b3478] text-white">
+                <span className="absolute -left-[2.65rem] flex h-9 w-9 items-center justify-center rounded-full border border-black/15 bg-[#ff6b22] text-black">
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="text-xs font-mono text-ink-muted">0{index + 1}</span>

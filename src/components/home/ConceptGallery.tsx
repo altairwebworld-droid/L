@@ -7,7 +7,7 @@ import { Container, Section, SectionHeading } from './Section';
 
 export default function ConceptGallery() {
   return (
-    <Section tint>
+    <Section tint className="home-concept-gallery">
       <Container>
         <SectionHeading
           eyebrow="Website concepts"

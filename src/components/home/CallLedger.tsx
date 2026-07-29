@@ -71,7 +71,7 @@ export default function CallLedger() {
     <section
       id="call-ledger"
       ref={sceneRef}
-      className="relative isolate overflow-hidden px-6 py-14 md:py-0 md:min-h-screen md:flex md:items-center"
+      className="home-call-ledger relative isolate overflow-hidden px-6 py-14 md:py-0 md:min-h-screen md:flex md:items-center"
     >
       {/* Ambient light takes the active call's accent — the whole section
           changes temperature as you scroll, not just one row. */}
@@ -143,7 +143,7 @@ export default function CallLedger() {
 
         {/* Right: the call log. */}
         <div
-          className="overflow-hidden rounded-[1.75rem] border border-white/10 p-5 md:p-7"
+          className="call-ledger-panel overflow-hidden rounded-[1.75rem] border border-white/10 p-5 md:p-7"
           style={{
             background: 'linear-gradient(165deg, rgba(11,52,120,0.62), rgba(6,24,58,0.82))',
             boxShadow: '0 30px 80px rgba(2,12,38,0.45), inset 0 1px 0 rgba(255,255,255,0.06)',

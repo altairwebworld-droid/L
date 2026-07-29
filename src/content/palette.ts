@@ -9,14 +9,14 @@
  */
 
 export const accents = {
-  cyan: '#5ec8d8',
-  amber: '#e8a54b',
-  coral: '#e8785c',
-  violet: '#8b7ce8',
-  teal: '#4fb0a4',
-  gold: '#d9b04e',
-  cobalt: '#4b8df8',
-  green: '#5cb185',
+  cyan: '#f8dbb9',
+  amber: '#ff6b22',
+  coral: '#ff915a',
+  violet: '#cfc7bc',
+  teal: '#f1b47f',
+  gold: '#ffb15c',
+  cobalt: '#ff6b22',
+  green: '#d8cfc3',
 } as const;
 
 export type AccentName = keyof typeof accents;
@@ -40,10 +40,10 @@ export const signalAccent = accents.amber;
 
 /** Surface tokens, so components stop inventing their own hexes. */
 export const surfaces = {
-  night: '#061b42',
-  deep: '#08295f',
-  cobalt: '#0b3478',
+  night: '#090909',
+  deep: '#121212',
+  cobalt: '#1a1918',
   cream: '#f4efe4',
-  creamInk: '#092f69',
-  creamInkMuted: '#4a5f8a',
+  creamInk: '#171513',
+  creamInkMuted: '#665f58',
 } as const;

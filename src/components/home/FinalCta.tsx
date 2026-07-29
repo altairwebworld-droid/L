@@ -7,8 +7,8 @@ import { MagneticButton } from './MagneticButton';
 
 export default function FinalCta() {
   return (
-    <section className="relative isolate overflow-hidden py-14 md:py-20">
-      <LightLines gradientFrom="#061b42" gradientTo="#0b3478" lightsOpacity={0.7} linesOpacity={0.06} className="-z-10" />
+    <section className="home-final-cta relative isolate overflow-hidden py-14 md:py-20">
+      <LightLines gradientFrom="#090909" gradientTo="#171513" lightsOpacity={0.52} linesOpacity={0.05} className="-z-10" />
 
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
@@ -30,7 +30,7 @@ export default function FinalCta() {
                 <Link
                   to={contactActions.review.path}
                   data-track="cta_click"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#061b42]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b22] px-7 py-3.5 text-sm font-bold text-black"
                 >
                   {contactActions.review.label}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

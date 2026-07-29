@@ -4,7 +4,7 @@ import { Container, Section } from './Section';
 
 export default function HomeFaq() {
   return (
-    <Section surface="ivory">
+    <Section surface="ivory" className="home-faq-section">
       <Container className="grid gap-12 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
         <div>
           <p className="micro-label mb-5 text-ink-muted">Straight answers</p>

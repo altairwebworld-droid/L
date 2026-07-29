@@ -5,7 +5,7 @@ import { Container, Section } from './Section';
 
 export default function ReportingCard() {
   return (
-    <Section surface="ivory">
+    <Section surface="ivory" className="home-report-section">
       <Container className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <div>
           <p className="micro-label mb-5 text-ink-muted">What reaches the team</p>

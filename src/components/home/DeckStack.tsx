@@ -9,6 +9,8 @@ export type DeckStackItem = {
   description: string;
   details: string[];
   note?: string;
+  image: string;
+  imageAlt: string;
 };
 
 /**
@@ -24,14 +26,14 @@ export function DeckStack({ items }: { items: DeckStackItem[] }) {
       const media = gsap.matchMedia();
       media.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
         const cards = gsap.utils.toArray<HTMLElement>('.service-stack-card', sceneRef.current);
-        const peek = 34;
-        const scaleStep = 0.035;
+        const peek = 42;
+        const scaleStep = 0.045;
         const pose = (index: number) => ({ y: index * peek, scale: 1 - index * scaleStep });
 
         cards.forEach((card, index) => {
           gsap.set(card, {
             zIndex: cards.length - index,
-            y: window.innerHeight * 0.7 + index * peek,
+            y: window.innerHeight * 0.72 + index * peek,
             scale: pose(index).scale * 0.9,
             rotation: 0,
             transformOrigin: '50% 0%',
@@ -44,23 +46,24 @@ export function DeckStack({ items }: { items: DeckStackItem[] }) {
             start: 'top top',
             end: () => `+=${cards.length * window.innerHeight}`,
             pin: true,
-            scrub: 0.8,
+            scrub: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
 
         cards.forEach((card, index) => {
-          timeline.to(card, { ...pose(index), ease: 'power3.out', duration: 1.25 }, index * 0.07);
+          timeline.to(card, { ...pose(index), ease: 'power3.out', duration: 1.35 }, index * 0.06);
         });
 
-        const flyStart = timeline.duration() + 0.25;
+        timeline.to({}, { duration: 0.35 });
+        const flyStart = timeline.duration();
         cards.slice(0, -1).forEach((card, index) => {
           const time = flyStart + index;
           const behind = cards.slice(index + 1);
           timeline.to(
             card,
-            { y: () => -window.innerHeight * 1.12, rotation: -18, scale: 0.95, ease: 'none', duration: 1 },
+            { y: () => -window.innerHeight * 1.15, rotation: -25, scale: 0.94, ease: 'none', duration: 1 },
             time,
           );
           timeline.to(
@@ -75,7 +78,7 @@ export function DeckStack({ items }: { items: DeckStackItem[] }) {
           );
         });
 
-        timeline.to({}, { duration: 0.35 });
+        timeline.to({}, { duration: 0.4 });
         return () => {
           timeline.scrollTrigger?.kill();
           timeline.kill();
@@ -97,13 +100,14 @@ export function DeckStack({ items }: { items: DeckStackItem[] }) {
       <div className="service-stack__stage">
         <div className="service-stack__deck">
           {items.map((item, index) => (
-            <article key={item.id} className="service-stack-card" data-tone={(index % 4) + 1}>
+            <article id={item.id} key={item.id} className="service-stack-card" data-tone={(index % 5) + 1}>
               <div className="service-stack-card__content">
-                <div className="service-stack-card__heading">
+                <div className="service-stack-card__top">
                   <h3>{item.title}</h3>
-                  {item.note && <p>{item.note}</p>}
+                  <span>{String(index + 1).padStart(2, '0')}</span>
                 </div>
                 <p className="service-stack-card__description">{item.description}</p>
+                {item.note && <p className="service-stack-card__note">{item.note}</p>}
                 <ul role="list">
                   {item.details.map((detail) => (
                     <li key={detail}>
@@ -118,19 +122,9 @@ export function DeckStack({ items }: { items: DeckStackItem[] }) {
                 </Link>
               </div>
 
-              <div className="service-stack-card__media" aria-hidden="true">
-                <div className="service-stack-card__orbit">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className="service-stack-card__route">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <strong>{item.title.split(' ')[0]}</strong>
+              <div className="service-stack-card__media">
+                <img src={item.image} alt={item.imageAlt} width="640" height="640" loading="lazy" decoding="async" />
+                <p aria-hidden="true">{item.title.split(' ')[0]}</p>
               </div>
             </article>
           ))}

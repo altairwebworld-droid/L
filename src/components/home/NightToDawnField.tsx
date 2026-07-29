@@ -16,7 +16,7 @@ import { ReactNode } from 'react';
  */
 export function NightToDawnField({ children }: { children: ReactNode }) {
   return (
-    <div className="relative isolate">
+    <div className="lycore-signal-field relative isolate">
       {/* Base field. Long, low-contrast stops — no visible banding edges. */}
       <div
         aria-hidden="true"

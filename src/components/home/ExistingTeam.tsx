@@ -24,7 +24,7 @@ const after = [
 
 export default function ExistingTeam() {
   return (
-    <section className="relative px-6 py-12 md:py-16 lg:py-20">
+    <section className="home-team-section relative px-6 py-12 md:py-16 lg:py-20">
       <div
         aria-hidden="true"
         className="ambient-glow right-[6%] top-[12%] h-[26rem] w-[26rem]"

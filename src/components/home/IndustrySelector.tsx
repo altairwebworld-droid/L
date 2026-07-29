@@ -14,8 +14,9 @@ import {
   Zap,
   type LucideIcon,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { industries } from '../../content/industries';
+import { SliderControls } from './SliderControls';
 
 const icons: Record<string, LucideIcon> = {
   Towing: Truck,
@@ -40,11 +41,12 @@ const icons: Record<string, LucideIcon> = {
  */
 export default function IndustrySelector() {
   const [active, setActive] = useState(0);
+  const railRef = useRef<HTMLDivElement>(null);
   const industry = industries[active];
   const ActiveIcon = icons[industry.name] ?? Droplets;
 
   return (
-    <section id="industries" className="relative px-6 py-12 md:py-16 lg:py-20">
+    <section id="industries" className="home-industry-section relative px-6 py-12 md:py-16 lg:py-20">
       <div
         aria-hidden="true"
         className="ambient-glow left-[4%] top-[20%] h-[30rem] w-[30rem] transition-colors duration-700"
@@ -52,20 +54,24 @@ export default function IndustrySelector() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-[80rem]">
-        <div className="mb-12 max-w-[40rem]">
-          <p className="micro-label mb-5 text-[#9fc0ea]">Who this is for</p>
-          <h2 className="section-title text-ink">
-            Built for businesses where delayed responses cost real revenue.
-          </h2>
+        <div className="signal-slider-heading mb-12">
+          <div className="max-w-[40rem]">
+            <p className="micro-label mb-5 text-[#9fc0ea]">Who this is for</p>
+            <h2 className="section-title text-ink">
+              Built for businesses where delayed responses cost real revenue.
+            </h2>
+          </div>
+          <SliderControls railRef={railRef} label="industries" />
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[0.42fr_0.58fr] lg:gap-10">
+        <div className="industry-slider-layout grid gap-6">
           {/* Left: industry list. Horizontal scroll on mobile, list on desktop. */}
           <div
             role="tablist"
             aria-label="Industries"
             aria-orientation="vertical"
-            className="-mx-6 flex gap-2 overflow-x-auto px-6 pb-2 lg:mx-0 lg:flex-col lg:gap-1 lg:overflow-visible lg:px-0 lg:pb-0"
+            ref={railRef}
+            className="signal-slider signal-slider--industries -mx-6 flex gap-2 overflow-x-auto px-6 pb-2 lg:mx-0 lg:px-0"
           >
             {industries.map((item, index) => {
               const Icon = icons[item.name] ?? Droplets;

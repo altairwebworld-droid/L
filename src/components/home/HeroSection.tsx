@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { heroContent } from '../../content/hero';
 import MagneticHeroCards from './MagneticHeroCards';
 import { MagneticButton } from './MagneticButton';
+import { HeroSignalLayer, HeroTypewriterTitle } from './HeroSignalLayer';
 
 export default function HeroSection() {
   return (
@@ -21,13 +22,11 @@ export default function HeroSection() {
         <source src="/lycore-dispatch-carousel.mp4" type="video/mp4" />
       </video>
       <div className="magnetic-hero__wash" aria-hidden="true" />
+      <HeroSignalLayer />
 
       <div className="magnetic-hero__copy">
         <p className="magnetic-hero__eyebrow">{heroContent.eyebrow}</p>
-        <h1 id="home-hero-title">
-          Turn every lead into <br />
-          <span>the next move.</span>
-        </h1>
+        <HeroTypewriterTitle />
         <p className="magnetic-hero__body">{heroContent.body}</p>
 
         <div className="magnetic-hero__actions">

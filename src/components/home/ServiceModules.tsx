@@ -8,7 +8,9 @@ import {
   Workflow,
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useRef } from 'react';
 import { accents } from '../../content/palette';
+import { SliderControls } from './SliderControls';
 
 /**
  * Service modules as an asymmetric editorial grid. Deliberately not five
@@ -24,8 +26,10 @@ const reveal = {
 };
 
 export default function ServiceModules() {
+  const railRef = useRef<HTMLDivElement>(null);
+
   return (
-    <section className="relative px-6 py-12 md:py-16 lg:py-20">
+    <section className="home-service-modules relative px-6 py-12 md:py-16 lg:py-20">
       <div
         aria-hidden="true"
         className="ambient-glow left-[8%] top-[6%] h-[28rem] w-[28rem]"
@@ -33,14 +37,17 @@ export default function ServiceModules() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-[80rem]">
-        <div className="mb-14 max-w-[38rem]">
-          <p className="micro-label mb-5 text-[#9fc0ea]">What LYCORE runs</p>
-          <h2 className="section-title text-ink">
-            From the first ring to a lead your team can act on.
-          </h2>
+        <div className="signal-slider-heading mb-14">
+          <div className="max-w-[38rem]">
+            <p className="micro-label mb-5 text-[#9fc0ea]">What LYCORE runs</p>
+            <h2 className="section-title text-ink">
+              From the first ring to a lead your team can act on.
+            </h2>
+          </div>
+          <SliderControls railRef={railRef} label="services" />
         </div>
 
-        <div className="grid grid-cols-12 gap-4 md:gap-5">
+        <div ref={railRef} className="signal-slider signal-slider--services grid grid-cols-12 gap-4 md:gap-5">
           <ReceptionModule />
           <WebsiteModule />
           <ProfileModule />

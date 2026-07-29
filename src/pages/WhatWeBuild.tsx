@@ -1,4 +1,3 @@
-import { Container, Section } from '../components/home/Section';
 import { DeckStack, type DeckStackItem } from '../components/home/DeckStack';
 import { NightToDawnField } from '../components/home/NightToDawnField';
 import { CtaBand, FaqSection, Hero, ProcessSection } from '../components/PageSections';
@@ -16,6 +15,8 @@ const offerings: DeckStackItem[] = [
       'Transfers live calls to your on-call staff when rules are met',
       'Works nights, weekends, holidays — no gaps',
     ],
+    image: '/hero-card-receptionist.webp',
+    imageAlt: 'Illustrated receptionist answering a customer call beside a booking calendar',
   },
   {
     id: 'conversion-websites',
@@ -28,6 +29,8 @@ const offerings: DeckStackItem[] = [
       'Connected to Google Business Profile and call tracking',
       'Built for the person holding a phone at 2 a.m., not someone browsing on a laptop',
     ],
+    image: '/hero-card-websites.webp',
+    imageAlt: 'Illustrated high-conversion website interface',
   },
   {
     id: 'local-search',
@@ -39,6 +42,8 @@ const offerings: DeckStackItem[] = [
       'Monitoring and updates as Google changes requirements',
       'Connected to your website and call tracking',
     ],
+    image: '/hero-card-lead-systems.webp',
+    imageAlt: 'Illustrated system routing messages, calls, and bookings into one lead funnel',
   },
   {
     id: 'lead-follow-up',
@@ -51,6 +56,8 @@ const offerings: DeckStackItem[] = [
       'Monthly report: how many leads, how many handled, where they came from',
     ],
     note: 'This feature is currently rolling out.',
+    image: '/hero-card-booking.webp',
+    imageAlt: 'Illustrated booking calendar and mobile confirmation',
   },
   {
     id: 'business-systems',
@@ -63,6 +70,8 @@ const offerings: DeckStackItem[] = [
       'Reporting that shows the full picture, not just one slice',
     ],
     note: 'This is where we are building toward, not a product available today.',
+    image: '/lycore-dispatch-poster.webp',
+    imageAlt: 'LYCORE dispatch carousel showing a lead moving through qualification and booking',
   },
 ];
 
@@ -70,15 +79,6 @@ export default function WhatWeBuild() {
   return (
     <NightToDawnField>
       <Hero title="Services" copy="LYCORE handles the chain from first contact to follow-up. Choose the layers your operation needs." />
-
-      <Section divider={false} className="pb-0">
-        <Container>
-          <div className="mb-14 max-w-2xl">
-            <p className="micro-label mb-5 text-ink-muted">Built around your operation</p>
-            <h2 className="section-title text-ink">Five layers. No towing-only template. No unnecessary software.</h2>
-          </div>
-        </Container>
-      </Section>
 
       <DeckStack items={offerings} />
 
