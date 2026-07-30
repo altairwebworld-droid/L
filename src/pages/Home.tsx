@@ -6,15 +6,15 @@ import HeroSection from '../components/home/HeroSection';
 import HomeFaq from '../components/home/HomeFaq';
 import ImplementationSteps from '../components/home/ImplementationSteps';
 import { NightToDawnField } from '../components/home/NightToDawnField';
-import ReportingCard from '../components/home/ReportingCard';
 
 /**
  * Homepage narrative:
  *   magnetic hero   — what LYCORE does and the four service entry points
  *   call ledger     — the cost, made concrete across six trades (signature)
  *   connected story — services, team support, about and industries as one route
- *   gallery + steps — proof and process
- *   reporting + faq — detail
+ *   gallery         — proof of the website work
+ *   install stack   — setup stages and the structured handoff report
+ *   faq             — practical detail
  *   final cta       — the ask
  */
 export default function Home() {
@@ -25,7 +25,6 @@ export default function Home() {
       <ConnectedStory />
       <ConceptGallery />
       <ImplementationSteps />
-      <ReportingCard />
       <HomeFaq />
       <FinalCta />
     </NightToDawnField>

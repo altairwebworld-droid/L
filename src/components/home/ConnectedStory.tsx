@@ -9,10 +9,8 @@ import {
   HeartPulse,
   KeyRound,
   MapPin,
-  MessageSquare,
   PhoneCall,
   Scale,
-  Search,
   Truck,
   UtensilsCrossed,
   Wind,
@@ -41,20 +39,6 @@ const industryIcons: Record<string, LucideIcon> = {
   'Urgent care': HeartPulse,
   Restaurants: UtensilsCrossed,
 };
-
-const callFields = [
-  ['Caller need', 'Burst pipe, ground floor'],
-  ['Service area', 'Inside coverage — Zone 2'],
-  ['Urgency', 'Emergency'],
-  ['Transfer', 'On-call tech notified'],
-] as const;
-
-const profileMetrics = [
-  ['Listing completeness', 94],
-  ['Calls from listing', 72],
-  ['Review activity', 61],
-  ['Direction requests', 48],
-] as const;
 
 const before = [
   'Staff occupied with a customer',
@@ -143,17 +127,19 @@ export default function ConnectedStory() {
             icon={PhoneCall}
             title="24/7 reception and call handling"
             body="Every call answered in your business name, with the details your team needs to act captured before the caller hangs up."
+            bullets={['Every call answered in seconds', 'Caller details captured before hang-up', 'Booked work routed to your team']}
           />
-          <LiveCallDemo />
+          <SourceIllustration src="/connected-source/img_1.svg" alt="Original source illustration of an always-on operator working late" />
         </ServiceChapter>
 
         <ServiceChapter number="02" side="right">
-          <WebsiteDemo />
+          <SourceIllustration src="/connected-source/img_2.svg" alt="Original source illustration of a customer connecting with a business online" />
           <ServiceCopy
             eyebrow="Phone-first"
             icon={Globe}
             title="Websites that convert callers"
             body="Built for someone holding a phone in an emergency, not someone browsing on a laptop."
+            bullets={['Emergency action above the fold', 'Clear offers and trust signals', 'Traffic turned into booked work']}
           />
         </ServiceChapter>
 
@@ -163,17 +149,19 @@ export default function ConnectedStory() {
             icon={MapPin}
             title="Google Business Profile optimisation"
             body="Help nearby customers find, trust and contact your business when they are ready to act."
+            bullets={['Profile information kept complete', 'Review activity made visible', 'Calls and directions easier to reach']}
           />
-          <SearchDemo />
+          <SourceIllustration src="/connected-source/img_3.svg" alt="Original source illustration of a busy team handling messages and information" />
         </ServiceChapter>
 
         <ServiceChapter number="04" side="right">
-          <AutomationDemo />
+          <SourceIllustration src="/connected-source/img_4.svg" alt="Original source illustration of structured support around a person at a laptop" />
           <ServiceCopy
             eyebrow="Runs itself"
             icon={Workflow}
             title="Intake and follow-up systems"
             body="The paperwork behind the call fills itself in, and nothing waits on someone remembering to send it."
+            bullets={['Information captured automatically', 'Follow-up sent consistently', 'Team kept informed without chasing']}
           />
         </ServiceChapter>
 
@@ -304,90 +292,31 @@ function ServiceCopy({
   icon: Icon,
   title,
   body,
+  bullets,
 }: {
   eyebrow: string;
   icon: LucideIcon;
   title: string;
   body: string;
+  bullets: readonly string[];
 }) {
   return (
     <div className="connected-service-copy">
       <p><Icon aria-hidden="true" />{eyebrow}</p>
       <h3>{title}</h3>
       <span>{body}</span>
+      <ul role="list">
+        {bullets.map((bullet) => <li key={bullet}><Check aria-hidden="true" />{bullet}</li>)}
+      </ul>
     </div>
   );
 }
 
-function LiveCallDemo() {
+function SourceIllustration({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="connected-demo connected-call-demo">
-      <div className="connected-call-demo__top">
-        <span><i aria-hidden="true" />Call in progress</span>
-        <b>00:41</b>
-      </div>
-      <dl>
-        {callFields.map(([label, value]) => (
-          <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
-        ))}
-      </dl>
-      <p>Summary sent to your team — name, number, location, urgency.</p>
-    </div>
-  );
-}
-
-function WebsiteDemo() {
-  const journey = ['Search result', 'Service page', 'Call placed', 'Appointment booked'];
-  return (
-    <div className="connected-website-demo">
-      <div className="connected-phone">
-        <span>LYCORE plumbing</span>
-        <img src="/showcase/concept-11.png" alt="Phone-first plumbing website with an emergency call action" loading="lazy" />
-        <b><PhoneCall aria-hidden="true" />Call now</b>
-      </div>
-      <ol role="list">
-        {journey.map((step, index) => (
-          <li key={step}><span>{step}</span>{index < journey.length - 1 && <ArrowRight aria-hidden="true" />}</li>
-        ))}
-      </ol>
-    </div>
-  );
-}
-
-function SearchDemo() {
-  return (
-    <div className="connected-demo connected-search-demo">
-      <div><Search aria-hidden="true" /><span>Google Business Profile</span></div>
-      <dl>
-        {profileMetrics.map(([label, value]) => (
-          <div key={label}>
-            <dt>{label}</dt><dd>{value}%</dd>
-            <i aria-hidden="true"><span style={{ width: `${value}%` }} /></i>
-          </div>
-        ))}
-      </dl>
-    </div>
-  );
-}
-
-function AutomationDemo() {
-  const steps = [
-    ['Missed call', PhoneCall],
-    ['Automatic text sent', MessageSquare],
-    ['Information captured', Check],
-    ['Team notified', ArrowRight],
-    ['Appointment confirmed', Check],
-  ] as const;
-  return (
-    <ol className="connected-automation-demo" role="list">
-      {steps.map(([label, Icon], index) => (
-        <li key={label}>
-          <span><Icon aria-hidden="true" /></span>
-          <p>{label}</p>
-          {index < steps.length - 1 && <ArrowRight aria-hidden="true" />}
-        </li>
-      ))}
-    </ol>
+    <figure className="connected-source-illustration">
+      <img src={src} alt={alt} loading="lazy" />
+    </figure>
   );
 }
 
