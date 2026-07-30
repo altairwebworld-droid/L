@@ -12,6 +12,7 @@
     "validate": "tsx scripts/validate-implementation.ts"
   },
   "dependencies": {
+    "@fontsource/barlow-condensed": "^5.3.0",
     "@google/genai": "^1.29.0",
     "@gsap/react": "^2.1.2",
     "@radix-ui/react-accordion": "^1.2.16",

@@ -97,14 +97,16 @@ body {
 
 .hero-title-group {
   display: inline;
+  white-space: nowrap;
 }
 
 .magnetic-hero h1 {
-  font-family: 'Anton', Impact, sans-serif;
-  font-size: clamp(3rem, 5.7vw, 5.8rem);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 1;
+  font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: clamp(3.5rem, 6vw, 5.8rem);
+  font-feature-settings: 'cpsp' on;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.82;
   text-transform: uppercase;
 }
 
@@ -115,7 +117,7 @@ body {
 
 .magnetic-hero h1 .hero-title-line--accent {
   color: #ff6b22;
-  margin-top: 0.08em;
+  white-space: nowrap;
 }
 
 .hero-type-char {
@@ -655,11 +657,9 @@ body {
   .magnetic-hero__copy { min-width: 0; }
   .magnetic-hero h1 {
     width: 100%;
-    font-size: clamp(2.45rem, 12vw, 3.3rem);
-    line-height: 1.02;
+    font-size: clamp(2.1rem, 10.5vw, 3rem);
   }
   .hero-title-group { display: block; width: 100%; }
-  .hero-title-line--accent { margin-top: 0.1em; }
   .magnetic-hero__actions {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
