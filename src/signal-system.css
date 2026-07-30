@@ -861,3 +861,405 @@ body {
     font-size: 0.48rem;
   }
 }
+
+/* Supplied overlapping-swiper design, adapted to the overnight call ledger. */
+.call-swiper-section {
+  display: grid;
+  min-height: 420svh;
+  grid-template-columns: minmax(22rem, 0.86fr) minmax(0, 1.14fr);
+  align-items: start;
+  overflow: clip;
+  border-block: 1px solid rgba(23, 21, 19, 0.16);
+  background: #f3eee5;
+  color: #171513;
+}
+
+.call-swiper-copy {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  height: 100svh;
+  min-width: 0;
+  padding: clamp(3.5rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+  flex-direction: column;
+  justify-content: center;
+}
+
+.call-swiper-copy h2 {
+  max-width: 100%;
+  font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: clamp(4.3rem, 6.8vw, 6.75rem);
+  font-feature-settings: 'cpsp' on;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.76;
+  text-transform: uppercase;
+}
+
+.call-swiper-copy h2 span {
+  display: block;
+  color: #ff6b22;
+}
+
+.call-swiper-kicker {
+  width: min(28rem, 86%);
+  margin-top: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.call-swiper-active {
+  max-width: 31rem;
+  margin-top: clamp(2rem, 3.5vw, 3.5rem);
+  font-family: var(--font-sans);
+}
+
+.call-swiper-active__label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #ff6b22;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.call-swiper-active__label svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.call-swiper-active > p {
+  margin-top: 0.85rem;
+  color: rgba(23, 21, 19, 0.66);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.55;
+}
+
+.call-swiper-active ul {
+  display: grid;
+  margin-top: 1.15rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(23, 21, 19, 0.16);
+  border-left: 1px solid rgba(23, 21, 19, 0.16);
+}
+
+.call-swiper-active li {
+  padding: 0.62rem 0.7rem;
+  border-right: 1px solid rgba(23, 21, 19, 0.16);
+  border-bottom: 1px solid rgba(23, 21, 19, 0.16);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.call-swiper-controls {
+  display: flex;
+  margin-top: 1.6rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.call-swiper-count {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.call-swiper-controls > div {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.call-swiper-controls button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(23, 21, 19, 0.55);
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color 160ms ease, color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.call-swiper-controls button:not(:disabled):hover {
+  background: #171513;
+  color: #fffdf9;
+  transform: translateY(-2px);
+}
+
+.call-swiper-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.28;
+}
+
+.call-swiper-controls svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.call-swiper-viewport {
+  position: sticky;
+  top: 0;
+  min-width: 0;
+  height: 100svh;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.call-swiper-viewport[data-dragging='true'] {
+  cursor: grabbing;
+}
+
+.call-swiper-log-label {
+  position: absolute;
+  z-index: 30;
+  top: clamp(1.2rem, 3vh, 2rem);
+  left: clamp(1rem, 2vw, 2rem);
+  color: rgba(23, 21, 19, 0.52);
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.call-swiper-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  padding-right: 5vw;
+  align-items: center;
+  gap: 2vw;
+  will-change: transform;
+  user-select: none;
+}
+
+.call-swiper-card {
+  position: relative;
+  display: flex;
+  width: clamp(20rem, 30vw, 28rem);
+  height: clamp(28rem, 40vw, 38rem);
+  padding: clamp(1.5rem, 2vw, 2rem);
+  flex: none;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 2px solid rgba(9, 9, 9, 0.68);
+  border-radius: clamp(1rem, 2vw, 1.8rem);
+  box-shadow: 0 28px 70px rgba(23, 21, 19, 0.18);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.call-swiper-card::after {
+  content: '';
+  position: absolute;
+  right: -18%;
+  bottom: -13%;
+  width: 70%;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.12;
+}
+
+.call-swiper-card__top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.call-swiper-card__content {
+  position: relative;
+  z-index: 2;
+}
+
+.call-swiper-card__icon {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.6rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.call-swiper-card__icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.call-swiper-card__content > p {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.call-swiper-card h3 {
+  max-width: 11ch;
+  margin-top: 0.75rem;
+  font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: clamp(2.6rem, 4.3vw, 4.15rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.call-swiper-card__content > span:last-child {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 650;
+  opacity: 0.62;
+}
+
+.call-swiper-card__status {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid currentColor;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.call-swiper-card__status i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0.32rem color-mix(in srgb, currentColor 14%, transparent);
+  animation: call-swiper-ring 1.4s ease-in-out infinite;
+}
+
+@keyframes call-swiper-ring {
+  0%, 100% { opacity: 0.45; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .call-swiper-section {
+    grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .call-swiper-copy h2 {
+    font-size: clamp(4.5rem, 7.7vw, 5.7rem);
+  }
+
+  .call-swiper-active ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .call-swiper-section {
+    display: block;
+    min-height: auto;
+    padding: 4.75rem 0;
+    overflow: hidden;
+  }
+
+  .call-swiper-copy {
+    position: relative;
+    top: auto;
+    height: auto;
+    padding: 0 1rem;
+  }
+
+  .call-swiper-copy h2 {
+    font-size: clamp(4.8rem, 24vw, 6.4rem);
+  }
+
+  .call-swiper-kicker {
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  .call-swiper-active {
+    min-height: 20rem;
+    margin-top: 2.4rem;
+  }
+
+  .call-swiper-active ul {
+    grid-template-columns: 1fr;
+  }
+
+  .call-swiper-controls {
+    max-width: 24rem;
+  }
+
+  .call-swiper-viewport {
+    position: relative;
+    top: auto;
+    height: auto;
+    margin-top: 2.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+
+  .call-swiper-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .call-swiper-log-label {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 1rem 0.7rem;
+  }
+
+  .call-swiper-track {
+    height: auto;
+    padding: 0.3rem 1rem 1.5rem;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .call-swiper-card {
+    width: min(24rem, calc(100vw - 3rem));
+    height: 31rem;
+    transform: none !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .call-swiper-card h3 {
+    font-size: clamp(2.7rem, 13vw, 3.8rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .call-swiper-card__status i {
+    animation: none;
+  }
+}

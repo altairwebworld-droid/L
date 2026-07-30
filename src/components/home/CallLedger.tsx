@@ -1,4 +1,6 @@
 import {
+  ArrowLeft,
+  ArrowRight,
   Building2,
   Droplets,
   KeyRound,
@@ -7,9 +9,8 @@ import {
   Wind,
   type LucideIcon,
 } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { urgentCalls } from '../../content/calls';
-import { gsap, useGSAP } from '../../lib/gsap';
 
 const icons: Record<string, LucideIcon> = {
   plumbing: Droplets,
@@ -20,229 +21,301 @@ const icons: Record<string, LucideIcon> = {
   bail: Scale,
 };
 
+const cardThemes = [
+  { background: '#ff6b22', ink: '#090909' },
+  { background: '#f4efe4', ink: '#171513' },
+  { background: '#f1b47f', ink: '#171513' },
+  { background: '#171615', ink: '#fffdf9' },
+  { background: '#d8cfc3', ink: '#171513' },
+  { background: '#ff915a', ink: '#171513' },
+] as const;
+
 /**
- * The signature scroll scene. Six urgent calls from one night, each from a
- * different trade and each carrying its own accent. Scrolling activates one
- * call at a time; the left column, the ambient light, the active row and the
- * outcome indicator all change with it.
- *
- * Deliberately NOT a single colour sweeping across every row — the point is
- * that these are six different businesses, six different nights being lost.
- *
- * Mobile and reduced-motion get a plain stacked list with every call visible
- * and no pinning, which is a designed fallback rather than a degraded one.
+ * Split-screen overlapping call swiper adapted from the supplied Smooothy
+ * reference. Desktop page scroll drives a momentum-smoothed track whose
+ * passed cards pin, rotate, and shrink at the leading edge. Mobile uses a
+ * native snap carousel so all six calls remain easy to reach.
  */
 export default function CallLedger() {
-  const sceneRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLOListElement>(null);
+  const goToRef = useRef<(index: number) => void>(() => undefined);
   const [active, setActive] = useState(0);
-  const [pinned, setPinned] = useState(false);
+  const activeRef = useRef(0);
 
-  useGSAP(
-    () => {
-      const media = gsap.matchMedia();
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    const section = sectionRef.current;
+    if (!viewport || !track || !section) return;
 
-      // Pinned, scrubbed scene: desktop with motion allowed.
-      media.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
-        setPinned(true);
+    const cards = Array.from(track.children) as HTMLElement[];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const nativeMode = window.innerWidth < 768;
 
-        const trigger = ScrollTriggerFor(sceneRef.current, (progress) => {
-          const index = Math.min(
-            urgentCalls.length - 1,
-            Math.floor(progress * urgentCalls.length),
-          );
-          setActive(index);
+    const setActiveCard = (index: number) => {
+      const bounded = Math.max(0, Math.min(cards.length - 1, index));
+      if (bounded === activeRef.current) return;
+      activeRef.current = bounded;
+      setActive(bounded);
+    };
+
+    if (nativeMode) {
+      const updateActiveFromScroll = () => {
+        const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+        let nearest = 0;
+        let nearestDistance = Number.POSITIVE_INFINITY;
+        cards.forEach((card, index) => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const distance = Math.abs(cardCenter - viewportCenter);
+          if (distance < nearestDistance) {
+            nearest = index;
+            nearestDistance = distance;
+          }
         });
+        setActiveCard(nearest);
+      };
 
-        return () => {
-          trigger?.kill();
-          setPinned(false);
-        };
+      goToRef.current = (index) => {
+        const card = cards[Math.max(0, Math.min(cards.length - 1, index))];
+        viewport.scrollTo({ left: card.offsetLeft - 16, behavior: reducedMotion ? 'auto' : 'smooth' });
+      };
+
+      viewport.addEventListener('scroll', updateActiveFromScroll, { passive: true });
+      updateActiveFromScroll();
+
+      return () => viewport.removeEventListener('scroll', updateActiveFromScroll);
+    }
+
+    let current = 0;
+    let target = 0;
+    let maximumScroll = 0;
+    let velocity = 0;
+    let dragging = false;
+    let startX = 0;
+    let startTarget = 0;
+    let previousX = 0;
+    let previousTime = performance.now();
+    let frame = 0;
+
+    const clampTarget = (value: number) => Math.max(maximumScroll, Math.min(0, value));
+
+    const measure = () => {
+      maximumScroll = -cards[cards.length - 1].offsetLeft;
+      target = clampTarget(target);
+      current = clampTarget(current);
+      updateFromPageScroll();
+    };
+
+    const updateFromPageScroll = () => {
+      if (dragging) return;
+      const rect = section.getBoundingClientRect();
+      const scrollDistance = Math.max(1, section.offsetHeight - window.innerHeight);
+      const progress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
+      target = maximumScroll * progress;
+      velocity = 0;
+    };
+
+    const updateCards = () => {
+      const stackOffset = viewport.clientWidth * 0.1;
+      let nearest = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const cardWidth = card.offsetWidth;
+        const cardLeft = card.offsetLeft + current;
+        const isLast = index === cards.length - 1;
+        const distance = Math.abs(cardLeft);
+
+        if (distance < nearestDistance) {
+          nearest = index;
+          nearestDistance = distance;
+        }
+
+        if (cardLeft < 0 && !isLast) {
+          const ratio = Math.min(1, Math.abs(cardLeft) / cardWidth);
+          const translateX = current + Math.abs(cardLeft) + ratio * stackOffset;
+          card.style.transformOrigin = 'left 80%';
+          card.style.transform = `translate3d(${translateX}px, 0, 0) rotate(${-15 * ratio}deg) scale(${1 - ratio * 0.4})`;
+        } else {
+          card.style.transformOrigin = 'center';
+          card.style.transform = `translate3d(${current}px, 0, 0)`;
+        }
+
+        card.style.zIndex = String(index + 1);
       });
 
-      return () => media.revert();
-    },
-    { scope: sceneRef },
-  );
+      setActiveCard(nearest);
+    };
+
+    const animate = () => {
+      current = reducedMotion ? target : current + (target - current) * 0.08;
+      if (!dragging && Math.abs(velocity) > 0.08) {
+        target = clampTarget(target + velocity);
+        velocity *= 0.93;
+      }
+      updateCards();
+      frame = requestAnimationFrame(animate);
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      dragging = true;
+      velocity = 0;
+      startX = event.clientX;
+      previousX = event.clientX;
+      previousTime = performance.now();
+      startTarget = target;
+      viewport.setPointerCapture(event.pointerId);
+      viewport.dataset.dragging = 'true';
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!dragging) return;
+      const now = performance.now();
+      const elapsed = Math.max(16, now - previousTime);
+      const delta = event.clientX - previousX;
+      velocity = (delta / elapsed) * 16 * 1.35;
+      target = clampTarget(startTarget + event.clientX - startX);
+      previousX = event.clientX;
+      previousTime = now;
+    };
+
+    const releasePointer = (event: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      target = clampTarget(target + velocity * 10);
+      viewport.dataset.dragging = 'false';
+      if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+    };
+
+    const onWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+      event.preventDefault();
+      target = clampTarget(target - event.deltaX);
+      velocity = -event.deltaX * 0.18;
+    };
+
+    goToRef.current = (index) => {
+      const bounded = Math.max(0, Math.min(cards.length - 1, index));
+      const cardTarget = clampTarget(-cards[bounded].offsetLeft);
+      const progress = maximumScroll === 0 ? 0 : cardTarget / maximumScroll;
+      const sectionTop = window.scrollY + section.getBoundingClientRect().top;
+      const scrollDistance = Math.max(1, section.offsetHeight - window.innerHeight);
+      window.scrollTo({ top: sectionTop + progress * scrollDistance, behavior: 'smooth' });
+      target = cardTarget;
+      velocity = 0;
+      setActiveCard(bounded);
+    };
+
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(viewport);
+    resizeObserver.observe(track);
+    viewport.addEventListener('pointerdown', onPointerDown);
+    viewport.addEventListener('pointermove', onPointerMove);
+    viewport.addEventListener('pointerup', releasePointer);
+    viewport.addEventListener('pointercancel', releasePointer);
+    viewport.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('scroll', updateFromPageScroll, { passive: true });
+    measure();
+    animate();
+
+    return () => {
+      cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      viewport.removeEventListener('pointerdown', onPointerDown);
+      viewport.removeEventListener('pointermove', onPointerMove);
+      viewport.removeEventListener('pointerup', releasePointer);
+      viewport.removeEventListener('pointercancel', releasePointer);
+      viewport.removeEventListener('wheel', onWheel);
+      window.removeEventListener('scroll', updateFromPageScroll);
+      cards.forEach((card) => {
+        card.style.transform = '';
+        card.style.transformOrigin = '';
+        card.style.zIndex = '';
+      });
+    };
+  }, []);
 
   const activeCall = urgentCalls[active];
   const ActiveIcon = icons[activeCall.id] ?? Droplets;
 
   return (
-    <section
-      id="call-ledger"
-      ref={sceneRef}
-      className="home-call-ledger relative isolate overflow-hidden px-6 py-14 md:py-0 md:min-h-screen md:flex md:items-center"
-    >
-      {/* Ambient light takes the active call's accent — the whole section
-          changes temperature as you scroll, not just one row. */}
-      <div
-        aria-hidden="true"
-        className="ambient-glow right-[-8%] top-1/2 h-[34rem] w-[34rem] -translate-y-1/2"
-        style={{ backgroundColor: `${activeCall.accent}38` }}
-      />
+    <section ref={sectionRef} id="call-ledger" className="call-swiper-section" aria-labelledby="call-swiper-title">
+      <div className="call-swiper-copy">
+        <h2 id="call-swiper-title">
+          Every night,
+          <span>somewhere</span>
+        </h2>
+        <p className="call-swiper-kicker">Every unanswered call can become someone else&apos;s job.</p>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[80rem] items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
-        {/* Left: explanation, driven by whichever call is active. */}
-        <div>
-          <p className="micro-label mb-5 text-[#9fc0ea]">Every night, somewhere</p>
-          <h2 className="section-title max-w-[15ch] text-ink">
-            Every unanswered call can become someone else’s job.
-          </h2>
-
-          {pinned ? (
-            <div className="mt-8 min-h-[15rem]">
-              <div className="flex items-center gap-3">
-                <span
-                  className="flex h-10 w-10 items-center justify-center rounded-xl transition-colors duration-500"
-                  style={{ backgroundColor: `${activeCall.accent}22` }}
-                >
-                  <ActiveIcon
-                    className="h-5 w-5 transition-colors duration-500"
-                    style={{ color: activeCall.accent }}
-                    aria-hidden="true"
-                  />
-                </span>
-                <span
-                  className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] transition-colors duration-500"
-                  style={{ color: activeCall.accent }}
-                >
-                  {activeCall.industry}
-                </span>
-              </div>
-
-              <p
-                key={activeCall.id}
-                className="mt-5 max-w-[46ch] text-[1.0625rem] font-light leading-[1.7] text-[#c3d8f3] md:text-[1.125rem]"
-              >
-                {activeCall.explanation}
-              </p>
-
-              <ul className="mt-6 flex flex-wrap gap-2" role="list">
-                {activeCall.steps.map((step) => (
-                  <li
-                    key={step}
-                    className="rounded-lg border px-2.5 py-1.5 text-[0.82rem] transition-colors duration-500"
-                    style={{
-                      borderColor: `${activeCall.accent}38`,
-                      backgroundColor: `${activeCall.accent}12`,
-                      color: '#dbe8f8',
-                    }}
-                  >
-                    {step}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <p className="mt-7 max-w-[46ch] text-[1.0625rem] font-light leading-[1.7] text-[#c3d8f3]">
-              This is one ordinary night across six different trades. Every one of these
-              calls is a job that goes to whoever picks up the phone first.
-            </p>
-          )}
-        </div>
-
-        {/* Right: the call log. */}
-        <div
-          className="call-ledger-panel overflow-hidden rounded-[1.75rem] border border-white/10 p-5 md:p-7"
-          style={{
-            background: 'linear-gradient(165deg, rgba(11,52,120,0.62), rgba(6,24,58,0.82))',
-            boxShadow: '0 30px 80px rgba(2,12,38,0.45), inset 0 1px 0 rgba(255,255,255,0.06)',
-          }}
-        >
-          <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
-            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-[#8fb2e4]">
-              Call log — one night
-            </p>
-            <p className="tabular text-[0.78rem] text-[#8fb2e4]">
-              {pinned ? `${active + 1} / ${urgentCalls.length}` : `${urgentCalls.length} calls`}
-            </p>
+        <div className="call-swiper-active" aria-live="polite">
+          <div className="call-swiper-active__label">
+            <ActiveIcon aria-hidden="true" />
+            <span>{activeCall.industry}</span>
           </div>
-
-          <ol className="flex flex-col gap-1" role="list">
-            {urgentCalls.map((call, index) => {
-              const Icon = icons[call.id] ?? Droplets;
-              // When pinned, only the active call is lit. When not pinned
-              // (mobile / reduced motion) every call is shown resolved.
-              const isActive = !pinned || index === active;
-              const isPast = pinned && index < active;
-
-              return (
-                <li
-                  key={call.id}
-                  className="flex items-center gap-3 rounded-xl border px-3 py-3 transition-all duration-500 md:px-3.5"
-                  style={{
-                    borderColor: isActive ? `${call.accent}40` : 'rgba(255,255,255,0.06)',
-                    backgroundColor: isActive
-                      ? `${call.accent}16`
-                      : isPast
-                        ? 'rgba(255,255,255,0.025)'
-                        : 'transparent',
-                    opacity: isActive ? 1 : isPast ? 0.62 : 0.4,
-                  }}
-                >
-                  <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors duration-500"
-                    style={{
-                      backgroundColor: isActive ? `${call.accent}26` : 'rgba(255,255,255,0.05)',
-                    }}
-                  >
-                    <Icon
-                      className="h-4 w-4 transition-colors duration-500"
-                      style={{ color: isActive ? call.accent : 'rgba(255,255,255,0.45)' }}
-                      aria-hidden="true"
-                    />
-                  </span>
-
-                  <span className="min-w-0 flex-1">
-                    <span className="flex flex-wrap items-baseline gap-x-2">
-                      <span className="tabular text-[0.82rem] text-[#8fb2e4]">{call.time}</span>
-                      <span className="text-[0.94rem] font-medium leading-snug text-white">
-                        {call.summary}
-                      </span>
-                    </span>
-                    <span className="mt-0.5 block text-[0.8rem] text-[#8fb2e4]">
-                      {call.industry} · {call.value}
-                    </span>
-                  </span>
-
-                  <span
-                    className="shrink-0 rounded-md px-2 py-1 text-[0.7rem] font-semibold transition-all duration-500"
-                    style={{
-                      backgroundColor: isActive ? `${call.accent}22` : 'transparent',
-                      color: isActive ? call.accent : 'rgba(255,255,255,0.3)',
-                    }}
-                  >
-                    {isActive ? call.outcome : 'ringing'}
-                  </span>
-                </li>
-              );
-            })}
-          </ol>
+          <p>{activeCall.explanation}</p>
+          <ul role="list">
+            {activeCall.steps.map((step) => <li key={step}>{step}</li>)}
+          </ul>
         </div>
+
+        <div className="call-swiper-controls">
+          <span className="call-swiper-count">{active + 1} / {urgentCalls.length}</span>
+          <div>
+            <button
+              type="button"
+              onClick={() => goToRef.current(active - 1)}
+              disabled={active === 0}
+              aria-label="Show previous call"
+            >
+              <ArrowLeft aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => goToRef.current(active + 1)}
+              disabled={active === urgentCalls.length - 1}
+              aria-label="Show next call"
+            >
+              <ArrowRight aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div ref={viewportRef} className="call-swiper-viewport" data-dragging="false">
+        <p className="call-swiper-log-label">Call log — one night</p>
+        <ol ref={trackRef} className="call-swiper-track" role="list">
+          {urgentCalls.map((call, index) => {
+            const Icon = icons[call.id] ?? Droplets;
+            const theme = cardThemes[index % cardThemes.length];
+            return (
+              <li
+                key={call.id}
+                className="call-swiper-card"
+                style={{ backgroundColor: theme.background, color: theme.ink }}
+              >
+                <div className="call-swiper-card__top">
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <span>{call.time}</span>
+                </div>
+
+                <div className="call-swiper-card__content">
+                  <span className="call-swiper-card__icon"><Icon aria-hidden="true" /></span>
+                  <p>{call.industry}</p>
+                  <h3>{call.summary}</h3>
+                  <span>{call.industry} · {call.value}</span>
+                </div>
+
+                <div className="call-swiper-card__status">
+                  <span>{index === 0 ? call.outcome : 'ringing'}</span>
+                  <i aria-hidden="true" />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );
-}
-
-/**
- * Small helper so the component body stays readable. Creates the pinned,
- * scrubbed trigger and reports normalised progress back to React.
- */
-function ScrollTriggerFor(
-  element: HTMLElement | null,
-  onProgress: (progress: number) => void,
-) {
-  if (!element) return null;
-
-  return gsap.timeline({
-    scrollTrigger: {
-      trigger: element,
-      start: 'top top',
-      end: '+=320%',
-      pin: true,
-      scrub: 1,
-      anticipatePin: 1,
-      onUpdate: (self) => onProgress(self.progress),
-    },
-  }).scrollTrigger;
 }
