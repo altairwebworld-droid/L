@@ -100,9 +100,11 @@ body {
 }
 
 .magnetic-hero h1 {
-  font-family: 'Inter', var(--font-sans);
-  font-weight: 800;
-  letter-spacing: -0.062em;
+  font-family: 'Anton', Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.88;
+  text-transform: uppercase;
 }
 
 .magnetic-hero h1 span {

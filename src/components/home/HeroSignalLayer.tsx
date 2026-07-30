@@ -83,8 +83,11 @@ export function HeroTypewriterTitle() {
       gsap.set(characters, { opacity: 0 });
       gsap.set(cursor, { opacity: 1 });
 
-      const timeline = gsap.timeline({ delay: 0.28 });
-      timeline.to(characters, { opacity: 1, duration: 0.01, stagger: 0.032, ease: 'none' });
+      const timeline = gsap.timeline({ delay: 0.2, repeat: -1, repeatDelay: 0.35 });
+      timeline
+        .to(characters, { opacity: 1, duration: 0.01, stagger: 0.045, ease: 'none' })
+        .to({}, { duration: 1.8 })
+        .to([...characters].reverse(), { opacity: 0, duration: 0.01, stagger: 0.022, ease: 'none' });
 
       return () => timeline.kill();
     },
