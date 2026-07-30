@@ -9,9 +9,10 @@ export default function HeroSection() {
       <HeroSignalLayer />
 
       <div className="reference-hero-layout">
-        <p className="reference-hero-meta">{heroContent.eyebrow}</p>
-
-        <p className="reference-hero-brand" aria-hidden="true">LYCORE</p>
+        <div className="reference-hero-heading">
+          <p className="reference-hero-meta">{heroContent.eyebrow}</p>
+          <p className="reference-hero-brand" aria-hidden="true">LYCORE</p>
+        </div>
 
         <div className="reference-hero-deck">
           <MagneticHeroCards />

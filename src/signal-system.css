@@ -753,10 +753,16 @@ body {
   min-height: 100dvh;
   margin: 0 auto;
   padding: clamp(5.4rem, 8vh, 6rem) 0 clamp(1.8rem, 3vh, 2.4rem);
-  grid-template-rows: auto auto minmax(12rem, 25vh) auto;
+  grid-template-rows: auto minmax(14.5rem, 26vh) auto;
+  row-gap: clamp(3rem, 5vh, 4rem);
   align-content: center;
   justify-items: center;
   text-align: center;
+}
+
+.reference-hero-heading {
+  display: grid;
+  justify-items: center;
 }
 
 .reference-hero-meta {
@@ -823,7 +829,6 @@ body {
 
 .reference-hero-statement {
   width: 100%;
-  margin-top: clamp(1.2rem, 2.4vh, 1.9rem);
 }
 
 .reference-hero-statement h1 {
@@ -847,8 +852,9 @@ body {
 
   .reference-hero-layout {
     min-height: 50rem;
-    grid-template-rows: auto auto 12rem auto;
-    align-content: space-evenly;
+    grid-template-rows: auto 12rem auto;
+    row-gap: 2.75rem;
+    align-content: center;
   }
 
   .reference-hero-deck .magnetic-stage-card:nth-child(1) { transform: translate(-155%, -45%) rotate(-7deg); }
@@ -864,14 +870,15 @@ body {
     width: calc(100% - 1.5rem);
     min-height: 42.5rem;
     padding: 4.5rem 0 0.8rem;
-    grid-template-rows: auto auto 9.5rem auto;
-    align-content: space-evenly;
+    grid-template-rows: auto 10.5rem auto;
+    row-gap: 2.5rem;
+    align-content: center;
   }
 
   .reference-hero-brand {
     margin-top: 0.85rem;
-    margin-bottom: 0.45rem;
-    font-size: clamp(4.4rem, 24vw, 6rem);
+    font-size: clamp(3.8rem, 19.5vw, 4.8rem);
+    letter-spacing: 0.035em;
   }
 
   .reference-hero-deck {
@@ -887,10 +894,6 @@ body {
   .reference-hero-deck .magnetic-stage-card {
     width: 8rem;
     height: 8rem;
-  }
-
-  .reference-hero-statement {
-    margin-top: 1.75rem;
   }
 
   .reference-hero-statement h1 {
