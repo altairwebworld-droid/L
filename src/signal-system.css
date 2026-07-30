@@ -102,7 +102,7 @@ body {
 
 .magnetic-hero h1 {
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(3.5rem, 6vw, 5.8rem);
+  font-size: clamp(4rem, 7.5vw, 8rem);
   font-feature-settings: 'cpsp' on;
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -657,7 +657,7 @@ body {
   .magnetic-hero__copy { min-width: 0; }
   .magnetic-hero h1 {
     width: 100%;
-    font-size: clamp(2.1rem, 10.5vw, 3rem);
+    font-size: clamp(2.6rem, 13vw, 3.3rem);
   }
   .hero-title-group { display: block; width: 100%; }
   .magnetic-hero__actions {
@@ -687,4 +687,177 @@ body {
   .hero-signal-layer__rays { display: none; }
   .hero-type-char { opacity: 1 !important; }
   .hero-type-cursor { animation: none; opacity: 1; }
+}
+
+/* Reference hero composition: micro-copy, brand, card fan, CTA, statement, trust. */
+.reference-hero-layout {
+  position: relative;
+  z-index: 8;
+  display: grid;
+  width: min(76rem, calc(100% - 3rem));
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: clamp(6.4rem, 10vh, 7.5rem) 0 clamp(1.4rem, 3vh, 2.2rem);
+  grid-template-rows: auto auto minmax(13rem, 25vh) auto 1fr auto;
+  justify-items: center;
+  text-align: center;
+}
+
+.reference-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: rgba(255, 253, 249, 0.54);
+  font-family: var(--font-sans);
+  font-size: clamp(0.52rem, 0.65vw, 0.64rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.reference-hero-meta span:first-child {
+  color: #ff6b22;
+}
+
+.reference-hero-brand {
+  margin-top: clamp(1rem, 2.4vh, 1.65rem);
+  color: #fffdf9;
+  font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-feature-settings: 'cpsp' on;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.reference-hero-deck {
+  position: relative;
+  width: 100%;
+  min-height: 13rem;
+}
+
+.reference-hero-deck .magnetic-card-field {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: min(60rem, 100%);
+  height: 100%;
+  margin: 0 auto;
+  transform: none;
+}
+
+.reference-hero-deck .magnetic-stage-card {
+  width: clamp(10rem, 15.5vw, 14rem);
+  height: clamp(10rem, 15.5vw, 14rem);
+}
+
+.reference-hero-deck .magnetic-stage-card:nth-child(1) { transform: translate(-170%, -45%) rotate(5deg); }
+.reference-hero-deck .magnetic-stage-card:nth-child(2) { transform: translate(-90%, -55%) rotate(-5deg); }
+.reference-hero-deck .magnetic-stage-card:nth-child(3) { transform: translate(-10%, -43%) rotate(6deg); }
+.reference-hero-deck .magnetic-stage-card:nth-child(4) { transform: translate(70%, -54%) rotate(-7deg); }
+
+.reference-hero-statement {
+  width: 100%;
+  margin-top: clamp(1.8rem, 3.5vh, 2.6rem);
+}
+
+.reference-hero-statement h1 {
+  max-width: none;
+  margin: 0 auto;
+  color: rgba(255, 253, 249, 0.38);
+  font-size: clamp(4.5rem, 9vw, 8rem);
+  line-height: 0.8;
+}
+
+.reference-hero-statement .hero-title-line {
+  white-space: nowrap;
+}
+
+.reference-hero-statement h1 .hero-title-line--accent {
+  color: #ff6b22;
+}
+
+.reference-hero-trust {
+  align-self: end;
+  display: flex;
+  max-width: 62rem;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: rgba(255, 253, 249, 0.34);
+  font-family: var(--font-sans);
+  font-size: clamp(0.52rem, 0.65vw, 0.64rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.reference-hero-trust span:first-child {
+  color: rgba(255, 253, 249, 0.66);
+  font-weight: 700;
+}
+
+@media (max-width: 899px) {
+  .reference-hero-layout {
+    min-height: 58rem;
+    grid-template-rows: auto auto 13rem auto 1fr auto;
+  }
+
+  .reference-hero-deck .magnetic-stage-card:nth-child(1) { transform: translate(-155%, -45%) rotate(-7deg); }
+  .reference-hero-deck .magnetic-stage-card:nth-child(2) { transform: translate(-100%, -55%) rotate(3deg); }
+  .reference-hero-deck .magnetic-stage-card:nth-child(3) { transform: translate(-45%, -45%) rotate(8deg); }
+  .reference-hero-deck .magnetic-stage-card:nth-child(4) { transform: translate(10%, -54%) rotate(-5deg); }
+}
+
+@media (max-width: 640px) {
+  .magnetic-hero { min-height: 50rem; }
+
+  .reference-hero-layout {
+    width: calc(100% - 1.5rem);
+    min-height: 50rem;
+    padding-top: 5.8rem;
+    grid-template-rows: auto auto 10.5rem auto 1fr auto;
+  }
+
+  .reference-hero-brand {
+    margin-top: 0.85rem;
+    font-size: clamp(4.4rem, 24vw, 6rem);
+  }
+
+  .reference-hero-deck {
+    min-height: 10.5rem;
+  }
+
+  .reference-hero-deck .magnetic-card-field {
+    width: 20rem;
+    height: 10.5rem;
+    transform: none;
+  }
+
+  .reference-hero-deck .magnetic-stage-card {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .reference-hero-statement {
+    margin-top: 1.25rem;
+  }
+
+  .reference-hero-statement h1 {
+    max-width: none;
+    font-size: clamp(1.8rem, 8.2vw, 2.4rem);
+    line-height: 0.82;
+  }
+
+  .reference-hero-statement .hero-title-group {
+    display: inline;
+  }
+
+  .reference-hero-trust {
+    width: 100%;
+    max-width: 21rem;
+    font-size: 0.48rem;
+  }
 }

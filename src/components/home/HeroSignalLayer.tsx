@@ -98,14 +98,11 @@ export function HeroTypewriterTitle() {
     <h1 ref={titleRef} id="home-hero-title" aria-label="Turn every lead into the next move.">
       <span className="hero-title-line" aria-hidden="true">
         <span className="hero-title-group">
-          {typeChars('Turn every', 'first')}
-        </span>{' '}
-        <span className="hero-title-group">
-          {typeChars('lead into', 'second')}
+          {typeChars('Turn every lead', 'first')}
         </span>
       </span>
       <span className="hero-title-line hero-title-line--accent" aria-hidden="true">
-        {typeChars('the next move.', 'accent')}
+        {typeChars('Into the next move.', 'accent')}
         <i className="hero-type-cursor" />
       </span>
     </h1>

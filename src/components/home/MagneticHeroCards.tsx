@@ -50,9 +50,9 @@ export default function MagneticHeroCards() {
       media.add('(min-width: 900px) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
         const cards = gsap.utils.toArray<HTMLElement>('.magnetic-stage-card', field);
         const layout = {
-          rotation: [6, -5, 5, -8],
-          x: [-318, -108, 108, 318],
-          y: [18, -12, 20, -10],
+          rotation: [5, -5, 6, -7],
+          x: [-270, -90, 90, 270],
+          y: [12, -10, 16, -8],
         };
         const cursor = { x: 0, y: 0, vx: 0, vy: 0, active: false };
         let visible = true;
