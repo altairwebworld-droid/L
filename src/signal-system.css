@@ -101,9 +101,10 @@ body {
 
 .magnetic-hero h1 {
   font-family: 'Anton', Impact, sans-serif;
+  font-size: clamp(3rem, 5.7vw, 5.8rem);
   font-weight: 400;
   letter-spacing: -0.025em;
-  line-height: 0.88;
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -114,6 +115,7 @@ body {
 
 .magnetic-hero h1 .hero-title-line--accent {
   color: #ff6b22;
+  margin-top: 0.08em;
 }
 
 .hero-type-char {
@@ -651,9 +653,13 @@ body {
 @media (max-width: 640px) {
   .magnetic-hero { min-height: 56rem; }
   .magnetic-hero__copy { min-width: 0; }
-  .magnetic-hero h1 { width: 100%; font-size: clamp(2.2rem, 11vw, 3rem); }
+  .magnetic-hero h1 {
+    width: 100%;
+    font-size: clamp(2.45rem, 12vw, 3.3rem);
+    line-height: 1.02;
+  }
   .hero-title-group { display: block; width: 100%; }
-  .hero-title-line--accent { margin-top: 0.05em; }
+  .hero-title-line--accent { margin-top: 0.1em; }
   .magnetic-hero__actions {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
