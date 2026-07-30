@@ -38,18 +38,18 @@ export default function Footer() {
           <nav className="lg:col-span-2" aria-label="Footer services">
             <h2 className="micro-label mb-6">Services</h2>
             <ul className="flex flex-col gap-4">
-              <li><Link to="/what-we-build#call-answering" className={footerLinkClass}>24/7 Receptionist</Link></li>
-              <li><Link to="/what-we-build#conversion-websites" className={footerLinkClass}>Conversion Websites</Link></li>
-              <li><Link to="/what-we-build#local-search" className={footerLinkClass}>Local Search Profiles</Link></li>
-              <li><Link to="/what-we-build#lead-follow-up" className={footerLinkClass}>Intake &amp; Follow-Up</Link></li>
-              <li><Link to="/what-we-build#business-systems" className={footerLinkClass}>Business Systems</Link></li>
+              <li><Link to="/#services" className={footerLinkClass}>24/7 Receptionist</Link></li>
+              <li><Link to="/#services" className={footerLinkClass}>Conversion Websites</Link></li>
+              <li><Link to="/#services" className={footerLinkClass}>Local Search Profiles</Link></li>
+              <li><Link to="/#services" className={footerLinkClass}>Intake &amp; Follow-Up</Link></li>
+              <li><Link to="/#services" className={footerLinkClass}>Business Systems</Link></li>
             </ul>
           </nav>
 
           <nav className="lg:col-span-2" aria-label="Footer company">
             <h2 className="micro-label mb-6">Company</h2>
             <ul className="flex flex-col gap-4">
-              <li><Link to="/about" className={footerLinkClass}>About</Link></li>
+              <li><Link to="/#about" className={footerLinkClass}>About</Link></li>
               <li><Link to="/vision" className={footerLinkClass}>Vision</Link></li>
               <li><Link to="/faq" className={footerLinkClass}>FAQ</Link></li>
               <li><Link to="/contact" className={footerLinkClass}>Contact</Link></li>

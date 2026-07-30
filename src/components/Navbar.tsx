@@ -22,6 +22,18 @@ export default function Navbar() {
   useEffect(() => setIsOpen(false), [pathname, hash]);
 
   useEffect(() => {
+    if (!hash) return;
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById(hash.slice(1));
+      target?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, hash]);
+
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -69,7 +81,7 @@ export default function Navbar() {
       ease: 'elastic.out(1, 0.65)',
       onUpdate: () => nav.style.setProperty('--ambience-x', `${ambience.current.x}px`),
     });
-  }, [pathname, scrolled]);
+  }, [pathname, hash, scrolled]);
 
   return (
     <nav className={`site-nav${scrolled ? ' site-nav--scrolled' : ''}`} aria-label="Primary navigation">
@@ -81,12 +93,24 @@ export default function Navbar() {
         <div ref={navRef} className={`site-nav__links${spotlightOn ? ' is-spotlit' : ''}`}>
           <span className="site-nav__spotlight" aria-hidden="true" />
           <span className="site-nav__ambience" aria-hidden="true" />
-          {primaryNavigation.map((item) => (
+          {primaryNavigation.map((item) => item.path.includes('#') ? (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={pathname === '/' && Boolean(hash) && item.path.endsWith(hash) ? 'is-active' : ''}
+            >
+              {item.label}
+            </Link>
+          ) : (
             <NavLink
               key={item.path}
               to={item.path}
               end={item.path === '/'}
-              className={({ isActive }) => (isActive ? 'is-active' : '')}
+              className={({ isActive }) => (
+                item.path === '/'
+                  ? pathname === '/' && !hash ? 'is-active' : ''
+                  : isActive ? 'is-active' : ''
+              )}
             >
               {item.label}
             </NavLink>
@@ -118,11 +142,23 @@ export default function Navbar() {
           className="site-nav__mobile"
           data-lenis-prevent
         >
-          {primaryNavigation.map((item) => (
+          {primaryNavigation.map((item) => item.path.includes('#') ? (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={pathname === '/' && Boolean(hash) && item.path.endsWith(hash) ? 'is-active' : ''}
+            >
+              {item.label}
+            </Link>
+          ) : (
             <NavLink
               key={item.path}
               to={item.path}
-              className={({ isActive }) => (isActive ? 'is-active' : '')}
+              className={({ isActive }) => (
+                item.path === '/'
+                  ? pathname === '/' && !hash ? 'is-active' : ''
+                  : isActive ? 'is-active' : ''
+              )}
             >
               {item.label}
             </NavLink>
