@@ -193,9 +193,12 @@ const reports: Record<string, string> = {
   'performance-report.md': simpleReport('Performance Report', table(['Performance Optimization', 'Status', 'Notes'], [
     ['Remove heavy client AI', status, 'Moved Gemini import to server-side leadRouting/chat API'],
     ['Static HTML Generation', status, 'All routes pre-rendered via script'],
-    ['Lazy Load 3D Scene', status, 'Spline restored via lazy iframe'],
-    ['Font Display Swap', 'Partial', 'CSS import needs font-display: swap'],
-    ['Image Optimization', status, 'No heavy raster images used natively']
+    ['Route code splitting', status, 'Secondary pages load only when visited; homepage JavaScript fell from 403.13 KiB to about 189 KiB compressed'],
+    ['Deferred long-page modules', status, 'Connected story, concept gallery, installation stack, FAQ, and final CTA initialize when the visitor approaches them'],
+    ['Gallery image delivery', status, 'Displayed showcase PNGs were resized and converted to WebP; aggregate displayed gallery payload fell from about 17 MiB to about 0.4 MiB'],
+    ['Responsive hero images', status, 'Hero cards provide 320 px and 640 px WebP sources with width, height, sizes, and decoding hints'],
+    ['Font delivery', status, 'Removed render-blocking Google Fonts request; the condensed display face is self-hosted and uses font-display: swap'],
+    ['Lighthouse verification', status, 'Local production audit reached 100 SEO, 100 accessibility, and 100 best practices; field Core Web Vitals still require production traffic data']
   ])),
   'internal-linking-report.md': simpleReport('Internal Linking Report', table(['Page', 'Related links', 'Audit link', 'Verification'], servicePages.map((page) => [page.path, page.related.join(', '), site.auditPath, status]))),
   'social-sharing-report.md': simpleReport('Social Sharing Report', table(['Sharing Element', 'Status', 'Implementation Details'], [

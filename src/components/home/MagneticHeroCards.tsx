@@ -10,7 +10,7 @@ const stages = [
   {
     title: 'AI Receptionist',
     src: '/hero-card-receptionist.webp',
-    alt: 'Illustrated receptionist answering a call beside a booking calendar and caller checklist',
+    alt: 'Illustrated AI receptionist robot answering calls, booking appointments, and capturing new leads',
   },
   {
     title: 'Lead Systems',
@@ -155,10 +155,12 @@ export default function MagneticHeroCards() {
   return (
     <div ref={fieldRef} className="magnetic-card-field" role="list" aria-label="The LYCORE lead flow">
       {stages.map(({ title, src, alt }, index) => (
-        <article key={title} className="magnetic-stage-card" role="listitem">
+        <div key={title} className="magnetic-stage-card" role="listitem">
           <h2 className="sr-only">{title}</h2>
           <img
             src={src}
+            srcSet={`${src.replace('.webp', '-320.webp')} 320w, ${src} 640w`}
+            sizes="(max-width: 899px) 38vw, 224px"
             alt={alt}
             width="640"
             height="640"
@@ -166,7 +168,7 @@ export default function MagneticHeroCards() {
             decoding="async"
             fetchPriority={index < 2 ? 'high' : 'auto'}
           />
-        </article>
+        </div>
       ))}
     </div>
   );

@@ -73,6 +73,10 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
               key={i}
               src={img.src}
               alt={img.alt || `Carousel image ${i}`}
+              width={cardWidth}
+              height={Math.round((cardWidth * 10) / 7)}
+              loading="lazy"
+              decoding="async"
               className={cn(
                 "[grid-area:1/1] object-cover rounded-2xl [backface-visibility:hidden]",
                 cardClassName

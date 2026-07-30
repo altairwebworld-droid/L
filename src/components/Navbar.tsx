@@ -18,6 +18,8 @@ export default function Navbar() {
   const { pathname, hash } = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
   const ambience = useRef({ x: 0 });
+  const lightTopRoutes = ['/', '/what-we-build', '/vision', '/industries/towing', '/about', '/faq', '/contact', '/book'];
+  const usesLightTop = !scrolled && lightTopRoutes.includes(pathname);
 
   useEffect(() => setIsOpen(false), [pathname, hash]);
 
@@ -84,10 +86,10 @@ export default function Navbar() {
   }, [pathname, hash, scrolled]);
 
   return (
-    <nav className={`site-nav${scrolled ? ' site-nav--scrolled' : ''}`} aria-label="Primary navigation">
+    <nav className={`site-nav${scrolled ? ' site-nav--scrolled' : ''}${usesLightTop ? ' site-nav--light-top' : ''}`} aria-label="Primary navigation">
       <div className="site-nav__inner">
         <Link to="/" className="site-nav__brand" aria-label="Home">
-          <img src="/lycore-logo.jpeg" alt="" aria-hidden="true" />
+          <img src="/favicon-96x96.png" alt="" width="96" height="96" aria-hidden="true" />
         </Link>
 
         <div ref={navRef} className={`site-nav__links${spotlightOn ? ' is-spotlit' : ''}`}>

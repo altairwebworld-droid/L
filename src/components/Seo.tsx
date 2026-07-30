@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { allPages, globalFaqs, site } from '../siteData';
+import { allPages, site } from '../siteData';
 import { trackEvent } from '../lib/analytics';
 
 export default function Seo() {
@@ -80,6 +80,7 @@ export default function Seo() {
   }, [location.pathname]);
 
   useEffect(() => {
+    const page = allPages.find((item) => item.path === location.pathname);
     // Organization schema
     const orgSchema = document.querySelector<HTMLScriptElement>('#lycore-organization-schema') || document.createElement('script');
     orgSchema.id = 'lycore-organization-schema';
@@ -94,10 +95,10 @@ export default function Seo() {
       email: site.email,
       logo: {
         '@type': 'ImageObject',
-        url: `${site.domain}/lycore-logo.jpeg`,
-        contentUrl: `${site.domain}/lycore-logo.jpeg`,
-        width: 1254,
-        height: 1254,
+        url: `${site.domain}/favicon-96x96.png`,
+        contentUrl: `${site.domain}/favicon-96x96.png`,
+        width: 96,
+        height: 96,
       },
       image: `${site.domain}${site.ogImage}`,
       areaServed: 'US',
@@ -129,7 +130,12 @@ export default function Seo() {
     ];
     services.forEach((svc, i) => {
       const id = `lycore-service-schema-${i}`;
-      const el = document.querySelector<HTMLScriptElement>(`#${id}`) || document.createElement('script');
+      const existing = document.querySelector<HTMLScriptElement>(`#${id}`);
+      if (location.pathname !== '/') {
+        existing?.remove();
+        return;
+      }
+      const el = existing || document.createElement('script');
       el.id = id;
       el.type = 'application/ld+json';
       el.textContent = JSON.stringify({
@@ -144,20 +150,25 @@ export default function Seo() {
     });
 
     // FAQPage schema on /faq
-    const faqSchemaEl = document.querySelector<HTMLScriptElement>('#lycore-faq-schema') || document.createElement('script');
+    const existingFaq = document.querySelector<HTMLScriptElement>('#lycore-faq-schema');
+    if (!page?.faqs?.length) {
+      existingFaq?.remove();
+      return;
+    }
+    const faqSchemaEl = existingFaq || document.createElement('script');
     faqSchemaEl.id = 'lycore-faq-schema';
     faqSchemaEl.type = 'application/ld+json';
     faqSchemaEl.textContent = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: globalFaqs.map((faq) => ({
+      mainEntity: page.faqs.map((faq) => ({
         '@type': 'Question',
         name: faq.question,
         acceptedAnswer: { '@type': 'Answer', text: faq.answer },
       })),
     });
     document.head.appendChild(faqSchemaEl);
-  }, []);
+  }, [location.pathname]);
 
   return null;
 }

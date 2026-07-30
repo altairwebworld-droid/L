@@ -6,9 +6,12 @@ Created: 2026-06-02
 | --- | --- | --- |
 | Remove heavy client AI | Fully implemented | Moved Gemini import to server-side leadRouting/chat API |
 | Static HTML Generation | Fully implemented | All routes pre-rendered via script |
-| Lazy Load 3D Scene | Fully implemented | Spline restored via lazy iframe |
-| Font Display Swap | Partial | CSS import needs font-display: swap |
-| Image Optimization | Fully implemented | No heavy raster images used natively |
+| Route code splitting | Fully implemented | Secondary pages load only when visited; homepage JavaScript fell from 403.13 KiB to about 189 KiB compressed |
+| Deferred long-page modules | Fully implemented | Connected story, concept gallery, installation stack, FAQ, and final CTA initialize when the visitor approaches them |
+| Gallery image delivery | Fully implemented | Displayed showcase PNGs were resized and converted to WebP; aggregate displayed gallery payload fell from about 17 MiB to about 0.4 MiB |
+| Responsive hero images | Fully implemented | Hero cards provide 320 px and 640 px WebP sources with width, height, sizes, and decoding hints |
+| Font delivery | Fully implemented | Removed render-blocking Google Fonts request; the condensed display face is self-hosted and uses font-display: swap |
+| Lighthouse verification | Fully implemented | Local production audit reached 100 SEO, 100 accessibility, and 100 best practices; field Core Web Vitals still require production traffic data |
 
 ## Implementation Detail Matrix
 

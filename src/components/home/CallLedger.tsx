@@ -284,7 +284,7 @@ export default function CallLedger() {
       </div>
 
       <div ref={viewportRef} className="call-swiper-viewport" data-dragging="false">
-        <p className="call-swiper-log-label">Call log — one night</p>
+        <p className="call-swiper-log-label">Call log / one night</p>
         <ol ref={trackRef} className="call-swiper-track" role="list">
           {urgentCalls.map((call, index) => {
             const Icon = icons[call.id] ?? Droplets;

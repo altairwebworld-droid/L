@@ -32,10 +32,10 @@ function schemaFor(page: PageMeta) {
       email: site.email,
       logo: {
         '@type': 'ImageObject',
-        url: `${site.domain}/lycore-logo.jpeg`,
-        contentUrl: `${site.domain}/lycore-logo.jpeg`,
-        width: 1254,
-        height: 1254,
+        url: `${site.domain}/favicon-96x96.png`,
+        contentUrl: `${site.domain}/favicon-96x96.png`,
+        width: 96,
+        height: 96,
       },
       image: `${site.domain}${site.ogImage}`,
       sameAs: Object.values(site.socials),
@@ -187,7 +187,7 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta name="twitter:description" content="${esc(page.description)}" />
     <meta name="twitter:image" content="${image}" />
     <meta name="twitter:image:alt" content="LYCORE logo" />
-    <meta name="theme-color" content="#0c0a09" />
+    <meta name="theme-color" content="#f2f1ed" />
     <meta name="application-name" content="${site.name}" />
     ${schemaFor(page).map((block) => `<script type="application/ld+json">${JSON.stringify(block)}</script>`).join('\n    ')}
     ${assetTags}
@@ -237,6 +237,12 @@ function fallbackFor(page: PageMeta) {
 
 function bodyFor(page: PageMeta) {
   return `<body>
+    <div id="boot-loader" aria-hidden="true">
+      <div class="boot-loader__spinner">
+        <svg viewBox="0 0 80 80"><circle r="32" cy="40" cx="40"></circle></svg>
+      </div>
+      <p class="boot-loader__wordmark">LYCORE</p>
+    </div>
     <div id="root">
       ${fallbackFor(page)}
     </div>
@@ -314,9 +320,9 @@ async function main() {
 
   await writeCrawlFiles(distDir);
   const template = await readFile(path.join(distDir, 'index.html'), 'utf8');
-  const assetTags = [...template.matchAll(/<(script[^>]+><\/script>|link[^>]+>)/g)]
+  const assetTags = [...template.matchAll(/<(script[^>]+><\/script>|link[^>]+>|style[^>]*>[\s\S]*?<\/style>)/g)]
     .map((match) => match[0])
-    .filter((tag) => tag.includes('/assets/'))
+    .filter((tag) => tag.includes('/assets/') || tag.startsWith('<style'))
     .join('\n    ');
 
   for (const page of allPages) {

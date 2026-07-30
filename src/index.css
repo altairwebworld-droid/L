@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap');
 @import '@fontsource/barlow-condensed/900.css';
 @import "tailwindcss";
 
@@ -11,8 +10,8 @@
 }
 
 @theme {
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Segoe UI", Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Georgia", "Times New Roman", serif;
 
   --color-bg: #061b42;
   --color-bg-alt: #08295f;

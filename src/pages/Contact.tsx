@@ -14,7 +14,7 @@ const reviewPoints = [
 
 export default function Contact() {
   return (
-    <main className="relative overflow-hidden px-6 pb-14 pt-24 md:pt-28">
+    <main className="contact-light relative overflow-hidden px-6 pb-14 pt-24 md:pt-28">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-20 left-[-8%] h-[26rem] w-[26rem] rounded-full opacity-20 blur-[110px]"

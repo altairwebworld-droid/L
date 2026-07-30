@@ -18,7 +18,7 @@ export default function ReportingCard() {
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
           <Card>
             <CardHeader className="border-b border-white/10">
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-ink-muted">Lead route — structured handoff</p>
+              <p className="text-xs font-medium uppercase tracking-[0.14em] text-ink-muted">Lead route / structured handoff</p>
             </CardHeader>
             <CardContent className="pt-6">
               <dl className="divide-y divide-white/10">

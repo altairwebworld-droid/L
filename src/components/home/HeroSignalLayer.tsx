@@ -63,47 +63,14 @@ export function HeroSignalLayer() {
   );
 }
 
-const typeChars = (text: string, key: string) =>
-  Array.from(text).map((character, index) => (
-    <span key={`${key}-${index}`} className="hero-type-char">
-      {character === ' ' ? '\u00a0' : character}
-    </span>
-  ));
-
 export function HeroTypewriterTitle() {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useGSAP(
-    () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const title = titleRef.current;
-      if (!title) return;
-      const characters = gsap.utils.toArray<HTMLElement>('.hero-type-char', title);
-      const cursor = title.querySelector<HTMLElement>('.hero-type-cursor');
-      gsap.set(characters, { opacity: 0 });
-      gsap.set(cursor, { opacity: 1 });
-
-      const timeline = gsap.timeline({ delay: 0.2, repeat: -1, repeatDelay: 0.35 });
-      timeline
-        .to(characters, { opacity: 1, duration: 0.01, stagger: 0.045, ease: 'none' })
-        .to({}, { duration: 1.8 })
-        .to([...characters].reverse(), { opacity: 0, duration: 0.01, stagger: 0.022, ease: 'none' });
-
-      return () => timeline.kill();
-    },
-    { scope: titleRef },
-  );
-
   return (
-    <h1 ref={titleRef} id="home-hero-title" aria-label="Turn every lead into the next move.">
-      <span className="hero-title-line" aria-hidden="true">
-        <span className="hero-title-group">
-          {typeChars('Turn every lead', 'first')}
-        </span>
+    <h1 id="home-hero-title">
+      <span className="hero-title-line">
+        <span className="hero-title-group">Turn every lead</span>
       </span>
-      <span className="hero-title-line hero-title-line--accent" aria-hidden="true">
-        {typeChars('Into the next move.', 'accent')}
-        <i className="hero-type-cursor" />
+      <span className="hero-title-line hero-title-line--accent">
+        Into the next move.
       </span>
     </h1>
   );

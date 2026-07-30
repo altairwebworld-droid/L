@@ -63,7 +63,7 @@ export default function ServiceModules() {
 
 const callFields = [
   ['Caller need', 'Burst pipe, ground floor'],
-  ['Service area', 'Inside coverage — Zone 2'],
+  ['Service area', 'Inside coverage / Zone 2'],
   ['Urgency', 'Emergency'],
   ['Transfer', 'On-call tech notified'],
 ];
@@ -130,7 +130,7 @@ function ReceptionModule() {
           className="mt-3 rounded-lg px-3 py-2.5 text-[0.85rem]"
           style={{ backgroundColor: `${accents.amber}14`, color: '#e8dcc4' }}
         >
-          Summary sent to your team — name, number, location, urgency.
+          Summary sent to your team: name, number, location, urgency.
         </p>
       </div>
     </motion.article>

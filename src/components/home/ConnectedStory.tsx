@@ -61,6 +61,8 @@ const reveal = {
   transition: { duration: 0.64, ease: [0.22, 1, 0.36, 1] as const },
 };
 
+const connectedRoute = 'M639.668 100C639.668 100 105.669 100 199.669 601.503C293.669 1103.01 1277.17 691.502 1277.17 1399.5C1277.17 2107.5 -155.332 1968 140.168 1438.5C435.669 909.002 1442.66 2093.5 713.168 2659.5';
+
 export default function ConnectedStory() {
   const storyRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
@@ -86,9 +88,9 @@ export default function ConnectedStory() {
         ease: 'none',
         scrollTrigger: {
           trigger: story,
-          start: 'top 72%',
-          end: 'bottom 82%',
-          scrub: 0.35,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true,
         },
       });
     },
@@ -99,24 +101,33 @@ export default function ConnectedStory() {
     <div ref={storyRef} className="connected-story">
       <svg
         className="connected-story__route"
-        viewBox="0 0 1000 5600"
+        viewBox="0 0 1378 2760"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
         <path
-          ref={pathRef}
-          d="M520 0 C520 190 650 170 650 390 C650 630 450 570 450 840 C450 1110 560 1060 560 1330 C560 1590 420 1560 420 1840 C420 2110 575 2070 575 2360 C575 2600 480 2640 480 2870 C480 3100 660 3040 660 3340 C660 3650 440 3560 440 3910 C440 4210 575 4170 575 4460 C575 4740 470 4780 470 5080 C470 5340 540 5370 540 5600"
+          className="connected-story__route-base"
+          d={connectedRoute}
           fill="none"
           stroke="currentColor"
           strokeLinecap="round"
-          strokeWidth="11"
+          strokeWidth="10"
+          vectorEffect="non-scaling-stroke"
+        />
+        <path
+          ref={pathRef}
+          d={connectedRoute}
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeWidth="10"
           vectorEffect="non-scaling-stroke"
         />
       </svg>
 
       <section id="services" className="connected-services" aria-labelledby="connected-services-title">
         <header className="connected-story__intro">
-          <p>Services / 01—04</p>
+          <p>Services / 01-04</p>
           <h2 id="connected-services-title">What LYCORE runs</h2>
           <span>From the first ring to a lead your team can act on.</span>
         </header>
@@ -129,7 +140,7 @@ export default function ConnectedStory() {
             body="Every call answered in your business name, with the details your team needs to act captured before the caller hangs up."
             bullets={['Every call answered in seconds', 'Caller details captured before hang-up', 'Booked work routed to your team']}
           />
-          <SourceIllustration src="/connected-source/img_1.svg" alt="Original source illustration of an always-on operator working late" />
+          <SourceIllustration src="/service-receptionist-girl.webp" alt="Illustrated receptionist answering a call beside a booking calendar and caller checklist" />
         </ServiceChapter>
 
         <ServiceChapter number="02" side="right">
@@ -207,7 +218,7 @@ export default function ConnectedStory() {
             LYCORE was created for teams that cannot afford to miss what matters. We provide an always-on response layer that answers every call, captures the right information and moves it forward.
           </p>
           <p>
-            Structured intake and practical automation keep work moving when your team is at capacity—so fewer opportunities disappear between the first ring and the next action.
+            Structured intake and practical automation keep work moving when your team is at capacity, so fewer opportunities disappear between the first ring and the next action.
           </p>
         </div>
       </section>

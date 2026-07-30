@@ -44,7 +44,7 @@ export function AccentChip({ index, accent, children }: { index?: number; accent
 
 export function Hero({ title, copy }: { title: string; copy: string }) {
   return (
-    <section className="page-hero relative overflow-hidden px-6 pb-14 pt-32 md:pb-20 md:pt-40">
+    <section className="page-hero relative overflow-hidden px-6 pb-12 pt-24 md:pb-16 md:pt-28">
       <div className="page-hero__geometry" aria-hidden="true">
         <i /><i /><i />
       </div>

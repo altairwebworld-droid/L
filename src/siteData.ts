@@ -53,7 +53,7 @@ export const showcaseItems = [
   {
     title: 'Crave Atelier — beauty salon',
     eyebrow: 'Concept 01',
-    image: '/showcase/concept-01.png',
+    image: '/showcase/concept-01.webp',
     alt: 'Website concept for a beauty salon with a clean editorial layout and booking action.',
     copy:
       'A phone-first salon homepage built around booking, not browsing — the request-appointment action stays visible from the first screen.',
@@ -61,7 +61,7 @@ export const showcaseItems = [
   {
     title: 'Lumina Cleaning Co — cleaning services',
     eyebrow: 'Concept 02',
-    image: '/showcase/concept-02.png',
+    image: '/showcase/concept-02.webp',
     alt: 'Website concept for a residential cleaning company with a bold hero and call-to-book action.',
     copy:
       'A bold homepage direction for a cleaning company, with a clear service area, pricing signals, and an instant quote action above the fold.',
@@ -69,7 +69,7 @@ export const showcaseItems = [
   {
     title: 'Terra Well Chiropractic — chiropractic clinic',
     eyebrow: 'Concept 03',
-    image: '/showcase/concept-03.png',
+    image: '/showcase/concept-03.webp',
     alt: 'Website concept for a chiropractic clinic with a calm layout and appointment request button.',
     copy:
       'A calm, trust-building homepage for a health clinic, with the appointment button and clinic hours visible without scrolling.',
@@ -77,7 +77,7 @@ export const showcaseItems = [
   {
     title: 'Auto Studio — car detailing',
     eyebrow: 'Concept 04',
-    image: '/showcase/concept-04.png',
+    image: '/showcase/concept-04.webp',
     alt: 'Website concept for a car detailing business with a structured layout showing services and booking.',
     copy:
       'A structured service page that lays out packages, turnaround time, and a booking action for a visitor who wants their car handled today.',
@@ -85,7 +85,7 @@ export const showcaseItems = [
   {
     title: 'Verde Pest Control — pest control',
     eyebrow: 'Concept 05',
-    image: '/showcase/concept-05.png',
+    image: '/showcase/concept-05.webp',
     alt: 'Website concept for a pest control company with a strong hero and request-service action.',
     copy:
       'A direct-response homepage for an urgent home-service call, with the request-service button and coverage area answered immediately.',
@@ -93,7 +93,7 @@ export const showcaseItems = [
   {
     title: 'Harborview Veterinary Care — veterinary clinic',
     eyebrow: 'Concept 06',
-    image: '/showcase/concept-06.png',
+    image: '/showcase/concept-06.webp',
     alt: 'Website concept for a veterinary clinic with a warm layout and appointment request action.',
     copy:
       'A warm, reassuring homepage for a veterinary practice, built so a worried pet owner can find the phone number and book in seconds.',
@@ -101,7 +101,7 @@ export const showcaseItems = [
   {
     title: 'Bright Smiles Pediatric Dentistry — pediatric dental practice',
     eyebrow: 'Concept 07',
-    image: '/showcase/concept-07.png',
+    image: '/showcase/concept-07.webp',
     alt: 'Website concept for a pediatric dental practice with a friendly layout and booking call to action.',
     copy:
       'A friendly, family-facing homepage for a pediatric practice, with appointment booking and new-patient information front and center.',
@@ -109,7 +109,7 @@ export const showcaseItems = [
   {
     title: 'Precision Garage Doors — garage door repair',
     eyebrow: 'Concept 08',
-    image: '/showcase/concept-08.png',
+    image: '/showcase/concept-08.webp',
     alt: 'Website concept for a garage door repair company with a bold hero and call-now action.',
     copy:
       'A no-nonsense homepage for a repair business, with a tappable phone number, service list, and response-time promise up top.',
@@ -117,7 +117,7 @@ export const showcaseItems = [
   {
     title: 'Verdeo Landscape & Outdoor Living — landscaping',
     eyebrow: 'Concept 09',
-    image: '/showcase/concept-09.png',
+    image: '/showcase/concept-09.webp',
     alt: 'Website concept for a landscaping and outdoor living company with a premium visual layout.',
     copy:
       'A premium, visual-first homepage for a landscaping company, using large project imagery alongside a clear quote-request action.',
@@ -125,7 +125,7 @@ export const showcaseItems = [
   {
     title: 'Lumière Med Spa — medical spa',
     eyebrow: 'Concept 10',
-    image: '/showcase/concept-10.png',
+    image: '/showcase/concept-10.webp',
     alt: 'Website concept for a medical spa with an elegant layout and consultation booking action.',
     copy:
       'An elegant homepage direction for a med spa, balancing brand personality with a straightforward consultation-booking path.',
@@ -133,7 +133,7 @@ export const showcaseItems = [
   {
     title: 'Crestflow Plumbing — plumbing services',
     eyebrow: 'Concept 11',
-    image: '/showcase/concept-11.png',
+    image: '/showcase/concept-11.webp',
     alt: 'Website concept for a plumbing company with a direct hero and emergency call action.',
     copy:
       'An emergency-ready homepage for a plumbing business, with the call action, service area, and availability answered in the first screen.',
@@ -183,7 +183,7 @@ export const globalFaqs: Faq[] = [
   {
     question: 'How are the websites different from what I can build myself?',
     answer:
-      'LYCORE websites are built specifically for service businesses that depend on phone calls. The phone number is tappable from the first screen, pages load in under two seconds on mobile, and every element is arranged to get an urgent searcher to call — not browse. We also connect Google Business Profile, call tracking, and lead routing so you can see which pages are generating calls.',
+      'LYCORE websites are built specifically for service businesses that depend on phone calls. The phone number is tappable from the first screen, pages are optimized for fast mobile use, and every element is arranged to get an urgent searcher to call instead of browse. We also connect Google Business Profile, call tracking, and lead routing so you can see which pages are generating calls.',
   },
   {
     question: 'What does Google Business Profile optimization include?',

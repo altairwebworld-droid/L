@@ -36,7 +36,7 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 - Q: Can LYCORE transfer live calls to my team?
   A: Yes. When a call needs immediate human attention, the receptionist can transfer the caller directly to your on-call staff. You set the rules for when live transfers happen.
 - Q: How are the websites different from what I can build myself?
-  A: LYCORE websites are built specifically for service businesses that depend on phone calls. The phone number is tappable from the first screen, pages load in under two seconds on mobile, and every element is arranged to get an urgent searcher to call — not browse. We also connect Google Business Profile, call tracking, and lead routing so you can see which pages are generating calls.
+  A: LYCORE websites are built specifically for service businesses that depend on phone calls. The phone number is tappable from the first screen, pages are optimized for fast mobile use, and every element is arranged to get an urgent searcher to call instead of browse. We also connect Google Business Profile, call tracking, and lead routing so you can see which pages are generating calls.
 - Q: What does Google Business Profile optimization include?
   A: We make sure your listing has the right categories, service areas, hours, photos, and description so that when someone nearby searches for what you do, your business appears in the local results. We also monitor and update the profile as Google makes changes.
 - Q: What is the intake and follow-up automation?

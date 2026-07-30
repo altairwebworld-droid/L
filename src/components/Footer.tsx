@@ -22,8 +22,8 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="sm:col-span-2 lg:col-span-5 lg:pr-12">
-            <Link to="/" className="inline-flex items-center gap-4" aria-label="LYCORE home">
-              <img src="/lycore-logo.jpeg" alt="LYCORE GROUP logo" className="h-12 w-12 rounded-xl object-cover shadow-[0_10px_30px_rgba(0,0,0,0.35)]" />
+            <Link to="/" className="inline-flex items-center gap-4">
+              <img src="/favicon-96x96.png" alt="LYCORE GROUP logo" width="96" height="96" className="h-12 w-12 rounded-xl object-cover shadow-[0_10px_30px_rgba(0,0,0,0.35)]" />
               <span>
                 <span className="block font-display text-xl font-medium tracking-wide">{site.name}</span>
                 <span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-stone-400">Customer communication systems</span>

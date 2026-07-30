@@ -11,3 +11,7 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 );
+
+window.requestAnimationFrame(() => {
+  document.getElementById('boot-loader')?.remove();
+});

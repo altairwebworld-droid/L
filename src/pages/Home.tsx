@@ -1,11 +1,9 @@
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import CallLedger from '../components/home/CallLedger';
-import ConnectedStory from '../components/home/ConnectedStory';
-import ConceptGallery from '../components/home/ConceptGallery';
-import FinalCta from '../components/home/FinalCta';
 import HeroSection from '../components/home/HeroSection';
-import HomeFaq from '../components/home/HomeFaq';
-import ImplementationSteps from '../components/home/ImplementationSteps';
 import { NightToDawnField } from '../components/home/NightToDawnField';
+
+const DeferredHomeBody = lazy(() => import('../components/home/DeferredHomeBody'));
 
 /**
  * Homepage narrative:
@@ -22,11 +20,42 @@ export default function Home() {
     <NightToDawnField>
       <HeroSection />
       <CallLedger />
-      <ConnectedStory />
-      <ConceptGallery />
-      <ImplementationSteps />
-      <HomeFaq />
-      <FinalCta />
+      <DeferredSections />
     </NightToDawnField>
+  );
+}
+
+function DeferredSections() {
+  const markerRef = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const marker = markerRef.current;
+    if (!marker || ready) return;
+    if (!('IntersectionObserver' in window)) {
+      setReady(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setReady(true);
+        observer.disconnect();
+      },
+      { rootMargin: '800px 0px' },
+    );
+    observer.observe(marker);
+    return () => observer.disconnect();
+  }, [ready]);
+
+  return (
+    <div ref={markerRef} className="home-deferred-sections">
+      {ready ? (
+        <Suspense fallback={<div className="home-deferred-sections__loading" aria-hidden="true" />}>
+          <DeferredHomeBody />
+        </Suspense>
+      ) : null}
+    </div>
   );
 }

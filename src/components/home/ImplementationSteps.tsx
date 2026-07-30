@@ -40,7 +40,7 @@ export default function ImplementationSteps() {
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: () => `+=${cards.length * window.innerHeight}`,
+            end: () => `+=${Math.max(cards.length * 540, window.innerHeight * 3.25)}`,
             pin: true,
             scrub: true,
             invalidateOnRefresh: true,
@@ -99,7 +99,7 @@ export default function ImplementationSteps() {
                     <span>0{index + 1}</span>
                   </div>
                   <p className="install-stack-card__lede">{step.body}</p>
-                  <p className="install-stack-card__note">Each stage is configured around the real information your team uses—not a generic demo workflow.</p>
+                  <p className="install-stack-card__note">Each stage is configured around the real information your team uses, not a generic demo workflow.</p>
                 </div>
                 <div className="install-stack-card__media">
                   <InstallVisual index={index} icon={Icon} />
@@ -119,7 +119,7 @@ export default function ImplementationSteps() {
             </div>
             <div className="install-stack-card__media">
               <div className="install-report">
-                <p>Lead route — structured handoff</p>
+                <p>Lead route / structured handoff</p>
                 <dl>
                   {reportFields.map(([field, value]) => (
                     <div key={field}><dt>{field}</dt><dd>{value}</dd></div>
@@ -169,7 +169,7 @@ function InstallVisual({ index, icon: Icon }: { index: number; icon: typeof Sear
       <div><span>30 days</span><i style={{ height: '42%' }} /></div>
       <div><span>60 days</span><i style={{ height: '68%' }} /></div>
       <div><span>90 days</span><i style={{ height: '88%' }} /></div>
-      <p>Answered calls · booked opportunities · lead sources</p>
+      <p>Answered calls / booked opportunities / lead sources</p>
     </div>
   );
 }
