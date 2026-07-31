@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { AlertCircle, ArrowRight, CalendarCheck, CheckCircle2, Mail } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
 import { signalAccent } from '../content/palette';
@@ -73,6 +73,7 @@ const resultContent = {
 export default function RedirectResult({ type }: RedirectResultProps) {
   const content = resultContent[type];
   const Icon = content.icon;
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     trackEvent(content.eventName, { path: window.location.pathname });
@@ -83,9 +84,9 @@ export default function RedirectResult({ type }: RedirectResultProps) {
   return (
     <div className="pt-32 pb-24 px-6 md:px-8 max-w-5xl mx-auto min-h-screen flex items-center">
       <motion.section
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
+        initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+        transition={{ duration: reduceMotion ? 0 : 0.7, ease: 'easeOut' }}
         className="glass-panel relative overflow-hidden rounded-[32px] border border-white/10 p-8 md:p-14 w-full text-center"
       >
         <div

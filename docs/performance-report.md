@@ -11,6 +11,7 @@ Created: 2026-06-02
 | Gallery image delivery | Fully implemented | Displayed showcase PNGs were resized and converted to WebP; aggregate displayed gallery payload fell from about 17 MiB to about 0.4 MiB |
 | Responsive hero images | Fully implemented | Hero cards provide 320 px and 640 px WebP sources with width, height, sizes, and decoding hints |
 | Font delivery | Fully implemented | Removed render-blocking Google Fonts request; the condensed display face is self-hosted and uses font-display: swap |
+| Responsive animation delivery | Fully implemented | Heavy pointer and scroll effects only run on capable devices; mobile and reduced-motion modes use native scrolling and static layouts |
 | Lighthouse verification | Fully implemented | Local production audit reached 100 SEO, 100 accessibility, and 100 best practices; field Core Web Vitals still require production traffic data |
 
 ## Implementation Detail Matrix

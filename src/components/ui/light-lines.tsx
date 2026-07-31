@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useReducedMotion } from 'motion/react';
 import { cn } from '../../lib/utils';
 
 interface LightLinesProps {
@@ -34,8 +35,11 @@ export function LightLines({
   const containerRef = useRef<HTMLDivElement>(null);
   const animationsRef = useRef<AnimatedLightRef[]>([]);
   const frameRef = useRef<number | null>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion) return;
+
     const lightsDown = [
       { selector: '.light4', from: -1080, to: 1080 },
       { selector: '.light5', from: -1080, to: 1080 },
@@ -113,7 +117,7 @@ export function LightLines({
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
       observer.disconnect();
     };
-  }, [speedMultiplier]);
+  }, [reduceMotion, speedMultiplier]);
 
   return (
     <div

@@ -1,5 +1,5 @@
 import { ArrowRight, Menu, X } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { primaryNavigation } from '../content/navigation';
@@ -15,6 +15,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [spotlightOn, setSpotlightOn] = useState(false);
+  const reduceMotion = useReducedMotion();
   const { pathname, hash } = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
   const ambience = useRef({ x: 0 });
@@ -45,7 +46,7 @@ export default function Navbar() {
   // Mouse-follow spotlight over the link row (fine-pointer devices only).
   useEffect(() => {
     const nav = navRef.current;
-    if (!nav || !window.matchMedia('(pointer: fine)').matches) return;
+    if (!nav || reduceMotion || !window.matchMedia('(pointer: fine)').matches) return;
 
     const onMove = (event: MouseEvent) => {
       const rect = nav.getBoundingClientRect();
@@ -60,7 +61,7 @@ export default function Navbar() {
       nav.removeEventListener('mousemove', onMove);
       nav.removeEventListener('mouseleave', onLeave);
     };
-  }, []);
+  }, [reduceMotion]);
 
   // A persistent accent "ambience" light springs to whichever link is active,
   // so the current page stays marked even when nothing is hovered.
@@ -77,13 +78,22 @@ export default function Navbar() {
     const activeBox = active.getBoundingClientRect();
     const target = activeBox.left - navBox.left + activeBox.width / 2;
 
-    gsap.to(ambience.current, {
+    if (reduceMotion) {
+      ambience.current.x = target;
+      nav.style.setProperty('--ambience-x', `${target}px`);
+      return;
+    }
+
+    const tween = gsap.to(ambience.current, {
       x: target,
       duration: 0.6,
       ease: 'elastic.out(1, 0.65)',
       onUpdate: () => nav.style.setProperty('--ambience-x', `${ambience.current.x}px`),
     });
-  }, [pathname, hash, scrolled]);
+    return () => {
+      tween.kill();
+    };
+  }, [pathname, hash, scrolled, reduceMotion]);
 
   return (
     <nav className={`site-nav${scrolled ? ' site-nav--scrolled' : ''}${usesLightTop ? ' site-nav--light-top' : ''}`} aria-label="Primary navigation">
@@ -138,9 +148,9 @@ export default function Navbar() {
 
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          initial={reduceMotion ? false : { opacity: 0, y: -10, scale: 0.98 }}
+          animate={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: reduceMotion ? 0 : 0.24, ease: [0.22, 1, 0.36, 1] }}
           className="site-nav__mobile"
           data-lenis-prevent
         >

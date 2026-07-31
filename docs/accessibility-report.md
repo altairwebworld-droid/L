@@ -11,6 +11,9 @@ Created: 2026-06-02
 | Keyboard Navigation | Partial | Native elements work; <details> FAQ lacks custom handling |
 | Color Contrast | Partial | stone-300 on stone-950 may need contrast review |
 | Alt Text | Fully implemented | No critical raster images; OG image has metadata |
+| Reduced Motion | Fully implemented | Scroll smoothing, pinned sequences, pointer rays, card tilt, route drawing, carousel movement, and page-entry effects stop or become static when reduced motion is requested |
+| Touch and Coarse Pointer Support | Fully implemented | Pointer-following effects and 3D tilt are disabled where hover precision is unavailable |
+| Responsive Reading Order | Fully implemented | Pinned and transformed story sections switch to normal stacked or horizontal-scroll layouts on narrow screens |
 
 ## Implementation Detail Matrix
 

@@ -22,9 +22,17 @@ Created: 2026-06-02
 | /commitments/how-we-work | How We Work — LYCORE | Fully implemented |
 
 
+## Simple Search Console setup
+
+1. Add a **Domain property** for `lycore.org` and verify it with the DNS TXT record Google supplies. If DNS access is unavailable, add the URL-prefix property `https://www.lycore.org/` and use the existing HTML-file or meta-tag verification.
+2. Open **Indexing > Sitemaps**, enter `sitemap.xml`, and select **Submit**.
+3. Use **URL inspection** to request indexing first for the homepage, `/what-we-build`, `/industries/towing`, `/about`, `/contact`, `/book`, and `/faq`. The sitemap can handle discovery of the remaining canonical pages.
+4. Do not request indexing for redirect or result routes: `/privacy`, `/industries/bail-bonds`, `/audit-request-received`, `/booking-confirmed`, or `/booking-failed`.
+5. Check **Page indexing** after several days, then review **Performance > Search results** once Google begins collecting impressions.
+
 - Sitemap URL: https://www.lycore.org/sitemap.xml
 - Robots.txt URL: https://www.lycore.org/robots.txt
-- Manual setup: verify www.lycore.org in Search Console and submit sitemap.
+- Search Console setup status: Requires manual setup.
 
 ## Implementation Detail Matrix
 

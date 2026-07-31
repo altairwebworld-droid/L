@@ -20,7 +20,7 @@ import {
   Building2,
   type LucideIcon,
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { useRef, useState } from 'react';
 import { industries } from '../../content/industries';
 import { gsap, useGSAP } from '../../lib/gsap';
@@ -67,6 +67,7 @@ export default function ConnectedStory() {
   const storyRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const [activeIndustry, setActiveIndustry] = useState(0);
+  const reduceMotion = Boolean(useReducedMotion());
   const industry = industries[activeIndustry];
   const IndustryIcon = industryIcons[industry.name] ?? Droplets;
 
@@ -77,7 +78,7 @@ export default function ConnectedStory() {
       if (!path || !story) return;
 
       const length = path.getTotalLength();
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (reduceMotion) {
         gsap.set(path, { strokeDasharray: length, strokeDashoffset: 0 });
         return;
       }
@@ -94,7 +95,7 @@ export default function ConnectedStory() {
         },
       });
     },
-    { scope: storyRef },
+    { scope: storyRef, dependencies: [reduceMotion], revertOnUpdate: true },
   );
 
   return (
@@ -132,7 +133,7 @@ export default function ConnectedStory() {
           <span>From the first ring to a lead your team can act on.</span>
         </header>
 
-        <ServiceChapter number="01" side="left">
+        <ServiceChapter number="01" side="left" reduceMotion={reduceMotion}>
           <ServiceCopy
             eyebrow="Always on"
             icon={PhoneCall}
@@ -143,7 +144,7 @@ export default function ConnectedStory() {
           <SourceIllustration src="/service-receptionist-girl.webp" alt="Illustrated receptionist answering a call beside a booking calendar and caller checklist" />
         </ServiceChapter>
 
-        <ServiceChapter number="02" side="right">
+        <ServiceChapter number="02" side="right" reduceMotion={reduceMotion}>
           <SourceIllustration src="/connected-source/img_2.svg" alt="Original source illustration of a customer connecting with a business online" />
           <ServiceCopy
             eyebrow="Phone-first"
@@ -154,7 +155,7 @@ export default function ConnectedStory() {
           />
         </ServiceChapter>
 
-        <ServiceChapter number="03" side="left">
+        <ServiceChapter number="03" side="left" reduceMotion={reduceMotion}>
           <ServiceCopy
             eyebrow="Local search"
             icon={MapPin}
@@ -165,7 +166,7 @@ export default function ConnectedStory() {
           <SourceIllustration src="/connected-source/img_3.svg" alt="Original source illustration of a busy team handling messages and information" />
         </ServiceChapter>
 
-        <ServiceChapter number="04" side="right">
+        <ServiceChapter number="04" side="right" reduceMotion={reduceMotion}>
           <SourceIllustration src="/connected-source/img_4.svg" alt="Original source illustration of structured support around a person at a laptop" />
           <ServiceCopy
             eyebrow="Runs itself"
@@ -198,8 +199,8 @@ export default function ConnectedStory() {
         </p>
 
         <div className="connected-team__comparison">
-          <Comparison title="Today" items={before} positive={false} />
-          <Comparison title="With LYCORE" items={after} positive />
+          <Comparison title="Today" items={before} positive={false} reduceMotion={reduceMotion} />
+          <Comparison title="With LYCORE" items={after} positive reduceMotion={reduceMotion} />
         </div>
 
         <p className="connected-team__payoff">
@@ -251,9 +252,9 @@ export default function ConnectedStory() {
           role="tabpanel"
           aria-labelledby={`connected-industry-tab-${activeIndustry}`}
           className="connected-industry-panel"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.3 }}
         >
           <div className="connected-industry-panel__problem">
             <IndustryIcon aria-hidden="true" />
@@ -285,13 +286,21 @@ function ServiceChapter({
   number,
   side,
   children,
+  reduceMotion,
 }: {
   number: string;
   side: 'left' | 'right';
   children: React.ReactNode;
+  reduceMotion: boolean;
 }) {
   return (
-    <motion.article {...reveal} className={`connected-service-row connected-service-row--${side}`}>
+    <motion.article
+      initial={reduceMotion ? false : reveal.initial}
+      whileInView={reduceMotion ? undefined : reveal.whileInView}
+      viewport={reveal.viewport}
+      transition={reduceMotion ? { duration: 0 } : reveal.transition}
+      className={`connected-service-row connected-service-row--${side}`}
+    >
       <span className="connected-service-row__number" aria-hidden="true">{number}</span>
       {children}
     </motion.article>
@@ -335,13 +344,21 @@ function Comparison({
   title,
   items,
   positive,
+  reduceMotion,
 }: {
   title: string;
   items: readonly string[];
   positive: boolean;
+  reduceMotion: boolean;
 }) {
   return (
-    <motion.div {...reveal} className={positive ? 'is-positive' : ''}>
+    <motion.div
+      initial={reduceMotion ? false : reveal.initial}
+      whileInView={reduceMotion ? undefined : reveal.whileInView}
+      viewport={reveal.viewport}
+      transition={reduceMotion ? { duration: 0 } : reveal.transition}
+      className={positive ? 'is-positive' : ''}
+    >
       <h3>{title}</h3>
       <ol role="list">
         {items.map((item, index) => (

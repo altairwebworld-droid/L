@@ -12,7 +12,11 @@ export function HeroSignalLayer() {
   useGSAP(
     () => {
       const layer = layerRef.current;
-      if (!layer || !window.matchMedia('(pointer: fine)').matches) return;
+      if (
+        !layer
+        || !window.matchMedia('(pointer: fine)').matches
+        || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) return;
 
       const current = { x: 50, y: 0 };
       const target = { x: 50, y: 0 };

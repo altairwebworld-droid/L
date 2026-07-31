@@ -21,13 +21,13 @@ export function PrincipleScrub({
     () => {
       const media = gsap.matchMedia();
 
-      media.add('(prefers-reduced-motion: reduce)', () => {
+      media.add('(max-width: 767px), (prefers-reduced-motion: reduce)', () => {
         setReduced(true);
       });
 
-      media.add('(prefers-reduced-motion: no-preference)', () => {
+      media.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
+        setReduced(false);
         const slides = gsap.utils.toArray<HTMLElement>('.principle-slide');
-        const isMobile = window.innerWidth < 768;
 
         gsap.set(slides.slice(1), { autoAlpha: 0 });
         gsap.set('.principle-progress', { scaleY: 0 });
@@ -36,7 +36,7 @@ export function PrincipleScrub({
           scrollTrigger: {
             trigger: sceneRef.current,
             start: 'top top',
-            end: isMobile ? '+=140%' : '+=220%',
+            end: '+=220%',
             pin: true,
             scrub: 1,
             anticipatePin: 1,

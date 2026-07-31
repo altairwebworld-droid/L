@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { GlowingEffect } from './ui/glowing-effect';
 
@@ -10,6 +10,7 @@ interface TiltCardProps {
 
 export default function TiltCard({ children, className = '', variant = "default" }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [interactive, setInteractive] = useState(false);
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -22,8 +23,22 @@ export default function TiltCard({ children, className = '', variant = "default"
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
+  useEffect(() => {
+    const media = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)');
+    const update = () => {
+      setInteractive(media.matches);
+      if (!media.matches) {
+        x.set(0);
+        y.set(0);
+      }
+    };
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, [x, y]);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (!interactive || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -47,11 +62,11 @@ export default function TiltCard({ children, className = '', variant = "default"
   return (
     <motion.div
       ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={interactive ? handleMouseMove : undefined}
+      onMouseLeave={interactive ? handleMouseLeave : undefined}
       style={{
-        rotateX,
-        rotateY,
+        rotateX: interactive ? rotateX : 0,
+        rotateY: interactive ? rotateY : 0,
         transformStyle: "preserve-3d",
       }}
       className={`relative group h-full ${className}`}
@@ -60,7 +75,7 @@ export default function TiltCard({ children, className = '', variant = "default"
         <GlowingEffect
           spread={40}
           glow={true}
-          disabled={false}
+          disabled={!interactive}
           proximity={64}
           inactiveZone={0.01}
           borderWidth={3}

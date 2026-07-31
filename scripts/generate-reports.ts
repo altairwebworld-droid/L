@@ -168,7 +168,7 @@ const reports: Record<string, string> = {
     page.path,
     page.title.split('|')[0].trim(),
     status
-  ])) + `\n\n- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Manual setup: verify ${site.domain.replace('https://', '')} in Search Console and submit sitemap.\n`),
+  ])) + `\n\n## Simple Search Console setup\n\n1. Add a **Domain property** for \`lycore.org\` and verify it with the DNS TXT record Google supplies. If DNS access is unavailable, add the URL-prefix property \`${site.domain}/\` and use the existing HTML-file or meta-tag verification.\n2. Open **Indexing > Sitemaps**, enter \`sitemap.xml\`, and select **Submit**.\n3. Use **URL inspection** to request indexing first for the homepage, \`/what-we-build\`, \`/industries/towing\`, \`/about\`, \`/contact\`, \`/book\`, and \`/faq\`. The sitemap can handle discovery of the remaining canonical pages.\n4. Do not request indexing for redirect or result routes: \`/privacy\`, \`/industries/bail-bonds\`, \`/audit-request-received\`, \`/booking-confirmed\`, or \`/booking-failed\`.\n5. Check **Page indexing** after several days, then review **Performance > Search results** once Google begins collecting impressions.\n\n- Sitemap URL: ${site.domain}/sitemap.xml\n- Robots.txt URL: ${site.domain}/robots.txt\n- Search Console setup status: ${manual}.\n`),
   'trust-compliance-report.md': simpleReport('Trust Compliance Report', table(['Compliance Item', 'Status', 'Implementation Details'], [
     ['Privacy Policy', status, '/privacy-policy route created; /privacy permanently redirects'],
     ['Terms of Service', status, '/terms route created'],
@@ -188,7 +188,10 @@ const reports: Record<string, string> = {
     ['Focus States', 'Partial', 'Relies on browser defaults; custom buttons lack explicit ring'],
     ['Keyboard Navigation', 'Partial', 'Native elements work; <details> FAQ lacks custom handling'],
     ['Color Contrast', 'Partial', 'stone-300 on stone-950 may need contrast review'],
-    ['Alt Text', status, 'No critical raster images; OG image has metadata']
+    ['Alt Text', status, 'No critical raster images; OG image has metadata'],
+    ['Reduced Motion', status, 'Scroll smoothing, pinned sequences, pointer rays, card tilt, route drawing, carousel movement, and page-entry effects stop or become static when reduced motion is requested'],
+    ['Touch and Coarse Pointer Support', status, 'Pointer-following effects and 3D tilt are disabled where hover precision is unavailable'],
+    ['Responsive Reading Order', status, 'Pinned and transformed story sections switch to normal stacked or horizontal-scroll layouts on narrow screens']
   ])),
   'performance-report.md': simpleReport('Performance Report', table(['Performance Optimization', 'Status', 'Notes'], [
     ['Remove heavy client AI', status, 'Moved Gemini import to server-side leadRouting/chat API'],
@@ -198,6 +201,7 @@ const reports: Record<string, string> = {
     ['Gallery image delivery', status, 'Displayed showcase PNGs were resized and converted to WebP; aggregate displayed gallery payload fell from about 17 MiB to about 0.4 MiB'],
     ['Responsive hero images', status, 'Hero cards provide 320 px and 640 px WebP sources with width, height, sizes, and decoding hints'],
     ['Font delivery', status, 'Removed render-blocking Google Fonts request; the condensed display face is self-hosted and uses font-display: swap'],
+    ['Responsive animation delivery', status, 'Heavy pointer and scroll effects only run on capable devices; mobile and reduced-motion modes use native scrolling and static layouts'],
     ['Lighthouse verification', status, 'Local production audit reached 100 SEO, 100 accessibility, and 100 best practices; field Core Web Vitals still require production traffic data']
   ])),
   'internal-linking-report.md': simpleReport('Internal Linking Report', table(['Page', 'Related links', 'Audit link', 'Verification'], servicePages.map((page) => [page.path, page.related.join(', '), site.auditPath, status]))),
@@ -218,7 +222,7 @@ const reports: Record<string, string> = {
     ['Schema', 'Service/FAQ schema increases rich results.', 'Rich results', 'More rich snippets', '90 days', 'Pending'],
     ['Agentic Flow', 'Automated scoring prioritizes follow-up.', 'Response time', 'Faster response', '30 days', 'Pending']
   ])),
-  'technical-validation-report.md': simpleReport('Technical Validation Report', `- Commands run: npm install, npm run lint, npm run build, npm run validate, npm run dev smoke test.\n- Build result: Passed. Vite build completed, then route-specific metadata and reports were generated.\n- Validation result: Passed. Validator checked ${allPages.length} generated routes, JSON-LD, crawl files, internal links, PNG OG asset, Vercel API function files, and required reports.\n- Errors remaining: None from lint/build/validator/dev smoke test.\n- Verification status: ${status} for local validation; live analytics, Search Console, CRM/calendar platform, chatbot provider, legal review, and deployment verification require manual setup.`),
+  'technical-validation-report.md': simpleReport('Technical Validation Report', `- Commands run: npm install, npm run lint, npm run build, npm run validate, and browser smoke tests.\n- Build result: Passed. Vite build completed, then route-specific metadata and reports were generated.\n- Validation result: Passed. Validator checked ${allPages.length} generated routes, JSON-LD, crawl files, internal links, PNG OG asset, Vercel API function files, and required reports.\n- Responsive browser verification: 320 px phone, 768 px tablet, and 1440 px desktop layouts were checked across the homepage and primary routes with no horizontal page overflow or development error overlay.\n- Motion verification: reduced-motion mode removes automatic carousel animation, converts pinned sequences to readable static layouts, and disables pointer-following effects.\n- Deferred-content verification: the full mobile homepage was scrolled through to confirm the connected story, gallery, installation stack, FAQ, and final CTA initialize correctly.\n- Errors remaining: None from lint/build/validator/browser smoke tests.\n- Verification status: ${status} for local validation; live analytics, Search Console, CRM/calendar platform, chatbot provider, legal review, and deployment verification require manual setup.`),
   'before-after-optimization-report.md': simpleReport('Before And After Optimization Report', table(['Area', 'Before', 'After', 'How to Verify', 'Status'], [
     ['SEO', 'SPA-wide metadata only.', 'Route-specific generated metadata, sitemap, schema.', 'Run build and inspect dist routes.', status],
     ['AEO', 'Partial FAQs without systematic schema.', 'Visible FAQs and matching FAQPage schema.', 'Inspect route content and JSON-LD.', status],

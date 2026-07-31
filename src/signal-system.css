@@ -1204,6 +1204,44 @@ body {
   animation: call-swiper-ring 1.4s ease-in-out infinite;
 }
 
+.call-swiper-section[data-mode='native'] {
+  min-height: auto;
+}
+
+.call-swiper-section[data-mode='native'] .call-swiper-copy,
+.call-swiper-section[data-mode='native'] .call-swiper-viewport {
+  position: relative;
+  top: auto;
+  height: auto;
+}
+
+.call-swiper-section[data-mode='native'] .call-swiper-viewport {
+  align-self: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+}
+
+.call-swiper-section[data-mode='native'] .call-swiper-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.call-swiper-section[data-mode='native'] .call-swiper-track {
+  height: auto;
+  padding: 4rem 1rem 2rem;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.call-swiper-section[data-mode='native'] .call-swiper-card {
+  transform: none !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
 @keyframes call-swiper-ring {
   0%, 100% { opacity: 0.45; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1); }

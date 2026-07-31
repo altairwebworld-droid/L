@@ -31,7 +31,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
 
     const customStyle = {
       "--n": N,
-      "--w": `${cardWidth}px`,
+      "--w": `clamp(11rem, 24vw, ${cardWidth}px)`,
       "--ba": `calc(1turn / var(--n))`,
       "--anim-dur": `${animationDuration}s`,
     } as React.CSSProperties;
@@ -40,7 +40,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
       <div
         ref={ref}
         className={cn(
-          "w-full h-full min-h-[440px] grid place-items-center overflow-hidden",
+          "grid h-full min-h-[320px] w-full place-items-center overflow-hidden sm:min-h-[380px] lg:min-h-[440px]",
           className
         )}
         style={{
@@ -52,7 +52,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
       >
         <div
           className={cn(
-            "grid place-items-center [transform-style:preserve-3d] motion-reduce:!animate-[ry_128s_linear_infinite]",
+            "grid place-items-center [transform-style:preserve-3d] motion-reduce:!animate-none",
             containerClassName
           )}
           style={{

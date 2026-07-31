@@ -1,21 +1,23 @@
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { contactActions } from '../../content/contact';
 import { LightLines } from '../ui/light-lines';
 import { MagneticButton } from './MagneticButton';
 
 export default function FinalCta() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="home-final-cta relative isolate overflow-hidden py-14 md:py-20">
       <LightLines gradientFrom="#090909" gradientTo="#171513" lightsOpacity={0.52} linesOpacity={0.05} className="-z-10" />
 
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="liquid-glass flex flex-col gap-8 rounded-[32px] border border-white/10 p-8 md:flex-row md:items-center md:justify-between md:p-12">
             <div className="max-w-xl">

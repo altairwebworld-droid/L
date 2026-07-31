@@ -42,7 +42,19 @@ export default function CallLedger() {
   const trackRef = useRef<HTMLOListElement>(null);
   const goToRef = useRef<(index: number) => void>(() => undefined);
   const [active, setActive] = useState(0);
+  const [nativeMode, setNativeMode] = useState(() => (
+    typeof window !== 'undefined'
+      && window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches
+  ));
   const activeRef = useRef(0);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)');
+    const updateMode = () => setNativeMode(media.matches);
+    updateMode();
+    media.addEventListener('change', updateMode);
+    return () => media.removeEventListener('change', updateMode);
+  }, []);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -52,8 +64,6 @@ export default function CallLedger() {
 
     const cards = Array.from(track.children) as HTMLElement[];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const nativeMode = window.innerWidth < 768;
-
     const setActiveCard = (index: number) => {
       const bounded = Math.max(0, Math.min(cards.length - 1, index));
       if (bounded === activeRef.current) return;
@@ -235,13 +245,19 @@ export default function CallLedger() {
         card.style.zIndex = '';
       });
     };
-  }, []);
+  }, [nativeMode]);
 
   const activeCall = urgentCalls[active];
   const ActiveIcon = icons[activeCall.id] ?? Droplets;
 
   return (
-    <section ref={sectionRef} id="call-ledger" className="call-swiper-section" aria-labelledby="call-swiper-title">
+    <section
+      ref={sectionRef}
+      id="call-ledger"
+      className="call-swiper-section"
+      data-mode={nativeMode ? 'native' : 'animated'}
+      aria-labelledby="call-swiper-title"
+    >
       <div className="call-swiper-copy">
         <h2 id="call-swiper-title">
           Every night,
@@ -283,7 +299,7 @@ export default function CallLedger() {
         </div>
       </div>
 
-      <div ref={viewportRef} className="call-swiper-viewport" data-dragging="false">
+      <div ref={viewportRef} className="call-swiper-viewport" data-dragging="false" data-mode={nativeMode ? 'native' : 'animated'}>
         <p className="call-swiper-log-label">Call log / one night</p>
         <ol ref={trackRef} className="call-swiper-track" role="list">
           {urgentCalls.map((call, index) => {

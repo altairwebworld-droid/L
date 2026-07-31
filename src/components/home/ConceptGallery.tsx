@@ -1,11 +1,13 @@
 import { ArrowUpRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { websiteConceptDisclaimer, websiteConcepts } from '../../content/websiteConcepts';
 import { CylinderCarousel } from '../ui/cylinder-carousel';
 import { Container, Section, SectionHeading } from './Section';
 
 export default function ConceptGallery() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Section tint className="home-concept-gallery">
       <Container>
@@ -18,11 +20,11 @@ export default function ConceptGallery() {
 
       {/* Full-bleed: the carousel spans the entire viewport width. */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={reduceMotion ? false : { opacity: 0 }}
+        whileInView={reduceMotion ? undefined : { opacity: 1 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.7 }}
-        className="w-screen max-w-none"
+        transition={{ duration: reduceMotion ? 0 : 0.7 }}
+        className="w-full max-w-none"
       >
         <CylinderCarousel
           images={websiteConcepts.map((concept) => ({ src: concept.image, alt: concept.alt }))}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { AlertCircle, FileText, LockKeyhole, Trash2 } from 'lucide-react';
 import { getAnalyticsConsent, hasGlobalPrivacyControl, updateAnalyticsConsent, type AnalyticsConsent } from '../lib/analytics';
 import { signalAccent } from '../content/palette';
@@ -218,6 +218,7 @@ export default function Legal() {
   const sections = isPrivacyPolicy ? privacySections : isDataDeletion ? dataDeletionSections : termsSections;
   const Icon = isPrivacyPolicy ? LockKeyhole : isDataDeletion ? Trash2 : FileText;
   const accent = signalAccent;
+  const reduceMotion = useReducedMotion();
 
   return (
     <div className="relative overflow-hidden">
@@ -227,7 +228,12 @@ export default function Legal() {
         style={{ background: `radial-gradient(circle, ${accent}, transparent 70%)` }}
       />
       <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-32">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mb-14">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.7 }}
+          className="mb-14"
+        >
           <div className="mb-8 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 backdrop-blur-md" style={{ borderColor: `${accent}40`, backgroundColor: `${accent}1a` }}>
             <Icon size={16} style={{ color: accent }} />
             <span className="micro-label" style={{ color: accent }}>{page.label}</span>
