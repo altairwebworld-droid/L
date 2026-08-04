@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import CallLedger from '../components/home/CallLedger';
 import HeroSection from '../components/home/HeroSection';
 import { NightToDawnField } from '../components/home/NightToDawnField';
@@ -16,20 +17,27 @@ const DeferredHomeBody = lazy(() => import('../components/home/DeferredHomeBody'
  *   final cta       — the ask
  */
 export default function Home() {
+  const { hash } = useLocation();
+
   return (
     <NightToDawnField>
       <HeroSection />
       <CallLedger />
-      <DeferredSections />
+      <DeferredSections preload={Boolean(hash)} />
     </NightToDawnField>
   );
 }
 
-function DeferredSections() {
+function DeferredSections({ preload }: { preload: boolean }) {
   const markerRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    if (preload) {
+      setReady(true);
+      return;
+    }
+
     const marker = markerRef.current;
     if (!marker || ready) return;
     if (!('IntersectionObserver' in window)) {
@@ -47,7 +55,7 @@ function DeferredSections() {
     );
     observer.observe(marker);
     return () => observer.disconnect();
-  }, [ready]);
+  }, [preload, ready]);
 
   return (
     <div ref={markerRef} className="home-deferred-sections">
