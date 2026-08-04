@@ -67,11 +67,9 @@ type WebhookTarget = {
 };
 
 export const requiredLeadFields: Array<keyof LeadPayload> = [
-  'fullName',
   'email',
-  'location',
+  'phone',
   'biggestChallenge',
-  'missedCalls',
 ];
 
 export const jotformFieldIds = {
@@ -105,7 +103,6 @@ export function validateLead(payload: LeadPayload) {
     if (field === 'missedCalls') return !clean(payload.missedCalls || payload.missAfterHoursCalls);
     return !clean(payload[field]);
   });
-  if (!clean(payload.agencyName || payload.businessName)) missing.push('businessName');
   if (payload.consent !== true) missing.push('consent');
   return missing;
 }
@@ -115,15 +112,15 @@ export function normalizeLeadPayload(body: LeadPayload): NormalizedLeadPayload {
   const phoneCountryCode = clean(body.phoneCountryCode, 10);
   const phoneNumber = clean(body.phone || body.phoneNumber);
   return {
-    fullName: clean(body.fullName),
-    agencyName: clean(body.businessName || body.agencyName),
+    fullName: clean(body.fullName) || 'Website enquiry',
+    agencyName: clean(body.businessName || body.agencyName) || 'Not provided',
     website: clean(body.website || body.websiteUrl),
     email: clean(body.email),
     phone: phoneNumber.startsWith('+') || !phoneCountryCode ? phoneNumber : `${phoneCountryCode} ${phoneNumber}`.trim(),
-    location: clean(body.location || body.cityState),
+    location: clean(body.location || body.cityState) || 'Not provided',
     biggestChallenge,
     currentCRM: clean(body.currentCRM || body.currentCrmTool),
-    missedCalls: clean(body.missedCalls || body.missAfterHoursCalls),
+    missedCalls: clean(body.missedCalls || body.missAfterHoursCalls) || 'Not asked',
     helpNeeded: clean(body.helpNeeded) || biggestChallenge,
     preferredContactMethod: clean(body.preferredContactMethod),
     preferredContactTime: clean(body.preferredContactTime),

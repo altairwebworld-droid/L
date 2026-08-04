@@ -130,8 +130,8 @@ export default function Navbar() {
         </div>
 
         <div className="site-nav__actions">
-          <Link to={site.auditPath} className="site-nav__demo" data-track="cta_click">
-            Get a free review
+          <Link to="/book" className="site-nav__demo" data-track="cta_click">
+            Book a discovery call
             <ArrowRight aria-hidden="true" />
           </Link>
           <button
@@ -176,7 +176,7 @@ export default function Navbar() {
             </NavLink>
           ))}
           <div className="site-nav__mobile-divider" />
-          <Link to="/book">Book a strategy call</Link>
+          <Link to="/book">Book a discovery call</Link>
           <p className="site-nav__mobile-meta">{site.email}</p>
         </motion.div>
       )}

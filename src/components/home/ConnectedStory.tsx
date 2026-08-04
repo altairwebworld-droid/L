@@ -89,9 +89,10 @@ export default function ConnectedStory() {
         ease: 'none',
         scrollTrigger: {
           trigger: story,
-          start: 'top top',
-          end: 'bottom bottom',
+          start: 'top 78%',
+          end: '65% 45%',
           scrub: true,
+          invalidateOnRefresh: true,
         },
       });
     },
@@ -112,16 +113,17 @@ export default function ConnectedStory() {
           fill="none"
           stroke="currentColor"
           strokeLinecap="round"
-          strokeWidth="10"
+          strokeWidth="16"
           vectorEffect="non-scaling-stroke"
         />
         <path
           ref={pathRef}
+          className="connected-story__route-progress"
           d={connectedRoute}
           fill="none"
           stroke="currentColor"
           strokeLinecap="round"
-          strokeWidth="10"
+          strokeWidth="24"
           vectorEffect="non-scaling-stroke"
         />
       </svg>

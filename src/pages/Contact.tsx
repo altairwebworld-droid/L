@@ -1,5 +1,4 @@
-import { ArrowUpRight, Building2, CheckCircle2, Mail, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowUpRight, Building2, CalendarDays, CheckCircle2, Mail, MapPin } from 'lucide-react';
 import AuditLeadForm from '../components/AuditLeadForm';
 import SocialLinks, { WhatsAppLink } from '../components/SocialLinks';
 import TiltCard from '../components/TiltCard';
@@ -11,6 +10,8 @@ const reviewPoints = [
   'What to improve first',
   'Which systems are worth adding',
 ];
+
+const bookingUrl = 'https://cal.com/lycorellc/discovery-call';
 
 export default function Contact() {
   return (
@@ -37,6 +38,17 @@ export default function Contact() {
           </div>
         </div>
       </header>
+
+      <section className="contact-booking-banner" aria-label="Book a LYCORE discovery call">
+        <p>
+          <strong>Prefer to choose a time now?</strong>
+          Open the LYCORE calendar and book the discovery call that suits you.
+        </p>
+        <a href={bookingUrl} target="_blank" rel="noreferrer" data-track="calendar_event_click">
+          <CalendarDays className="h-4 w-4" aria-hidden="true" />
+          Book a discovery call
+        </a>
+      </section>
 
       <section className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
         <aside className="space-y-6 lg:sticky lg:top-32">
@@ -83,10 +95,10 @@ export default function Contact() {
             </div>
           </TiltCard>
 
-          <Link to="/book" className="group inline-flex items-center gap-2 px-2 text-xs font-bold uppercase tracking-[0.14em] text-stone-300 transition-colors hover:text-white">
-            Prefer a scheduled conversation? Book a call
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-          </Link>
+          <a href={bookingUrl} target="_blank" rel="noreferrer" className="contact-booking-button" data-track="calendar_event_click">
+            Book a discovery call
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
         </aside>
 
         <AuditLeadForm />

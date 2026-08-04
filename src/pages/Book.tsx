@@ -42,6 +42,16 @@ export default function Book() {
         ))}
       </ol>
 
+      <a
+        className="booking-page__direct"
+        href={bookingUrl}
+        target="_blank"
+        rel="noreferrer"
+        data-track="calendar_event_click"
+      >
+        Open the booking calendar <ArrowUpRight aria-hidden="true" />
+      </a>
+
       <motion.section
         initial={reduceMotion ? false : { opacity: 0, y: 20 }}
         animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}

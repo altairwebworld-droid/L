@@ -447,16 +447,9 @@ export const navLinks = [
 ];
 
 export const formFieldNames = [
-  'fullName',
-  'businessName',
-  'website',
   'email',
-  'location',
-  'industry',
+  'phone',
   'biggestChallenge',
-  'currentCRM',
-  'missedCalls',
-  'message',
   'consent',
   'sourcePage',
   'landingPage',
