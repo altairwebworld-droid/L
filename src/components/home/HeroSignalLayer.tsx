@@ -74,7 +74,7 @@ export function HeroTypewriterTitle() {
         <span className="hero-title-group">Turn every lead</span>
       </span>
       <span className="hero-title-line hero-title-line--accent">
-        Into the next move.
+        Into a paying client.
       </span>
     </h1>
   );
