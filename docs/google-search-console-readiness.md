@@ -7,7 +7,7 @@ Created: 2026-06-02
 | / | LYCORE GROUP LLC - Customer Communication Systems | Fully implemented |
 | /what-we-build | 24/7 Receptionist, Websites & GBP for Service Businesses | Fully implemented |
 | /vision | Where LYCORE Is Building — Full Business Systems | Fully implemented |
-| /industries/towing | Towing Company Websites & 24/7 Call Answering — LYCORE | Fully implemented |
+| /industries | Industries LYCORE Serves — Call Handling, Websites & Follow-Up | Fully implemented |
 | /about | About LYCORE GROUP LLC - Service Business Systems | Fully implemented |
 | /faq | Frequently Asked Questions — LYCORE | Fully implemented |
 | /contact | Contact LYCORE — Free Lead System Review | Fully implemented |
@@ -26,8 +26,8 @@ Created: 2026-06-02
 
 1. Add a **Domain property** for `lycore.org` and verify it with the DNS TXT record Google supplies. If DNS access is unavailable, add the URL-prefix property `https://www.lycore.org/` and use the existing HTML-file or meta-tag verification.
 2. Open **Indexing > Sitemaps**, enter `sitemap.xml`, and select **Submit**.
-3. Use **URL inspection** to request indexing first for the homepage, `/what-we-build`, `/industries/towing`, `/about`, `/contact`, `/book`, and `/faq`. The sitemap can handle discovery of the remaining canonical pages.
-4. Do not request indexing for redirect or result routes: `/privacy`, `/industries/bail-bonds`, `/audit-request-received`, `/booking-confirmed`, or `/booking-failed`.
+3. Use **URL inspection** to request indexing first for the homepage, `/what-we-build`, `/industries`, `/about`, `/contact`, `/book`, and `/faq`. The sitemap can handle discovery of the remaining canonical pages.
+4. Do not request indexing for redirect or result routes: `/privacy`, `/industries/towing`, `/industries/bail-bonds`, `/audit-request-received`, `/booking-confirmed`, or `/booking-failed`.
 5. Check **Page indexing** after several days, then review **Performance > Search results** once Google begins collecting impressions.
 
 - Sitemap URL: https://www.lycore.org/sitemap.xml

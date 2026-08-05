@@ -11,7 +11,12 @@
     },
     {
       "source": "/industries/bail-bonds",
-      "destination": "/what-we-build",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/industries/towing",
+      "destination": "/industries",
       "permanent": true
     },
     {

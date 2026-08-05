@@ -7,6 +7,7 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 ## Services
 
 - [What We Build](https://www.lycore.org/what-we-build): LYCORE answers calls 24/7, builds phone-first websites, optimizes Google Business Profiles, and automates intake for small service businesses that cannot afford to miss a call.
+- [Industries LYCORE Serves](https://www.lycore.org/industries): Explore every industry LYCORE serves, with the pain points, call handling, websites, intake, booking and follow-up each business can receive.
 
 ## Company
 

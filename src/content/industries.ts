@@ -18,7 +18,7 @@ export type Industry = {
   outcome: string;
 };
 
-export const industries: readonly Industry[] = [
+const industryCatalogue: readonly Industry[] = [
   {
     name: 'Towing',
     need: 'Roadside urgency, exact location, vehicle details, and dispatch-ready summaries.',
@@ -188,3 +188,8 @@ export const industries: readonly Industry[] = [
     outcome: 'Reservations and questions get handled without pulling staff off the floor.',
   },
 ] as const;
+
+/** Alphabetical order keeps every public industry selector neutral. */
+export const industries: readonly Industry[] = Object.freeze(
+  [...industryCatalogue].sort((a, b) => a.name.localeCompare(b.name)),
+);

@@ -238,8 +238,41 @@ export const servicePages: ServicePage[] = [
       'Build or rebuild your website around phone conversions',
       'Measure answered calls, booked jobs, and lead sources after 30, 60, 90 days',
     ],
-    related: ['/industries/towing', '/vision'],
+    related: ['/industries', '/vision'],
     faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[6], globalFaqs[9]],
+  },
+  {
+    path: '/industries',
+    label: 'Industries',
+    title: 'Industries LYCORE Serves — Call Handling, Websites & Follow-Up',
+    description:
+      'Explore every industry LYCORE serves, with the pain points, call handling, websites, intake, booking and follow-up each business can receive.',
+    h1: 'Industries LYCORE Serves',
+    kind: 'service',
+    problem:
+      'Different service industries lose opportunities in different ways, but the pattern is consistent: calls overlap, urgent customers move on quickly, and incomplete intake slows the team down.',
+    explanation:
+      'LYCORE configures call handling, phone-first websites, structured intake, booking and follow-up around the operating rules of each industry instead of forcing every business into one generic script.',
+    benefits: [
+      'Industry-specific call and intake questions',
+      'Clear escalation and routing rules',
+      'Phone-first customer journeys',
+      'Structured summaries the team can act on',
+    ],
+    included: [
+      'Auto repair, bail-bond and electrical workflows',
+      'HVAC, locksmith and pest-control workflows',
+      'Plumbing, restaurant and restoration workflows',
+      'Roofing, towing and urgent-care non-clinical routing workflows',
+    ],
+    process: [
+      'Review the calls and customer journeys specific to the business',
+      'Configure service area, hours, intake and escalation rules',
+      'Connect call handling, website actions, booking and follow-up',
+      'Review the quality and routing of captured opportunities',
+    ],
+    related: ['/what-we-build', '/contact'],
+    faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[4], globalFaqs[6], globalFaqs[9]],
   },
 ];
 
@@ -274,14 +307,14 @@ export const legacyPages: PageMeta[] = [
     kind: 'legacy',
   },
   {
-    path: '/industries/towing',
-    label: 'Towing',
-    title: 'Towing Company Websites & 24/7 Call Answering — LYCORE',
+    path: '/industries',
+    label: 'Industries',
+    title: 'Industries LYCORE Serves — Call Handling, Websites & Follow-Up',
     description:
-      'LYCORE builds phone-first websites and 24/7 call answering for towing companies so every roadside call turns into a dispatched job, not a voicemail.',
-    h1: 'Towing Websites and 24/7 Call Answering',
+      'Explore every industry LYCORE serves, with the pain points, call handling, websites, intake, booking and follow-up each business can receive.',
+    h1: 'Industries LYCORE Serves',
     kind: 'service',
-    faqs: [globalFaqs[1], globalFaqs[4], globalFaqs[5], globalFaqs[6]],
+    faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[4], globalFaqs[6], globalFaqs[9]],
   },
   {
     path: '/about',
@@ -442,6 +475,7 @@ export const allPages: PageMeta[] = [...legacyPages, ...redirectPages, ...legalP
 export const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'What We Build', path: '/what-we-build' },
+  { label: 'Industries', path: '/industries' },
   { label: 'Vision', path: '/vision' },
   { label: 'About', path: '/about' },
   { label: 'FAQ', path: '/faq' },

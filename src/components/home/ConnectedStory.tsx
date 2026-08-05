@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { industries } from '../../content/industries';
 import { gsap, useGSAP } from '../../lib/gsap';
 
@@ -279,6 +280,10 @@ export default function ConnectedStory() {
             {industry.outcome}
           </p>
         </motion.div>
+
+        <Link to="/industries" className="connected-industries__all">
+          View every industry, pain point and call path <ArrowRight aria-hidden="true" />
+        </Link>
       </section>
     </div>
   );

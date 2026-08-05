@@ -19,7 +19,7 @@ export default function Navbar() {
   const { pathname, hash } = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
   const ambience = useRef({ x: 0 });
-  const lightTopRoutes = ['/', '/what-we-build', '/vision', '/industries/towing', '/about', '/faq', '/contact', '/book'];
+  const lightTopRoutes = ['/', '/what-we-build', '/vision', '/industries', '/about', '/faq', '/contact', '/book'];
   const usesLightTop = !scrolled && lightTopRoutes.includes(pathname);
 
   useEffect(() => setIsOpen(false), [pathname, hash]);

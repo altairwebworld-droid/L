@@ -50,6 +50,7 @@ export default function Footer() {
             <h2 className="micro-label mb-6">Company</h2>
             <ul className="flex flex-col gap-4">
               <li><Link to="/#about" className={footerLinkClass}>About</Link></li>
+              <li><Link to="/industries" className={footerLinkClass}>Industries</Link></li>
               <li><Link to="/vision" className={footerLinkClass}>Vision</Link></li>
               <li><Link to="/faq" className={footerLinkClass}>FAQ</Link></li>
               <li><Link to="/contact" className={footerLinkClass}>Contact</Link></li>

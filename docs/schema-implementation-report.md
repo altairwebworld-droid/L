@@ -11,9 +11,9 @@ Created: 2026-06-02
 | /what-we-build | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /what-we-build | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /vision | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
-| /industries/towing | Service | Describe service/audit offer | scripts/generate-static-metadata.ts | Yes | Audience and URL match page content | Fully implemented |
-| /industries/towing | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
-| /industries/towing | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /industries | Service | Describe service/audit offer | scripts/generate-static-metadata.ts | Yes | Audience and URL match page content | Fully implemented |
+| /industries | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /industries | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /about | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /about | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /faq | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |

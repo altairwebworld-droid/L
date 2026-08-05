@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { industries } from '../src/content/industries';
 import { allPages, globalFaqs, servicePages, site, type PageMeta } from '../src/siteData';
 
 const root = process.cwd();
@@ -95,6 +96,7 @@ function schemaFor(page: PageMeta) {
     const sitelinkCandidates = [
       { name: 'Home', path: '/' },
       { name: 'What We Build', path: '/what-we-build' },
+      { name: 'Industries We Serve', path: '/industries' },
       { name: 'Vision', path: '/vision' },
       { name: 'Our Commitments', path: '/commitments' },
       { name: 'Free Lead System Audit', path: site.auditPath },
@@ -115,7 +117,7 @@ function schemaFor(page: PageMeta) {
     });
   }
   const service = servicePages.find((item) => item.path === page.path);
-  if (service || page.kind === 'audit') {
+  if (service || page.kind === 'service' || page.kind === 'audit') {
     blocks.push({
       '@context': 'https://schema.org',
       '@type': 'Service',
@@ -205,6 +207,18 @@ function fallbackFor(page: PageMeta) {
         ]
       : [page.description, service?.problem, service?.explanation].filter(present);
   const faqItems = page.faqs?.slice(0, 3) || [];
+  const industryItems = page.path === '/industries'
+    ? `<h2>Industries LYCORE serves</h2>
+          ${industries.map((industry) => `<article>
+            <h3>${esc(industry.name)}</h3>
+            <h4>Why this industry needs a reliable response system</h4>
+            <p>${esc(industry.pain)}</p>
+            <h4>What LYCORE handles</h4>
+            <p>${esc(industry.need)}</p>
+            <h4>What the business gets</h4>
+            <p>${esc(industry.outcome)}</p>
+          </article>`).join('\n          ')}`
+    : '';
 
   return `<main class="seo-fallback" aria-label="${esc(page.h1)}">
         <section>
@@ -212,6 +226,7 @@ function fallbackFor(page: PageMeta) {
           <h1>${esc(page.h1)}</h1>
           ${paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('\n          ')}
           ${page.path === '/' ? '<h2>Customer communication systems for service businesses</h2>' : ''}
+          ${industryItems}
           ${
             faqItems.length
               ? `<h2>Common Questions</h2>

@@ -38,9 +38,9 @@ These are rendered on one mechanical plane, not four equal cards.
 
 ## Industries
 
-The complete preserved list is towing, plumbing, roofing, HVAC, electrical, restaurants, urgent care, bail bonds, locksmiths, restoration, auto repair, and pest control.
+The complete preserved list is auto repair, bail bonds, electrical, HVAC, locksmiths, pest control, plumbing, restaurants, restoration, roofing, towing, and urgent care.
 
-The existing dedicated route remains `/industries/towing`. Bail bonds remains a legacy redirect rather than a new thin service page.
+The canonical directory is `/industries`. Every industry receives equal visual weight, industry-specific pain points, a tailored call path, and a clear outcome. The former towing and bail-bonds routes permanently redirect to the directory.
 
 ## Website concepts
 
@@ -84,4 +84,3 @@ Only real structured fields are shown: caller name, lead source, service request
 - `public/lycore-dispatch-poster.webp`: static hero and reduced-motion fallback.
 - Five existing concept images under `public/showcase/`.
 - Required addition: a WebM transcode of the supplied loop; MP4 remains the fallback.
-

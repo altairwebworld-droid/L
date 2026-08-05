@@ -5,8 +5,9 @@
 | `/` | Main conversion and dispatch-machine narrative | Full kinetic redesign; preserve offer, CTAs, FAQ, concepts, and measurement language. |
 | `/what-we-build` | Service-system details | Preserve five offerings and availability notes. |
 | `/vision` | Product direction roadmap | Preserve now/next/direction/long-term distinctions. |
-| `/industries/towing` | Towing-specific service page | Preserve urgent-service copy and WhatsApp action. |
-| `/industries/bail-bonds` | Legacy route | Preserve redirect to `/what-we-build`. |
+| `/industries` | Equal-weight industry directory | Preserve all supported industries, their specific pain points, call paths, outcomes, and neutral alphabetical ordering. |
+| `/industries/towing` | Legacy route | Preserve permanent redirect to `/industries`. |
+| `/industries/bail-bonds` | Legacy route | Preserve permanent redirect to `/industries`. |
 | `/about` | Company approach and measurement principles | Preserve company identity and claim boundaries. |
 | `/faq` | Complete FAQ set | Preserve all eleven questions and answers. |
 | `/contact` | Review form and direct-contact route | Preserve form submission, contact details, WhatsApp, email, social links, and booking link. |
@@ -31,4 +32,3 @@
 - The homepage alone receives the long pinned narrative.
 - Inner routes reuse the visual system but remain content-driven and do not inherit the 520% hero sequence.
 - Metadata continues to come from the existing typed page data and metadata generation scripts.
-
