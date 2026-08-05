@@ -2625,6 +2625,75 @@ body {
 .contact-light [class*='border-white'] { border-color: rgba(23, 21, 19, 0.14) !important; }
 .contact-light [class*='bg-white'] { background-color: rgba(23, 21, 19, 0.05) !important; }
 
+/* The intake is intentionally light: labels, entered values and native
+   dropdown options never inherit the site's white-on-navy color token. */
+.contact-light .contact-intake-form {
+  background: #fffdf9;
+  color: #171513;
+}
+
+.contact-light .contact-intake-form .form-control {
+  border-color: rgba(23, 21, 19, 0.46);
+  background: #ffffff;
+  color: #171513;
+  color-scheme: light;
+  box-shadow: inset 0 1px 0 rgba(23, 21, 19, 0.04);
+}
+
+.contact-light .contact-intake-form .form-control:hover {
+  border-color: rgba(23, 21, 19, 0.7);
+  background: #ffffff;
+}
+
+.contact-light .contact-intake-form .form-control:focus {
+  border-color: #d84a00;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 107, 34, 0.18);
+}
+
+.contact-light .contact-intake-form .form-control::placeholder {
+  color: rgba(23, 21, 19, 0.56);
+}
+
+.contact-light .contact-intake-form select.form-control option {
+  background: #ffffff;
+  color: #171513;
+}
+
+.contact-light .contact-intake-form input[type='checkbox'] {
+  accent-color: #ff6b22;
+}
+
+.contact-light .contact-intake-form a:not(.contact-booking-button) {
+  color: #8f2f00;
+  text-decoration-color: rgba(143, 47, 0, 0.45);
+}
+
+.social-link {
+  border-color: rgba(23, 21, 19, 0.16);
+  box-shadow: 0 5px 14px rgba(23, 21, 19, 0.14);
+}
+
+.social-link:hover {
+  border-color: rgba(255, 107, 34, 0.68);
+  box-shadow: 0 9px 20px rgba(23, 21, 19, 0.2);
+}
+
+/* FAQ colors are explicit so global dark-page tokens cannot make the
+   questions or answers blend into their cream surface. */
+.surface-cream .faq-accordion .faq-question {
+  color: #171513 !important;
+}
+
+.surface-cream .faq-accordion .faq-question:hover,
+.surface-cream .faq-accordion .faq-question[data-state='open'] {
+  color: #b83a00 !important;
+}
+
+.surface-cream .faq-accordion .faq-answer {
+  color: #5e5650 !important;
+}
+
 .contact-booking-banner {
   position: relative;
   display: grid;

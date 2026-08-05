@@ -115,11 +115,11 @@ export function FaqSection({ faqs, showAllLink = true }: { faqs: Faq[]; showAllL
               </Link>
             )}
           </div>
-          <Accordion type="single" collapsible defaultValue={faqs[0]?.question}>
+          <Accordion className="faq-accordion" type="single" collapsible defaultValue={faqs[0]?.question}>
             {faqs.map((faq) => (
               <AccordionItem key={faq.question} value={faq.question} className="border-[#092f69]/12">
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
+                <AccordionTrigger className="faq-question">{faq.question}</AccordionTrigger>
+                <AccordionContent className="faq-answer">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

@@ -10,11 +10,11 @@ export default function HomeFaq() {
           <p className="micro-label mb-5 text-ink-muted">Straight answers</p>
           <h2 className="section-title text-ink">Questions before we get to work.</h2>
         </div>
-        <Accordion type="single" collapsible defaultValue={homepageFaqs[0]?.question}>
+        <Accordion className="faq-accordion" type="single" collapsible defaultValue={homepageFaqs[0]?.question}>
           {homepageFaqs.map((faq) => (
             <AccordionItem key={faq.question} value={faq.question} className="border-[#092f69]/12">
-              <AccordionTrigger>{faq.question}</AccordionTrigger>
-              <AccordionContent>{faq.answer}</AccordionContent>
+              <AccordionTrigger className="faq-question">{faq.question}</AccordionTrigger>
+              <AccordionContent className="faq-answer">{faq.answer}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

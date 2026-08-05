@@ -100,7 +100,7 @@ export default function AuditLeadForm() {
   };
 
   return (
-    <form className="lycore-card rounded-[36px] p-6 md:p-10 space-y-7" onSubmit={handleSubmit}>
+    <form className="contact-intake-form lycore-card rounded-[36px] p-6 md:p-10 space-y-7" onSubmit={handleSubmit}>
       {status.type === 'success' ? (
         <div className="py-10 text-center">
           <CheckCircle2 className="mx-auto mb-6 h-16 w-16 text-emerald-400" aria-hidden="true" />

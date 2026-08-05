@@ -301,6 +301,7 @@ export const legacyPages: PageMeta[] = [
       'Answers to common questions about LYCORE 24/7 call answering, websites, Google Business Profile optimization, pricing, and how it all works for service businesses.',
     h1: 'Frequently Asked Questions',
     kind: 'legacy',
+    faqs: globalFaqs,
   },
   {
     path: '/contact',
