@@ -404,7 +404,7 @@ body {
 
 /* Page intros: editorial alignment, geometric signal, no generic blue orb. */
 .page-hero {
-  min-height: min(58svh, 40rem);
+  min-height: min(48svh, 34rem);
   display: flex;
   align-items: flex-end;
   --color-ink: #171513;
@@ -422,7 +422,7 @@ body {
 .page-hero__title {
   max-width: 12ch;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(4rem, 10vw, 9rem);
+  font-size: clamp(3.25rem, 6.5vw, 6.25rem);
   font-weight: 900;
   line-height: 0.86;
   letter-spacing: -0.04em;
@@ -697,8 +697,8 @@ body {
 @media (max-width: 767px) {
   .hero-signal-layer__geometry { top: 22%; right: -30%; width: 95vw; }
   .hero-signal-layer__rays { opacity: 0.2; }
-  .page-hero { min-height: 31rem; align-items: flex-end; }
-  .page-hero__title { font-size: clamp(3rem, 14vw, 4.6rem); }
+  .page-hero { min-height: 27rem; align-items: flex-end; }
+  .page-hero__title { font-size: clamp(2.75rem, 11vw, 3.75rem); }
   .page-hero__geometry { right: 1.25rem; bottom: 2rem; opacity: 0.42; }
   .service-stack-card { grid-template-columns: 1fr; }
   .service-stack-card__media { min-height: 12rem; max-height: 15rem; order: -1; }
@@ -935,7 +935,7 @@ body {
 .call-swiper-copy h2 {
   max-width: 100%;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(4.3rem, 6.8vw, 6.75rem);
+  font-size: clamp(3.4rem, 5vw, 4.8rem);
   font-feature-settings: 'cpsp' on;
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -1163,7 +1163,7 @@ body {
   max-width: 11ch;
   margin-top: 0.75rem;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(2.6rem, 4.3vw, 4.15rem);
+  font-size: clamp(2.15rem, 3.2vw, 3.15rem);
   font-weight: 900;
   letter-spacing: -0.025em;
   line-height: 0.88;
@@ -1253,7 +1253,7 @@ body {
   }
 
   .call-swiper-copy h2 {
-    font-size: clamp(4.5rem, 7.7vw, 5.7rem);
+    font-size: clamp(3.5rem, 6.5vw, 4.3rem);
   }
 
   .call-swiper-active ul {
@@ -1277,7 +1277,7 @@ body {
   }
 
   .call-swiper-copy h2 {
-    font-size: clamp(3.75rem, 18vw, 4.8rem);
+    font-size: clamp(3rem, 13vw, 3.8rem);
   }
 
   .call-swiper-kicker {
@@ -1338,7 +1338,7 @@ body {
   }
 
   .call-swiper-card h3 {
-    font-size: clamp(2.25rem, 10vw, 3rem);
+    font-size: clamp(2rem, 8.5vw, 2.6rem);
   }
 }
 
@@ -1423,7 +1423,7 @@ body {
 .connected-team h2,
 .connected-industries h2 {
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(5rem, 9.4vw, 9.5rem);
+  font-size: clamp(3.75rem, 6.2vw, 6.25rem);
   font-weight: 900;
   letter-spacing: -0.035em;
   line-height: 0.78;
@@ -1464,7 +1464,7 @@ body {
   top: 50%;
   left: 0;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(5.5rem, 9vw, 8.5rem);
+  font-size: clamp(4.25rem, 6.5vw, 6.25rem);
   font-weight: 900;
   letter-spacing: -0.06em;
   line-height: 0.75;
@@ -1501,7 +1501,7 @@ body {
   max-width: 12ch;
   margin-top: 1.3rem;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(3.1rem, 5.3vw, 5.2rem);
+  font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: 900;
   letter-spacing: -0.025em;
   line-height: 0.86;
@@ -1768,7 +1768,7 @@ body {
   padding-bottom: 2rem;
 }
 
-.connected-team h2 { font-size: clamp(4.8rem, 8.3vw, 8.4rem); }
+.connected-team h2 { font-size: clamp(3.75rem, 6.2vw, 6.25rem); }
 
 .connected-team > header > span {
   display: block;
@@ -1838,7 +1838,7 @@ body {
   padding-block: 2.2rem;
   border-block: 1px solid currentColor;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif;
-  font-size: clamp(3.8rem, 7vw, 7rem);
+  font-size: clamp(2.8rem, 4.4vw, 4.5rem);
   font-weight: 900;
   letter-spacing: -0.025em;
   line-height: 0.84;
@@ -1871,9 +1871,9 @@ body {
 .connected-about > div:first-child > p { color: var(--connected-orange-ink); }
 
 .connected-about h2 {
-  max-width: 10ch;
+  max-width: 12ch;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif;
-  font-size: clamp(4rem, 7.1vw, 7rem);
+  font-size: clamp(3.25rem, 5.2vw, 5rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 0.84;
@@ -1910,7 +1910,7 @@ body {
   padding-left: 2rem;
   border-left: 1px solid currentColor;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif;
-  font-size: clamp(2rem, 3.5vw, 3.4rem);
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
   font-weight: 900;
   line-height: 0.93;
   text-transform: uppercase;
@@ -1970,7 +1970,7 @@ body {
 
 .connected-industry-panel__problem > svg { width: 2.6rem; height: 2.6rem; color: var(--connected-orange); }
 .connected-industry-panel__problem > p { margin-top: 1rem; color: var(--connected-orange-ink); font-family: var(--font-sans); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
-.connected-industry-panel__problem h3 { max-width: 8ch; margin-top: 1rem; font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 900; line-height: 0.86; text-transform: uppercase; }
+.connected-industry-panel__problem h3 { max-width: 10ch; margin-top: 1rem; font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif; font-size: clamp(2.4rem, 3.8vw, 3.75rem); font-weight: 900; line-height: 0.9; text-transform: uppercase; }
 .connected-industry-panel__problem > span { display: block; margin-top: 1.6rem; color: rgba(23, 21, 19, 0.68); font-family: var(--font-sans); font-size: 0.98rem; line-height: 1.6; }
 
 .connected-industry-panel__workflow {
@@ -2004,7 +2004,7 @@ body {
   gap: 1rem;
   border-top: 1px solid currentColor;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif;
-  font-size: clamp(2.5rem, 4.2vw, 4.25rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 900;
   line-height: 0.9;
   text-transform: uppercase;
@@ -2037,12 +2037,12 @@ body {
 @media (max-width: 960px) {
   .connected-story__intro h2,
   .connected-team h2,
-  .connected-industries h2 { font-size: clamp(4.6rem, 11vw, 7rem); }
+  .connected-industries h2 { font-size: clamp(3.7rem, 7vw, 5rem); }
   .connected-service-row { --chapter-gap: 4.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--chapter-gap); }
-  .connected-service-row__number { font-size: 5.2rem; }
+  .connected-service-row__number { font-size: 4.3rem; }
   .connected-service-row--left .connected-service-copy,
   .connected-service-row--right .connected-service-copy { padding-left: 5.8rem; }
-  .connected-service-copy h3 { font-size: clamp(2.7rem, 5.7vw, 4.1rem); }
+  .connected-service-copy h3 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); }
   .connected-website-demo { grid-template-columns: 1fr; }
   .connected-website-demo > ol { display: none; }
   .connected-industry-panel { grid-template-columns: minmax(13rem, 0.6fr) minmax(0, 1.4fr); column-gap: 2.5rem; }
@@ -2073,7 +2073,7 @@ body {
 
   .connected-story__intro h2,
   .connected-team h2,
-  .connected-industries h2 { font-size: clamp(3.55rem, 17vw, 4.75rem); }
+  .connected-industries h2 { font-size: clamp(3rem, 12.5vw, 3.8rem); }
 
   .connected-story__intro > span {
     display: block;
@@ -2092,11 +2092,11 @@ body {
     gap: 1.5rem;
   }
 
-  .connected-service-row__number { position: static; order: -2; color: var(--connected-orange); font-size: 3.6rem; transform: none; }
+  .connected-service-row__number { position: static; order: -2; color: var(--connected-orange); font-size: 3rem; transform: none; }
   .connected-service-row--left .connected-service-copy,
   .connected-service-row--right .connected-service-copy { padding-left: 0; }
   .connected-service-row--right > :nth-child(3) { order: -1; }
-  .connected-service-copy h3 { font-size: clamp(2.55rem, 12vw, 3.45rem); }
+  .connected-service-copy h3 { font-size: clamp(2.2rem, 9.5vw, 2.8rem); }
   .connected-source-illustration { min-height: 11rem; }
   .connected-source-illustration img { max-height: 16rem; }
   .connected-website-demo { display: block; width: min(100%, 18rem); margin-inline: auto; }
@@ -2110,7 +2110,7 @@ body {
 
   .connected-team { padding-block: 3.25rem; }
   .connected-team__comparison { grid-template-columns: 1fr; gap: 2.25rem; }
-  .connected-team__payoff { font-size: clamp(2.6rem, 12vw, 3.6rem); }
+  .connected-team__payoff { font-size: clamp(2.25rem, 9.5vw, 2.9rem); }
 
   .connected-about {
     display: block;
@@ -2119,18 +2119,18 @@ body {
   }
 
   .connected-about::before { left: 1.15rem; width: 0.3rem; transform: none; }
-  .connected-about h2 { font-size: clamp(3rem, 14vw, 4rem); }
+  .connected-about h2 { font-size: clamp(2.7rem, 11vw, 3.3rem); }
   .connected-about__copy { margin-top: 2rem; padding: 1.5rem 0 0; border-top: 1px solid currentColor; border-left: 0; }
 
   .connected-industries { padding-block: 3.25rem; }
   .connected-industries > header { display: block; }
-  .connected-industries > header p { margin-top: 1.5rem; padding: 1.1rem 0 0; border-top: 1px solid currentColor; border-left: 0; font-size: 1.65rem; }
+  .connected-industries > header p { margin-top: 1.5rem; padding: 1.1rem 0 0; border-top: 1px solid currentColor; border-left: 0; font-size: 1.35rem; }
   .connected-industries__rail { margin-right: -1rem; }
   .connected-industry-panel { display: block; min-height: auto; padding-block: 2rem; }
   .connected-industry-panel__problem { padding: 0 0 2rem; border-right: 0; border-bottom: 1px solid currentColor; }
-  .connected-industry-panel__problem h3 { font-size: 2.85rem; }
+  .connected-industry-panel__problem h3 { font-size: 2.35rem; }
   .connected-industry-panel__workflow { margin-top: 2rem; }
-  .connected-industry-panel__outcome { margin-top: 2rem; font-size: clamp(2.15rem, 10vw, 2.85rem); }
+  .connected-industry-panel__outcome { margin-top: 2rem; font-size: clamp(1.9rem, 8.5vw, 2.35rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2229,7 +2229,7 @@ body {
 .install-stack-card__top h3 {
   max-width: 13ch;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.35rem, 4.8vw, 4.1rem);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 0.95;
@@ -2452,7 +2452,7 @@ body {
     transform: none !important;
   }
 
-  .install-stack-card__top h3 { font-size: 2.1rem; }
+  .install-stack-card__top h3 { font-size: 1.9rem; }
   .install-stack-card__note { margin-top: 0.8rem; }
   .install-stack-card__media { order: -1; min-height: 9rem; }
   .install-visual,
@@ -2482,9 +2482,9 @@ body {
 .industries-hero {
   display: grid;
   width: min(calc(100% - 3rem), 80rem);
-  min-height: 39rem;
+  min-height: 34rem;
   margin-inline: auto;
-  padding-block: 8rem 4.5rem;
+  padding-block: 7rem 3.5rem;
   grid-template-columns: minmax(0, 1.3fr) minmax(19rem, 0.7fr);
   align-items: end;
   gap: clamp(3rem, 8vw, 8rem);
@@ -2494,7 +2494,7 @@ body {
   max-width: 10ch;
   margin-top: 1.3rem;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(4.5rem, 7.8vw, 8.2rem);
+  font-size: clamp(3.7rem, 6.2vw, 6.25rem);
   font-weight: 900;
   letter-spacing: -0.035em;
   line-height: 0.82;
@@ -2581,7 +2581,7 @@ body {
 .industries-system h2 {
   max-width: 15ch;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif;
-  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-size: clamp(2.7rem, 4vw, 4.25rem);
   font-weight: 900;
   line-height: 0.88;
   text-transform: uppercase;
@@ -2628,7 +2628,7 @@ body {
   max-width: 12ch;
   margin-top: 1.2rem;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif;
-  font-size: clamp(3.6rem, 6vw, 6.5rem);
+  font-size: clamp(2.8rem, 4.5vw, 4.75rem);
   font-weight: 900;
   line-height: 0.86;
   text-transform: uppercase;
@@ -2708,7 +2708,7 @@ body {
 
 .industry-entry__title h3 {
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', sans-serif;
-  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-size: clamp(1.75rem, 2.3vw, 2.35rem);
   font-weight: 900;
   line-height: 0.9;
   text-transform: uppercase;
@@ -2830,21 +2830,21 @@ body {
     gap: 3rem;
   }
 
-  .industries-hero__copy h1 { font-size: clamp(3.5rem, 17vw, 4.8rem); }
+  .industries-hero__copy h1 { font-size: clamp(3rem, 12.5vw, 3.8rem); }
   .industries-hero__actions { display: grid; }
   .industries-primary-action,
   .industries-secondary-action { width: 100%; }
 
   .industries-system { padding-inline: 1rem; }
   .industries-system > header { grid-template-columns: 1fr; gap: 1rem; }
-  .industries-system h2 { font-size: clamp(3rem, 14vw, 4.2rem); }
+  .industries-system h2 { font-size: clamp(2.5rem, 10.5vw, 3.25rem); }
   .industries-system__grid { grid-template-columns: 1fr; }
   .industries-system__grid article { min-height: auto; }
   .industries-system__grid svg { margin-top: 2.5rem; }
 
   .industry-directory { width: calc(100% - 2rem); padding-block: 4rem; }
   .industry-directory__header { grid-template-columns: 1fr; gap: 1.5rem; }
-  .industry-directory__header h2 { font-size: clamp(3.1rem, 15vw, 4.5rem); }
+  .industry-directory__header h2 { font-size: clamp(2.55rem, 10.5vw, 3.4rem); }
   .industry-directory__header > p { padding: 1.25rem 0 0; border-top: 1px solid rgba(23, 21, 19, 0.28); border-left: 0; }
   .industry-directory__index { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .industry-directory__index::-webkit-scrollbar { display: none; }
@@ -2897,7 +2897,7 @@ body {
   max-width: 11ch;
   margin: 1rem auto 0;
   font-family: 'Futura Now Headline Local', 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: clamp(4rem, 8vw, 7.5rem);
+  font-size: clamp(3.4rem, 6vw, 5.5rem);
   font-weight: 900;
   letter-spacing: -0.035em;
   line-height: 0.82;
@@ -3231,7 +3231,7 @@ body {
 
 @media (max-width: 767px) {
   .booking-page { padding: 5.25rem 0.75rem 3rem; }
-  .booking-page__header h1 { font-size: clamp(3.1rem, 15vw, 4.5rem); }
+  .booking-page__header h1 { font-size: clamp(2.75rem, 11.5vw, 3.6rem); }
   .booking-benefits {
     display: flex;
     width: calc(100% + 0.75rem);
