@@ -33,7 +33,14 @@ export default function Seo() {
     setProperty('og:url', canonicalUrl);
     setName('twitter:title', title);
     setName('twitter:description', pageDescription);
-    trackEvent('service_page_view', { path: location.pathname });
+    const eventName = page?.kind === 'industry'
+      ? 'industry_page_view'
+      : page?.kind === 'integration'
+        ? 'integration_page_view'
+        : page?.kind === 'resource'
+          ? 'resource_page_view'
+          : 'service_page_view';
+    trackEvent(eventName, { path: location.pathname });
   }, [location.pathname]);
 
   useEffect(() => {

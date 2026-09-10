@@ -22,6 +22,38 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 - [Social Impact](https://www.lycore.org/commitments/social-impact): The public LYCORE pledge for responsible technology, fair access, privacy, inclusive communication and practical support.
 - [How We Work](https://www.lycore.org/commitments/how-we-work): The principles that guide how LYCORE approaches ownership, communication, learning and client work.
 
+## Industries, integrations, and guides
+
+- [Integrations](https://www.lycore.org/integrations): Explore LYCORE workflow integration assessments for field-service tools, CRMs and automation platforms.
+- [Resources](https://www.lycore.org/resources): Practical guides on call response, follow-up, reviews, CRM workflows, outbound systems, and automation choices.
+- [Home services systems](https://www.lycore.org/industries/home-services): Lead response, booking and follow-up systems for home-service businesses.
+- [Pest control systems](https://www.lycore.org/industries/pest-control): Customer-journey systems for pest-control enquiries, recurring service and reviews.
+- [Plumbing systems](https://www.lycore.org/industries/plumbing): Urgent call response, estimate follow-up and review workflows for plumbing businesses.
+- [Roofing systems](https://www.lycore.org/industries/roofing): Storm-demand, inspection and estimate-follow-up systems for roofing businesses.
+- [Restoration systems](https://www.lycore.org/industries/restoration): Response and customer-lifecycle systems for restoration businesses.
+- [Towing systems](https://www.lycore.org/industries/towing): Dispatch-ready intake and customer communication workflows for towing businesses.
+- [Med spas systems](https://www.lycore.org/industries/med-spas): Consultation response, booking and reactivation workflows for med spas.
+- [Dental practices systems](https://www.lycore.org/industries/dentists): Non-clinical enquiry, appointment and recall-support workflows for dental practices.
+- [Veterinary practices systems](https://www.lycore.org/industries/veterinary): Non-clinical lead response, scheduling and follow-up systems for veterinary practices.
+- [GoHighLevel workflows](https://www.lycore.org/integrations/gohighlevel): GoHighLevel workflow planning for service-business customer journeys.
+- [Housecall Pro workflows](https://www.lycore.org/integrations/housecall-pro): Housecall Pro workflow assessment for leads, jobs and customer communication.
+- [GorillaDesk workflows](https://www.lycore.org/integrations/gorilladesk): GorillaDesk workflow assessment for pest-control customer journeys.
+- [FieldRoutes workflows](https://www.lycore.org/integrations/fieldroutes): FieldRoutes workflow assessment for customer acquisition and follow-up.
+- [PestPac workflows](https://www.lycore.org/integrations/pestpac): PestPac workflow assessment for pest-control operations and customer follow-up.
+- [Jobber workflows](https://www.lycore.org/integrations/jobber): Jobber workflow assessment for service-business leads, jobs and customer communication.
+- [ServiceTitan workflows](https://www.lycore.org/integrations/servicetitan): ServiceTitan workflow assessment for service-business customer lifecycle workflows.
+- [HubSpot workflows](https://www.lycore.org/integrations/hubspot): HubSpot workflow design for service-business lead response and customer follow-up.
+- [n8n workflows](https://www.lycore.org/integrations/n8n): n8n workflow design for connecting approved service-business systems.
+- [Zapier workflows](https://www.lycore.org/integrations/zapier): Zapier workflow assessment for practical, maintainable service-business automation.
+- [Make workflows](https://www.lycore.org/integrations/make): Make scenario design for service-business workflow automation.
+- [Notion workflows](https://www.lycore.org/integrations/notion): Notion workflow assessment for internal visibility and documented service-business processes.
+- [AI receptionist vs. traditional answering service](https://www.lycore.org/resources/ai-receptionist-vs-answering-service): A practical comparison for service businesses deciding how to handle after-hours and overflow calls.
+- [How missed-call text back works for service businesses](https://www.lycore.org/resources/missed-call-text-back): A plain-language guide to fast SMS acknowledgement after an unanswered business call.
+- [How review automation works without review gating](https://www.lycore.org/resources/review-automation): A practical guide to requesting authentic customer reviews after completed service.
+- [CRM vs. field-service management software](https://www.lycore.org/resources/crm-vs-field-service-management): How service businesses can decide which system should own leads, jobs, and customer follow-up.
+- [What cold email infrastructure includes](https://www.lycore.org/resources/cold-email-infrastructure): A buyer guide to responsible outbound email setup and the limits of deliverability work.
+- [Zapier vs. n8n for service-business automation](https://www.lycore.org/resources/zapier-vs-n8n): A neutral comparison of two common automation approaches for maintainable business workflows.
+
 ## Frequently Asked Questions
 
 - Q: What kind of businesses does LYCORE work with?

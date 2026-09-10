@@ -130,6 +130,19 @@ function schemaFor(page: PageMeta) {
       url: absoluteUrl(page.path),
     });
   }
+  if (page.kind === 'resource') {
+    blocks.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: page.h1,
+      description: page.description,
+      mainEntityOfPage: canonical,
+      author: { '@id': orgId },
+      publisher: { '@id': orgId },
+      dateModified: buildDate,
+      inLanguage: 'en-US',
+    });
+  }
   if (page.faqs?.length) {
     blocks.push({
       '@context': 'https://schema.org',
@@ -301,6 +314,10 @@ function llmsTxt() {
   const companyLines = companyPages
     .map((page) => `- [${page.label}](${absoluteUrl(page.path)}): ${page.description}`)
     .join('\n');
+  const learningPages = allPages.filter((page) => ['industry', 'integration', 'resource'].includes(page.kind));
+  const learningLines = learningPages
+    .map((page) => `- [${page.label}](${absoluteUrl(page.path)}): ${page.description}`)
+    .join('\n');
   const faqLines = globalFaqs.map((faq) => `- Q: ${faq.question}\n  A: ${faq.answer}`).join('\n');
   return `# ${site.name}
 
@@ -315,6 +332,10 @@ ${serviceLines}
 ## Company
 
 ${companyLines}
+
+## Industries, integrations, and guides
+
+${learningLines}
 
 ## Frequently Asked Questions
 
