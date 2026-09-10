@@ -26,6 +26,7 @@ import { Link } from 'react-router-dom';
 import { CtaBand, FaqSection } from '../components/PageSections';
 import { industries } from '../content/industries';
 import { globalFaqs, site } from '../siteData';
+import { industryGrowthPages } from '../content/architecture';
 
 const industryIcons: Record<string, LucideIcon> = {
   'Auto repair': Car,
@@ -66,6 +67,8 @@ const connectedSystem = [
 ] as const;
 
 const slugFor = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+const industryDetailPath = (name: string) => industryGrowthPages.find((page) => page.path.endsWith(`/${slugFor(name)}`))?.path;
 
 export default function Industries() {
   return (
@@ -125,7 +128,7 @@ export default function Industries() {
 
         <nav className="industry-directory__index" aria-label="Jump to an industry">
           {industries.map((industry) => (
-            <a key={industry.name} href={`#${slugFor(industry.name)}`}>{industry.name}</a>
+            industryDetailPath(industry.name) ? <Link key={industry.name} to={industryDetailPath(industry.name)!}>{industry.name}</Link> : <a key={industry.name} href={`#${slugFor(industry.name)}`}>{industry.name}</a>
           ))}
         </nav>
 
@@ -171,6 +174,7 @@ export default function Industries() {
                     <strong>{industry.outcome}</strong>
                   </div>
                 </footer>
+                {industryDetailPath(industry.name) && <Link to={industryDetailPath(industry.name)!} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#082f68] underline underline-offset-4">Explore the {industry.name} workflow <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>}
               </article>
             );
           })}
