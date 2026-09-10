@@ -52,6 +52,7 @@ export default function Footer() {
               <li><Link to="/#about" className={footerLinkClass}>About</Link></li>
               <li><Link to="/industries" className={footerLinkClass}>Industries</Link></li>
               <li><Link to="/integrations" className={footerLinkClass}>Integrations</Link></li>
+              <li><Link to="/resources" className={footerLinkClass}>Resources</Link></li>
               <li><Link to="/vision" className={footerLinkClass}>Vision</Link></li>
               <li><Link to="/faq" className={footerLinkClass}>FAQ</Link></li>
               <li><Link to="/contact" className={footerLinkClass}>Contact</Link></li>

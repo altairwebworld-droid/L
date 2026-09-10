@@ -13,6 +13,7 @@ Created: 2026-06-02
 | /contact | Contact LYCORE — Free Lead System Review | Fully implemented |
 | /book | Book a Strategy Call — LYCORE | Fully implemented |
 | /integrations | Service Business Integrations & Workflow Connections — LYCORE | Fully implemented |
+| /resources | Service Business Growth Resources — LYCORE | Fully implemented |
 | /services/outbound-lead-generation | Outbound Lead Generation for Service Businesses — LYCORE | Fully implemented |
 | /services/cold-email-infrastructure | Cold Email Infrastructure for Service Businesses — LYCORE | Fully implemented |
 | /services/ai-receptionist | AI Receptionist for Service Businesses — LYCORE | Fully implemented |
@@ -45,6 +46,12 @@ Created: 2026-06-02
 | /integrations/zapier | Zapier Automation & Workflow Integration — LYCORE | Fully implemented |
 | /integrations/make | Make Automation & Workflow Integration — LYCORE | Fully implemented |
 | /integrations/notion | Notion Automation & Workflow Integration — LYCORE | Fully implemented |
+| /resources/ai-receptionist-vs-answering-service | AI receptionist vs. traditional answering service — LYCORE | Fully implemented |
+| /resources/missed-call-text-back | How missed-call text back works for service businesses — LYCORE | Fully implemented |
+| /resources/review-automation | How review automation works without review gating — LYCORE | Fully implemented |
+| /resources/crm-vs-field-service-management | CRM vs. field-service management software — LYCORE | Fully implemented |
+| /resources/cold-email-infrastructure | What cold email infrastructure includes — LYCORE | Fully implemented |
+| /resources/zapier-vs-n8n | Zapier vs. n8n for service-business automation — LYCORE | Fully implemented |
 | /privacy-policy | Privacy Policy — LYCORE | Fully implemented |
 | /terms | Terms of Use — LYCORE | Fully implemented |
 | /data-deletion | Data Deletion Instructions — LYCORE | Fully implemented |

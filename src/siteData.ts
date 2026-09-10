@@ -45,7 +45,7 @@ export type PageMeta = {
   title: string;
   description: string;
   h1: string;
-  kind: 'home' | 'legacy' | 'service' | 'industry' | 'integration' | 'audit' | 'legal' | 'commitment' | 'system';
+  kind: 'home' | 'legacy' | 'service' | 'industry' | 'integration' | 'resource' | 'audit' | 'legal' | 'commitment' | 'system';
   faqs?: Faq[];
 };
 
@@ -472,9 +472,9 @@ export const redirectPages: PageMeta[] = [
 
 // The detailed customer-journey pages are maintained as content data so static
 // metadata, sitemap generation, and the client routes always share one inventory.
-import { growthPages, integrationsHub } from './content/architecture';
+import { growthPages, integrationsHub, resourcePages, resourcesHub } from './content/architecture';
 
-export const allPages: PageMeta[] = [...legacyPages, integrationsHub, ...growthPages, ...redirectPages, ...legalPages, ...commitmentPages];
+export const allPages: PageMeta[] = [...legacyPages, integrationsHub, resourcesHub, ...growthPages, ...resourcePages, ...redirectPages, ...legalPages, ...commitmentPages];
 
 export const navLinks = [
   { label: 'Home', path: '/' },

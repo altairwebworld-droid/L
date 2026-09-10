@@ -23,6 +23,7 @@ Created: 2026-06-02
 | /contact | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /book | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /integrations | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /resources | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /services/outbound-lead-generation | Service | Describe service/audit offer | scripts/generate-static-metadata.ts | Yes | Audience and URL match page content | Fully implemented |
 | /services/outbound-lead-generation | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /services/outbound-lead-generation | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
@@ -98,6 +99,18 @@ Created: 2026-06-02
 | /integrations/make | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /integrations/notion | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
 | /integrations/notion | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /resources/ai-receptionist-vs-answering-service | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /resources/ai-receptionist-vs-answering-service | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /resources/missed-call-text-back | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /resources/missed-call-text-back | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /resources/review-automation | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /resources/review-automation | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /resources/crm-vs-field-service-management | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /resources/crm-vs-field-service-management | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /resources/cold-email-infrastructure | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /resources/cold-email-infrastructure | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
+| /resources/zapier-vs-n8n | FAQPage | Expose visible FAQs | scripts/generate-static-metadata.ts | Yes | Questions and answers match visible copy | Fully implemented |
+| /resources/zapier-vs-n8n | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /audit-request-received | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /booking-confirmed | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
 | /booking-failed | BreadcrumbList | Represent page hierarchy | scripts/generate-static-metadata.ts | Yes | Home > page | Fully implemented |
