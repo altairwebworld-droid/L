@@ -14,6 +14,8 @@ import PrivacyControls from './components/PrivacyControls';
 const WhatWeBuild = lazy(() => import('./pages/WhatWeBuild'));
 const Vision = lazy(() => import('./pages/Vision'));
 const Industries = lazy(() => import('./pages/Industries'));
+const Integrations = lazy(() => import('./pages/Integrations'));
+const GrowthPage = lazy(() => import('./pages/GrowthPage'));
 const About = lazy(() => import('./pages/About'));
 const Faq = lazy(() => import('./pages/Faq'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -40,7 +42,10 @@ export default function App() {
             <Route path="what-we-build" element={<WhatWeBuild />} />
             <Route path="vision" element={<Vision />} />
             <Route path="industries" element={<Industries />} />
-            <Route path="industries/towing" element={<Navigate to="/industries" replace />} />
+            <Route path="industries/:industry" element={<GrowthPage />} />
+            <Route path="services/:service" element={<GrowthPage />} />
+            <Route path="integrations" element={<Integrations />} />
+            <Route path="integrations/:integration" element={<GrowthPage />} />
             <Route path="industries/bail-bonds" element={<Navigate to="/industries" replace />} />
             <Route path="about" element={<About />} />
             <Route path="faq" element={<Faq />} />

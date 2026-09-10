@@ -4,7 +4,7 @@ Created: 2026-06-02
 
 - Commands run: npm install, npm run lint, npm run build, npm run validate, and browser smoke tests.
 - Build result: Passed. Vite build completed, then route-specific metadata and reports were generated.
-- Validation result: Passed. Validator checked 19 generated routes, JSON-LD, crawl files, internal links, PNG OG asset, Vercel API function files, and required reports.
+- Validation result: Passed. Validator checked 52 generated routes, JSON-LD, crawl files, internal links, PNG OG asset, Vercel API function files, and required reports.
 - Responsive browser verification: 320 px phone, 768 px tablet, and 1440 px desktop layouts were checked across the homepage and primary routes with no horizontal page overflow or development error overlay.
 - Motion verification: reduced-motion mode removes automatic carousel animation, converts pinned sequences to readable static layouts, and disables pointer-following effects.
 - Deferred-content verification: the full mobile homepage was scrolled through to confirm the connected story, gallery, installation stack, FAQ, and final CTA initialize correctly.

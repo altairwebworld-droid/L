@@ -38,11 +38,11 @@ export default function Footer() {
           <nav className="lg:col-span-2" aria-label="Footer services">
             <h2 className="micro-label mb-6">Services</h2>
             <ul className="flex flex-col gap-4">
-              <li><Link to="/#services" className={footerLinkClass}>24/7 Receptionist</Link></li>
-              <li><Link to="/#services" className={footerLinkClass}>Conversion Websites</Link></li>
-              <li><Link to="/#services" className={footerLinkClass}>Local Search Profiles</Link></li>
-              <li><Link to="/#services" className={footerLinkClass}>Intake &amp; Follow-Up</Link></li>
-              <li><Link to="/#services" className={footerLinkClass}>Business Systems</Link></li>
+              <li><Link to="/services/ai-receptionist" className={footerLinkClass}>AI Receptionist</Link></li>
+              <li><Link to="/services/outbound-lead-generation" className={footerLinkClass}>Outbound Lead Generation</Link></li>
+              <li><Link to="/services/reputation-management" className={footerLinkClass}>Reputation &amp; Reviews</Link></li>
+              <li><Link to="/services/crm-automation" className={footerLinkClass}>CRM Automation</Link></li>
+              <li><Link to="/services/web-design" className={footerLinkClass}>Conversion Websites</Link></li>
             </ul>
           </nav>
 
@@ -51,6 +51,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-4">
               <li><Link to="/#about" className={footerLinkClass}>About</Link></li>
               <li><Link to="/industries" className={footerLinkClass}>Industries</Link></li>
+              <li><Link to="/integrations" className={footerLinkClass}>Integrations</Link></li>
               <li><Link to="/vision" className={footerLinkClass}>Vision</Link></li>
               <li><Link to="/faq" className={footerLinkClass}>FAQ</Link></li>
               <li><Link to="/contact" className={footerLinkClass}>Contact</Link></li>

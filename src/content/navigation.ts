@@ -1,8 +1,8 @@
 export const primaryNavigation = [
   { label: 'Home', path: '/' },
-  { label: 'Services', path: '/#services' },
+  { label: 'Services', path: '/what-we-build' },
   { label: 'Industries', path: '/industries' },
-  { label: 'About', path: '/#about' },
+  { label: 'Integrations', path: '/integrations' },
   { label: 'FAQ', path: '/faq' },
   { label: 'Contact Us', path: '/contact' },
 ] as const;

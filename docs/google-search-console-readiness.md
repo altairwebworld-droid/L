@@ -12,6 +12,39 @@ Created: 2026-06-02
 | /faq | Frequently Asked Questions — LYCORE | Fully implemented |
 | /contact | Contact LYCORE — Free Lead System Review | Fully implemented |
 | /book | Book a Strategy Call — LYCORE | Fully implemented |
+| /integrations | Service Business Integrations & Workflow Connections — LYCORE | Fully implemented |
+| /services/outbound-lead-generation | Outbound Lead Generation for Service Businesses — LYCORE | Fully implemented |
+| /services/cold-email-infrastructure | Cold Email Infrastructure for Service Businesses — LYCORE | Fully implemented |
+| /services/ai-receptionist | AI Receptionist for Service Businesses — LYCORE | Fully implemented |
+| /services/missed-call-text-back | Missed Call Text Back for Service Businesses — LYCORE | Fully implemented |
+| /services/lead-follow-up | Lead Follow-Up for Service Businesses — LYCORE | Fully implemented |
+| /services/reputation-management | Reputation Management for Service Businesses — LYCORE | Fully implemented |
+| /services/review-automation | Review Automation for Service Businesses — LYCORE | Fully implemented |
+| /services/google-business-profile-management | Google Business Profile Management for Service Businesses — LYCORE | Fully implemented |
+| /services/crm-automation | CRM Automation for Service Businesses — LYCORE | Fully implemented |
+| /services/customer-reactivation | Customer Reactivation for Service Businesses — LYCORE | Fully implemented |
+| /services/web-design | Web Design for Service Businesses for Service Businesses — LYCORE | Fully implemented |
+| /industries/home-services | Home services Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/pest-control | Pest control Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/plumbing | Plumbing Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/roofing | Roofing Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/restoration | Restoration Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/towing | Towing Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/med-spas | Med spas Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/dentists | Dental practices Customer Journey Systems — LYCORE | Fully implemented |
+| /industries/veterinary | Veterinary practices Customer Journey Systems — LYCORE | Fully implemented |
+| /integrations/gohighlevel | GoHighLevel Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/housecall-pro | Housecall Pro Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/gorilladesk | GorillaDesk Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/fieldroutes | FieldRoutes Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/pestpac | PestPac Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/jobber | Jobber Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/servicetitan | ServiceTitan Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/hubspot | HubSpot Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/n8n | n8n Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/zapier | Zapier Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/make | Make Automation & Workflow Integration — LYCORE | Fully implemented |
+| /integrations/notion | Notion Automation & Workflow Integration — LYCORE | Fully implemented |
 | /privacy-policy | Privacy Policy — LYCORE | Fully implemented |
 | /terms | Terms of Use — LYCORE | Fully implemented |
 | /data-deletion | Data Deletion Instructions — LYCORE | Fully implemented |
