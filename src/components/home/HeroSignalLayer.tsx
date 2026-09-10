@@ -71,10 +71,10 @@ export function HeroTypewriterTitle() {
   return (
     <h1 id="home-hero-title">
       <span className="hero-title-line">
-        <span className="hero-title-group">Turn every lead</span>
+        <span className="hero-title-group">Stop losing customers</span>
       </span>
       <span className="hero-title-line hero-title-line--accent">
-        Into a paying client.
+        Between enquiry and follow-up.
       </span>
     </h1>
   );

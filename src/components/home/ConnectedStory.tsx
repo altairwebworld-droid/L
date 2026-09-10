@@ -143,6 +143,7 @@ export default function ConnectedStory() {
             title="24/7 reception and call handling"
             body="Every call answered in your business name, with the details your team needs to act captured before the caller hangs up."
             bullets={['Every call answered in seconds', 'Caller details captured before hang-up', 'Booked work routed to your team']}
+            path="/services/ai-receptionist"
           />
           <SourceIllustration src="/service-receptionist-girl.webp" alt="Illustrated receptionist answering a call beside a booking calendar and caller checklist" />
         </ServiceChapter>
@@ -155,6 +156,7 @@ export default function ConnectedStory() {
             title="Websites that convert callers"
             body="Built for someone holding a phone in an emergency, not someone browsing on a laptop."
             bullets={['Emergency action above the fold', 'Clear offers and trust signals', 'Traffic turned into booked work']}
+            path="/services/web-design"
           />
         </ServiceChapter>
 
@@ -165,6 +167,7 @@ export default function ConnectedStory() {
             title="Google Business Profile optimisation"
             body="Help nearby customers find, trust and contact your business when they are ready to act."
             bullets={['Profile information kept complete', 'Review activity made visible', 'Calls and directions easier to reach']}
+            path="/services/google-business-profile-management"
           />
           <SourceIllustration src="/connected-source/img_3.svg" alt="Original source illustration of a busy team handling messages and information" />
         </ServiceChapter>
@@ -177,6 +180,7 @@ export default function ConnectedStory() {
             title="Intake and follow-up systems"
             body="The paperwork behind the call fills itself in, and nothing waits on someone remembering to send it."
             bullets={['Information captured automatically', 'Follow-up sent consistently', 'Team kept informed without chasing']}
+            path="/services/lead-follow-up"
           />
         </ServiceChapter>
 
@@ -320,12 +324,14 @@ function ServiceCopy({
   title,
   body,
   bullets,
+  path,
 }: {
   eyebrow: string;
   icon: LucideIcon;
   title: string;
   body: string;
   bullets: readonly string[];
+  path: string;
 }) {
   return (
     <div className="connected-service-copy">
@@ -335,6 +341,7 @@ function ServiceCopy({
       <ul role="list">
         {bullets.map((bullet) => <li key={bullet}><Check aria-hidden="true" />{bullet}</li>)}
       </ul>
+      <Link to={path} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">Explore this system <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
     </div>
   );
 }
