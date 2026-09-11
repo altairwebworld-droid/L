@@ -97,8 +97,8 @@ function ReceptionModule() {
         24/7 reception and call handling
       </h3>
       <p className="mt-4 max-w-[46ch] text-[1rem] font-light leading-[1.65] text-[#bfd5f2]">
-        Every call answered in your business name, with the details your team needs
-        to act captured before the caller hangs up.
+        AI call handling configured around your business, with approved intake
+        questions and a clear path to your staff.
       </p>
 
       {/* Live call interface. */}

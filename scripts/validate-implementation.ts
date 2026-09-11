@@ -5,6 +5,9 @@ import { allPages, site } from '../src/siteData';
 import { quoteContent, quoteLinks } from '../src/content/quote';
 import { growthPages, resourcePages } from '../src/content/architecture';
 import { serviceEvidence, measurementNote } from '../src/content/serviceEvidence';
+import { industryPlaybooks, industryMeasurementNote, messagingNote, playbookNote } from '../src/content/industryPlaybooks';
+import { deliveryStandards } from '../src/content/deliveryStandards';
+import { breadcrumbsFor } from '../src/content/breadcrumbs';
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
@@ -53,12 +56,26 @@ for (const page of allPages) {
   const detail = growthPages.find(item => item.path === page.path);
   const guide = resourcePages.find(item => item.path === page.path);
   const evidence = page.kind === 'service' ? serviceEvidence[page.path.split('/').pop()!] : undefined;
+  const playbook = page.kind === 'industry' ? industryPlaybooks[page.path.split('/').pop()!] : undefined;
+  if (page.kind === 'industry' && detail) {
+    expect(playbook, `${page.path}: missing industry playbook`);
+    if (playbook) {
+      expect(playbook.workflows.length >= 2 && new Set(playbook.workflows.map(item => item.name)).size === playbook.workflows.length, `${page.path}: expected distinct workflow examples`);
+      expect(playbook.quoteInputs.length >= 3 && playbook.metrics.length >= 2, `${page.path}: insufficient quote or measurement detail`);
+      for (const value of [playbookNote, industryMeasurementNote, messagingNote, playbook.boundary, ...playbook.quoteInputs, ...playbook.workflows.flatMap(item => [item.name, item.trigger, item.action, item.handoff]), ...playbook.metrics.flatMap(item => [item.name, item.definition])]) {
+        expect(html.includes(esc(value)), `${page.path}: missing crawlable industry detail: ${value}`);
+      }
+      expect(html.includes('id="workflow"'), `${page.path}: missing workflow anchor`);
+    }
+  }
+  if (page.path === '/about') for (const step of deliveryStandards) expect(html.includes(esc(step.detail)), 'About: missing delivery standard');
+  for (const faq of page.faqs || []) expect(html.includes(`<p>${esc(faq.answer)}</p>`), `${page.path}: FAQ answer missing from visible HTML`);
   if (evidence) {
     const evidenceText = [evidence.summary, measurementNote, ...evidence.metrics.flatMap(metric => [metric.name, metric.definition]), ...(evidence.tools || []).flatMap(tool => [tool.name, tool.role]), ...(evidence.timeline ? [evidence.timeline.value, evidence.timeline.explanation] : []), ...(evidence.reference ? [evidence.reference.text] : [])];
     for (const value of evidenceText) expect(html.includes(esc(value)), `${page.path}: missing crawlable measurement or scope content`);
     expect(html.includes('href="/resources/measuring-lead-generation-results"'), `${page.path}: missing measurement guide link`);
   }
-  for (const text of detail ? [detail.problem, ...detail.builds, ...detail.workflow, detail.control] : guide ? [guide.answer, ...guide.steps, ...guide.tradeoffs] : []) {
+  for (const text of detail ? [detail.problem, ...detail.builds, ...(playbook ? [] : detail.workflow), detail.control] : guide ? [guide.answer, ...guide.steps, ...guide.tradeoffs] : []) {
     expect(html.includes(esc(text)), `${page.path}: missing crawlable detail content: ${text}`);
   }
   expect((html.match(/<h1[\s>]/g) || []).length === 1, `${page.path}: expected one crawlable H1`);
@@ -74,7 +91,8 @@ for (const page of allPages) {
   expect((html.match(/application\/ld\+json/g) || []).length > 0, `${page.path}: missing JSON-LD`);
   for (const match of html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
     try {
-      JSON.parse(match[1]);
+      const block = JSON.parse(match[1]);
+      if (block['@type'] === 'BreadcrumbList') expect(block.itemListElement.length === breadcrumbsFor(page).length, `${page.path}: breadcrumb hierarchy mismatch`);
     } catch {
       errors.push(`${page.path}: invalid JSON-LD`);
     }

@@ -141,8 +141,8 @@ export default function ConnectedStory() {
             eyebrow="Always on"
             icon={PhoneCall}
             title="24/7 reception and call handling"
-            body="Every call answered in your business name, with the details your team needs to act captured before the caller hangs up."
-            bullets={['Every call answered in seconds', 'Caller details captured before hang-up', 'Booked work routed to your team']}
+            body="AI call handling configured around your business, with approved intake questions and a clear path to your staff."
+            bullets={['Overflow and after-hours call handling', 'Contact details and service requests captured', 'Booking requests routed to the right person']}
             path="/services/ai-receptionist"
           />
           <SourceIllustration src="/service-receptionist-girl.webp" alt="Illustrated receptionist answering a call beside a booking calendar and caller checklist" />

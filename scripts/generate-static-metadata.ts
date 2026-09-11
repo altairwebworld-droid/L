@@ -6,6 +6,9 @@ import { growthPages, resourcePages } from '../src/content/architecture';
 import { schemaFor } from '../src/content/schema';
 import { quoteContent, quoteLinks } from '../src/content/quote';
 import { serviceEvidence, measurementNote } from '../src/content/serviceEvidence';
+import { industryPlaybooks, industryMeasurementNote, messagingNote, playbookNote } from '../src/content/industryPlaybooks';
+import { deliveryStandards } from '../src/content/deliveryStandards';
+import { breadcrumbsFor } from '../src/content/breadcrumbs';
 import { allPages, globalFaqs, servicePages, site, type PageMeta } from '../src/siteData';
 
 const root = process.cwd();
@@ -75,6 +78,9 @@ function fallbackFor(page: PageMeta) {
   const detail = growthPages.find(item => item.path === page.path);
   const guide = resourcePages.find(item => item.path === page.path);
   const evidence = page.kind === 'service' ? serviceEvidence[page.path.split('/').pop()!] : undefined;
+  const playbook = page.kind === 'industry' ? industryPlaybooks[page.path.split('/').pop()!] : undefined;
+  const playbookContent = playbook ? `<section id="workflow"><h2>From request to next step.</h2><p>${esc(playbookNote)}</p>${playbook.workflows.map(workflow => `<article><h3>${esc(workflow.name)}</h3><dl><dt>Starts when</dt><dd>${esc(workflow.trigger)}</dd><dt>Automation</dt><dd>${esc(workflow.action)}</dd><dt>Person takes over</dt><dd>${esc(workflow.handoff)}</dd></dl></article>`).join('')}<p>${esc(messagingNote)}</p><h3>What to measure</h3><p>${esc(industryMeasurementNote)}</p><dl>${playbook.metrics.map(metric => `<dt>${esc(metric.name)}</dt><dd>${esc(metric.definition)}</dd>`).join('')}</dl><a href="/resources/measuring-lead-generation-results">How measurement works</a><h3>Bring these details for a quote</h3><ul>${playbook.quoteInputs.map(input => `<li>${esc(input)}</li>`).join('')}</ul><p>LYCORE checks connection options and agrees the build, software costs, testing and support scope before work starts.</p><a href="#quote">Request a scoped quote</a><a href="/about">See the delivery checklist</a></section>` : '';
+  const standardsContent = page.path === '/about' ? `<section><h2>Before a workflow goes live.</h2><p>The checklist below defines what LYCORE agrees, tests and documents before launch.</p><ol>${deliveryStandards.map(step => `<li><h3>${esc(step.title)}</h3><p>${esc(step.detail)}</p></li>`).join('')}</ol></section>` : '';
   const evidenceContent = evidence ? `<section><h2>What to expect</h2><p>${esc(evidence.summary)}</p>
     ${evidence.timeline ? `<h3>${esc(evidence.timeline.label)}: ${esc(evidence.timeline.value)}</h3><p>${esc(evidence.timeline.explanation)}</p>` : ''}
     ${evidence.tools ? `<h3>Domains and mailbox tools</h3><p>The stack depends on your scope and provider policies. These names describe tools and providers, not partnerships or certifications.</p><dl>${evidence.tools.map(tool => `<dt><a href="${tool.url}">${esc(tool.name)}</a></dt><dd>${esc(tool.role)}</dd>`).join('')}</dl>` : ''}
@@ -82,7 +88,7 @@ function fallbackFor(page: PageMeta) {
     ${evidence.reference ? `<p>${esc(evidence.reference.text)} <a href="${evidence.reference.url}">${esc(evidence.reference.label)}</a>.</p>` : ''}
     <a href="/resources/measuring-lead-generation-results">Read the lead-generation measurement guide</a></section>` : '';
   const list = (heading: string, items: string[]) => `<h2>${esc(heading)}</h2><ul>${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
-  const detailContent = detail ? `<h2>What this solves</h2><p>${esc(detail.problem)}</p>${list('What we build', detail.builds)}${list('How it works', detail.workflow)}<h2>Your team stays in control</h2><p>${esc(detail.control)}</p>` : guide ? `<h2>Direct answer</h2><p>${esc(guide.answer)}</p>${list('A practical workflow', guide.steps)}${list('Trade-offs and common mistakes', guide.tradeoffs)}` : '';
+  const detailContent = detail ? `<h2>What this solves</h2><p>${esc(detail.problem)}</p>${list('What we build', detail.builds)}${playbook ? playbookContent : list('How it works', detail.workflow)}<h2>What stays under your control</h2><p>${esc(detail.control)}</p>` : guide ? `<h2>Direct answer</h2><p>${esc(guide.answer)}</p>${list('A practical workflow', guide.steps)}${list('Trade-offs and common mistakes', guide.tradeoffs)}` : '';
   const directoryPages = page.path === '/what-we-build' ? growthPages.filter(item => item.kind === 'service') : page.path === '/integrations' ? growthPages.filter(item => item.kind === 'integration') : page.path === '/resources' ? resourcePages : [];
   const directoryContent = directoryPages.map(item => `<article><h2><a href="${item.path}">${esc(item.label)}</a></h2><p>${esc(item.description)}</p></article>`).join('');
   const relatedContent = (detail?.related || guide?.related || []).map(route => `<a href="${route}">${esc(allPages.find(item => item.path === route)?.label || 'Explore LYCORE')}</a>`).join(' ');
@@ -101,12 +107,13 @@ function fallbackFor(page: PageMeta) {
 
   return `<main class="seo-fallback" aria-label="${esc(page.h1)}">
         <section>
+          ${page.path !== '/' ? `<nav aria-label="Breadcrumb">${breadcrumbsFor(page).map(crumb => `<a href="${crumb.path}">${esc(crumb.name)}</a>`).join(' / ')}</nav>` : ''}
           <p>${esc(site.name)}</p>
           <h1>${esc(page.h1)}</h1>
           ${paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('\n          ')}
           ${page.path === '/' ? '<h2>Customer communication systems for service businesses</h2>' : ''}
           ${industryItems}
-          ${detailContent}${evidenceContent}${directoryContent}${relatedContent}
+          ${detailContent}${evidenceContent}${standardsContent}${directoryContent}${relatedContent}
           ${
             faqItems.length
               ? `<h2>Common Questions</h2>

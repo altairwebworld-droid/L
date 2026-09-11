@@ -1,5 +1,6 @@
 import type { Faq, PageMeta } from '../siteData';
 import { serviceEvidence } from './serviceEvidence';
+import { industryFaqs, industryPlaybooks } from './industryPlaybooks';
 
 export type GrowthPage = PageMeta & {
   eyebrow: string;
@@ -50,18 +51,18 @@ export const serviceGrowthPages: GrowthPage[] = [
 const industry = (slug: string, name: string, description: string, problem: string, workflow: string[], tools: string[]): GrowthPage => ({
   path: `/industries/${slug}`,
   label: `${name} systems`,
-  title: `${name}: Lead Response & Booking - LYCORE`,
+  title: `${industryPlaybooks[slug]?.headline || `${name} workflows`} - LYCORE`,
   description,
-  h1: `${name}: enquiries to appointments`,
+  h1: industryPlaybooks[slug]?.headline || `${name} workflows`,
   kind: 'industry',
   updatedAt: '2026-09-11',
   eyebrow: 'Industry workflow',
   problem,
-  builds: [workflow[1], workflow[3], workflow[workflow.length - 1], 'Review of your current scheduling and customer software before choosing a connection method'],
+  builds: [...(industryPlaybooks[slug]?.workflows.map(item => item.name) || [workflow[1], workflow[3]]), 'Documented human handoffs and exception rules', 'Software connection review before the build is agreed'],
   workflow,
-  control: 'LYCORE does not replace professional judgment, dispatch decisions, clinical decisions, or your existing operational platform. The workflow is configured around the rules your team approves.',
-  related: ['/services/ai-receptionist', '/services/crm-automation', '/integrations'],
-  faqs: standardFaqs,
+  control: industryPlaybooks[slug]?.boundary || 'Your staff approves the business rules and owns professional decisions.',
+  related: [...(industryPlaybooks[slug]?.related || ['/services/crm-automation']), '/integrations'],
+  faqs: [...industryFaqs(slug, name), ...standardFaqs],
 });
 
 export const industryGrowthPages: GrowthPage[] = [

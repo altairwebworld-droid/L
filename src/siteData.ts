@@ -18,11 +18,11 @@ export const site = {
   coreStatement:
     'LYCORE builds lead generation, call handling, booking and follow-up systems for service businesses.',
   heroCopy:
-    'A stranded driver at midnight. A burst pipe at 2 a.m. A patient searching for a clinic that answers. If your phone rings and nobody picks up, the job goes to whoever does. LYCORE makes sure that is you.',
+    'Calls, enquiries and follow-up need a clear next step. LYCORE builds the systems that connect them, with your business rules and human handoffs built in.',
   expandedServicesStatement:
     'LYCORE also optimizes your Google Business Profile, automates intake and follow-up paperwork, and is building full operating systems for service industries.',
   aiDisclaimer:
-    "LYCORE's receptionist service is staffed by a trained system that answers calls, captures caller details, and routes information to your team. It does not replace licensed professionals or make decisions on your behalf.",
+    "LYCORE configures AI call handling to capture enquiries and route information to your staff. The AI identifies itself and follows approved business rules. It does not replace licensed professionals or make professional decisions on your behalf.",
   socials: {
     x: 'https://x.com/LYCOREGROUP',
     facebookLycore: 'https://www.facebook.com/share/1BTyGMNYRh/',
@@ -159,27 +159,27 @@ export const globalFaqs: Faq[] = [
   {
     question: 'How does LYCORE answer my calls?',
     answer:
-      'When a call comes in and your team cannot pick up, our receptionist answers on your behalf. It greets the caller by your business name, captures the details you need (name, location, urgency, service type), and routes the information to your team by text, email, or dashboard. Your callers talk to a trained receptionist, not a voicemail box.',
+      'LYCORE can configure an AI receptionist for overflow or after-hours calls. It identifies your business and itself as an AI assistant, asks approved intake questions and routes a summary through the agreed tools. Routing, coverage and fallback behavior are tested before launch.',
   },
   {
     question: 'Is the receptionist a real person or a computer?',
     answer:
-      'The receptionist uses artificial intelligence to hold natural conversations, capture caller details, and route information. It is not a human, but it is trained on your business specifics — your services, your hours, your service area — so callers get accurate, helpful responses instead of a generic voicemail.',
+      'It is an AI assistant, not a person. It uses approved information about your services, hours and service area. When it cannot answer reliably or a caller needs a person, it follows your transfer or callback rules.',
   },
   {
     question: 'Will callers know they are not talking to my staff?',
     answer:
-      'The receptionist introduces itself as part of your team and answers using your business name. Most callers will not notice a difference. If a caller specifically asks, the receptionist will answer honestly.',
+      'Yes. The greeting identifies the assistant as AI acting for your business. Callers can request a person, with a transfer or callback path based on staff availability. Recording and consent requirements are reviewed during setup.',
   },
   {
     question: 'What happens after the call is answered?',
     answer:
-      'Your team receives a summary with the caller name, phone number, service requested, location, and urgency level. You can receive this by text, email, or through your existing tools. Nothing falls through the cracks.',
+      'The configured owner receives the captured contact details and request through an approved channel. Missing information, failed notifications and unanswered handoffs need an exception path. Sensitive details are excluded from routine notifications where appropriate.',
   },
   {
     question: 'Can LYCORE transfer live calls to my team?',
     answer:
-      'Yes. When a call needs immediate human attention, the receptionist can transfer the caller directly to your on-call staff. You set the rules for when live transfers happen.',
+      'Live transfer can be included where the phone setup supports it. You approve the transfer rules, available contacts and what happens if nobody answers. A transfer attempt is not treated as a completed handoff.',
   },
   {
     question: 'How are the websites different from what I can build myself?',
@@ -189,12 +189,12 @@ export const globalFaqs: Faq[] = [
   {
     question: 'What does Google Business Profile optimization include?',
     answer:
-      'We make sure your listing has the right categories, service areas, hours, photos, and description so that when someone nearby searches for what you do, your business appears in the local results. We also monitor and update the profile as Google makes changes.',
+      'The scope can include checking categories, service areas, hours, photos, contact links and descriptions, then agreeing an update process. Accurate information helps visitors evaluate your business, but profile work does not guarantee placement in local results.',
   },
   {
     question: 'What is the intake and follow-up automation?',
     answer:
-      'After a call or form submission, the system captures the details, sends confirmations to your caller, routes the lead to your team, and follows up if nobody has responded. At the end of each month, you receive a report showing how many leads came in, how many were handled, and where they came from. This feature is currently rolling out.',
+      'A call or form can trigger intake, acknowledgement, assignment and timed follow-up. Replies, opt-outs and status changes alter or stop the sequence. Reporting sources, measures and frequency are agreed in the scope; an acknowledgement is counted separately from a human response or confirmed booking.',
   },
   {
     question: 'What does LYCORE cost?',
@@ -222,7 +222,7 @@ export const servicePages: ServicePage[] = [
     explanation:
       'LYCORE builds the system that sits between your ringing phone and a booked job: a receptionist that answers every call, a website that makes urgent callers tap your number, a Google listing that puts you first locally, and intake automation that handles the paperwork after the call.',
     benefits: [
-      'Every call answered, day and night',
+      'After-hours and overflow call handling with an agreed fallback',
       'Websites built for callers, not browsers',
       'Google Business Profile that ranks locally',
       'Intake and follow-up that runs itself',

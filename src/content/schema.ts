@@ -1,4 +1,5 @@
 import { site, servicePages, type PageMeta } from '../siteData';
+import { breadcrumbsFor } from './breadcrumbs';
 
 const absoluteUrl = (route: string) => `${site.domain}${route === '/' ? '' : route}`;
 
@@ -145,10 +146,7 @@ export function schemaFor(page: PageMeta) {
     blocks.push({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: site.domain },
-        { '@type': 'ListItem', position: 2, name: page.h1, item: absoluteUrl(page.path) },
-      ],
+      itemListElement: breadcrumbsFor(page).map((crumb, index) => ({ '@type': 'ListItem', position: index + 1, name: crumb.name, item: absoluteUrl(crumb.path) })),
     });
   }
   return blocks;

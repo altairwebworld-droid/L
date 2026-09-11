@@ -19,7 +19,7 @@ const resultContent = {
     description:
       'Thanks for sharing your business details. LYCORE will review your calls, website, and follow-up before reaching out with next steps.',
     steps: [
-      'Your submission has been captured and routed to our team.',
+      'Your submission has been sent to LYCORE for review.',
       'We will review your website, call handling, and follow-up context.',
       'Book a strategy call when you are ready to walk through the review together.',
     ],

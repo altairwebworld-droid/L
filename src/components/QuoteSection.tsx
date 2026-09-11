@@ -6,7 +6,7 @@ export default function QuoteSection() {
   const links = quoteLinks(pathname);
   return <section id="quote" className="quote-section" aria-labelledby="quote-heading">
     <div>
-      <p className="micro-label">Talk to our support team</p>
+      <p className="micro-label">Contact LYCORE</p>
       <h2 id="quote-heading">{quoteContent.title}</h2>
       <p>{quoteContent.description}</p>
       <p className="quote-note">{quoteContent.note}</p>
