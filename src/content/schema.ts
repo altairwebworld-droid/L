@@ -84,6 +84,7 @@ export function schemaFor(page: PageMeta) {
     const sitelinkCandidates = [
       { name: 'Home', path: '/' },
       { name: 'What We Build', path: '/what-we-build' },
+      { name: 'AI Operations', path: '/ai-operations' },
       { name: 'Industries We Serve', path: '/industries' },
       { name: 'Vision', path: '/vision' },
       { name: 'Our Commitments', path: '/commitments' },
