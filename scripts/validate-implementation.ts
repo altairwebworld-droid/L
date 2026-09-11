@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { allPages, site } from '../src/siteData';
+import { quoteContent, quoteLinks } from '../src/content/quote';
 import { growthPages, resourcePages } from '../src/content/architecture';
 import { serviceEvidence, measurementNote } from '../src/content/serviceEvidence';
 
@@ -46,6 +47,9 @@ for (const page of allPages) {
   expect(existsSync(file), `Missing generated HTML for ${page.path}`);
   if (!existsSync(file)) continue;
   const html = await readFile(file, 'utf8');
+  expect(html.includes(esc(quoteContent.title)), `${page.path}: missing quote section`);
+  expect(html.includes(esc(quoteLinks(page.path).email)), `${page.path}: missing quote email destination`);
+  expect(html.includes(esc(quoteLinks(page.path).whatsapp)), `${page.path}: missing quote WhatsApp destination`);
   const detail = growthPages.find(item => item.path === page.path);
   const guide = resourcePages.find(item => item.path === page.path);
   const evidence = page.kind === 'service' ? serviceEvidence[page.path.split('/').pop()!] : undefined;

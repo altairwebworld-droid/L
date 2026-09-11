@@ -1,24 +1,19 @@
 import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import QuoteSection from './QuoteSection';
 import { site } from '../siteData';
 import SocialLinks, { WhatsAppLink } from './SocialLinks';
 
 const footerLinkClass = 'text-sm font-light text-stone-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white';
 
 export default function Footer() {
+  const { pathname } = useLocation();
   return (
     <footer className="site-footer relative overflow-hidden border-t border-white/10 bg-[#090909] pb-8 pt-12 md:pt-14">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" aria-hidden="true" />
 
       <div className="mx-auto max-w-7xl px-6">
-        <div className="lycore-card mb-10 flex flex-col gap-8 rounded-[32px] p-7 md:p-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-2xl">
-            <p className="micro-label mb-4 text-white">Talk to LYCORE</p>
-            <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">Ready to stop losing leads after the first ring?</h2>
-            <p className="mt-4 max-w-xl text-sm font-light leading-relaxed text-stone-300">Tell us what happens when a customer contacts your business. We will help you find the gaps and decide what to fix first.</p>
-          </div>
-          <WhatsAppLink className="w-full shrink-0 sm:w-auto" />
-        </div>
+        {pathname !== '/contact' && <QuoteSection />}
 
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="sm:col-span-2 lg:col-span-5 lg:pr-12">

@@ -1,4 +1,10 @@
 .directory-page { background: #f2f1ed; color: #171513; padding: 7rem 1.5rem 4rem; }
+.quote-section { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2rem; max-width: 80rem; margin: 0 auto 2.5rem; padding: 2rem; border: 1px solid #ffffff30; border-radius: 1rem; background: #171513; color: #f2f1ed; scroll-margin-top: 6rem; }
+.quote-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.1; margin: .8rem 0 1rem; }
+.quote-section p:not(.micro-label) { max-width: 42rem; color: #d5d0ca; line-height: 1.6; }
+.quote-section .quote-note { font-size: .85rem; margin-top: .8rem; }
+.quote-actions { display: flex; flex-direction: column; gap: .75rem; }
+@media(max-width: 850px) { .quote-section { grid-template-columns: 1fr; padding: 1.4rem; gap: 1.5rem; } .quote-actions a { white-space: normal; text-align: center; } }
 .directory-intro, .directory-content { max-width: 76rem; margin: auto; }
 .directory-intro { text-align: center; max-width: 54rem; }
 .directory-intro h1 { font: 900 clamp(2.5rem, 5vw, 4.5rem)/1.02 'Barlow Condensed', sans-serif; margin: .7rem 0 1rem; }

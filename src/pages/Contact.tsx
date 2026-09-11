@@ -1,5 +1,6 @@
 import { ArrowUpRight, Building2, CalendarDays, CheckCircle2, Mail, MapPin } from 'lucide-react';
 import AuditLeadForm from '../components/AuditLeadForm';
+import QuoteSection from '../components/QuoteSection';
 import SocialLinks, { WhatsAppLink } from '../components/SocialLinks';
 import TiltCard from '../components/TiltCard';
 import { accentFor } from '../content/palette';
@@ -39,6 +40,7 @@ export default function Contact() {
         </div>
       </header>
 
+      <QuoteSection />
       <section className="contact-booking-banner" aria-label="Book a LYCORE discovery call">
         <p>
           <strong>Prefer to choose a time now?</strong>

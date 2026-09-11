@@ -4,6 +4,7 @@ import path from 'node:path';
 import { industries } from '../src/content/industries';
 import { growthPages, resourcePages } from '../src/content/architecture';
 import { schemaFor } from '../src/content/schema';
+import { quoteContent, quoteLinks } from '../src/content/quote';
 import { serviceEvidence, measurementNote } from '../src/content/serviceEvidence';
 import { allPages, globalFaqs, servicePages, site, type PageMeta } from '../src/siteData';
 
@@ -60,6 +61,7 @@ function headFor(page: PageMeta, assetTags: string) {
 }
 
 function fallbackFor(page: PageMeta) {
+  const quote = quoteLinks(page.path);
   const service = servicePages.find((item) => item.path === page.path);
   const paragraphs =
     page.path === '/'
@@ -111,6 +113,7 @@ function fallbackFor(page: PageMeta) {
           ${faqItems.map((faq) => `<h3>${esc(faq.question)}</h3>\n          <p>${esc(faq.answer)}</p>`).join('\n          ')}`
               : ''
           }
+          <section id="quote"><h2>${esc(quoteContent.title)}</h2><p>${esc(quoteContent.description)}</p><p>${esc(quoteContent.note)}</p><a href="${esc(quote.email)}">${esc(quoteContent.emailLabel)}</a><a href="${esc(quote.whatsapp)}">${esc(quoteContent.whatsappLabel)}</a></section>
           <nav aria-label="Primary crawl links">
             <a href="${site.auditPath}">${esc(site.primaryCta)}</a>
             <a href="/what-we-build">${esc(site.secondaryCta)}</a>
