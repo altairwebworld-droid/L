@@ -237,14 +237,16 @@ export default function ConnectedStory() {
           <p>Built for businesses where delayed responses cost real revenue.</p>
         </header>
 
-        <div className="connected-industries__rail" role="tablist" aria-label="Industries">
+        <nav className="industry-spotlights" aria-label="All industries">
+          {industries.map(item => <Link key={item.path} to={item.path}>{item.name}<span aria-hidden="true">↗</span></Link>)}
+        </nav>
+        <div className="connected-industries__rail" role="group" aria-label="Industry workflow examples">
           {industries.map((item, index) => (
             <button
               key={item.name}
               type="button"
-              role="tab"
               id={`connected-industry-tab-${index}`}
-              aria-selected={index === activeIndustry}
+              aria-pressed={index === activeIndustry}
               aria-controls="connected-industry-panel"
               onClick={() => setActiveIndustry(index)}
             >
@@ -256,7 +258,7 @@ export default function ConnectedStory() {
         <motion.div
           key={industry.name}
           id="connected-industry-panel"
-          role="tabpanel"
+          role="region"
           aria-labelledby={`connected-industry-tab-${activeIndustry}`}
           className="connected-industry-panel"
           initial={reduceMotion ? false : { opacity: 0, y: 14 }}

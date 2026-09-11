@@ -4,7 +4,8 @@ import { BrutalistCard, BrutalistCardLink } from '../components/ui/brutalist-car
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-[70vh] items-center justify-center px-6 py-24">
+    <section className="flex min-h-[70vh] flex-col items-center justify-center gap-6 px-6 py-24">
+      <h1 className="text-3xl font-semibold">Page not found</h1>
       <BrutalistCard
         icon={<TriangleAlert aria-hidden="true" />}
         alert="404"

@@ -10,11 +10,6 @@
       "permanent": true
     },
     {
-      "source": "/industries/bail-bonds",
-      "destination": "/industries",
-      "permanent": true
-    },
-    {
       "source": "/",
       "has": [
         {

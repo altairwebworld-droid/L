@@ -20,7 +20,7 @@ export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
   const ambience = useRef({ x: 0 });
   const lightTopRoutes = ['/', '/what-we-build', '/vision', '/industries', '/about', '/faq', '/contact', '/book'];
-  const usesLightTop = !scrolled && lightTopRoutes.includes(pathname);
+  const usesLightTop = !scrolled && [...lightTopRoutes, '/integrations', '/resources'].includes(pathname);
 
   useEffect(() => setIsOpen(false), [pathname, hash]);
 

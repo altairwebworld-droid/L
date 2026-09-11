@@ -1,13 +1,22 @@
 # LYCORE
 
-> LYCORE answers your phones 24/7, builds websites that convert callers, and handles the follow-up — so small service businesses stop losing jobs to missed calls. LYCORE also optimizes your Google Business Profile, automates intake and follow-up paperwork, and is building full operating systems for service industries.
+> LYCORE builds lead generation, call handling, booking and follow-up systems for service businesses. LYCORE also optimizes your Google Business Profile, automates intake and follow-up paperwork, and is building full operating systems for service industries.
 
 LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service businesses across the United States. Contact: services@lycore.org. LYCORE's receptionist service is staffed by a trained system that answers calls, captures caller details, and routes information to your team. It does not replace licensed professionals or make decisions on your behalf. Rankings, revenue, call volume and client outcomes are never guaranteed.
 
 ## Services
 
-- [What We Build](https://www.lycore.org/what-we-build): LYCORE answers calls 24/7, builds phone-first websites, optimizes Google Business Profiles, and automates intake for small service businesses that cannot afford to miss a call.
-- [Industries LYCORE Serves](https://www.lycore.org/industries): Explore every industry LYCORE serves, with the pain points, call handling, websites, intake, booking and follow-up each business can receive.
+- [Outbound Lead Generation](https://www.lycore.org/services/outbound-lead-generation): Target-market research, outreach workflows, qualification and booking support for service businesses.
+- [Cold Email Infrastructure](https://www.lycore.org/services/cold-email-infrastructure): Email sending infrastructure and deliverability preparation for responsible business outreach.
+- [AI Receptionist](https://www.lycore.org/services/ai-receptionist): Configured call answering, intake, routing and booking support for service-business enquiries.
+- [Missed Call Text Back](https://www.lycore.org/services/missed-call-text-back): Fast, configured SMS follow-up after an unanswered service-business call.
+- [Lead Follow-Up](https://www.lycore.org/services/lead-follow-up): Follow-up workflows that help service businesses keep enquiries, estimates and appointments moving.
+- [Reputation Management](https://www.lycore.org/services/reputation-management): Practical review and reputation workflows for service businesses.
+- [Review Automation](https://www.lycore.org/services/review-automation): Post-service review-request workflows built around the customer journey.
+- [Google Business Profile Management](https://www.lycore.org/services/google-business-profile-management): Google Business Profile audits and maintenance for accurate local business information.
+- [CRM Automation](https://www.lycore.org/services/crm-automation): Customer lifecycle workflows around the CRM and operational tools your team already uses.
+- [Customer Reactivation](https://www.lycore.org/services/customer-reactivation): Reactivation workflows for past customers, dormant leads, and recurring-service reminders.
+- [Web Design for Service Businesses](https://www.lycore.org/services/web-design): Conversion-focused websites that connect traffic, enquiries, follow-up and booking.
 
 ## Company
 
@@ -26,15 +35,25 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 
 - [Integrations](https://www.lycore.org/integrations): Explore LYCORE workflow integration assessments for field-service tools, CRMs and automation platforms.
 - [Resources](https://www.lycore.org/resources): Practical guides on call response, follow-up, reviews, CRM workflows, outbound systems, and automation choices.
+- [Spas & wellness studios systems](https://www.lycore.org/industries/spas): Booking, appointment reminders and return-visit follow-up for spas and wellness studios.
+- [Real estate agents systems](https://www.lycore.org/industries/real-estate): Enquiry routing, viewing requests and buyer or seller follow-up for real estate agents.
+- [Lawyers & law firms systems](https://www.lycore.org/industries/law-firms): Enquiry intake, consultation scheduling and callback workflows for law firms.
+- [HVAC systems](https://www.lycore.org/industries/hvac): Seasonal enquiry handling, estimate follow-up and maintenance reminders for HVAC contractors.
+- [Electrical contractors systems](https://www.lycore.org/industries/electrical): Service enquiry capture, electrician callbacks and estimate follow-up for electrical contractors.
+- [Locksmiths systems](https://www.lycore.org/industries/locksmiths): Lockout enquiry capture and technician handoffs for locksmith businesses.
+- [Auto repair shops systems](https://www.lycore.org/industries/auto-repair): Vehicle enquiry intake, workshop booking and repair-update workflows for auto repair shops.
+- [Restaurants systems](https://www.lycore.org/industries/restaurants): Reservation requests, guest questions and overflow call workflows for restaurants.
+- [Bail bond agencies systems](https://www.lycore.org/industries/bail-bonds): After-hours enquiry intake and agent callbacks for bail bond agencies.
+- [Urgent care clinics systems](https://www.lycore.org/industries/urgent-care): Administrative call handling and staff handoffs for urgent care clinics.
 - [Home services systems](https://www.lycore.org/industries/home-services): Lead response, booking and follow-up systems for home-service businesses.
 - [Pest control systems](https://www.lycore.org/industries/pest-control): Customer-journey systems for pest-control enquiries, recurring service and reviews.
 - [Plumbing systems](https://www.lycore.org/industries/plumbing): Urgent call response, estimate follow-up and review workflows for plumbing businesses.
 - [Roofing systems](https://www.lycore.org/industries/roofing): Storm-demand, inspection and estimate-follow-up systems for roofing businesses.
-- [Restoration systems](https://www.lycore.org/industries/restoration): Response and customer-lifecycle systems for restoration businesses.
+- [Water damage & restoration systems](https://www.lycore.org/industries/restoration): Urgent intake, team handoffs and customer updates for water damage and restoration companies.
 - [Towing systems](https://www.lycore.org/industries/towing): Dispatch-ready intake and customer communication workflows for towing businesses.
 - [Med spas systems](https://www.lycore.org/industries/med-spas): Consultation response, booking and reactivation workflows for med spas.
 - [Dental practices systems](https://www.lycore.org/industries/dentists): Non-clinical enquiry, appointment and recall-support workflows for dental practices.
-- [Veterinary practices systems](https://www.lycore.org/industries/veterinary): Non-clinical lead response, scheduling and follow-up systems for veterinary practices.
+- [Veterinary practices & pet clinics systems](https://www.lycore.org/industries/veterinary): Non-clinical lead response, scheduling and follow-up systems for veterinary practices.
 - [GoHighLevel workflows](https://www.lycore.org/integrations/gohighlevel): GoHighLevel workflow planning for service-business customer journeys.
 - [Housecall Pro workflows](https://www.lycore.org/integrations/housecall-pro): Housecall Pro workflow assessment for leads, jobs and customer communication.
 - [GorillaDesk workflows](https://www.lycore.org/integrations/gorilladesk): GorillaDesk workflow assessment for pest-control customer journeys.
@@ -57,7 +76,7 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 ## Frequently Asked Questions
 
 - Q: What kind of businesses does LYCORE work with?
-  A: LYCORE works with small service businesses where a missed call means lost revenue: towing companies, plumbers, roofers, HVAC contractors, electricians, restaurants, urgent care clinics, locksmiths, restoration companies, and similar businesses.
+  A: LYCORE works with spas, med spas, dental and veterinary clinics, real estate agents, law firms, roofers, plumbers, water restoration companies, and other service businesses. Each industry page explains a workflow for that team.
 - Q: How does LYCORE answer my calls?
   A: When a call comes in and your team cannot pick up, our receptionist answers on your behalf. It greets the caller by your business name, captures the details you need (name, location, urgency, service type), and routes the information to your team by text, email, or dashboard. Your callers talk to a trained receptionist, not a voicemail box.
 - Q: Is the receptionist a real person or a computer?

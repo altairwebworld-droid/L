@@ -16,7 +16,7 @@ export const site = {
   privacyRequestFormUrl: 'https://form.jotform.com/261947648151061',
   ogImage: '/og-image.png',
   coreStatement:
-    'LYCORE answers your phones 24/7, builds websites that convert callers, and handles the follow-up — so small service businesses stop losing jobs to missed calls.',
+    'LYCORE builds lead generation, call handling, booking and follow-up systems for service businesses.',
   heroCopy:
     'A stranded driver at midnight. A burst pipe at 2 a.m. A patient searching for a clinic that answers. If your phone rings and nobody picks up, the job goes to whoever does. LYCORE makes sure that is you.',
   expandedServicesStatement:
@@ -154,7 +154,7 @@ export const globalFaqs: Faq[] = [
   {
     question: 'What kind of businesses does LYCORE work with?',
     answer:
-      'LYCORE works with small service businesses where a missed call means lost revenue: towing companies, plumbers, roofers, HVAC contractors, electricians, restaurants, urgent care clinics, locksmiths, restoration companies, and similar businesses.',
+      'LYCORE works with spas, med spas, dental and veterinary clinics, real estate agents, law firms, roofers, plumbers, water restoration companies, and other service businesses. Each industry page explains a workflow for that team.',
   },
   {
     question: 'How does LYCORE answer my calls?',
@@ -212,10 +212,10 @@ export const servicePages: ServicePage[] = [
   {
     path: '/what-we-build',
     label: 'What We Build',
-    title: '24/7 Receptionist, Websites & GBP for Service Businesses',
+    title: 'Lead Generation, Websites & Automation Services - LYCORE',
     description:
-      'LYCORE answers calls 24/7, builds phone-first websites, optimizes Google Business Profiles, and automates intake for small service businesses that cannot afford to miss a call.',
-    h1: 'What We Build',
+      'Explore lead generation, AI receptionists, web design, CRM automation, reviews and customer follow-up for service businesses.',
+    h1: 'Connect the next step.',
     kind: 'service',
     problem:
       'Service businesses lose jobs every week to calls that go unanswered, websites that do not convert, and follow-up that never happens.',
@@ -248,7 +248,7 @@ export const servicePages: ServicePage[] = [
     title: 'Industries LYCORE Serves — Call Handling, Websites & Follow-Up',
     description:
       'Explore every industry LYCORE serves, with the pain points, call handling, websites, intake, booking and follow-up each business can receive.',
-    h1: 'Industries LYCORE Serves',
+    h1: 'Find your industry.',
     kind: 'service',
     problem:
       'Different service industries lose opportunities in different ways, but the pattern is consistent: calls overlap, urgent customers move on quickly, and incomplete intake slows the team down.',
@@ -273,7 +273,7 @@ export const servicePages: ServicePage[] = [
       'Review the quality and routing of captured opportunities',
     ],
     related: ['/what-we-build', '/contact'],
-    faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[4], globalFaqs[6], globalFaqs[9]],
+
   },
 ];
 
@@ -284,19 +284,19 @@ export const legacyPages: PageMeta[] = [
     title: 'LYCORE GROUP LLC - Customer Communication Systems',
     description:
       '24/7 call handling, lead capture, appointment booking, follow-up, SMS automation, CRM integration and workflow systems for service businesses.',
-    h1: 'Stop losing jobs to missed calls',
+    h1: 'More leads. Fewer leaks.',
     kind: 'home',
     faqs: globalFaqs.slice(0, 6),
   },
   {
     path: '/what-we-build',
     label: 'What We Build',
-    title: '24/7 Receptionist, Websites & GBP for Service Businesses',
+    title: 'Lead Generation, Websites & Automation Services - LYCORE',
     description:
-      'LYCORE answers calls 24/7, builds phone-first websites, optimizes Google Business Profiles, and automates intake for small service businesses that cannot afford to miss a call.',
-    h1: 'What We Build',
+      'Explore lead generation, AI receptionists, web design, CRM automation, reviews and customer follow-up for service businesses.',
+    h1: 'Connect the next step.',
     kind: 'service',
-    faqs: [globalFaqs[1], globalFaqs[6], globalFaqs[7], globalFaqs[8]],
+
   },
   {
     path: '/vision',
@@ -313,7 +313,7 @@ export const legacyPages: PageMeta[] = [
     title: 'Industries LYCORE Serves — Call Handling, Websites & Follow-Up',
     description:
       'Explore every industry LYCORE serves, with the pain points, call handling, websites, intake, booking and follow-up each business can receive.',
-    h1: 'Industries LYCORE Serves',
+    h1: 'Find your industry.',
     kind: 'service',
     faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[4], globalFaqs[6], globalFaqs[9]],
   },

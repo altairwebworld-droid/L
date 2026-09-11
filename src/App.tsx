@@ -50,7 +50,6 @@ export default function App() {
             <Route path="integrations/:integration" element={<GrowthPage />} />
             <Route path="resources" element={<Resources />} />
             <Route path="resources/:resource" element={<ResourcePageRoute />} />
-            <Route path="industries/bail-bonds" element={<Navigate to="/industries" replace />} />
             <Route path="about" element={<About />} />
             <Route path="faq" element={<Faq />} />
             <Route path="contact" element={<Contact />} />

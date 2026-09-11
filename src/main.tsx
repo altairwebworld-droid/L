@@ -5,6 +5,7 @@ import './index.css';
 import './kinetic.css';
 import './magnetic-redesign.css';
 import './signal-system.css';
+import './clarity.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

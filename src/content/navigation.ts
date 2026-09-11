@@ -3,6 +3,6 @@ export const primaryNavigation = [
   { label: 'Services', path: '/what-we-build' },
   { label: 'Industries', path: '/industries' },
   { label: 'Integrations', path: '/integrations' },
-  { label: 'FAQ', path: '/faq' },
+  { label: 'Resources', path: '/resources' },
   { label: 'Contact Us', path: '/contact' },
 ] as const;

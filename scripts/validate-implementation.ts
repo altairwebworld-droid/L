@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { allPages, site } from '../src/siteData';
+import { growthPages, resourcePages } from '../src/content/architecture';
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
@@ -44,6 +45,12 @@ for (const page of allPages) {
   expect(existsSync(file), `Missing generated HTML for ${page.path}`);
   if (!existsSync(file)) continue;
   const html = await readFile(file, 'utf8');
+  const detail = growthPages.find(item => item.path === page.path);
+  const guide = resourcePages.find(item => item.path === page.path);
+  for (const text of detail ? [detail.problem, ...detail.builds, ...detail.workflow, detail.control] : guide ? [guide.answer, ...guide.steps, ...guide.tradeoffs] : []) {
+    expect(html.includes(esc(text)), `${page.path}: missing crawlable detail content: ${text}`);
+  }
+  expect((html.match(/<h1[\s>]/g) || []).length === 1, `${page.path}: expected one crawlable H1`);
   expect((html.match(/<title>/g) || []).length === 1, `${page.path}: expected one title`);
   expect(html.includes(esc(page.title)), `${page.path}: title mismatch`);
   expect(!page.title.includes('|'), `${page.path}: title should use a non-pipe delimiter`);
@@ -54,7 +61,7 @@ for (const page of allPages) {
   expect(html.includes('property="og:title"'), `${page.path}: missing og:title`);
   expect(html.includes('name="twitter:card"'), `${page.path}: missing twitter card`);
   expect((html.match(/application\/ld\+json/g) || []).length > 0, `${page.path}: missing JSON-LD`);
-  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+  for (const match of html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
     try {
       JSON.parse(match[1]);
     } catch {
@@ -71,7 +78,7 @@ for (const page of allPages) {
     const visibleText = stripHtml(rootBody).toLowerCase();
     expect(page.title.includes('LYCORE'), '/: title must identify LYCORE');
     expect((rootBody.match(/<h1[\s>]/gi) || []).length >= 1, '/: raw HTML must include an H1 fallback');
-    expect(/<h1[\s\S]*?missed calls[\s\S]*?<\/h1>/i.test(rootBody), '/: raw HTML H1 must reflect the missed-calls positioning');
+    expect(rootBody.includes(`<h1>${esc(page.h1)}</h1>`), '/: raw HTML H1 must match the homepage heading');
     expect(visibleText.includes('service businesses'), '/: raw HTML body content must identify the intended audience');
     expect(wordCount(visibleText) >= 100, '/: raw HTML fallback content should contain at least 100 crawlable words');
   }

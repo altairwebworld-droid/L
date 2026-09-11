@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && tsx scripts/generate-static-metadata.ts && tsx scripts/generate-reports.ts",
+    "build": "vite build && tsx scripts/generate-static-metadata.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",

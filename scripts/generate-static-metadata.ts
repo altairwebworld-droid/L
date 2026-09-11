@@ -2,6 +2,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { industries } from '../src/content/industries';
+import { growthPages, resourcePages } from '../src/content/architecture';
+import { schemaFor } from '../src/content/schema';
 import { allPages, globalFaqs, servicePages, site, type PageMeta } from '../src/siteData';
 
 const root = process.cwd();
@@ -13,159 +15,6 @@ const esc = (value: string) =>
 const absoluteUrl = (route: string) => `${site.domain}${route === '/' ? '' : route}`;
 const robotsFor = (page: PageMeta) => (page.kind === 'system' ? 'noindex,follow' : 'index,follow');
 const present = (value: string | undefined): value is string => Boolean(value);
-
-const orgId = `${site.domain}/#organization`;
-const websiteId = `${site.domain}/#website`;
-const buildDate = new Date().toISOString().slice(0, 10);
-
-function schemaFor(page: PageMeta) {
-  const canonical = absoluteUrl(page.path);
-  const blocks: unknown[] = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      '@id': orgId,
-      name: site.legalName,
-      alternateName: site.name,
-      legalName: site.legalName,
-      url: site.domain,
-      description: site.coreStatement,
-      email: site.email,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${site.domain}/favicon-96x96.png`,
-        contentUrl: `${site.domain}/favicon-96x96.png`,
-        width: 96,
-        height: 96,
-      },
-      image: `${site.domain}${site.ogImage}`,
-      sameAs: Object.values(site.socials),
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: site.address.street,
-        addressLocality: site.address.locality,
-        addressRegion: site.address.region,
-        postalCode: site.address.postalCode,
-        addressCountry: site.address.country,
-      },
-      contactPoint: {
-        '@type': 'ContactPoint',
-        email: site.email,
-        contactType: 'sales',
-        areaServed: 'US',
-        availableLanguage: 'English',
-      },
-      areaServed: 'United States',
-      knowsAbout: [
-        '24/7 call handling',
-        'lead capture',
-        'appointment booking',
-        'customer follow-up',
-        'SMS automation',
-        'CRM integration',
-        'workflow automation',
-        'phone-first website design',
-        'Google Business Profile optimization',
-        'customer communication systems for service businesses',
-      ],
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      '@id': websiteId,
-      name: site.name,
-      url: site.domain,
-      publisher: { '@id': orgId },
-      inLanguage: 'en-US',
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      '@id': `${canonical}#webpage`,
-      url: canonical,
-      name: page.title,
-      description: page.description,
-      isPartOf: { '@id': websiteId },
-      about: { '@id': orgId },
-      dateModified: buildDate,
-      inLanguage: 'en-US',
-      primaryImageOfPage: { '@type': 'ImageObject', url: `${site.domain}${site.ogImage}` },
-    },
-  ];
-  if (page.path === '/') {
-    const sitelinkCandidates = [
-      { name: 'Home', path: '/' },
-      { name: 'What We Build', path: '/what-we-build' },
-      { name: 'Industries We Serve', path: '/industries' },
-      { name: 'Vision', path: '/vision' },
-      { name: 'Our Commitments', path: '/commitments' },
-      { name: 'Free Lead System Audit', path: site.auditPath },
-      { name: 'Book a Call', path: '/book' },
-      { name: 'About LYCORE', path: '/about' },
-      { name: 'Frequently Asked Questions', path: '/faq' },
-      { name: 'Contact', path: '/contact' },
-    ];
-    blocks.push({
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      itemListElement: sitelinkCandidates.map((item, index) => ({
-        '@type': 'SiteNavigationElement',
-        position: index + 1,
-        name: item.name,
-        url: absoluteUrl(item.path),
-      })),
-    });
-  }
-  const service = servicePages.find((item) => item.path === page.path);
-  if (service || page.kind === 'service' || page.kind === 'audit') {
-    blocks.push({
-      '@context': 'https://schema.org',
-      '@type': 'Service',
-      serviceType: page.h1,
-      name: page.h1,
-      description: service?.explanation || page.description,
-      provider: { '@id': orgId },
-      audience: { '@type': 'BusinessAudience', audienceType: 'Service businesses' },
-      areaServed: 'United States',
-      url: absoluteUrl(page.path),
-    });
-  }
-  if (page.kind === 'resource') {
-    blocks.push({
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: page.h1,
-      description: page.description,
-      mainEntityOfPage: canonical,
-      author: { '@id': orgId },
-      publisher: { '@id': orgId },
-      dateModified: buildDate,
-      inLanguage: 'en-US',
-    });
-  }
-  if (page.faqs?.length) {
-    blocks.push({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: page.faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-      })),
-    });
-  }
-  if (page.path !== '/') {
-    blocks.push({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: site.domain },
-        { '@type': 'ListItem', position: 2, name: page.h1, item: absoluteUrl(page.path) },
-      ],
-    });
-  }
-  return blocks;
-}
 
 function headFor(page: PageMeta, assetTags: string) {
   const canonical = absoluteUrl(page.path);
@@ -204,7 +53,7 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta name="twitter:image:alt" content="LYCORE logo" />
     <meta name="theme-color" content="#f2f1ed" />
     <meta name="application-name" content="${site.name}" />
-    ${schemaFor(page).map((block) => `<script type="application/ld+json">${JSON.stringify(block)}</script>`).join('\n    ')}
+    ${schemaFor(page).map((block) => `<script type="application/ld+json" data-lycore-schema>${JSON.stringify(block)}</script>`).join('\n    ')}
     ${assetTags}
   </head>`;
 }
@@ -218,12 +67,19 @@ function fallbackFor(page: PageMeta) {
           'Service businesses lose opportunities when calls go unanswered, booking takes too long, or follow-up stops. LYCORE GROUP LLC builds customer communication systems that help teams respond consistently and keep each lead moving.',
           'Services include 24/7 call handling, lead capture, appointment booking, customer follow-up, SMS automation, CRM integration, workflow automation, phone-first websites and related business systems. Rankings, revenue, call volume and client outcomes are never guaranteed.',
         ]
-      : [page.description, service?.problem, service?.explanation].filter(present);
-  const faqItems = page.faqs?.slice(0, 3) || [];
+      : ['/what-we-build', '/industries'].includes(page.path) ? [page.description] : [page.description, service?.problem, service?.explanation].filter(present);
+  const faqItems = page.faqs || [];
+  const detail = growthPages.find(item => item.path === page.path);
+  const guide = resourcePages.find(item => item.path === page.path);
+  const list = (heading: string, items: string[]) => `<h2>${esc(heading)}</h2><ul>${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
+  const detailContent = detail ? `<h2>What this solves</h2><p>${esc(detail.problem)}</p>${list('What we build', detail.builds)}${list('How it works', detail.workflow)}<h2>Your team stays in control</h2><p>${esc(detail.control)}</p>` : guide ? `<h2>Direct answer</h2><p>${esc(guide.answer)}</p>${list('A practical workflow', guide.steps)}${list('Trade-offs and common mistakes', guide.tradeoffs)}` : '';
+  const directoryPages = page.path === '/what-we-build' ? growthPages.filter(item => item.kind === 'service') : page.path === '/integrations' ? growthPages.filter(item => item.kind === 'integration') : page.path === '/resources' ? resourcePages : [];
+  const directoryContent = directoryPages.map(item => `<article><h2><a href="${item.path}">${esc(item.label)}</a></h2><p>${esc(item.description)}</p></article>`).join('');
+  const relatedContent = (detail?.related || guide?.related || []).map(route => `<a href="${route}">${esc(allPages.find(item => item.path === route)?.label || 'Explore LYCORE')}</a>`).join(' ');
   const industryItems = page.path === '/industries'
     ? `<h2>Industries LYCORE serves</h2>
           ${industries.map((industry) => `<article>
-            <h3>${esc(industry.name)}</h3>
+            <h3><a href="${industry.path}">${esc(industry.name)}</a></h3>
             <h4>Why this industry needs a reliable response system</h4>
             <p>${esc(industry.pain)}</p>
             <h4>What LYCORE handles</h4>
@@ -240,6 +96,7 @@ function fallbackFor(page: PageMeta) {
           ${paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('\n          ')}
           ${page.path === '/' ? '<h2>Customer communication systems for service businesses</h2>' : ''}
           ${industryItems}
+          ${detailContent}${directoryContent}${relatedContent}
           ${
             faqItems.length
               ? `<h2>Common Questions</h2>
@@ -249,6 +106,7 @@ function fallbackFor(page: PageMeta) {
           <nav aria-label="Primary crawl links">
             <a href="${site.auditPath}">${esc(site.primaryCta)}</a>
             <a href="/what-we-build">${esc(site.secondaryCta)}</a>
+            <a href="/industries">Industries</a><a href="/integrations">Integrations</a><a href="/resources">Resources</a>
             ${page.path === '/'
                 ? `
             <a href="/vision">Where LYCORE Is Building</a>
@@ -280,7 +138,7 @@ function bodyFor(page: PageMeta) {
 function sitemapXml() {
   const urls = allPages
     .filter((page) => page.kind !== 'system')
-    .map((page) => `  <url><loc>${absoluteUrl(page.path)}</loc><lastmod>${page.updatedAt || '2026-08-05'}</lastmod><changefreq>monthly</changefreq><priority>${page.path === '/' ? '1.0' : '0.8'}</priority></url>`)
+    .map((page) => `  <url><loc>${absoluteUrl(page.path)}</loc>${page.updatedAt ? `<lastmod>${page.updatedAt}</lastmod>` : ''}<changefreq>monthly</changefreq><priority>${page.path === '/' ? '1.0' : '0.8'}</priority></url>`)
     .join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
@@ -306,7 +164,7 @@ function robotsTxt() {
 
 function llmsTxt() {
   const legalNameSuffix = site.legalName === site.name ? '' : ` (${site.legalName})`;
-  const serviceLines = servicePages
+  const serviceLines = growthPages.filter(page => page.kind === 'service')
     .map((page) => `- [${page.h1}](${absoluteUrl(page.path)}): ${page.description}`)
     .join('\n');
   const companyPages = allPages.filter((page) => ['legacy', 'home', 'audit', 'commitment'].includes(page.kind) && page.path !== '/');
