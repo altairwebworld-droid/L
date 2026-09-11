@@ -22,6 +22,7 @@ const service = (slug: string, title: string, description: string, problem: stri
   description,
   h1: title,
   kind: 'service',
+  updatedAt: '2026-09-11',
   eyebrow: 'Service system',
   problem,
   builds,
@@ -52,6 +53,7 @@ const industry = (slug: string, name: string, description: string, problem: stri
   description,
   h1: `${name} customer journey systems`,
   kind: 'industry',
+  updatedAt: '2026-09-11',
   eyebrow: 'Industry workflow',
   problem,
   builds: ['Lead-response and intake rules shaped around the work', 'Booking, follow-up, review and reactivation opportunities', `Software connection assessment for tools such as ${tools.join(', ')}`],
@@ -80,6 +82,7 @@ const integration = (slug: string, name: string, category: string, description: 
   description,
   h1: `${name} automation and workflow integration`,
   kind: 'integration',
+  updatedAt: '2026-09-11',
   eyebrow: `${category} integration`,
   problem: `A ${name} workflow can become disconnected when customer information, notifications, and follow-up must be copied between tools.`,
   builds: ['A discovery review of available connection methods', 'Workflow design around approved business rules', 'Clear documentation of limitations and human handoffs'],
@@ -107,7 +110,7 @@ export const integrationGrowthPages: GrowthPage[] = [
 export const growthPages = [...serviceGrowthPages, ...industryGrowthPages, ...integrationGrowthPages];
 
 export const integrationsHub: PageMeta = {
-  path: '/integrations', label: 'Integrations', title: 'Service Business Integrations & Workflow Connections — LYCORE', description: 'Explore LYCORE workflow integration assessments for field-service tools, CRMs and automation platforms.', h1: 'Integrations', kind: 'integration',
+  path: '/integrations', label: 'Integrations', title: 'Service Business Integrations & Workflow Connections — LYCORE', description: 'Explore LYCORE workflow integration assessments for field-service tools, CRMs and automation platforms.', h1: 'Integrations', kind: 'integration', updatedAt: '2026-09-11',
 };
 
 export type ResourcePage = PageMeta & {
@@ -119,7 +122,7 @@ export type ResourcePage = PageMeta & {
 };
 
 const guide = (slug: string, title: string, description: string, answer: string, steps: string[], tradeoffs: string[], related: string[]): ResourcePage => ({
-  path: `/resources/${slug}`, label: title, title: `${title} — LYCORE`, description, h1: title, kind: 'resource', answer, steps, tradeoffs, related,
+  path: `/resources/${slug}`, label: title, title: `${title} — LYCORE`, description, h1: title, kind: 'resource', updatedAt: '2026-09-11', answer, steps, tradeoffs, related,
   faqs: [{ question: 'Is there one right option for every business?', answer: 'No. The useful choice depends on the customer journey, the team that owns the work, the existing software, the risk of an error, and the ability to maintain the process.' }, { question: 'Can LYCORE help evaluate the workflow?', answer: 'Yes. LYCORE can review the customer journey and identify where a practical connection, automation, or human handoff may help. It does not guarantee a specific technical outcome.' }],
 });
 
@@ -132,4 +135,4 @@ export const resourcePages: ResourcePage[] = [
   guide('zapier-vs-n8n', 'Zapier vs. n8n for service-business automation', 'A neutral comparison of two common automation approaches for maintainable business workflows.', 'Zapier can be a practical choice for straightforward, managed app-to-app workflows. n8n can offer more flexibility and control for teams prepared to manage a more technical setup. The right option depends on the workflow, available integrations, security needs, ownership, and maintenance capacity.', ['Define the trigger, data, and desired outcome', 'Check available connection methods', 'Design exception and approval paths', 'Choose the owner who will maintain the workflow', 'Test with realistic failures as well as successful runs'], ['Zapier may be simpler for common workflows but costs and limits vary by plan.', 'n8n may offer more control but can require more technical ownership.', 'Neither tool removes the need for process design, monitoring, and human escalation.'], ['/integrations/zapier', '/integrations/n8n', '/services/crm-automation']),
 ];
 
-export const resourcesHub: PageMeta = { path: '/resources', label: 'Resources', title: 'Service Business Growth Resources — LYCORE', description: 'Practical guides on call response, follow-up, reviews, CRM workflows, outbound systems, and automation choices.', h1: 'Resources for service-business customer journeys', kind: 'resource' };
+export const resourcesHub: PageMeta = { path: '/resources', label: 'Resources', title: 'Service Business Growth Resources — LYCORE', description: 'Practical guides on call response, follow-up, reviews, CRM workflows, outbound systems, and automation choices.', h1: 'Resources for service-business customer journeys', kind: 'resource', updatedAt: '2026-09-11' };

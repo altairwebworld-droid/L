@@ -11,7 +11,7 @@
 ## After publishing a meaningful page change
 
 - Confirm the page returns HTTP 200 and has the expected canonical URL, title, description, and index directive.
-- Regenerate the production build so static page metadata and the sitemap stay aligned with the route inventory.
+- Regenerate the production build so static page metadata and the sitemap stay aligned with the route inventory. Set a page's `updatedAt` value only when its public content changes materially.
 - Use URL Inspection in Search Console for priority pages; request indexing only for genuinely new or materially changed pages.
 - Do not submit URLs repeatedly or change sitemap `lastmod` without a meaningful content change.
 

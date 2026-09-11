@@ -46,6 +46,7 @@ export type PageMeta = {
   description: string;
   h1: string;
   kind: 'home' | 'legacy' | 'service' | 'industry' | 'integration' | 'resource' | 'audit' | 'legal' | 'commitment' | 'system';
+  updatedAt?: string;
   faqs?: Faq[];
 };
 
