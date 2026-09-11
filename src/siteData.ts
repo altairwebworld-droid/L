@@ -34,6 +34,12 @@ export const site = {
   },
 };
 
+const operationsFaqs: Faq[] = [
+  { question: 'What parts of my business can be automated?', answer: 'Usually the best candidates are repetitive tasks involving calls, messages, data entry, routing, follow-up, updates, documents and information moving between systems.' },
+  { question: 'Can LYCORE automate work after a customer books?', answer: 'Yes. LYCORE can connect booking to job creation, staff notifications, customer updates, follow-up, payment reminders, reviews and other operational workflows depending on your systems.' },
+  { question: 'Do I need to replace my current software?', answer: 'No. The goal is usually to make the software you already pay for work together better. LYCORE checks the available connection methods before proposing a build.' },
+];
+
 export type Faq = {
   question: string;
   answer: string;
@@ -220,7 +226,7 @@ export const servicePages: ServicePage[] = [
     problem:
       'Service businesses lose jobs every week to calls that go unanswered, websites that do not convert, and follow-up that never happens.',
     explanation:
-      'LYCORE builds the system that sits between your ringing phone and a booked job: a receptionist that answers every call, a website that makes urgent callers tap your number, a Google listing that puts you first locally, and intake automation that handles the paperwork after the call.',
+      'LYCORE connects the journey from a ringing phone to a completed job: a receptionist that answers, a website that makes urgent callers act, intake that captures the right details, and operations workflows that move approved information through the CRM or field-service software you already use.',
     benefits: [
       'After-hours and overflow call handling with an agreed fallback',
       'Websites built for callers, not browsers',
@@ -232,12 +238,14 @@ export const servicePages: ServicePage[] = [
       'Phone-first website with tappable number',
       'Google Business Profile audit and optimization',
       'Monthly lead and call reporting',
+      'Workflow mapping for job creation, team notifications, customer updates and post-job follow-up',
     ],
     process: [
       'Review how your business handles calls, website, and follow-up today',
       'Set up the receptionist with your business details and call-routing rules',
       'Build or rebuild your website around phone conversions',
       'Measure answered calls, booked jobs, and lead sources after 30, 60, 90 days',
+      'Map the repeatable work after booking and test human approval points before launch',
     ],
     related: ['/industries', '/vision'],
     faqs: [globalFaqs[0], globalFaqs[1], globalFaqs[6], globalFaqs[9]],
@@ -297,6 +305,15 @@ export const legacyPages: PageMeta[] = [
     h1: 'Connect the next step.',
     kind: 'service',
 
+  },
+  {
+    path: '/ai-operations',
+    label: 'AI Operations',
+    title: 'AI Operations for Service Businesses - LYCORE',
+    description: 'Automate repetitive work between customers, staff and the CRM or field-service software your business already uses.',
+    h1: 'AI operations for service businesses',
+    kind: 'service',
+    faqs: [...globalFaqs, ...operationsFaqs],
   },
   {
     path: '/vision',

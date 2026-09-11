@@ -16,6 +16,7 @@ const Vision = lazy(() => import('./pages/Vision'));
 const Industries = lazy(() => import('./pages/Industries'));
 const Integrations = lazy(() => import('./pages/Integrations'));
 const GrowthPage = lazy(() => import('./pages/GrowthPage'));
+const Operations = lazy(() => import('./pages/Operations'));
 const Resources = lazy(() => import('./pages/Resources').then((module) => ({ default: module.ResourcesHub })));
 const ResourcePageRoute = lazy(() => import('./pages/Resources').then((module) => ({ default: module.ResourcePageRoute })));
 const About = lazy(() => import('./pages/About'));
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="what-we-build" element={<WhatWeBuild />} />
+            <Route path="ai-operations" element={<Operations />} />
             <Route path="vision" element={<Vision />} />
             <Route path="industries" element={<Industries />} />
             <Route path="industries/:industry" element={<GrowthPage />} />
