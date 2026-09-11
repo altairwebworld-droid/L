@@ -1,4 +1,5 @@
 import { heroContent } from '../../content/hero';
+import { Link } from 'react-router-dom';
 import MagneticHeroCards from './MagneticHeroCards';
 import { HeroSignalLayer, HeroTypewriterTitle } from './HeroSignalLayer';
 
@@ -20,9 +21,12 @@ export default function HeroSection() {
 
         <div className="reference-hero-statement">
           <HeroTypewriterTitle />
+          <p className="reference-hero-support">{heroContent.body}</p>
+          <div className="reference-hero-actions">
+            <Link to={heroContent.primaryAction.path} className="hero-cta hero-cta--primary" data-track="cta_click">{heroContent.primaryAction.label}</Link>
+            <Link to={heroContent.secondaryAction.path} className="hero-cta hero-cta--ghost">{heroContent.secondaryAction.label}</Link>
+          </div>
         </div>
-
-        <p className="sr-only">{heroContent.body}</p>
       </div>
     </section>
   );

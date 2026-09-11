@@ -847,6 +847,28 @@ body {
   color: #d84a00;
 }
 
+.reference-hero-support {
+  max-width: 42rem;
+  margin: 1.4rem auto 0;
+  color: rgba(23, 21, 19, 0.7);
+  font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+  line-height: 1.5;
+}
+
+.reference-hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+}
+
+.reference-hero-actions .hero-cta--ghost {
+  border-color: rgba(23, 21, 19, 0.22);
+  background: rgba(255, 255, 255, 0.38);
+  color: #171513;
+}
+
 @media (max-width: 899px) {
   .magnetic-hero { min-height: 50rem; }
 
@@ -901,6 +923,8 @@ body {
     font-size: clamp(1.8rem, 8.2vw, 2.4rem);
     line-height: 0.82;
   }
+
+  .reference-hero-support { max-width: 31rem; }
 
   .reference-hero-statement .hero-title-group {
     display: inline;
