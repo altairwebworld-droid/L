@@ -4,6 +4,7 @@ import path from 'node:path';
 import { industries } from '../src/content/industries';
 import { growthPages, resourcePages } from '../src/content/architecture';
 import { schemaFor } from '../src/content/schema';
+import { serviceEvidence, measurementNote } from '../src/content/serviceEvidence';
 import { allPages, globalFaqs, servicePages, site, type PageMeta } from '../src/siteData';
 
 const root = process.cwd();
@@ -71,6 +72,13 @@ function fallbackFor(page: PageMeta) {
   const faqItems = page.faqs || [];
   const detail = growthPages.find(item => item.path === page.path);
   const guide = resourcePages.find(item => item.path === page.path);
+  const evidence = page.kind === 'service' ? serviceEvidence[page.path.split('/').pop()!] : undefined;
+  const evidenceContent = evidence ? `<section><h2>What to expect</h2><p>${esc(evidence.summary)}</p>
+    ${evidence.timeline ? `<h3>${esc(evidence.timeline.label)}: ${esc(evidence.timeline.value)}</h3><p>${esc(evidence.timeline.explanation)}</p>` : ''}
+    ${evidence.tools ? `<h3>Domains and mailbox tools</h3><p>The stack depends on your scope and provider policies. These names describe tools and providers, not partnerships or certifications.</p><dl>${evidence.tools.map(tool => `<dt><a href="${tool.url}">${esc(tool.name)}</a></dt><dd>${esc(tool.role)}</dd>`).join('')}</dl>` : ''}
+    <h3>How to measure the work</h3><p>${esc(measurementNote)}</p><dl>${evidence.metrics.map(metric => `<dt>${esc(metric.name)}</dt><dd>${esc(metric.definition)}</dd>`).join('')}</dl>
+    ${evidence.reference ? `<p>${esc(evidence.reference.text)} <a href="${evidence.reference.url}">${esc(evidence.reference.label)}</a>.</p>` : ''}
+    <a href="/resources/measuring-lead-generation-results">Read the lead-generation measurement guide</a></section>` : '';
   const list = (heading: string, items: string[]) => `<h2>${esc(heading)}</h2><ul>${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
   const detailContent = detail ? `<h2>What this solves</h2><p>${esc(detail.problem)}</p>${list('What we build', detail.builds)}${list('How it works', detail.workflow)}<h2>Your team stays in control</h2><p>${esc(detail.control)}</p>` : guide ? `<h2>Direct answer</h2><p>${esc(guide.answer)}</p>${list('A practical workflow', guide.steps)}${list('Trade-offs and common mistakes', guide.tradeoffs)}` : '';
   const directoryPages = page.path === '/what-we-build' ? growthPages.filter(item => item.kind === 'service') : page.path === '/integrations' ? growthPages.filter(item => item.kind === 'integration') : page.path === '/resources' ? resourcePages : [];
@@ -96,7 +104,7 @@ function fallbackFor(page: PageMeta) {
           ${paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('\n          ')}
           ${page.path === '/' ? '<h2>Customer communication systems for service businesses</h2>' : ''}
           ${industryItems}
-          ${detailContent}${directoryContent}${relatedContent}
+          ${detailContent}${evidenceContent}${directoryContent}${relatedContent}
           ${
             faqItems.length
               ? `<h2>Common Questions</h2>

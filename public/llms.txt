@@ -6,9 +6,9 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 
 ## Services
 
-- [Outbound Lead Generation](https://www.lycore.org/services/outbound-lead-generation): Target-market research, outreach workflows, qualification and booking support for service businesses.
-- [Cold Email Infrastructure](https://www.lycore.org/services/cold-email-infrastructure): Email sending infrastructure and deliverability preparation for responsible business outreach.
-- [AI Receptionist](https://www.lycore.org/services/ai-receptionist): Configured call answering, intake, routing and booking support for service-business enquiries.
+- [B2B outbound lead generation](https://www.lycore.org/services/outbound-lead-generation): B2B prospect research, cold email outreach, reply qualification and appointment-setting workflows for service businesses.
+- [Cold email infrastructure setup](https://www.lycore.org/services/cold-email-infrastructure): Sending domains, business inboxes, SPF, DKIM and DMARC setup, plus about two weeks of initial email warm-up before launch checks.
+- [AI receptionist & call answering](https://www.lycore.org/services/ai-receptionist): AI call answering for service businesses: capture inquiries, handle approved questions and route appointment or callback requests.
 - [Missed Call Text Back](https://www.lycore.org/services/missed-call-text-back): Fast, configured SMS follow-up after an unanswered service-business call.
 - [Lead Follow-Up](https://www.lycore.org/services/lead-follow-up): Follow-up workflows that help service businesses keep enquiries, estimates and appointments moving.
 - [Reputation Management](https://www.lycore.org/services/reputation-management): Practical review and reputation workflows for service businesses.
@@ -72,6 +72,7 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 - [CRM vs. field-service management software](https://www.lycore.org/resources/crm-vs-field-service-management): How service businesses can decide which system should own leads, jobs, and customer follow-up.
 - [What cold email infrastructure includes](https://www.lycore.org/resources/cold-email-infrastructure): A buyer guide to responsible outbound email setup and the limits of deliverability work.
 - [Zapier vs. n8n for service-business automation](https://www.lycore.org/resources/zapier-vs-n8n): A neutral comparison of two common automation approaches for maintainable business workflows.
+- [How to measure lead generation results](https://www.lycore.org/resources/measuring-lead-generation-results): Define bounce rate, positive replies, qualified meetings, response time and booking rate before judging a lead-generation system.
 
 ## Frequently Asked Questions
 

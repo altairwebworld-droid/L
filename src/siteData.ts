@@ -281,7 +281,7 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/',
     label: 'Home',
-    title: 'LYCORE GROUP LLC - Customer Communication Systems',
+    title: 'Lead Generation & AI Receptionist Services - LYCORE GROUP LLC',
     description:
       '24/7 call handling, lead capture, appointment booking, follow-up, SMS automation, CRM integration and workflow systems for service businesses.',
     h1: 'More leads. Fewer leaks.',

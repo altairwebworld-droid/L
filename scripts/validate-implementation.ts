@@ -3,6 +3,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { allPages, site } from '../src/siteData';
 import { growthPages, resourcePages } from '../src/content/architecture';
+import { serviceEvidence, measurementNote } from '../src/content/serviceEvidence';
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
@@ -47,6 +48,12 @@ for (const page of allPages) {
   const html = await readFile(file, 'utf8');
   const detail = growthPages.find(item => item.path === page.path);
   const guide = resourcePages.find(item => item.path === page.path);
+  const evidence = page.kind === 'service' ? serviceEvidence[page.path.split('/').pop()!] : undefined;
+  if (evidence) {
+    const evidenceText = [evidence.summary, measurementNote, ...evidence.metrics.flatMap(metric => [metric.name, metric.definition]), ...(evidence.tools || []).flatMap(tool => [tool.name, tool.role]), ...(evidence.timeline ? [evidence.timeline.value, evidence.timeline.explanation] : []), ...(evidence.reference ? [evidence.reference.text] : [])];
+    for (const value of evidenceText) expect(html.includes(esc(value)), `${page.path}: missing crawlable measurement or scope content`);
+    expect(html.includes('href="/resources/measuring-lead-generation-results"'), `${page.path}: missing measurement guide link`);
+  }
   for (const text of detail ? [detail.problem, ...detail.builds, ...detail.workflow, detail.control] : guide ? [guide.answer, ...guide.steps, ...guide.tradeoffs] : []) {
     expect(html.includes(esc(text)), `${page.path}: missing crawlable detail content: ${text}`);
   }

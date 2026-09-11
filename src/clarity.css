@@ -15,6 +15,12 @@
 .directory-grid a > span { margin-top: auto; color: #a33700; font-size: .85rem; font-weight: 600; }
 .directory-page :focus-visible { outline: 3px solid #a33700; outline-offset: 4px; }
 .detail-page { --color-ink-muted: #c8c3bc; }
+.evidence-timeline { display: grid; grid-template-columns: minmax(12rem, .6fr) 1.4fr; gap: 1.5rem; margin-top: 1.5rem; padding: 1.5rem 0; border-block: 1px solid #ffffff30; }
+.evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; margin-top: 1.5rem; }
+.evidence-grid > div { padding-top: 1rem; border-top: 1px solid #ffffff25; }
+.evidence-grid dt { font-weight: 600; font-size: 1.08rem; }
+.evidence-grid dd { margin-top: .6rem; color: #c8c3bc; line-height: 1.65; }
+@media(max-width: 640px) { .evidence-grid, .evidence-timeline { grid-template-columns: 1fr; } }
 .detail-page .lycore-signal-field > section:first-of-type { padding-top: 7rem; padding-bottom: 2rem; }
 .detail-page h1 { font: 900 clamp(2.4rem, 4.8vw, 4rem)/1.05 'Barlow Condensed', sans-serif; max-width: 24ch; }
 .detail-actions { display: flex; justify-content: center; gap: .7rem; flex-wrap: wrap; margin-top: 1.2rem; }
