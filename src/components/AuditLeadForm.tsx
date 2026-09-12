@@ -11,6 +11,8 @@ type LeadFormState = {
   phone: string;
   email: string;
   consent: boolean;
+  marketingConsent: boolean;
+  smsConsent: boolean;
   honeypot: string;
 };
 
@@ -19,6 +21,8 @@ const initialState: LeadFormState = {
   phone: '',
   email: '',
   consent: false,
+  marketingConsent: false,
+  smsConsent: false,
   honeypot: '',
 };
 
@@ -173,9 +177,21 @@ export default function AuditLeadForm() {
               required
             />
             <span>
-              I consent to LYCORE GROUP LLC using this information to respond to my request, as described in the <Link to="/privacy-policy" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Privacy Policy</Link>.
+              I agree to the <Link to="/terms" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Terms of Use</Link> and acknowledge the <Link to="/privacy-policy" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Privacy Policy</Link>. LYCORE may use this information to respond to my request.
             </span>
           </label>
+
+          <fieldset className="space-y-4 border-0 p-0">
+            <legend className="text-sm font-medium uppercase tracking-[0.1em] text-stone-200">Optional updates</legend>
+            <label className="flex items-start gap-3 text-sm text-stone-300 font-light leading-relaxed">
+              <input name="marketingConsent" type="checkbox" checked={formData.marketingConsent} onChange={(event) => updateField('marketingConsent', event.target.checked)} className="mt-1 h-4 w-4" />
+              <span>Yes, send me occasional LYCORE marketing emails about services, guides and updates. I can unsubscribe at any time.</span>
+            </label>
+            <label className="flex items-start gap-3 text-sm text-stone-300 font-light leading-relaxed">
+              <input name="smsConsent" type="checkbox" checked={formData.smsConsent} onChange={(event) => updateField('smsConsent', event.target.checked)} className="mt-1 h-4 w-4" />
+              <span>Yes, send me recurring automated SMS messages from LYCORE about my request, scheduling and service updates. Message frequency varies, up to 5 messages per month. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and not required to submit this form. <Link to="/terms#sms" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">SMS Terms</Link> and <Link to="/privacy-policy#sms" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Privacy Policy</Link>.</span>
+            </label>
+          </fieldset>
 
           <p className="text-xs text-stone-400 leading-relaxed">
             No pressure and no outcome guarantees. {site.aiDisclaimer}

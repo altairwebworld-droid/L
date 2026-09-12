@@ -69,6 +69,9 @@ for (const page of allPages) {
     }
   }
   if (page.path === '/about') for (const step of deliveryStandards) expect(html.includes(esc(step.detail)), 'About: missing delivery standard');
+  if (page.path === '/contact') {
+    for (const text of ['Message and data rates may apply.', 'Reply STOP to opt out or HELP for help.', 'Consent is optional and not required to submit this form.', 'href="/terms#sms"', 'href="/privacy-policy#sms"']) expect(html.includes(text), `Contact: missing SMS consent disclosure ${text}`);
+  }
   for (const faq of page.faqs || []) expect(html.includes(`<p>${esc(faq.answer)}</p>`), `${page.path}: FAQ answer missing from visible HTML`);
   if (evidence) {
     const evidenceText = [evidence.summary, measurementNote, ...evidence.metrics.flatMap(metric => [metric.name, metric.definition]), ...(evidence.tools || []).flatMap(tool => [tool.name, tool.role]), ...(evidence.timeline ? [evidence.timeline.value, evidence.timeline.explanation] : []), ...(evidence.reference ? [evidence.reference.text] : [])];

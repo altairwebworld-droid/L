@@ -54,6 +54,14 @@ const privacySections: PolicySection[] = [
     ],
   },
   {
+    title: '5A. SMS and messaging consent',
+    paragraphs: [
+      'If you separately check the SMS consent box on a LYCORE form, you agree to receive recurring automated text messages from LYCORE GROUP LLC about your request, scheduling, and service updates. Message frequency varies and may be up to 5 messages per month. Message and data rates may apply.',
+      'SMS consent is optional and is not required to submit a request or use the website. Consent applies only to the messaging purpose described at the point of opt-in. Reply STOP to opt out or HELP for help. After opting out, LYCORE will not send further messages through that program unless you provide a new valid opt-in, subject to carrier processing.',
+      'LYCORE does not sell or share mobile numbers or SMS consent records with third parties or affiliates for their own marketing or promotional purposes. Messaging providers may process the number as service providers to deliver the messages. We retain consent records, including the form source and time, as needed to demonstrate compliance and manage opt-outs.',
+    ],
+  },
+  {
     title: '6. Automated chat and intake',
     paragraphs: [
       'The website chat is an optional intake and information tool. If an automation provider is configured, chat messages may be sent to that provider to generate a response. Automated responses can be incomplete or inaccurate and are not legal, financial, medical, or professional advice.',
@@ -111,6 +119,10 @@ const privacySections: PolicySection[] = [
 ];
 
 const termsSections: PolicySection[] = [
+  {
+    title: 'SMS Terms',
+    paragraphs: ['By separately selecting the SMS checkbox on a LYCORE form, you authorize LYCORE GROUP LLC to send recurring automated text messages about your request, scheduling, and service updates to the mobile number you provide. Message frequency varies and may be up to 5 messages per month. Message and data rates may apply. Consent is optional and not a condition of submitting a request.', 'Reply STOP to opt out or HELP for help. You may also contact services@lycore.org. Carriers are not liable for delayed or undelivered messages. LYCORE may use a messaging provider to deliver messages, but does not sell or share your mobile number or SMS consent with third parties or affiliates for their own marketing or promotional purposes.'],
+  },
   {
     title: 'Informational Use',
     paragraphs: ['The website describes digital marketing, intake, automation, and CRM-readiness services for small service businesses. Content is informational and is not legal, financial, or compliance advice.'],
@@ -246,7 +258,7 @@ export default function Legal() {
         <div className="glass-panel mb-8 rounded-[32px] border border-white/10 p-8 md:p-12">
           <div className="space-y-11">
             {sections.map((section) => (
-              <section key={section.title} className="border-l-2 pl-6" style={{ borderColor: `${accent}45` }}>
+              <section key={section.title} id={section.title === 'SMS Terms' || section.title.startsWith('5A.') ? 'sms' : undefined} className="border-l-2 pl-6 scroll-mt-24" style={{ borderColor: `${accent}45` }}>
                 <h2 className="mb-4 text-2xl font-medium">{section.title}</h2>
                 <div className="space-y-4 text-stone-300">
                   {section.paragraphs?.map((paragraph) => <p key={paragraph} className="font-light leading-relaxed">{paragraph}</p>)}

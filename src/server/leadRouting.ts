@@ -20,6 +20,8 @@ export type LeadPayload = {
   preferredContactTime?: string;
   message?: string;
   consent?: boolean;
+  marketingConsent?: boolean;
+  smsConsent?: boolean;
   sourcePage?: string;
   landingPage?: string;
   referrer?: string;
@@ -47,6 +49,10 @@ export type NormalizedLeadPayload = {
   preferredContactTime: string;
   message: string;
   consent: boolean;
+  marketingConsent: boolean;
+  smsConsent: boolean;
+  smsConsentAt: string;
+  smsConsentSource: string;
   sourcePage: string;
   landingPage: string;
   referrer: string;
@@ -126,6 +132,10 @@ export function normalizeLeadPayload(body: LeadPayload): NormalizedLeadPayload {
     preferredContactTime: clean(body.preferredContactTime),
     message: clean(body.message),
     consent: true,
+    marketingConsent: body.marketingConsent === true,
+    smsConsent: body.smsConsent === true,
+    smsConsentAt: body.smsConsent === true ? (clean(body.submittedAt) || new Date().toISOString()) : '',
+    smsConsentSource: body.smsConsent === true ? 'website contact form' : '',
     sourcePage: clean(body.sourcePage),
     landingPage: clean(body.landingPage),
     referrer: clean(body.referrer),
@@ -407,6 +417,10 @@ function leadEmailHtml(payload: NormalizedLeadPayload, leadScore: number) {
     ['Misses after-hours calls', payload.missedCalls],
     ['Preferred contact', payload.preferredContactMethod],
     ['Message', payload.message],
+    ['Marketing email consent', payload.marketingConsent ? 'Yes' : 'No'],
+    ['SMS consent', payload.smsConsent ? 'Yes' : 'No'],
+    ['SMS consent recorded at', payload.smsConsentAt],
+    ['SMS consent source', payload.smsConsentSource],
     ['Lead score', String(leadScore)],
     ['Source page', payload.sourcePage],
     ['Landing page', payload.landingPage],
