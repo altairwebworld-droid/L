@@ -422,7 +422,7 @@ function leadEmailHtml(payload: NormalizedLeadPayload, leadScore: number) {
     ['Email', payload.email],
     ['Phone', payload.phone],
     ['Location', payload.location],
-    ['Biggest challenge', payload.biggestChallenge],
+    ['Primary interest', payload.biggestChallenge],
     ['Current CRM/tool', payload.currentCRM],
     ['Misses after-hours calls', payload.missedCalls],
     ['Preferred contact', payload.preferredContactMethod],

@@ -61,13 +61,14 @@ const initialState: LeadFormState = {
   honeypot: '',
 };
 
-const issueOptions = [
-  'Calls are being missed or answered too slowly',
-  'The website is not turning visitors into enquiries',
-  'Customers cannot find the business locally',
-  'Intake and follow-up are too manual',
-  'Appointment booking needs to be simpler',
-  'Not sure — help me find the problem',
+const interestOptions = [
+  'Generate more qualified leads',
+  'Improve website conversion',
+  'Improve local visibility and search presence',
+  'Strengthen lead response and follow-up',
+  'Improve booking and appointment flow',
+  'Set up or improve CRM and automation',
+  'Explore what would help most',
 ] as const;
 
 export default function AuditLeadForm() {
@@ -153,9 +154,9 @@ export default function AuditLeadForm() {
         <>
           <div className="border-b border-white/10 pb-7">
             <p className="micro-label mb-4 text-white">Quick intake</p>
-            <h2 className="mb-3 text-3xl font-medium md:text-4xl">What should we fix?</h2>
+            <h2 className="mb-3 text-3xl font-medium md:text-4xl">What would you like to achieve?</h2>
             <p className="text-stone-300 font-light leading-relaxed">
-              Choose the problem and leave the best phone number and email. That is all we need to start.
+              Choose an area you would like to improve or explore, then leave the best phone number and email. That is all we need to start.
             </p>
           </div>
 
@@ -170,7 +171,7 @@ export default function AuditLeadForm() {
           </div>
 
           <label className="block">
-            <span className="mb-3 block text-sm font-medium uppercase tracking-[0.1em] text-stone-200">What needs to be fixed?</span>
+            <span className="mb-3 block text-sm font-medium uppercase tracking-[0.1em] text-stone-200">What would you like help with?</span>
             <select
               name="biggestChallenge"
               value={formData.biggestChallenge}
@@ -179,11 +180,11 @@ export default function AuditLeadForm() {
               required
             >
               <option value="">Choose one</option>
-              {issueOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+              {interestOptions.map((option) => <option key={option} value={option}>{option}</option>)}
             </select>
           </label>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1.45fr)_minmax(0,0.8fr)]">
             <PhoneField
               countryCode={formData.phoneCountryCode}
               phone={formData.phone}
@@ -256,7 +257,7 @@ function PhoneField({
   onPhoneChange: (value: string) => void;
 }) {
   return (
-    <label className="block">
+    <label className="block min-w-0">
       <span className="mb-3 block text-sm font-medium uppercase tracking-[0.1em] text-stone-200">Phone number</span>
       <div className="flex gap-2">
         <select
@@ -265,9 +266,9 @@ function PhoneField({
           autoComplete="tel-country-code"
           value={countryCode}
           onChange={(event) => onCountryCodeChange(event.target.value)}
-          className="form-control w-[9.5rem] shrink-0"
+          className="form-control w-28 shrink-0 sm:w-40"
         >
-          {countryCallingCodes.map(({ country, code }) => <option key={`${country}-${code}`} value={code}>{country} ({code})</option>)}
+          {countryCallingCodes.map(({ country, code }) => <option key={`${country}-${code}`} value={code}>{code} · {country}</option>)}
         </select>
         <input
           name="phone"
