@@ -6,8 +6,42 @@ import { site } from '../siteData';
 
 const bookingUrl = 'https://cal.com/lycorellc/discovery-call';
 
+const countryCallingCodes = [
+  { country: 'United States', code: '+1' },
+  { country: 'Canada', code: '+1' },
+  { country: 'United Kingdom', code: '+44' },
+  { country: 'Australia', code: '+61' },
+  { country: 'New Zealand', code: '+64' },
+  { country: 'South Africa', code: '+27' },
+  { country: 'Zimbabwe', code: '+263' },
+  { country: 'Botswana', code: '+267' },
+  { country: 'Zambia', code: '+260' },
+  { country: 'Kenya', code: '+254' },
+  { country: 'Nigeria', code: '+234' },
+  { country: 'Ghana', code: '+233' },
+  { country: 'Uganda', code: '+256' },
+  { country: 'Tanzania', code: '+255' },
+  { country: 'Rwanda', code: '+250' },
+  { country: 'India', code: '+91' },
+  { country: 'Pakistan', code: '+92' },
+  { country: 'Bangladesh', code: '+880' },
+  { country: 'Singapore', code: '+65' },
+  { country: 'Philippines', code: '+63' },
+  { country: 'United Arab Emirates', code: '+971' },
+  { country: 'Saudi Arabia', code: '+966' },
+  { country: 'Germany', code: '+49' },
+  { country: 'France', code: '+33' },
+  { country: 'Ireland', code: '+353' },
+  { country: 'Netherlands', code: '+31' },
+  { country: 'Spain', code: '+34' },
+  { country: 'Italy', code: '+39' },
+  { country: 'Brazil', code: '+55' },
+  { country: 'Mexico', code: '+52' },
+] as const;
+
 type LeadFormState = {
   biggestChallenge: string;
+  phoneCountryCode: string;
   phone: string;
   email: string;
   consent: boolean;
@@ -18,6 +52,7 @@ type LeadFormState = {
 
 const initialState: LeadFormState = {
   biggestChallenge: '',
+  phoneCountryCode: '+1',
   phone: '',
   email: '',
   consent: false,
@@ -149,13 +184,11 @@ export default function AuditLeadForm() {
           </label>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            <Field
-              label="Phone number"
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              value={formData.phone}
-              onChange={(value) => updateField('phone', value)}
+            <PhoneField
+              countryCode={formData.phoneCountryCode}
+              phone={formData.phone}
+              onCountryCodeChange={(value) => updateField('phoneCountryCode', value)}
+              onPhoneChange={(value) => updateField('phone', value)}
             />
             <Field
               label="Email"
@@ -208,6 +241,47 @@ export default function AuditLeadForm() {
         </>
       )}
     </form>
+  );
+}
+
+function PhoneField({
+  countryCode,
+  phone,
+  onCountryCodeChange,
+  onPhoneChange,
+}: {
+  countryCode: string;
+  phone: string;
+  onCountryCodeChange: (value: string) => void;
+  onPhoneChange: (value: string) => void;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-3 block text-sm font-medium uppercase tracking-[0.1em] text-stone-200">Phone number</span>
+      <div className="flex gap-2">
+        <select
+          name="phoneCountryCode"
+          aria-label="Country calling code"
+          autoComplete="tel-country-code"
+          value={countryCode}
+          onChange={(event) => onCountryCodeChange(event.target.value)}
+          className="form-control w-[9.5rem] shrink-0"
+        >
+          {countryCallingCodes.map(({ country, code }) => <option key={`${country}-${code}`} value={code}>{country} ({code})</option>)}
+        </select>
+        <input
+          name="phone"
+          type="tel"
+          autoComplete="tel-national"
+          inputMode="tel"
+          placeholder="Phone number"
+          value={phone}
+          onChange={(event) => onPhoneChange(event.target.value)}
+          className="form-control min-w-0 flex-1"
+          required
+        />
+      </div>
+    </label>
   );
 }
 
