@@ -3070,6 +3070,36 @@ body {
 .contact-light .contact-intake-form {
   background: #fffdf9;
   color: #171513;
+  min-width: 0;
+  container-type: inline-size;
+  container-name: contact-intake;
+}
+
+/* Size the phone controls against the form's available width, not the viewport.
+   Explicit zero minimums prevent native select sizing from widening the grid. */
+.contact-intake-form .contact-phone-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 16px;
+}
+
+.contact-intake-form .contact-phone-fields > label {
+  display: block;
+  min-width: 0;
+}
+
+.contact-intake-form .form-control {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@container contact-intake (max-width: 420px) {
+  .contact-intake-form .contact-phone-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
 }
 
 .contact-light .contact-intake-form .form-control {

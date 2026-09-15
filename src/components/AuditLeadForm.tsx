@@ -257,19 +257,22 @@ function PhoneField({
   onPhoneChange: (value: string) => void;
 }) {
   return (
-    <label className="block min-w-0">
-      <span className="mb-3 block text-sm font-medium uppercase tracking-[0.1em] text-stone-200">Phone number</span>
-      <div className="flex gap-2">
+    <div className="contact-phone-fields">
+      <label className="contact-phone-country">
+        <span className="mb-3 block text-sm font-medium uppercase tracking-[0.1em] text-stone-200">Country code</span>
         <select
           name="phoneCountryCode"
           aria-label="Country calling code"
           autoComplete="tel-country-code"
           value={countryCode}
           onChange={(event) => onCountryCodeChange(event.target.value)}
-          className="form-control w-28 shrink-0 sm:w-40"
+          className="form-control"
         >
           {countryCallingCodes.map(({ country, code }) => <option key={`${country}-${code}`} value={code}>{code} · {country}</option>)}
         </select>
+      </label>
+      <label className="contact-phone-number">
+        <span className="mb-3 block text-sm font-medium uppercase tracking-[0.1em] text-stone-200">Phone number</span>
         <input
           name="phone"
           type="tel"
@@ -278,11 +281,11 @@ function PhoneField({
           placeholder="Phone number"
           value={phone}
           onChange={(event) => onPhoneChange(event.target.value)}
-          className="form-control min-w-0 flex-1"
+          className="form-control"
           required
         />
-      </div>
-    </label>
+      </label>
+    </div>
   );
 }
 
