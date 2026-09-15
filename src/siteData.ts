@@ -15,6 +15,7 @@ export const site = {
   auditPath: '/contact',
   privacyRequestFormUrl: 'https://form.jotform.com/261947648151061',
   ogImage: '/og-image.png',
+  logo: '/lycore-logo.jpeg',
   coreStatement:
     'LYCORE builds lead generation, call handling, booking and follow-up systems for service businesses.',
   heroCopy:

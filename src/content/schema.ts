@@ -21,12 +21,12 @@ export function schemaFor(page: PageMeta) {
       email: site.email,
       logo: {
         '@type': 'ImageObject',
-        url: `${site.domain}/favicon-96x96.png`,
-        contentUrl: `${site.domain}/favicon-96x96.png`,
-        width: 96,
-        height: 96,
+        url: `${site.domain}${site.logo}`,
+        contentUrl: `${site.domain}${site.logo}`,
+        width: 1254,
+        height: 1254,
       },
-      image: `${site.domain}${site.ogImage}`,
+      image: `${site.domain}${site.logo}`,
       sameAs: Object.values(site.socials),
       address: {
         '@type': 'PostalAddress',
@@ -77,7 +77,9 @@ export function schemaFor(page: PageMeta) {
       about: { '@id': orgId },
       ...(page.updatedAt ? { dateModified: page.updatedAt } : {}),
       inLanguage: 'en-US',
-      primaryImageOfPage: { '@type': 'ImageObject', url: `${site.domain}${site.ogImage}` },
+      primaryImageOfPage: page.path === '/'
+        ? { '@type': 'ImageObject', url: `${site.domain}${site.logo}`, contentUrl: `${site.domain}${site.logo}`, width: 1254, height: 1254 }
+        : { '@type': 'ImageObject', url: `${site.domain}${site.ogImage}` },
     },
   ];
   if (page.path === '/') {

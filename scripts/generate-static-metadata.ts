@@ -112,6 +112,7 @@ function fallbackFor(page: PageMeta) {
         <section>
           ${page.path !== '/' ? `<nav aria-label="Breadcrumb">${breadcrumbsFor(page).map(crumb => `<a href="${crumb.path}">${esc(crumb.name)}</a>`).join(' / ')}</nav>` : ''}
           <p>${esc(site.name)}</p>
+          ${page.path === '/' ? `<img src="${site.logo}" alt="LYCORE GROUP LLC orange and white logo" width="96" height="96" />` : ''}
           <h1>${esc(page.h1)}</h1>
           ${paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('\n          ')}
           ${page.path === '/' ? '<h2>Customer communication systems for service businesses</h2>' : ''}
