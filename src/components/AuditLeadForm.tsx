@@ -184,7 +184,7 @@ export default function AuditLeadForm() {
             </select>
           </label>
 
-          <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1.45fr)_minmax(0,0.8fr)]">
+          <div className="space-y-5">
             <PhoneField
               countryCode={formData.phoneCountryCode}
               phone={formData.phone}

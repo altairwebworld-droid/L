@@ -7,9 +7,9 @@ import { accentFor } from '../content/palette';
 import { site } from '../siteData';
 
 const reviewPoints = [
-  'Where enquiries are being lost',
-  'What to improve first',
-  'Which systems are worth adding',
+  'How customers reach your business today',
+  'What could create more opportunity',
+  'Which systems are worth considering next',
 ];
 
 const bookingUrl = 'https://cal.com/lycorellc/discovery-call';
@@ -25,10 +25,10 @@ export default function Contact() {
       <header className="relative mx-auto mb-10 grid max-w-7xl gap-8 border-b border-white/10 pb-10 lg:grid-cols-[1.12fr_0.88fr] lg:items-end">
         <div>
           <p className="micro-label mb-5 text-white">Contact LYCORE</p>
-          <h1 className="display-title max-w-4xl">Get in touch. We’ll map what to fix next.</h1>
+          <h1 className="display-title max-w-4xl">Get in touch. Let’s map what comes next.</h1>
         </div>
         <div className="max-w-xl lg:justify-self-end">
-          <p className="text-lg font-light leading-relaxed text-stone-300">Tell us how customers reach your business today. We’ll review the path from first enquiry to follow-up and give you a practical place to start.</p>
+          <p className="text-lg font-light leading-relaxed text-stone-300">Tell us how customers reach your business today. We’ll review the path from first enquiry to follow-up and identify practical opportunities to build on.</p>
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-stone-300">
             {reviewPoints.map((point, index) => (
               <span key={point} className="inline-flex items-center gap-2">
