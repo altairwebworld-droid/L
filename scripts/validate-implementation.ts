@@ -70,7 +70,7 @@ for (const page of allPages) {
   }
   if (page.path === '/about') for (const step of deliveryStandards) expect(html.includes(esc(step.detail)), 'About: missing delivery standard');
   if (page.path === '/contact') {
-    for (const text of ['Message and data rates may apply.', 'Reply STOP to opt out or HELP for help.', 'Consent is optional and not required to submit this form.', 'href="/terms#sms"', 'href="/privacy-policy#sms"']) expect(html.includes(text), `Contact: missing SMS consent disclosure ${text}`);
+    for (const text of ['LYCORE GROUP LLC (LYCORE)', 'marketing text messages', 'One-time verification codes', 'Message frequency varies.', 'Message frequency is as requested.', 'Message and data rates may apply.', 'Reply STOP to opt out or HELP for help.', 'not required to submit my request', 'href="/terms#sms"', 'href="/privacy-policy#sms"']) expect(html.includes(text), `Contact: missing SMS consent disclosure ${text}`);
   }
   for (const faq of page.faqs || []) expect(html.includes(`<p>${esc(faq.answer)}</p>`), `${page.path}: FAQ answer missing from visible HTML`);
   if (evidence) {
@@ -122,6 +122,10 @@ expect(existsSync(path.join(root, 'public', 'og-image.png')), 'Missing public/og
 expect(existsSync(path.join(root, 'api', 'leads.ts')), 'Missing Vercel Function api/leads.ts');
 expect(existsSync(path.join(root, 'api', 'chat.ts')), 'Missing Vercel Function api/chat.ts');
 expect(existsSync(path.join(root, 'src', 'server', 'leadRouting.ts')), 'Missing shared server lead routing logic');
+
+const privacyPolicy = await readFile(path.join(root, 'src', 'pages', 'Legal.tsx'), 'utf8');
+expect(privacyPolicy.includes('No mobile information will be sold or shared with third parties for promotional or marketing purposes.'), 'Privacy policy missing required mobile-information non-sharing statement');
+expect(privacyPolicy.includes('separate, optional, unchecked SMS choices'), 'Policies must describe separate unchecked SMS choices');
 
 if (existsSync(path.join(distDir, 'sitemap.xml'))) {
   const sitemap = await readFile(path.join(distDir, 'sitemap.xml'), 'utf8');

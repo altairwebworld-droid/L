@@ -20,8 +20,8 @@ export type LeadPayload = {
   preferredContactTime?: string;
   message?: string;
   consent?: boolean;
-  marketingConsent?: boolean;
-  smsConsent?: boolean;
+  marketingSmsConsent?: boolean;
+  verificationSmsConsent?: boolean;
   sourcePage?: string;
   landingPage?: string;
   referrer?: string;
@@ -49,10 +49,12 @@ export type NormalizedLeadPayload = {
   preferredContactTime: string;
   message: string;
   consent: boolean;
-  marketingConsent: boolean;
-  smsConsent: boolean;
-  smsConsentAt: string;
-  smsConsentSource: string;
+  marketingSmsConsent: boolean;
+  marketingSmsConsentAt: string;
+  marketingSmsConsentSource: string;
+  verificationSmsConsent: boolean;
+  verificationSmsConsentAt: string;
+  verificationSmsConsentSource: string;
   sourcePage: string;
   landingPage: string;
   referrer: string;
@@ -132,10 +134,12 @@ export function normalizeLeadPayload(body: LeadPayload): NormalizedLeadPayload {
     preferredContactTime: clean(body.preferredContactTime),
     message: clean(body.message),
     consent: true,
-    marketingConsent: body.marketingConsent === true,
-    smsConsent: body.smsConsent === true,
-    smsConsentAt: body.smsConsent === true ? (clean(body.submittedAt) || new Date().toISOString()) : '',
-    smsConsentSource: body.smsConsent === true ? 'website contact form' : '',
+    marketingSmsConsent: body.marketingSmsConsent === true,
+    marketingSmsConsentAt: body.marketingSmsConsent === true ? (clean(body.submittedAt) || new Date().toISOString()) : '',
+    marketingSmsConsentSource: body.marketingSmsConsent === true ? clean(body.sourcePage) || 'website contact form' : '',
+    verificationSmsConsent: body.verificationSmsConsent === true,
+    verificationSmsConsentAt: body.verificationSmsConsent === true ? (clean(body.submittedAt) || new Date().toISOString()) : '',
+    verificationSmsConsentSource: body.verificationSmsConsent === true ? clean(body.sourcePage) || 'website contact form' : '',
     sourcePage: clean(body.sourcePage),
     landingPage: clean(body.landingPage),
     referrer: clean(body.referrer),
@@ -276,7 +280,13 @@ function buildJotformSubmissionBody(payload: NormalizedLeadPayload) {
   appendJotformValue(body, jotformFieldIds.helpNeeded, payload.helpNeeded);
   appendJotformValue(body, jotformFieldIds.preferredContactMethod, payload.preferredContactMethod);
   appendJotformValue(body, jotformFieldIds.preferredContactTime, payload.preferredContactTime);
-  appendJotformValue(body, jotformFieldIds.message, payload.message);
+  const consentAudit = [
+    `Marketing SMS consent: ${payload.marketingSmsConsent ? 'Yes' : 'No'}`,
+    payload.marketingSmsConsent ? `Marketing SMS consent recorded at: ${payload.marketingSmsConsentAt}; source: ${payload.marketingSmsConsentSource}` : '',
+    `One-time verification SMS consent: ${payload.verificationSmsConsent ? 'Yes' : 'No'}`,
+    payload.verificationSmsConsent ? `Verification SMS consent recorded at: ${payload.verificationSmsConsentAt}; source: ${payload.verificationSmsConsentSource}` : '',
+  ].filter(Boolean).join('\n');
+  appendJotformValue(body, jotformFieldIds.message, [payload.message, consentAudit].filter(Boolean).join('\n\n'));
   appendJotformValue(body, jotformFieldIds.consent, payload.consent);
 
   return body;
@@ -417,10 +427,12 @@ function leadEmailHtml(payload: NormalizedLeadPayload, leadScore: number) {
     ['Misses after-hours calls', payload.missedCalls],
     ['Preferred contact', payload.preferredContactMethod],
     ['Message', payload.message],
-    ['Marketing email consent', payload.marketingConsent ? 'Yes' : 'No'],
-    ['SMS consent', payload.smsConsent ? 'Yes' : 'No'],
-    ['SMS consent recorded at', payload.smsConsentAt],
-    ['SMS consent source', payload.smsConsentSource],
+    ['Marketing SMS consent', payload.marketingSmsConsent ? 'Yes' : 'No'],
+    ['Marketing SMS consent recorded at', payload.marketingSmsConsentAt],
+    ['Marketing SMS consent source', payload.marketingSmsConsentSource],
+    ['One-time verification SMS consent', payload.verificationSmsConsent ? 'Yes' : 'No'],
+    ['Verification SMS consent recorded at', payload.verificationSmsConsentAt],
+    ['Verification SMS consent source', payload.verificationSmsConsentSource],
     ['Lead score', String(leadScore)],
     ['Source page', payload.sourcePage],
     ['Landing page', payload.landingPage],
