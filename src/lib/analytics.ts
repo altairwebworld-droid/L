@@ -27,6 +27,7 @@ const attributionKeys = {
 const storageKey = 'lycore_attribution';
 const consentKey = 'lycore_analytics_consent';
 let gaInitialized = false;
+let lastTrackedPage = '';
 
 export type AnalyticsConsent = 'granted' | 'denied';
 
@@ -92,8 +93,30 @@ export function initAnalytics(measurementId?: string) {
   analyticsWindow.gtag('config', measurementId, {
     page_path: window.location.pathname,
     page_location: window.location.href,
+    send_page_view: false,
   });
   gaInitialized = true;
+  trackPageView();
+}
+
+/**
+ * Record one view for each client-side route. A Vite site does not perform a
+ * document navigation when visitors move between routes, so GA cannot infer
+ * these views on its own.
+ */
+export function trackPageView(path = window.location.pathname, title = document.title) {
+  if (typeof window === 'undefined' || getAnalyticsConsent() !== 'granted' || !gaInitialized) {
+    return;
+  }
+
+  const pagePath = `${path}${window.location.search}`;
+  if (pagePath === lastTrackedPage) return;
+  lastTrackedPage = pagePath;
+  trackEvent('page_view', {
+    page_path: pagePath,
+    page_location: window.location.href,
+    page_title: title,
+  });
 }
 
 export function getAttribution(): Attribution {

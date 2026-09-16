@@ -1,5 +1,7 @@
-import { chatReply, clean } from '../src/server/leadRouting';
-import { checkRateLimit } from '../src/server/requestProtection';
+// See api/leads.ts: Vercel's ES-module function bundle needs explicit source
+// extensions for shared TypeScript modules.
+import { chatReply, clean } from '../src/server/leadRouting.ts';
+import { checkRateLimit } from '../src/server/requestProtection.ts';
 
 type ApiRequest = {
   method?: string;

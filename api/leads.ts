@@ -1,5 +1,8 @@
-import { submitLead, type LeadPayload } from '../src/server/leadRouting';
-import { checkRateLimit } from '../src/server/requestProtection';
+// Keep the extension explicit. The Vercel function runtime executes these as
+// ES modules; extensionless source imports can leave the function unable to
+// resolve its shared handler after deployment.
+import { submitLead, type LeadPayload } from '../src/server/leadRouting.ts';
+import { checkRateLimit } from '../src/server/requestProtection.ts';
 
 type ApiRequest = {
   method?: string;

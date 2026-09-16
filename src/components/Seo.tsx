@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { allPages, site } from '../siteData';
 import { schemaFor } from '../content/schema';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackPageView } from '../lib/analytics';
 
 export default function Seo() {
   const location = useLocation();
@@ -41,6 +41,7 @@ export default function Seo() {
         : page?.kind === 'resource'
           ? 'resource_page_view'
           : 'service_page_view';
+    trackPageView(location.pathname, title);
     trackEvent(eventName, { path: location.pathname });
   }, [location.pathname]);
 

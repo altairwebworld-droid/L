@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, CalendarDays, CheckCircle2, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getAttribution, trackEvent } from '../lib/analytics';
 import { site } from '../siteData';
 
@@ -72,6 +73,7 @@ const interestOptions = [
 ] as const;
 
 export default function AuditLeadForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<LeadFormState>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({ type: 'idle', message: '' });
@@ -123,13 +125,11 @@ export default function AuditLeadForm() {
         throw new Error(result.error || 'The request could not be saved.');
       }
 
-      setFormData(initialState);
-      setStarted(false);
-      setStatus({
-        type: 'success',
-        message: 'Your request is in. If you want to choose a time now, the discovery-call calendar is ready below.',
-      });
       trackEvent('audit_form_submit_success', { manualSetupRequired: Boolean(result.manualSetupRequired) });
+      // GA4's recommended event for a completed enquiry. Mark this as a key
+      // event in GA4 so completed forms can be compared with traffic sources.
+      trackEvent('generate_lead', { lead_type: 'lead_system_review' });
+      navigate('/audit-request-received');
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Submission failed.';
       setStatus({ type: 'error', message: 'Something went wrong. Please try again or book the discovery call directly.' });
