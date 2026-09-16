@@ -8,12 +8,12 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 
 - [B2B outbound lead generation](https://www.lycore.org/services/outbound-lead-generation): B2B prospect research, cold email outreach, reply qualification and appointment-setting workflows for service businesses.
 - [Cold email infrastructure setup](https://www.lycore.org/services/cold-email-infrastructure): Sending domains, business inboxes, SPF, DKIM and DMARC setup, plus about two weeks of initial email warm-up before launch checks.
-- [AI receptionist & call answering](https://www.lycore.org/services/ai-receptionist): AI call answering for service businesses: capture inquiries, handle approved questions and route appointment or callback requests.
-- [Missed Call Text Back](https://www.lycore.org/services/missed-call-text-back): Fast, configured SMS follow-up after an unanswered service-business call.
-- [Lead Follow-Up](https://www.lycore.org/services/lead-follow-up): Follow-up workflows that help service businesses keep enquiries, estimates and appointments moving.
+- [AI Answering Service & Receptionist](https://www.lycore.org/services/ai-receptionist): AI answering service for service businesses: answer routine calls, capture enquiries and route appointment or callback requests using your approved rules.
+- [Missed Call Text Back Service](https://www.lycore.org/services/missed-call-text-back): A missed call text-back service that sends a configured SMS after an unanswered service-business call and routes the reply to your team.
+- [Lead Follow-Up Automation](https://www.lycore.org/services/lead-follow-up): Lead follow-up automation for service businesses that keeps enquiries, estimates and appointment requests moving until a person needs to take over.
 - [Reputation Management](https://www.lycore.org/services/reputation-management): Practical review and reputation workflows for service businesses.
 - [Review Automation](https://www.lycore.org/services/review-automation): Post-service review-request workflows built around the customer journey.
-- [Google Business Profile Management](https://www.lycore.org/services/google-business-profile-management): Google Business Profile audits and maintenance for accurate local business information.
+- [Google Business Profile Management Services](https://www.lycore.org/services/google-business-profile-management): Google Business Profile management services for accurate local business information, contact paths and customer actions.
 - [CRM Automation](https://www.lycore.org/services/crm-automation): Customer lifecycle workflows around the CRM and operational tools your team already uses.
 - [Customer Reactivation](https://www.lycore.org/services/customer-reactivation): Reactivation workflows for past customers, dormant leads, and recurring-service reminders.
 - [Web Design for Service Businesses](https://www.lycore.org/services/web-design): Conversion-focused websites that connect traffic, enquiries, follow-up and booking.
