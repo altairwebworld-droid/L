@@ -66,6 +66,7 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 - [Zapier workflows](https://www.lycore.org/integrations/zapier): Zapier workflow assessment for practical, maintainable service-business automation.
 - [Make workflows](https://www.lycore.org/integrations/make): Make scenario design for service-business workflow automation.
 - [Notion workflows](https://www.lycore.org/integrations/notion): Notion workflow assessment for internal visibility and documented service-business processes.
+- [Missed call text-back calculator](https://www.lycore.org/resources/missed-call-text-back-calculator): Estimate the potential value of responding to missed calls faster, then review the call path behind the estimate.
 - [AI receptionist vs. traditional answering service](https://www.lycore.org/resources/ai-receptionist-vs-answering-service): A practical comparison for service businesses deciding how to handle after-hours and overflow calls.
 - [How missed-call text back works for service businesses](https://www.lycore.org/resources/missed-call-text-back): A plain-language guide to fast SMS acknowledgement after an unanswered business call.
 - [How review automation works without review gating](https://www.lycore.org/resources/review-automation): A practical guide to requesting authentic customer reviews after completed service.
