@@ -71,8 +71,8 @@ function fallbackFor(page: PageMeta) {
     page.path === '/'
       ? [
           site.coreStatement,
-          'Service businesses lose opportunities when calls go unanswered, booking takes too long, or follow-up stops. LYCORE GROUP LLC builds customer communication systems that help teams respond consistently and keep each lead moving.',
-          'Services include 24/7 call handling, lead capture, appointment booking, customer follow-up, SMS automation, CRM integration, workflow automation, phone-first websites and related business systems. Rankings, revenue, call volume and client outcomes are never guaranteed.',
+          'You cannot answer every call and do the job at the same time. Invoca, a call analytics company, reports that 27% of calls to home-services businesses go unanswered, and that fewer than 3% of callers sent to voicemail leave a message. LYCORE GROUP LLC builds customer communication systems that answer those calls, capture the real enquiries and keep each lead moving.',
+          'Services include a 24/7 AI receptionist and answering service, lead capture, appointment booking, customer follow-up, SMS automation, CRM integration, workflow automation, phone-first websites and related business systems. Rankings, revenue, call volume and client outcomes are never guaranteed.',
         ]
       : ['/what-we-build', '/industries'].includes(page.path) ? [page.description] : [page.description, service?.problem, service?.explanation].filter(present);
   const faqItems = page.faqs || [];

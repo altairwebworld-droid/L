@@ -8,15 +8,15 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 
 - [B2B outbound lead generation](https://www.lycore.org/services/outbound-lead-generation): B2B prospect research, cold email outreach, reply qualification and appointment-setting workflows for service businesses.
 - [Cold email infrastructure setup](https://www.lycore.org/services/cold-email-infrastructure): Sending domains, business inboxes, SPF, DKIM and DMARC setup, plus about two weeks of initial email warm-up before launch checks.
-- [AI Answering Service & Receptionist](https://www.lycore.org/services/ai-receptionist): AI answering service for service businesses: answer routine calls, capture enquiries and route appointment or callback requests using your approved rules.
-- [Missed Call Text Back Service](https://www.lycore.org/services/missed-call-text-back): A missed call text-back service that sends a configured SMS after an unanswered service-business call and routes the reply to your team.
-- [Lead Follow-Up Automation](https://www.lycore.org/services/lead-follow-up): Lead follow-up automation for service businesses that keeps enquiries, estimates and appointment requests moving until a person needs to take over.
+- [AI Answering Service & Receptionist](https://www.lycore.org/services/ai-receptionist): A 24/7 AI receptionist that answers every call, screens out wrong numbers and sales calls, qualifies real customers and books them by your rules.
+- [Missed Call Text Back Service](https://www.lycore.org/services/missed-call-text-back): A missed call text back service that texts the caller right after an unanswered call, so the job does not go to the next business on the list.
+- [Lead Follow-Up Automation](https://www.lycore.org/services/lead-follow-up): Lead follow-up automation that replies to every enquiry, chases estimates and reminds customers, then hands over to a person when it matters.
 - [Reputation Management](https://www.lycore.org/services/reputation-management): Practical review and reputation workflows for service businesses.
 - [Review Automation](https://www.lycore.org/services/review-automation): Post-service review-request workflows built around the customer journey.
-- [Google Business Profile Management Services](https://www.lycore.org/services/google-business-profile-management): Google Business Profile management services for accurate local business information, contact paths and customer actions.
+- [Google Business Profile Management Services](https://www.lycore.org/services/google-business-profile-management): Google Business Profile management: the right phone number, hours, categories and service area, so customers who find you on Google reach you.
 - [CRM Automation](https://www.lycore.org/services/crm-automation): Customer lifecycle workflows around the CRM and operational tools your team already uses.
 - [Customer Reactivation](https://www.lycore.org/services/customer-reactivation): Reactivation workflows for past customers, dormant leads, and recurring-service reminders.
-- [Web Design for Service Businesses](https://www.lycore.org/services/web-design): Conversion-focused websites that connect traffic, enquiries, follow-up and booking.
+- [Web Design for Service Businesses](https://www.lycore.org/services/web-design): A fast, phone-first website for service businesses that makes it obvious what you do, why to trust you, and how to call or book in one tap.
 
 ## Company
 
@@ -36,23 +36,23 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 - [Integrations](https://www.lycore.org/integrations): Explore LYCORE workflow integration assessments for field-service tools, CRMs and automation platforms.
 - [Resources](https://www.lycore.org/resources): Practical guides on call response, follow-up, reviews, CRM workflows, outbound systems, and automation choices.
 - [Spas & wellness studios systems](https://www.lycore.org/industries/spas): Booking, appointment reminders and return-visit follow-up for spas and wellness studios.
-- [Real estate agents systems](https://www.lycore.org/industries/real-estate): Enquiry routing, viewing requests and buyer or seller follow-up for real estate agents.
-- [Lawyers & law firms systems](https://www.lycore.org/industries/law-firms): Enquiry intake, consultation scheduling and callback workflows for law firms.
-- [HVAC systems](https://www.lycore.org/industries/hvac): Seasonal enquiry handling, estimate follow-up and maintenance reminders for HVAC contractors.
+- [Real estate agents systems](https://www.lycore.org/industries/real-estate): AI receptionist for real estate agents: answers every enquiry while you are at a viewing, captures the property and contact details, and sends it to you.
+- [Lawyers & law firms systems](https://www.lycore.org/industries/law-firms): AI receptionist and answering service for law firms: answers every call, captures contact details and the type of matter, and routes the enquiry to your intake team.
+- [HVAC systems](https://www.lycore.org/industries/hvac): Answering service for HVAC companies: call answering that captures the address and issue and follows your priority rules, so no-heat calls do not hit voicemail.
 - [Electrical contractors systems](https://www.lycore.org/industries/electrical): Service enquiry capture, electrician callbacks and estimate follow-up for electrical contractors.
-- [Locksmiths systems](https://www.lycore.org/industries/locksmiths): Lockout enquiry capture and technician handoffs for locksmith businesses.
+- [Locksmiths systems](https://www.lycore.org/industries/locksmiths): Answering service for locksmiths: an AI receptionist that answers lockout calls, captures the location, and hands your technician a callback request.
 - [Auto repair shops systems](https://www.lycore.org/industries/auto-repair): Vehicle enquiry intake, workshop booking and repair-update workflows for auto repair shops.
 - [Restaurants systems](https://www.lycore.org/industries/restaurants): Reservation requests, guest questions and overflow call workflows for restaurants.
 - [Bail bond agencies systems](https://www.lycore.org/industries/bail-bonds): After-hours enquiry intake and agent callbacks for bail bond agencies.
 - [Urgent care clinics systems](https://www.lycore.org/industries/urgent-care): Administrative call handling and staff handoffs for urgent care clinics.
-- [Home services systems](https://www.lycore.org/industries/home-services): Lead response, booking and follow-up systems for home-service businesses.
+- [Home services systems](https://www.lycore.org/industries/home-services): Answering service for contractors: a 24/7 AI receptionist that answers every call, captures the job and books or routes it while you are on site.
 - [Pest control systems](https://www.lycore.org/industries/pest-control): Customer-journey systems for pest-control enquiries, recurring service and reviews.
-- [Plumbing systems](https://www.lycore.org/industries/plumbing): Urgent call response, estimate follow-up and review workflows for plumbing businesses.
-- [Roofing systems](https://www.lycore.org/industries/roofing): Storm-demand, inspection and estimate-follow-up systems for roofing businesses.
-- [Water damage & restoration systems](https://www.lycore.org/industries/restoration): Urgent intake, team handoffs and customer updates for water damage and restoration companies.
+- [Plumbing systems](https://www.lycore.org/industries/plumbing): Answering service for plumbers: an AI receptionist that answers every call, captures the job and address, and gets urgent leaks to your on-call team.
+- [Roofing systems](https://www.lycore.org/industries/roofing): Answering service for roofers: an AI receptionist that answers storm-season calls, captures the damage and address, and logs inspection requests.
+- [Water damage & restoration systems](https://www.lycore.org/industries/restoration): Answering service for water damage and restoration companies: 24/7 call answering that captures the loss, location and urgency and alerts your response team.
 - [Towing systems](https://www.lycore.org/industries/towing): Dispatch-ready intake and customer communication workflows for towing businesses.
-- [Med spas systems](https://www.lycore.org/industries/med-spas): Consultation response, booking and reactivation workflows for med spas.
-- [Dental practices systems](https://www.lycore.org/industries/dentists): Non-clinical enquiry, appointment and recall-support workflows for dental practices.
+- [Med spas systems](https://www.lycore.org/industries/med-spas): Answering service for med spas: an AI receptionist that answers consultation calls, answers approved questions and offers times while your team is with clients.
+- [Dental practices systems](https://www.lycore.org/industries/dentists): Answering service for dentists: an AI receptionist answers non-clinical patient calls, captures appointment requests and passes clinical questions to staff.
 - [Veterinary practices & pet clinics systems](https://www.lycore.org/industries/veterinary): Non-clinical lead response, scheduling and follow-up systems for veterinary practices.
 - [GoHighLevel workflows](https://www.lycore.org/integrations/gohighlevel): GoHighLevel workflow planning for service-business customer journeys.
 - [Housecall Pro workflows](https://www.lycore.org/integrations/housecall-pro): Housecall Pro workflow assessment for leads, jobs and customer communication.
@@ -66,6 +66,9 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 - [Zapier workflows](https://www.lycore.org/integrations/zapier): Zapier workflow assessment for practical, maintainable service-business automation.
 - [Make workflows](https://www.lycore.org/integrations/make): Make scenario design for service-business workflow automation.
 - [Notion workflows](https://www.lycore.org/integrations/notion): Notion workflow assessment for internal visibility and documented service-business processes.
+- [How to stop missing calls as a small business](https://www.lycore.org/resources/how-to-stop-missing-calls-small-business): Practical ways to stop losing customers to missed calls: find the gaps, cover them, and follow up fast.
+- [Missed call text back for plumbers, HVAC and roofers](https://www.lycore.org/resources/missed-call-text-back-for-home-services): How a missed call text back works for plumbers, HVAC companies and roofers, what to say in the text, and what it cannot do.
+- [Is an AI receptionist worth it for a small business?](https://www.lycore.org/resources/is-an-ai-receptionist-worth-it): A plain way to decide whether an AI receptionist is worth it for your business, with the numbers to check and the cases where it is not.
 - [Missed call text-back calculator](https://www.lycore.org/resources/missed-call-text-back-calculator): Estimate the potential value of responding to missed calls faster, then review the call path behind the estimate.
 - [AI receptionist vs. traditional answering service](https://www.lycore.org/resources/ai-receptionist-vs-answering-service): A practical comparison for service businesses deciding how to handle after-hours and overflow calls.
 - [How missed-call text back works for service businesses](https://www.lycore.org/resources/missed-call-text-back): A plain-language guide to fast SMS acknowledgement after an unanswered business call.

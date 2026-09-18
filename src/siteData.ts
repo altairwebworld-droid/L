@@ -231,7 +231,7 @@ export const servicePages: ServicePage[] = [
     benefits: [
       'After-hours and overflow call handling with an agreed fallback',
       'Websites built for callers, not browsers',
-      'Google Business Profile that ranks locally',
+      'A Google Business Profile with the right phone number, hours and service area',
       'Intake and follow-up that runs itself',
     ],
     included: [
@@ -290,9 +290,9 @@ export const legacyPages: PageMeta[] = [
   {
     path: '/',
     label: 'Home',
-    title: 'Lead Generation & AI Receptionist Services - LYCORE GROUP LLC',
+    title: 'LYCORE: AI Receptionist & Follow-Up for Service Businesses',
     description:
-      '24/7 call handling, lead capture, appointment booking, follow-up, SMS automation, CRM integration and workflow systems for service businesses.',
+      'A 24/7 AI receptionist that answers every call, filters wrong numbers and sales calls, and books real customers. Built for service businesses.',
     h1: 'More leads. Fewer leaks.',
     kind: 'home',
     faqs: globalFaqs.slice(0, 6),

@@ -29,7 +29,7 @@ export default function Book() {
       >
         <p className="booking-page__eyebrow"><CalendarDays aria-hidden="true" /> Discovery call</p>
         <h1>Book the call that finds your biggest lead leak.</h1>
-        <p>Choose a time below. We will review your call handling, website journey, intake, booking, and follow-up.</p>
+        <p>Pick a time below. Bring one problem, such as the calls you miss, the enquiries that go quiet, or a website that does not ring the phone, and we will look at it with you. No pressure and no obligation.</p>
       </motion.header>
 
       <ol className="booking-benefits" role="list">

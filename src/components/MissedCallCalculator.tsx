@@ -46,6 +46,7 @@ export default function MissedCallCalculator() {
           <p className="text-sm font-medium uppercase tracking-[0.14em] text-stone-300">Illustrative monthly opportunity</p>
           <p className="mt-3 font-display text-5xl font-medium tracking-tight text-white">${monthlyOpportunity.toLocaleString('en-US')}</p>
           <p className="mt-4 text-sm leading-relaxed text-stone-300">Based on {missedCalls || '0'} missed calls per week, a ${jobValue || '0'} average job, and a {recoveryRate || '0'}% recovery assumption.</p>
+          <p className="mt-3 text-xs leading-relaxed text-stone-400">How it is calculated: {missedCalls || '0'} calls × ${jobValue || '0'} × {recoveryRate || '0'}% × 4.33 weeks per month. Change any number and the estimate updates. Your real recovery rate depends on your calls, your team and your follow-up.</p>
           <Link to="/book" onClick={() => trackEvent('missed_call_calculator_cta_click')} className="btn-primary mt-7 w-full justify-center">
             Review my call path <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
