@@ -22,6 +22,11 @@ const absoluteUrl = (route: string) => `${site.domain}${route === '/' ? '' : rou
 const robotsFor = (page: PageMeta) => (page.kind === 'system' ? 'noindex,follow' : 'index,follow');
 const present = (value: string | undefined): value is string => Boolean(value);
 
+// The build regenerates every page's HTML and only carries over /assets/ tags from index.html,
+// so third-party embeds have to be added here to reach production.
+const blandWidgetTags = `<script>window.blandSettings = { widget_id: "6e97310e-cd02-447b-ab89-92e91784946a" };</script>
+    <script src="https://widget.bland.ai/loader.js" defer></script>`;
+
 function headFor(page: PageMeta, assetTags: string) {
   const canonical = absoluteUrl(page.path);
   const image = `${site.domain}${site.ogImage}`;
@@ -61,6 +66,7 @@ function headFor(page: PageMeta, assetTags: string) {
     <meta name="application-name" content="${site.name}" />
     ${schemaFor(page).map((block) => `<script type="application/ld+json" data-lycore-schema>${JSON.stringify(block)}</script>`).join('\n    ')}
     ${assetTags}
+    ${blandWidgetTags}
   </head>`;
 }
 
