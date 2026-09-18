@@ -1,27 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Mic } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
 
 type BlandWindow = Window & { __BLAND_SHADOW_ROOT__?: ShadowRoot };
 
-const findBlandButton = () =>
-  (window as BlandWindow).__BLAND_SHADOW_ROOT__?.querySelector<HTMLButtonElement>('#bland-widget-root button') ?? null;
+const blandRoot = () => (window as BlandWindow).__BLAND_SHADOW_ROOT__ ?? null;
+const findLauncher = () => blandRoot()?.querySelector<HTMLButtonElement>('#bland-widget-root button') ?? null;
+const findVoiceOption = () =>
+  Array.from(blandRoot()?.querySelectorAll<HTMLButtonElement>('button') ?? []).find((b) => /voice chat/i.test(b.textContent ?? '')) ?? null;
+
+const wait = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+async function waitFor<T>(find: () => T | null, timeoutMs: number): Promise<T | null> {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    const found = find();
+    if (found) return found;
+    await wait(100);
+  }
+  return null;
+}
 
 export default function AgentTestCta() {
-  const [ready, setReady] = useState(false);
-  const [opened, setOpened] = useState(false);
-
-  // Bland injects its widget after load; wait for its launcher, then make it stand out
-  // (its default is a small white circle that disappears on a light page).
+  // Bland's default launcher is a small white circle that vanishes on a light page.
+  // Once it exists, recolor it to match the site.
   useEffect(() => {
     let tries = 0;
     const timer = window.setInterval(() => {
-      const button = findBlandButton();
+      const launcher = findLauncher();
       tries += 1;
-      if (button) {
-        button.style.background = '#ff6b22';
-        button.style.borderColor = '#ff6b22';
-        setReady(true);
+      if (launcher) {
+        launcher.style.background = '#ff6b22';
+        launcher.style.borderColor = '#ff6b22';
         window.clearInterval(timer);
       } else if (tries > 40) {
         window.clearInterval(timer);
@@ -30,12 +40,20 @@ export default function AgentTestCta() {
     return () => window.clearInterval(timer);
   }, []);
 
-  if (!ready || opened) return null;
-
-  const openAgent = () => {
+  const openAgent = async () => {
     trackEvent('ai_agent_test_click', { page: window.location.pathname });
-    findBlandButton()?.click();
-    setOpened(true);
+
+    const launcher = await waitFor(findLauncher, 3000);
+    if (!launcher) {
+      window.location.assign('/book');
+      return;
+    }
+
+    // If the "Voice chat / Text chat" menu is already open, don't toggle it closed.
+    if (!findVoiceOption()) launcher.click();
+
+    // The label promises a live test, so go straight to the voice agent.
+    (await waitFor(findVoiceOption, 2000))?.click();
   };
 
   return (
