@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Seo from './Seo';
+import AgentTestCta from './AgentTestCta';
 import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
 export default function Layout() {
@@ -18,6 +19,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <AgentTestCta />
     </div>
   );
 }
