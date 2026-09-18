@@ -1,3 +1,5 @@
+import { generatedNewIndustries } from './generated';
+
 export type IndustryPlaybook = {
   headline: string;
   workflows: { name: string; trigger: string; action: string; handoff: string }[];
@@ -222,6 +224,10 @@ export const industryPlaybooks: Record<string, IndustryPlaybook> = {
     related: ['/services/ai-receptionist', '/services/lead-follow-up', '/services/customer-reactivation'],
   },
 };
+
+generatedNewIndustries.forEach((item) => {
+  industryPlaybooks[item.slug] = item.playbook;
+});
 
 export function industryFaqs(slug: string, name: string) {
   const playbook = industryPlaybooks[slug];

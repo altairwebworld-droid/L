@@ -10,6 +10,7 @@ import { serviceEvidence } from '../content/serviceEvidence';
 import IndustryPlaybook from '../components/IndustryPlaybook';
 import { industryPlaybooks } from '../content/industryPlaybooks';
 import { breadcrumbsFor } from '../content/breadcrumbs';
+import DepthSections from '../components/DepthSections';
 
 export default function GrowthPage() {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ export default function GrowthPage() {
       </div></div>
     </div></section>
     {playbook ? <IndustryPlaybook playbook={playbook} /> : <section id="workflow" className="border-t border-white/10 px-6 py-14 md:py-20"><div className="mx-auto max-w-7xl"><div className="text-center"><p className="micro-label text-ink-muted">Example workflow</p><h2 className="section-title mt-4">What happens next.</h2></div><ol className="detail-workflow">{page.workflow.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span><p>{step}</p></li>)}</ol></div></section>}
+    <DepthSections sections={page.sections} />
     <section className="px-6 pb-16 md:pb-24"><div className="mx-auto max-w-7xl rounded-3xl border border-white/15 bg-white/5 p-8 md:p-12"><p className="micro-label text-ink-muted">What stays under your control</p><p className="mt-5 max-w-4xl text-lg font-light leading-relaxed text-ink-muted">{page.control}</p><div className="mt-8 flex flex-wrap gap-3">{page.related.map((path) => <Link className="btn-secondary" to={path} key={path}>{allPages.find(item => item.path === path)?.label || 'Related service'} <ArrowRight className="h-4 w-4" /></Link>)}</div></div></section>
     {evidence && <ServiceEvidence evidence={evidence} />}
     <FaqSection faqs={page.faqs} showAllLink={false} /><CtaBand />

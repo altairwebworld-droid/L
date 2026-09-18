@@ -8,7 +8,7 @@ export default function HomeFaq() {
       <Container className="grid gap-12 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
         <div>
           <p className="micro-label mb-5 text-ink-muted">Straight answers</p>
-          <h2 className="section-title text-ink">Questions before we get to work.</h2>
+          <h2 className="section-title text-ink">Questions owners ask before booking a call.</h2>
         </div>
         <Accordion className="faq-accordion" type="single" collapsible defaultValue={homepageFaqs[0]?.question}>
           {homepageFaqs.map((faq) => (

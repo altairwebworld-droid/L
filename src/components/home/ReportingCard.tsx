@@ -8,17 +8,17 @@ export default function ReportingCard() {
     <Section surface="ivory" className="home-report-section">
       <Container className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <div>
-          <p className="micro-label mb-5 text-ink-muted">What reaches the team</p>
-          <h2 className="section-title text-ink">A useful report, not a mystery notification.</h2>
+          <p className="micro-label mb-5 text-ink-muted">What you get after each call</p>
+          <h2 className="section-title text-ink">A clear summary, not a half-heard voicemail.</h2>
           <p className="mt-6 max-w-md text-base font-light leading-relaxed text-ink-muted">
-            Every row reflects information the current intake and routing system can actually capture. No fictional dashboards or performance figures.
+            Each line is something the receptionist asks or records on the call. Nothing here is a made-up dashboard or a promised result.
           </p>
         </div>
 
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
           <Card>
             <CardHeader className="border-b border-white/10">
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-ink-muted">Lead route / structured handoff</p>
+              <p className="text-xs font-medium uppercase tracking-[0.14em] text-ink-muted">Summary sent to you after each call</p>
             </CardHeader>
             <CardContent className="pt-6">
               <dl className="divide-y divide-white/10">

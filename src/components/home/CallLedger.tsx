@@ -263,7 +263,7 @@ export default function CallLedger() {
           Every night,
           <span>somewhere</span>
         </h2>
-        <p className="call-swiper-kicker">Every unanswered call can become someone else&apos;s job.</p>
+        <p className="call-swiper-kicker">Every unanswered ring is a customer calling the next business.</p>
 
         <div className="call-swiper-active" aria-live="polite">
           <div className="call-swiper-active__label">
@@ -300,7 +300,7 @@ export default function CallLedger() {
       </div>
 
       <div ref={viewportRef} className="call-swiper-viewport" data-dragging="false" data-mode={nativeMode ? 'native' : 'animated'}>
-        <p className="call-swiper-log-label">Call log / one night</p>
+        <p className="call-swiper-log-label">Example call log / one night</p>
         <ol ref={trackRef} className="call-swiper-track" role="list">
           {urgentCalls.map((call, index) => {
             const Icon = icons[call.id] ?? Droplets;

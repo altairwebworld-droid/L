@@ -17,66 +17,71 @@ LYCORE (LYCORE GROUP LLC) is based in Albuquerque, NM and works with service bus
 - [CRM Automation](https://www.lycore.org/services/crm-automation): Customer lifecycle workflows around the CRM and operational tools your team already uses.
 - [Customer Reactivation](https://www.lycore.org/services/customer-reactivation): Reactivation workflows for past customers, dormant leads, and recurring-service reminders.
 - [Web Design for Service Businesses](https://www.lycore.org/services/web-design): A fast, phone-first website for service businesses that makes it obvious what you do, why to trust you, and how to call or book in one tap.
+- [After-hours answering service](https://www.lycore.org/services/after-hours-answering-service): An after hours answering service that picks up nights, weekends and lunch breaks, sorts urgent from routine calls and sends you a clear summary. Free review.
 
 ## Company
 
 - [Vision](https://www.lycore.org/vision): LYCORE is building toward complete operating systems for service industries: from answered calls to automated paperwork to end-to-end business infrastructure.
-- [About](https://www.lycore.org/about): Learn how LYCORE GROUP LLC builds customer communication and workflow systems for service businesses that need reliable response and follow-up.
-- [FAQ](https://www.lycore.org/faq): Answers to common questions about LYCORE 24/7 call answering, websites, Google Business Profile optimization, pricing, and how it all works for service businesses.
-- [Contact](https://www.lycore.org/contact): Get a free review of how your service business handles calls, website visitors, and follow-up. No pressure, no obligation.
-- [Book a Call](https://www.lycore.org/book): Schedule a time to discuss how LYCORE can help your service business answer more calls and book more jobs.
-- [Commitments](https://www.lycore.org/commitments): How LYCORE approaches its work, people and wider responsibilities as a remote-first, early-stage company.
-- [Career Growth](https://www.lycore.org/commitments/career-growth): How LYCORE approaches practical learning, feedback, responsibility and career development as the company grows.
-- [Work-Life Balance](https://www.lycore.org/commitments/work-life-balance): The LYCORE remote-first working arrangement, flexibility expectations and work-life balance commitments.
-- [Social Impact](https://www.lycore.org/commitments/social-impact): The public LYCORE pledge for responsible technology, fair access, privacy, inclusive communication and practical support.
-- [How We Work](https://www.lycore.org/commitments/how-we-work): The principles that guide how LYCORE approaches ownership, communication, learning and client work.
+- [About](https://www.lycore.org/about): LYCORE GROUP LLC is a young, founder-led company in Albuquerque, NM that answers calls and follows up on leads for US service businesses. See how we work.
+- [FAQ](https://www.lycore.org/faq): Answers on 24/7 call answering, missed call text back, websites and Google Business Profile, plus how pricing is quoted and what to expect. Read the FAQ.
+- [Contact](https://www.lycore.org/contact): Contact LYCORE for a free review of how your service business handles calls, website visitors and follow-up. No pressure and no obligation. Send us a message.
+- [Book a Call](https://www.lycore.org/book): Book a free strategy call to review how your service business handles calls and follow-up. Pick a time that suits you, no pressure and no obligation to buy.
+- [Commitments](https://www.lycore.org/commitments): How LYCORE approaches its work, people and wider responsibilities as a remote-first, early-stage company. Read the commitments we are holding ourselves to.
+- [Career Growth](https://www.lycore.org/commitments/career-growth): How LYCORE approaches practical learning, feedback, responsibility and career growth for the people who work here as the company gets bigger. Read the pledge.
+- [Work-Life Balance](https://www.lycore.org/commitments/work-life-balance): How LYCORE runs as a remote-first company, with flexibility expectations and work-life balance commitments for the people who work here. See the arrangement.
+- [Social Impact](https://www.lycore.org/commitments/social-impact): The public LYCORE pledge on responsible technology, fair access, privacy, inclusive communication and practical support for small businesses. Read it in full.
+- [How We Work](https://www.lycore.org/commitments/how-we-work): The principles that guide how LYCORE handles ownership, communication, learning and client work, written plainly so you know what to expect. Read how we work.
 
 ## Industries, integrations, and guides
 
-- [Integrations](https://www.lycore.org/integrations): Explore LYCORE workflow integration assessments for field-service tools, CRMs and automation platforms.
-- [Resources](https://www.lycore.org/resources): Practical guides on call response, follow-up, reviews, CRM workflows, outbound systems, and automation choices.
-- [Spas & wellness studios systems](https://www.lycore.org/industries/spas): Booking, appointment reminders and return-visit follow-up for spas and wellness studios.
+- [Integrations](https://www.lycore.org/integrations): How LYCORE connects calls, leads and follow-up to the field-service tools, CRMs and automation platforms you use. Connections are checked before a build.
+- [Resources](https://www.lycore.org/resources): Guides on call response, missed call text back, follow-up, reviews, CRM workflows and automation choices for service business owners. Browse the guides.
+- [Spas & wellness studios systems](https://www.lycore.org/industries/spas): A spa answering service that takes booking requests, sends appointment reminders and follows up for return visits. See how it fits a spa or wellness studio.
 - [Real estate agents systems](https://www.lycore.org/industries/real-estate): AI receptionist for real estate agents: answers every enquiry while you are at a viewing, captures the property and contact details, and sends it to you.
-- [Lawyers & law firms systems](https://www.lycore.org/industries/law-firms): AI receptionist and answering service for law firms: answers every call, captures contact details and the type of matter, and routes the enquiry to your intake team.
+- [Lawyers & law firms systems](https://www.lycore.org/industries/law-firms): AI receptionist and answering service for law firms: answers every call, captures contact details and the matter type, and routes it to your intake team.
 - [HVAC systems](https://www.lycore.org/industries/hvac): Answering service for HVAC companies: call answering that captures the address and issue and follows your priority rules, so no-heat calls do not hit voicemail.
-- [Electrical contractors systems](https://www.lycore.org/industries/electrical): Service enquiry capture, electrician callbacks and estimate follow-up for electrical contractors.
+- [Electrical contractors systems](https://www.lycore.org/industries/electrical): Answering service for electricians: an AI receptionist that answers every call, captures the job and address, and gets urgent electrical calls to you.
 - [Locksmiths systems](https://www.lycore.org/industries/locksmiths): Answering service for locksmiths: an AI receptionist that answers lockout calls, captures the location, and hands your technician a callback request.
-- [Auto repair shops systems](https://www.lycore.org/industries/auto-repair): Vehicle enquiry intake, workshop booking and repair-update workflows for auto repair shops.
-- [Restaurants systems](https://www.lycore.org/industries/restaurants): Reservation requests, guest questions and overflow call workflows for restaurants.
-- [Bail bond agencies systems](https://www.lycore.org/industries/bail-bonds): After-hours enquiry intake and agent callbacks for bail bond agencies.
-- [Urgent care clinics systems](https://www.lycore.org/industries/urgent-care): Administrative call handling and staff handoffs for urgent care clinics.
-- [Home services systems](https://www.lycore.org/industries/home-services): Answering service for contractors: a 24/7 AI receptionist that answers every call, captures the job and books or routes it while you are on site.
-- [Pest control systems](https://www.lycore.org/industries/pest-control): Customer-journey systems for pest-control enquiries, recurring service and reviews.
+- [Auto repair shops systems](https://www.lycore.org/industries/auto-repair): An answering service for auto repair shops that takes vehicle details, books workshop slots and sends repair updates when you are under a car. See the workflow.
+- [Restaurants systems](https://www.lycore.org/industries/restaurants): A restaurant answering service that handles reservation requests, guest questions and overflow calls when the floor is busy. See how the calls are handled.
+- [Bail bond agencies systems](https://www.lycore.org/industries/bail-bonds): A bail bonds answering service that captures after-hours inquiries and passes them to your agents for callback, so the 2 a.m. call is not lost. See the flow.
+- [Urgent care clinics systems](https://www.lycore.org/industries/urgent-care): An urgent care answering service for non-clinical calls: hours, wait questions and staff handoffs, with clinical questions sent to your team. See how it works.
+- [Home services systems](https://www.lycore.org/industries/home-services): Answering service for contractors: a 24/7 AI receptionist that answers every call, captures the job and books it or passes it to you while you work.
+- [Pest control systems](https://www.lycore.org/industries/pest-control): Pest control answering service: an AI receptionist that answers every call, captures the pest and address, and books treatment visits or callbacks for your team.
 - [Plumbing systems](https://www.lycore.org/industries/plumbing): Answering service for plumbers: an AI receptionist that answers every call, captures the job and address, and gets urgent leaks to your on-call team.
-- [Roofing systems](https://www.lycore.org/industries/roofing): Answering service for roofers: an AI receptionist that answers storm-season calls, captures the damage and address, and logs inspection requests.
+- [Roofing systems](https://www.lycore.org/industries/roofing): Answering service for roofers: an AI receptionist that answers storm-season calls, captures the damage and address, and logs inspection requests for you.
 - [Water damage & restoration systems](https://www.lycore.org/industries/restoration): Answering service for water damage and restoration companies: 24/7 call answering that captures the loss, location and urgency and alerts your response team.
-- [Towing systems](https://www.lycore.org/industries/towing): Dispatch-ready intake and customer communication workflows for towing businesses.
+- [Towing systems](https://www.lycore.org/industries/towing): A towing answering service that captures location, vehicle and callback details so your dispatcher gets a ready-to-run job. See what a call looks like.
 - [Med spas systems](https://www.lycore.org/industries/med-spas): Answering service for med spas: an AI receptionist that answers consultation calls, answers approved questions and offers times while your team is with clients.
 - [Dental practices systems](https://www.lycore.org/industries/dentists): Answering service for dentists: an AI receptionist answers non-clinical patient calls, captures appointment requests and passes clinical questions to staff.
-- [Veterinary practices & pet clinics systems](https://www.lycore.org/industries/veterinary): Non-clinical lead response, scheduling and follow-up systems for veterinary practices.
-- [GoHighLevel workflows](https://www.lycore.org/integrations/gohighlevel): GoHighLevel workflow planning for service-business customer journeys.
-- [Housecall Pro workflows](https://www.lycore.org/integrations/housecall-pro): Housecall Pro workflow assessment for leads, jobs and customer communication.
-- [GorillaDesk workflows](https://www.lycore.org/integrations/gorilladesk): GorillaDesk workflow assessment for pest-control customer journeys.
-- [FieldRoutes workflows](https://www.lycore.org/integrations/fieldroutes): FieldRoutes workflow assessment for customer acquisition and follow-up.
-- [PestPac workflows](https://www.lycore.org/integrations/pestpac): PestPac workflow assessment for pest-control operations and customer follow-up.
-- [Jobber workflows](https://www.lycore.org/integrations/jobber): Jobber workflow assessment for service-business leads, jobs and customer communication.
-- [ServiceTitan workflows](https://www.lycore.org/integrations/servicetitan): ServiceTitan workflow assessment for service-business customer lifecycle workflows.
-- [HubSpot workflows](https://www.lycore.org/integrations/hubspot): HubSpot workflow design for service-business lead response and customer follow-up.
-- [n8n workflows](https://www.lycore.org/integrations/n8n): n8n workflow design for connecting approved service-business systems.
-- [Zapier workflows](https://www.lycore.org/integrations/zapier): Zapier workflow assessment for practical, maintainable service-business automation.
-- [Make workflows](https://www.lycore.org/integrations/make): Make scenario design for service-business workflow automation.
-- [Notion workflows](https://www.lycore.org/integrations/notion): Notion workflow assessment for internal visibility and documented service-business processes.
-- [How to stop missing calls as a small business](https://www.lycore.org/resources/how-to-stop-missing-calls-small-business): Practical ways to stop losing customers to missed calls: find the gaps, cover them, and follow up fast.
-- [Missed call text back for plumbers, HVAC and roofers](https://www.lycore.org/resources/missed-call-text-back-for-home-services): How a missed call text back works for plumbers, HVAC companies and roofers, what to say in the text, and what it cannot do.
-- [Is an AI receptionist worth it for a small business?](https://www.lycore.org/resources/is-an-ai-receptionist-worth-it): A plain way to decide whether an AI receptionist is worth it for your business, with the numbers to check and the cases where it is not.
-- [Missed call text-back calculator](https://www.lycore.org/resources/missed-call-text-back-calculator): Estimate the potential value of responding to missed calls faster, then review the call path behind the estimate.
-- [AI receptionist vs. traditional answering service](https://www.lycore.org/resources/ai-receptionist-vs-answering-service): A practical comparison for service businesses deciding how to handle after-hours and overflow calls.
-- [How missed-call text back works for service businesses](https://www.lycore.org/resources/missed-call-text-back): A plain-language guide to fast SMS acknowledgement after an unanswered business call.
-- [How review automation works without review gating](https://www.lycore.org/resources/review-automation): A practical guide to requesting authentic customer reviews after completed service.
-- [CRM vs. field-service management software](https://www.lycore.org/resources/crm-vs-field-service-management): How service businesses can decide which system should own leads, jobs, and customer follow-up.
-- [What cold email infrastructure includes](https://www.lycore.org/resources/cold-email-infrastructure): A buyer guide to responsible outbound email setup and the limits of deliverability work.
-- [Zapier vs. n8n for service-business automation](https://www.lycore.org/resources/zapier-vs-n8n): A neutral comparison of two common automation approaches for maintainable business workflows.
-- [How to measure lead generation results](https://www.lycore.org/resources/measuring-lead-generation-results): Define bounce rate, positive replies, qualified meetings, response time and booking rate before judging a lead-generation system.
+- [Veterinary practices & pet clinics systems](https://www.lycore.org/industries/veterinary): A veterinary answering service for non-clinical calls: booking requests, lead response and follow-up, with medical questions passed to your staff. See how.
+- [Construction companies systems](https://www.lycore.org/industries/construction): Construction answering service for builders and contractors: answers owner, sub, supplier and inspector calls, captures the job and site, and alerts your team.
+- [Landscaping companies systems](https://www.lycore.org/industries/landscaping): Landscaping answering service for lawn and landscape crews: answers quote and recurring service calls in peak season, captures the job and hands it on.
+- [GoHighLevel workflows](https://www.lycore.org/integrations/gohighlevel): Using GoHighLevel? We map how calls, leads and customer follow-up can connect to it before a build is agreed. LYCORE is not an official GoHighLevel partner.
+- [Housecall Pro workflows](https://www.lycore.org/integrations/housecall-pro): Using Housecall Pro? We check how calls, leads, jobs and customer messages can connect to it before a build. LYCORE is not an official Housecall Pro partner.
+- [GorillaDesk workflows](https://www.lycore.org/integrations/gorilladesk): Using GorillaDesk for pest control? We check how calls, leads and follow-up can connect to it before a build. LYCORE is not an official GorillaDesk partner.
+- [FieldRoutes workflows](https://www.lycore.org/integrations/fieldroutes): Using FieldRoutes? We check how leads, calls and follow-up can connect to it before a build is agreed. LYCORE is not an official partner of FieldRoutes.
+- [PestPac workflows](https://www.lycore.org/integrations/pestpac): Using PestPac for pest control? We check how calls, leads and follow-up can connect to it before a build is agreed. LYCORE is not an official PestPac partner.
+- [Jobber workflows](https://www.lycore.org/integrations/jobber): Using Jobber? We check how calls, leads, jobs and customer messages can connect to it before a build is agreed. LYCORE is not an official Jobber partner.
+- [ServiceTitan workflows](https://www.lycore.org/integrations/servicetitan): Using ServiceTitan? We check how calls, leads and the customer lifecycle can connect to it before a build. LYCORE is not an official ServiceTitan partner.
+- [HubSpot workflows](https://www.lycore.org/integrations/hubspot): Using HubSpot? We check how new leads and customer follow-up can connect to it before a build is agreed. LYCORE is not an official HubSpot partner or reseller.
+- [n8n workflows](https://www.lycore.org/integrations/n8n): Using n8n for automation? We design workflows that connect the approved systems behind your calls and follow-up, and check first. LYCORE is not an n8n partner.
+- [Zapier workflows](https://www.lycore.org/integrations/zapier): Using Zapier for automation? We plan simple, maintainable workflows for your calls and follow-up, and check what works first. LYCORE is not a Zapier partner.
+- [Make workflows](https://www.lycore.org/integrations/make): Using Make for automation? We design scenarios that connect your calls, leads and follow-up, and check what is possible first. LYCORE is not a Make partner.
+- [Notion workflows](https://www.lycore.org/integrations/notion): Using Notion to document your process? We check how calls and lead details can feed into it before a build is agreed. LYCORE is not an official Notion partner.
+- [How to stop missing calls as a small business](https://www.lycore.org/resources/how-to-stop-missing-calls-small-business): How to stop missing business calls: find where calls slip through, cover those gaps and follow up fast, with steps you can start today. Read the guide.
+- [Missed call text back for plumbers, HVAC and roofers](https://www.lycore.org/resources/missed-call-text-back-for-home-services): Missed call text back for plumbers, HVAC and roofers: what the text says, how it goes out after an unanswered call, and what it cannot do. Read the guide.
+- [Is an AI receptionist worth it for a small business?](https://www.lycore.org/resources/is-an-ai-receptionist-worth-it): Is an AI receptionist worth it for your business? A plain way to decide, with the numbers to check and the cases where it is not a fit. Read before you decide.
+- [Missed call text-back calculator](https://www.lycore.org/resources/missed-call-text-back-calculator): Use the missed call text back calculator to estimate what faster replies to missed calls could be worth, then check the call path behind the estimate.
+- [AI receptionist vs. traditional answering service](https://www.lycore.org/resources/ai-receptionist-vs-answering-service): AI receptionist vs answering service: a practical comparison for service businesses deciding how to cover after-hours and overflow calls. Read the comparison.
+- [How missed-call text back works for service businesses](https://www.lycore.org/resources/missed-call-text-back): How missed call text back works: a plain-language guide to a fast SMS reply after an unanswered business call, with opt-out handling. Read how it works.
+- [How review automation works without review gating](https://www.lycore.org/resources/review-automation): How review automation works without review gating: a practical guide to asking every customer for an honest review after the job is done. Read the guide.
+- [CRM vs. field-service management software](https://www.lycore.org/resources/crm-vs-field-service-management): CRM vs field service management software: how to decide which system should own leads, jobs and customer follow-up in your service business. Read the guide.
+- [What cold email infrastructure includes](https://www.lycore.org/resources/cold-email-infrastructure): A buyer guide to what cold email infrastructure includes, how a responsible outbound setup works, and where deliverability work stops. Read before you buy.
+- [Zapier vs. n8n for service-business automation](https://www.lycore.org/resources/zapier-vs-n8n): Zapier vs n8n for service business automation: a neutral comparison of two common approaches to keeping business workflows maintainable. Read the comparison.
+- [How to measure lead generation results](https://www.lycore.org/resources/measuring-lead-generation-results): How to measure lead generation results: define bounce rate, positive replies, qualified meetings, response time and booking rate first. Read the guide.
+- [Emergency answering service: how urgent calls get to the right person](https://www.lycore.org/resources/emergency-answering-service): How an emergency answering service sorts urgent calls, alerts the right person and hands over when nobody picks up. What it can do and what it cannot.
+- [How much does an answering service cost? What drives the price](https://www.lycore.org/resources/how-much-does-an-answering-service-cost): Answering service cost and AI receptionist cost explained: the pricing models, the extra fees and hidden charges to ask about, and how to test if it pays back.
 
 ## Frequently Asked Questions
 

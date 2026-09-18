@@ -13,7 +13,7 @@ export default function ConceptGallery() {
       <Container>
         <SectionHeading
           eyebrow="Website concepts"
-          title="The call action should never be a scavenger hunt."
+          title="Nobody with a burst pipe should have to hunt for your phone number."
           lead={websiteConceptDisclaimer}
         />
       </Container>

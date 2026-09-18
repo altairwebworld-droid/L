@@ -22,6 +22,10 @@ const outreachMetrics: Metric[] = [
   { name: 'Qualified meetings', definition: 'Count of meetings that meet the agreed fit criteria. Show booked meetings, attended meetings and cancellations separately in the CRM.' },
 ];
 
+export function registerServiceEvidence(slug: string, summary: string) {
+  serviceEvidence[slug] = { summary, metrics: responseMetrics };
+}
+
 export const serviceEvidence: Record<string, ServiceEvidence> = {
   'cold-email-infrastructure': {
     summary: 'LYCORE sets up sending domains, business mailboxes, SPF, DKIM and DMARC, then prepares the inboxes for a controlled launch. Infrastructure setup and campaign management are separate parts of the scope.',

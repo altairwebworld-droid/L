@@ -39,9 +39,9 @@ export default function ServiceModules() {
       <div className="relative z-10 mx-auto w-full max-w-[80rem]">
         <div className="signal-slider-heading mb-14">
           <div className="max-w-[38rem]">
-            <p className="micro-label mb-5 text-[#9fc0ea]">What LYCORE runs</p>
+            <p className="micro-label mb-5 text-[#9fc0ea]">What LYCORE handles for you</p>
             <h2 className="section-title text-ink">
-              From the first ring to a lead your team can act on.
+              From the first ring to a job you can act on.
             </h2>
           </div>
           <SliderControls railRef={railRef} label="services" />
@@ -62,10 +62,10 @@ export default function ServiceModules() {
 /* ---- 1. Large: 24/7 reception ---------------------------------------- */
 
 const callFields = [
-  ['Caller need', 'Burst pipe, ground floor'],
-  ['Service area', 'Inside coverage / Zone 2'],
+  ['Reason for call', 'Burst pipe, ground floor'],
+  ['Service area', 'Inside your area'],
   ['Urgency', 'Emergency'],
-  ['Transfer', 'On-call tech notified'],
+  ['Next step', 'On-call tech called'],
 ];
 
 function ReceptionModule() {
@@ -94,11 +94,12 @@ function ReceptionModule() {
       </div>
 
       <h3 className="section-title--sm mt-6 max-w-[16ch] text-ink">
-        24/7 reception and call handling
+        24/7 AI receptionist and answering service
       </h3>
       <p className="mt-4 max-w-[46ch] text-[1rem] font-light leading-[1.65] text-[#bfd5f2]">
-        AI call handling configured around your business, with approved intake
-        questions and a clear path to your staff.
+        Your receptionist answers when you are on a job or asleep. It says it is an
+        AI assistant, asks the questions you approve, then books, transfers or
+        takes a message.
       </p>
 
       {/* Live call interface. */}
@@ -109,7 +110,7 @@ function ReceptionModule() {
               className="h-2 w-2 animate-pulse rounded-full motion-reduce:animate-none"
               style={{ backgroundColor: accents.amber }}
             />
-            <span className="text-[0.85rem] font-medium text-white">Call in progress</span>
+            <span className="text-[0.85rem] font-medium text-white">Example call in progress</span>
           </span>
           <span className="tabular text-[0.8rem] text-[#8fb2e4]">00:41</span>
         </div>
@@ -130,7 +131,7 @@ function ReceptionModule() {
           className="mt-3 rounded-lg px-3 py-2.5 text-[0.85rem]"
           style={{ backgroundColor: `${accents.amber}14`, color: '#e8dcc4' }}
         >
-          Summary sent to your team: name, number, location, urgency.
+          Summary sent to you: name, number, address, reason.
         </p>
       </div>
     </motion.article>
@@ -139,7 +140,7 @@ function ReceptionModule() {
 
 /* ---- 2. Medium: websites --------------------------------------------- */
 
-const journey = ['Search result', 'Service page', 'Call placed', 'Appointment booked'];
+const journey = ['Search result', 'Tap to call', 'Call answered', 'Job booked'];
 
 function WebsiteModule() {
   return (
@@ -166,11 +167,10 @@ function WebsiteModule() {
       </div>
 
       <h3 className="section-title--sm mt-6 max-w-[14ch] text-[#092f69]">
-        Websites that convert callers
+        A website that gets the call
       </h3>
       <p className="mt-3 text-[0.98rem] font-light leading-[1.6] text-[#4a5f8a]">
-        Built for someone holding a phone in an emergency, not someone browsing
-        on a laptop.
+        Built for someone with a leak or a dead heater and a phone in their hand, not someone browsing on a laptop.
       </p>
 
       {/* A real build, not a mockup metaphor. */}
@@ -200,11 +200,11 @@ function WebsiteModule() {
 
 /* ---- 3. Medium: Google Business Profile ------------------------------ */
 
-const profileMetrics = [
-  ['Listing completeness', 94],
-  ['Calls from listing', 72],
-  ['Review activity', 61],
-  ['Direction requests', 48],
+const profileChecks = [
+  'Phone number matches your website',
+  'Hours and holiday hours are correct',
+  'Categories and service area are set',
+  'Website and call links work',
 ] as const;
 
 function ProfileModule() {
@@ -234,31 +234,20 @@ function ProfileModule() {
       </div>
 
       <h3 className="section-title--sm mt-6 max-w-[16ch] text-ink">
-        Google Business Profile optimisation
+        Google Business Profile management
       </h3>
       <p className="mt-4 text-[0.98rem] font-light leading-[1.6] text-[#bfd5f2]">
-        Help nearby customers find, trust and contact your business when they are
-        ready to act.
+        Your phone number, hours and service area match your website and other listings, so a customer who finds you can reach you. You stay the owner.
       </p>
 
-      <dl className="mt-7 flex flex-col gap-4">
-        {profileMetrics.map(([label, value]) => (
-          <div key={label}>
-            <div className="flex items-baseline justify-between gap-3">
-              <dt className="text-[0.86rem] text-[#bfd5f2]">{label}</dt>
-              <dd className="tabular text-[0.86rem] font-semibold" style={{ color: accents.teal }}>
-                {value}%
-              </dd>
-            </div>
-            <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/8">
-              <div
-                className="h-full rounded-full"
-                style={{ width: `${value}%`, backgroundColor: accents.teal }}
-              />
-            </div>
-          </div>
+      <ul className="mt-7 flex flex-col gap-3">
+        {profileChecks.map((label) => (
+          <li key={label} className="flex items-center gap-3 text-[0.9rem] text-[#bfd5f2]">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: accents.teal }} aria-hidden="true" />
+            {label}
+          </li>
         ))}
-      </dl>
+      </ul>
     </motion.article>
   );
 }
@@ -267,10 +256,10 @@ function ProfileModule() {
 
 const intakeFlow = [
   { label: 'Missed call', icon: PhoneCall },
-  { label: 'Automatic text sent', icon: MessageSquare },
-  { label: 'Information captured', icon: Check },
-  { label: 'Team notified', icon: ArrowRight },
-  { label: 'Appointment confirmed', icon: Check },
+  { label: 'Approved text sent', icon: MessageSquare },
+  { label: 'Details captured', icon: Check },
+  { label: 'You are notified', icon: ArrowRight },
+  { label: 'Booking confirmed', icon: Check },
 ];
 
 function IntakeModule() {
@@ -297,14 +286,14 @@ function IntakeModule() {
               className="text-[0.76rem] font-semibold uppercase tracking-[0.14em]"
               style={{ color: accents.violet }}
             >
-              Runs itself
+              Follow-up
             </span>
           </div>
 
-          <h3 className="section-title--sm mt-6 text-ink">Intake and follow-up systems</h3>
+          <h3 className="section-title--sm mt-6 text-ink">Missed-call texts and follow-up</h3>
           <p className="mt-4 text-[1rem] font-light leading-[1.65] text-[#bfd5f2]">
-            The paperwork behind the call fills itself in, and nothing waits on
-            someone remembering to send it.
+            A missed call gets an approved text back, and a quote that goes quiet
+            gets a nudge, so nothing depends on you remembering.
           </p>
         </div>
       </div>
@@ -369,8 +358,8 @@ function SystemsModule() {
             Business systems
           </h3>
           <p className="mt-1 max-w-[52ch] text-[0.95rem] font-light leading-[1.6] text-[#bfd5f2]">
-            Less manual coordination, fewer repeated tasks, and less information
-            lost between the people who need it.
+            Less admin between the call and the invoice. Ask on the call what fits
+            your setup.
           </p>
         </div>
       </div>

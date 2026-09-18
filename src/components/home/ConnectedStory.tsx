@@ -42,17 +42,17 @@ const industryIcons: Record<string, LucideIcon> = {
 };
 
 const before = [
-  'Staff occupied with a customer',
-  'Second call missed',
-  'Notes incomplete',
-  'Follow-up delayed',
+  'Staff busy with a customer',
+  'The second call rings out',
+  'Notes half written on paper',
+  'Estimate follow-up slips',
 ] as const;
 
 const after = [
-  'Overflow handled automatically',
-  'Caller information captured',
-  'Team receives a full summary',
-  'Follow-up continues on its own',
+  'Overflow calls get picked up',
+  'Name, number and reason captured',
+  'Your team gets a written summary',
+  'Approved follow-up goes out',
 ] as const;
 
 const reveal = {
@@ -132,17 +132,17 @@ export default function ConnectedStory() {
       <section id="services" className="connected-services" aria-labelledby="connected-services-title">
         <header className="connected-story__intro">
           <p>Services / 01-04</p>
-          <h2 id="connected-services-title">What LYCORE runs</h2>
-          <span>From the first ring to a lead your team can act on.</span>
+          <h2 id="connected-services-title">What LYCORE handles for you</h2>
+          <span>From the first ring to a job you can act on.</span>
         </header>
 
         <ServiceChapter number="01" side="left" reduceMotion={reduceMotion}>
           <ServiceCopy
             eyebrow="Always on"
             icon={PhoneCall}
-            title="24/7 reception and call handling"
-            body="AI call handling configured around your business, with approved intake questions and a clear path to your staff."
-            bullets={['Overflow and after-hours call handling', 'Contact details and service requests captured', 'Booking requests routed to the right person']}
+            title="24/7 AI receptionist and answering service"
+            body="Your receptionist answers when you are on a job or asleep. It says it is an AI assistant, asks the questions you approve, then books, transfers or takes a message."
+            bullets={['Evenings, weekends and overflow calls', 'Name, number, address and reason captured', 'Booked, transferred live, or left as a message']}
             path="/services/ai-receptionist"
           />
           <SourceIllustration src="/service-receptionist-girl.webp" alt="Illustrated receptionist answering a call beside a booking calendar and caller checklist" />
@@ -153,9 +153,9 @@ export default function ConnectedStory() {
           <ServiceCopy
             eyebrow="Phone-first"
             icon={Globe}
-            title="Websites that convert callers"
-            body="Built for someone holding a phone in an emergency, not someone browsing on a laptop."
-            bullets={['Emergency action above the fold', 'Clear offers and trust signals', 'Traffic turned into booked work']}
+            title="A website that gets the call"
+            body="Built for someone with a leak or a dead heater and a phone in their hand, not someone browsing on a laptop."
+            bullets={['Tap to call right at the top', 'Fast on a phone', 'Calls and forms tracked']}
             path="/services/web-design"
           />
         </ServiceChapter>
@@ -164,9 +164,9 @@ export default function ConnectedStory() {
           <ServiceCopy
             eyebrow="Local search"
             icon={MapPin}
-            title="Google Business Profile optimisation"
-            body="Help nearby customers find, trust and contact your business when they are ready to act."
-            bullets={['Profile information kept complete', 'Review activity made visible', 'Calls and directions easier to reach']}
+            title="Google Business Profile management"
+            body="Your phone number, hours and service area match your website and other listings, so a customer who finds you can reach you."
+            bullets={['You stay the owner and we never ask for passwords', 'Phone, hours, categories and service area corrected', 'Profile matched to your website and listings']}
             path="/services/google-business-profile-management"
           />
           <SourceIllustration src="/connected-source/img_3.svg" alt="Original source illustration of a busy team handling messages and information" />
@@ -175,11 +175,11 @@ export default function ConnectedStory() {
         <ServiceChapter number="04" side="right" reduceMotion={reduceMotion}>
           <SourceIllustration src="/connected-source/img_4.svg" alt="Original source illustration of structured support around a person at a laptop" />
           <ServiceCopy
-            eyebrow="Runs itself"
+            eyebrow="Follow-up"
             icon={Workflow}
-            title="Intake and follow-up systems"
-            body="The paperwork behind the call fills itself in, and nothing waits on someone remembering to send it."
-            bullets={['Information captured automatically', 'Follow-up sent consistently', 'Team kept informed without chasing']}
+            title="Missed-call texts and follow-up"
+            body="A missed call gets an approved text back, and a quote that goes quiet gets a nudge, so nothing depends on you remembering."
+            bullets={['Approved text goes to missed callers', 'Follow-up stops when the customer replies', 'Quiet hours and opt-outs respected']}
             path="/services/lead-follow-up"
           />
         </ServiceChapter>
@@ -188,7 +188,7 @@ export default function ConnectedStory() {
           <Workflow aria-hidden="true" />
           <div>
             <strong>Business systems</strong>
-            <p>Less manual coordination, fewer repeated tasks, and less information lost between the people who need it.</p>
+            <p>Less admin between the call and the invoice. Ask on the call what fits your setup.</p>
           </div>
           <span>In development</span>
         </div>
@@ -198,11 +198,11 @@ export default function ConnectedStory() {
         <header>
           <p>Existing teams / overflow</p>
           <h2 id="connected-team-title">If you already have a team</h2>
-          <span>Your team does not have to fail for opportunities to be missed.</span>
+          <span>Good staff still cannot answer two calls at once.</span>
         </header>
 
         <p className="connected-team__lead">
-          Calls overlap. Staff step away. Night teams become tired. Follow-up gets delayed. LYCORE supports your existing team with overflow coverage, after-hours communication, structured intake and consistent follow-up.
+          Two calls land at once. Someone steps out for lunch. Nobody is in the office at 7 p.m. Your receptionist takes the overflow and after-hours calls, asks the questions you approved and sends your team a summary.
         </p>
 
         <div className="connected-team__comparison">
@@ -211,22 +211,22 @@ export default function ConnectedStory() {
         </div>
 
         <p className="connected-team__payoff">
-          Your team keeps the calls they can take.
-          <span>LYCORE catches the ones they cannot.</span>
+          Your team takes the calls it can.
+          <span>LYCORE picks up the rest.</span>
         </p>
       </section>
 
       <section id="about" className="connected-about" aria-labelledby="connected-about-title">
         <div>
           <p>About LYCORE</p>
-          <h2 id="connected-about-title">Built to keep urgent service businesses moving.</h2>
+          <h2 id="connected-about-title">Built for owners who cannot pick up every call.</h2>
         </div>
         <div className="connected-about__copy">
           <p>
-            LYCORE was created for teams that cannot afford to miss what matters. We provide an always-on response layer that answers every call, captures the right information and moves it forward.
+            LYCORE is a small, founder-led company based in Albuquerque, NM, working with service businesses across the United States. We set up call answering, missed-call texts and follow-up so a customer who rings while you are on a job still hears back.
           </p>
           <p>
-            Structured intake and practical automation keep work moving when your team is at capacity, so fewer opportunities disappear between the first ring and the next action.
+            You approve the questions, transfer rules and texts before launch, and callers can always ask for a person. Outcomes are never guaranteed, so we go through what actually happened with you.
           </p>
         </div>
       </section>
@@ -234,7 +234,7 @@ export default function ConnectedStory() {
       <section id="industries" className="connected-industries" aria-labelledby="connected-industries-title">
         <header>
           <h2 id="connected-industries-title">Who this is for</h2>
-          <p>Built for businesses where delayed responses cost real revenue.</p>
+          <p>For owners who lose work every time a call goes unanswered.</p>
         </header>
 
         <nav className="industry-spotlights" aria-label="All industries">
@@ -268,7 +268,7 @@ export default function ConnectedStory() {
           <div className="connected-industry-panel__problem">
             <IndustryIcon aria-hidden="true" />
             <p>{industry.name}</p>
-            <h3>Where the revenue leaks</h3>
+            <h3>Where the calls get lost</h3>
             <span>{industry.pain}</span>
           </div>
 
@@ -288,7 +288,7 @@ export default function ConnectedStory() {
         </motion.div>
 
         <Link to="/industries" className="connected-industries__all">
-          View every industry, pain point and call path <ArrowRight aria-hidden="true" />
+          See your trade and what happens on its calls <ArrowRight aria-hidden="true" />
         </Link>
       </section>
     </div>
@@ -343,7 +343,7 @@ function ServiceCopy({
       <ul role="list">
         {bullets.map((bullet) => <li key={bullet}><Check aria-hidden="true" />{bullet}</li>)}
       </ul>
-      <Link to={path} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">Explore this system <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+      <Link to={path} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">See how it works <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
     </div>
   );
 }

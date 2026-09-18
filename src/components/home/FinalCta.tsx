@@ -21,20 +21,20 @@ export default function FinalCta() {
         >
           <div className="liquid-glass flex flex-col gap-8 rounded-[32px] border border-white/10 p-8 md:flex-row md:items-center md:justify-between md:p-12">
             <div className="max-w-xl">
-              <p className="micro-label mb-4 text-white/70">The next route</p>
-              <h2 className="text-3xl font-medium leading-tight tracking-tight text-white md:text-4xl">Your next job should not disappear.</h2>
+              <p className="micro-label mb-4 text-white/70">Book a 15-minute call</p>
+              <h2 className="text-3xl font-medium leading-tight tracking-tight text-white md:text-4xl">The next call should not go to someone else.</h2>
               <p className="mt-4 max-w-lg text-sm font-light leading-relaxed text-white/70">
-                We will review the path from first enquiry to follow-up and show you where to start, without pressure or unsupported promises.
+                In 15 minutes we go through where your calls get lost and what your receptionist would do on them. Cost depends on your call volume and what you want it to do. No pressure, no obligation, no promised results.
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
               <MagneticButton>
                 <Link
-                  to={contactActions.review.path}
+                  to="/book"
                   data-track="cta_click"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b22] px-7 py-3.5 text-sm font-bold text-black"
                 >
-                  {contactActions.review.label}
+                  Book a 15-minute call
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </MagneticButton>
@@ -44,7 +44,7 @@ export default function FinalCta() {
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-bold text-white transition-colors hover:border-white/50"
               >
-                WhatsApp LYCORE
+                Message us on WhatsApp
               </a>
             </div>
           </div>

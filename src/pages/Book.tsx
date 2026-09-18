@@ -2,6 +2,8 @@ import { ArrowUpRight, CalendarDays, Check } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { useEffect } from 'react';
 import { trackEvent } from '../lib/analytics';
+import { FaqSection } from '../components/PageSections';
+import { bookFaqs } from '../siteData';
 
 const bookingUrl = 'https://cal.com/lycorellc/discovery-call';
 const embeddedBookingUrl = `${bookingUrl}?embed=true&theme=light`;
@@ -73,6 +75,8 @@ export default function Book() {
           Open the booking page <ArrowUpRight aria-hidden="true" />
         </a>
       </p>
+
+      <FaqSection faqs={bookFaqs} showAllLink={false} />
     </main>
   );
 }

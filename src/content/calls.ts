@@ -15,9 +15,9 @@ export type UrgentCall = {
 };
 
 /**
- * Six calls from one ordinary night, across six different trades. Each has its
- * own accent so the scene reads as a sequence of distinct businesses rather
- * than one colour-coded list — no single vertical owns the signature moment.
+ * Six example calls from one ordinary night, across six different trades. These
+ * are illustrations, not client results. Each has its own accent so the scene
+ * reads as a sequence of distinct businesses.
  */
 export const urgentCalls: readonly UrgentCall[] = [
   {
@@ -27,10 +27,10 @@ export const urgentCalls: readonly UrgentCall[] = [
     summary: 'Kitchen flooding upstairs',
     accent: accents.cyan,
     explanation:
-      'Water is moving through a ceiling. This caller will not leave a voicemail — they will dial the next plumber on the search results page.',
-    steps: ['Emergency graded', 'Address captured', 'On-call plumber notified', 'Visit scheduled'],
-    outcome: 'Booked in 90 seconds',
-    value: '$850 job',
+      'Water is coming through a ceiling. This caller will not leave a voicemail. They will call the next plumber on the search page.',
+    steps: ['Urgency asked', 'Address captured', 'On-call plumber notified', 'Visit booked or requested'],
+    outcome: 'On-call plumber notified',
+    value: 'Example call',
   },
   {
     id: 'towing',
@@ -39,10 +39,10 @@ export const urgentCalls: readonly UrgentCall[] = [
     summary: 'Truck will not start on highway shoulder',
     accent: accents.amber,
     explanation:
-      'A driver on a shoulder at midnight is calling three companies at once. The first one to answer is the one that gets paid.',
-    steps: ['Location captured', 'Vehicle details recorded', 'Driver dispatched', 'Arrival time sent'],
-    outcome: 'Dispatched in 2 minutes',
-    value: '$220 tow',
+      'A driver on a shoulder at midnight rings several companies at once. The first one that picks up gets the job.',
+    steps: ['Location captured', 'Vehicle details recorded', 'Driver notified', 'Live transfer if set up'],
+    outcome: 'Driver notified',
+    value: 'Example call',
   },
   {
     id: 'locksmith',
@@ -51,10 +51,10 @@ export const urgentCalls: readonly UrgentCall[] = [
     summary: 'Locked out, child asleep inside',
     accent: accents.violet,
     explanation:
-      'This is decided in minutes, not hours. A ring that goes unanswered is simply a job that went somewhere else.',
-    steps: ['Lockout confirmed', 'Exact location captured', 'Nearest technician notified', 'Arrival confirmed'],
-    outcome: 'Technician en route',
-    value: '$150 job',
+      'This caller decides in minutes. A ring nobody answers is a job that went to the next locksmith.',
+    steps: ['Lockout confirmed', 'Exact location captured', 'Technician notified', 'Live transfer if set up'],
+    outcome: 'Technician notified',
+    value: 'Example call',
   },
   {
     id: 'hvac',
@@ -63,10 +63,10 @@ export const urgentCalls: readonly UrgentCall[] = [
     summary: 'Heater stopped during cold night',
     accent: accents.coral,
     explanation:
-      'Cold nights generate more calls in six hours than the office handles in a week. The overflow is where the revenue leaks.',
-    steps: ['System details captured', 'Urgency graded', 'Technician assigned', 'Window confirmed'],
-    outcome: 'Morning slot booked',
-    value: '$600 job',
+      'On the coldest nights the phone rings faster than one person can answer it. The calls you miss go to the next company.',
+    steps: ['System details captured', 'Urgency asked', 'Technician notified', 'Booking or callback requested'],
+    outcome: 'Request logged for morning',
+    value: 'Example call',
   },
   {
     id: 'restoration',
@@ -75,10 +75,10 @@ export const urgentCalls: readonly UrgentCall[] = [
     summary: 'Water spreading across ground floor',
     accent: accents.teal,
     explanation:
-      'Damage compounds by the hour. A call that waits until the office opens becomes a substantially larger claim.',
-    steps: ['Damage type captured', 'Property confirmed', 'Response team notified', 'Site visit set'],
+      'Water keeps spreading while nobody picks up. The customer calls the next restoration company instead of waiting for you to open.',
+    steps: ['Damage type captured', 'Property confirmed', 'Response team notified', 'Site visit requested'],
     outcome: 'Team notified',
-    value: '$1,100 job',
+    value: 'Example call',
   },
   {
     id: 'bail',
@@ -87,9 +87,9 @@ export const urgentCalls: readonly UrgentCall[] = [
     summary: 'Family requesting urgent assistance',
     accent: accents.gold,
     explanation:
-      'A family working down a list of numbers at 4 a.m. Most of those numbers ring out. The one that answers calmly is the one they trust.',
+      'A family works down a list of numbers at 4 a.m. and most of them ring out. The one that answers is the one they stay on with.',
     steps: ['Situation captured', 'Facility confirmed', 'Agent notified', 'Human handoff completed'],
     outcome: 'Handed to an agent',
-    value: '$500 premium',
+    value: 'Example call',
   },
 ] as const;

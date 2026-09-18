@@ -83,8 +83,8 @@ export default function ImplementationSteps() {
   return (
     <section ref={sectionRef} className="install-stack" aria-labelledby="install-stack-title">
       <header className="install-stack__header">
-        <p>How the system is installed</p>
-        <h2 id="install-stack-title">One continuous route from review to measurement.</h2>
+        <p>How it gets set up</p>
+        <h2 id="install-stack-title">Start with a 15-minute call. Approve everything before launch.</h2>
       </header>
 
       <div className="install-stack__stage">
@@ -99,7 +99,7 @@ export default function ImplementationSteps() {
                     <span>0{index + 1}</span>
                   </div>
                   <p className="install-stack-card__lede">{step.body}</p>
-                  <p className="install-stack-card__note">Each stage is configured around the real information your team uses, not a generic demo workflow.</p>
+                  <p className="install-stack-card__note">You approve the questions, rules and texts before anything goes live.</p>
                 </div>
                 <div className="install-stack-card__media">
                   <InstallVisual index={index} icon={Icon} />
@@ -111,15 +111,15 @@ export default function ImplementationSteps() {
           <article className="install-stack-card install-stack-card--report" data-tone={tones[4]}>
             <div className="install-stack-card__content">
               <div className="install-stack-card__top">
-                <h3>What reaches the team</h3>
+                <h3>What you get after each call</h3>
                 <span>05</span>
               </div>
-              <p className="install-stack-card__lede">A useful report, not a mystery notification.</p>
-              <p className="install-stack-card__note">Every row reflects information the current intake and routing system can actually capture. No fictional dashboards or performance figures.</p>
+              <p className="install-stack-card__lede">A clear summary, not a half-heard voicemail.</p>
+              <p className="install-stack-card__note">Each line is something the receptionist asks or records on the call. Nothing here is a made-up dashboard or a promised result.</p>
             </div>
             <div className="install-stack-card__media">
               <div className="install-report">
-                <p>Lead route / structured handoff</p>
+                <p>Summary sent to you after each call</p>
                 <dl>
                   {reportFields.map(([field, value]) => (
                     <div key={field}><dt>{field}</dt><dd>{value}</dd></div>
@@ -140,7 +140,7 @@ function InstallVisual({ index, icon: Icon }: { index: number; icon: typeof Sear
       <div className="install-visual install-visual--review">
         <Icon aria-hidden="true" />
         <span /><span /><span />
-        <ul role="list"><li>Calls</li><li>Website journey</li><li>Follow-up</li><li>Source visibility</li></ul>
+        <ul role="list"><li>Calls</li><li>Website journey</li><li>Follow-up</li><li>Lead sources</li></ul>
       </div>
     );
   }
@@ -149,7 +149,7 @@ function InstallVisual({ index, icon: Icon }: { index: number; icon: typeof Sear
     return (
       <div className="install-visual install-visual--configure">
         <PhoneCall aria-hidden="true" />
-        {['Business greeting', 'Service area', 'After-hours rule', 'Escalation path'].map((field) => (
+        {['Your greeting', 'Service area', 'After-hours rules', 'When to call you'].map((field) => (
           <div key={field}><span>{field}</span><Check aria-hidden="true" /></div>
         ))}
       </div>
@@ -159,17 +159,16 @@ function InstallVisual({ index, icon: Icon }: { index: number; icon: typeof Sear
   if (index === 2) {
     return (
       <div className="install-visual install-visual--route">
-        <span>Incoming call</span><Route aria-hidden="true" /><span>Structured summary</span><Route aria-hidden="true" /><span>Your team</span>
+        <span>Incoming call</span><Route aria-hidden="true" /><span>Summary to you</span><Route aria-hidden="true" /><span>You or your team</span>
       </div>
     );
   }
 
   return (
-    <div className="install-visual install-visual--measure">
-      <div><span>30 days</span><i style={{ height: '42%' }} /></div>
-      <div><span>60 days</span><i style={{ height: '68%' }} /></div>
-      <div><span>90 days</span><i style={{ height: '88%' }} /></div>
-      <p>Answered calls / booked opportunities / lead sources</p>
+    <div className="install-visual install-visual--configure">
+      {['Answered calls', 'Booked or routed requests', 'Where leads came from'].map((field) => (
+        <div key={field}><span>{field}</span><Check aria-hidden="true" /></div>
+      ))}
     </div>
   );
 }

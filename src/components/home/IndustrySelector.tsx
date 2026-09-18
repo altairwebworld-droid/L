@@ -58,7 +58,7 @@ export default function IndustrySelector() {
           <div className="max-w-[40rem]">
             <p className="micro-label mb-5 text-[#9fc0ea]">Who this is for</p>
             <h2 className="section-title text-ink">
-              Built for businesses where delayed responses cost real revenue.
+              Built for owners who lose jobs when a call goes unanswered.
             </h2>
           </div>
           <SliderControls railRef={railRef} label="industries" />
@@ -137,7 +137,7 @@ export default function IndustrySelector() {
                   className="text-[0.76rem] font-semibold uppercase tracking-[0.14em] transition-colors duration-500"
                   style={{ color: industry.accent }}
                 >
-                  Where the revenue leaks
+                  Where the calls get lost
                 </p>
               </div>
             </div>

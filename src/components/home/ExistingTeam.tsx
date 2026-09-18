@@ -9,17 +9,17 @@ import { accents } from '../../content/palette';
  */
 
 const before = [
-  'Staff occupied with a customer',
-  'Second call missed',
-  'Notes incomplete',
-  'Follow-up delayed',
+  'Staff busy with a customer',
+  'The second call rings out',
+  'Notes half written on paper',
+  'Estimate follow-up slips',
 ];
 
 const after = [
-  'Overflow handled automatically',
-  'Caller information captured',
-  'Team receives a full summary',
-  'Follow-up continues on its own',
+  'Overflow calls get picked up',
+  'Name, number and reason captured',
+  'Your team gets a written summary',
+  'Approved follow-up goes out',
 ];
 
 export default function ExistingTeam() {
@@ -35,12 +35,12 @@ export default function ExistingTeam() {
         <div className="lg:sticky lg:top-32 lg:self-start">
           <p className="micro-label mb-5 text-[#9fc0ea]">If you already have a team</p>
           <h2 className="section-title max-w-[16ch] text-ink">
-            Your team does not have to fail for opportunities to be missed.
+            Good staff still cannot answer two calls at once.
           </h2>
           <p className="mt-6 max-w-[46ch] text-[1.0625rem] font-light leading-[1.7] text-[#bfd5f2] md:text-[1.125rem]">
-            Calls overlap. Staff step away. Night teams become tired. Follow-up gets
-            delayed. LYCORE supports your existing team with overflow coverage,
-            after-hours communication, structured intake and consistent follow-up.
+            Two calls land at once. Someone steps out for lunch. Nobody is in the
+            office at 7 p.m. Your receptionist takes the overflow and after-hours
+            calls, asks the questions you approved and sends your team a summary.
           </p>
         </div>
 
@@ -123,10 +123,10 @@ export default function ExistingTeam() {
               className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-[1.25rem] border border-white/8 px-5 py-4"
               style={{ background: 'rgba(255,255,255,0.018)' }}
             >
-              <span className="text-[0.9rem] text-[#a9c5ec]">Your team keeps the calls they can take.</span>
+              <span className="text-[0.9rem] text-[#a9c5ec]">Your team takes the calls it can.</span>
               <ArrowRight className="h-3.5 w-3.5 text-white/25" aria-hidden="true" />
               <span className="text-[0.9rem] font-medium text-white">
-                LYCORE catches the ones they cannot.
+                LYCORE picks up the rest.
               </span>
             </div>
           </div>

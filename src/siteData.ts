@@ -215,6 +215,32 @@ export const globalFaqs: Faq[] = [
   },
 ];
 
+export const bookFaqs: Faq[] = [
+  {
+    question: 'What happens on the call?',
+    answer:
+      'You describe how calls and enquiries reach your business today, and we look at where they get lost: unanswered calls, slow replies, intake, booking and follow-up. You leave knowing what would help and what it costs.',
+  },
+  {
+    question: 'Do I have to buy anything or sign a contract?',
+    answer: 'No. There is no pressure and no obligation, and LYCORE does not require long-term contracts.',
+  },
+  {
+    question: 'What should I bring to the call?',
+    answer:
+      'One problem is enough: the calls you miss, the enquiries that go quiet, or a website that does not bring calls. A rough idea of how many calls you miss in a week helps, and the missed call calculator can give you a starting number.',
+  },
+  {
+    question: 'How long is the call?',
+    answer: 'It is short. The booking calendar shows the exact length before you confirm a time.',
+  },
+  {
+    question: 'Can I hear the receptionist before I book?',
+    answer:
+      'Yes. Use the Test our AI agent button on this site to talk to a LYCORE voice agent and hear how a call sounds. It tells you it is an AI assistant, the same way your receptionist would.',
+  },
+];
+
 export const servicePages: ServicePage[] = [
   {
     path: '/what-we-build',
@@ -292,7 +318,7 @@ export const legacyPages: PageMeta[] = [
     label: 'Home',
     title: 'LYCORE: AI Receptionist & Follow-Up for Service Businesses',
     description:
-      'A 24/7 AI receptionist that answers every call, filters wrong numbers and sales calls, and books real customers. Built for service businesses.',
+      'A 24/7 AI receptionist that answers every call, filters wrong numbers and sales calls, and books real customers. Built for plumbers, HVAC, med spas and more.',
     h1: 'More leads. Fewer leaks.',
     kind: 'home',
     faqs: globalFaqs.slice(0, 6),
@@ -372,6 +398,7 @@ export const legacyPages: PageMeta[] = [
     description: 'Schedule a time to discuss how LYCORE can help your service business answer more calls and book more jobs.',
     h1: 'Book a Strategy Call',
     kind: 'legacy',
+    faqs: bookFaqs,
   },
 ];
 
@@ -492,8 +519,15 @@ export const redirectPages: PageMeta[] = [
 // The detailed customer-journey pages are maintained as content data so static
 // metadata, sitemap generation, and the client routes always share one inventory.
 import { growthPages, integrationsHub, resourcePages, resourcesHub } from './content/architecture';
+import { generatedMeta } from './content/generated';
 
-export const allPages: PageMeta[] = [...legacyPages, integrationsHub, resourcesHub, ...growthPages, ...resourcePages, ...redirectPages, ...legalPages, ...commitmentPages];
+// Reviewed title and description rewrites (see ./content/generated) replace the defaults by route.
+const withMeta = (page: PageMeta): PageMeta => {
+  const meta = generatedMeta[page.path];
+  return meta ? { ...page, title: meta.title ?? page.title, description: meta.description ?? page.description, updatedAt: '2026-09-18' } : page;
+};
+
+export const allPages: PageMeta[] = [...legacyPages, integrationsHub, resourcesHub, ...growthPages, ...resourcePages, ...redirectPages, ...legalPages, ...commitmentPages].map(withMeta);
 
 export const navLinks = [
   { label: 'Home', path: '/' },
