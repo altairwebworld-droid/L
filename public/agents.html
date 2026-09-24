@@ -236,7 +236,6 @@
       loader.src = 'https://widget.bland.ai/loader.js';
       loader.defer = true;
       document.body.appendChild(loader);
-      recolorLauncherWhenReady();
     } else {
       callBtn.disabled = true;
       callLabel.textContent = 'Add this agent’s widget ID to enable';
@@ -244,16 +243,30 @@
     }
 
     // ── Drive Bland's widget (it renders inside a shadow root) ─────────────────
-    function blandRoot() { return window.__BLAND_SHADOW_ROOT__ || null; }
-    function findLauncher() {
+    // Bland changes its internal markup, so we search for clickable elements by
+    // behaviour (pointer cursor / role) instead of hard-coding ids or tags.
+    function blandRoot() {
+      if (window.__BLAND_SHADOW_ROOT__) return window.__BLAND_SHADOW_ROOT__;
+      var host = document.getElementById('bland-widget-host') || document.getElementById('bland-widget-container');
+      return (host && host.shadowRoot) || null;
+    }
+    function visibleClickables() {
       var root = blandRoot();
-      return root ? root.querySelector('#bland-widget-root button') : null;
+      if (!root) return [];
+      return Array.prototype.slice.call(root.querySelectorAll('*')).filter(function (e) {
+        var visible = e.getClientRects().length > 0;
+        if (!visible) return false;
+        var cs = window.getComputedStyle(e);
+        return cs.cursor === 'pointer' || e.getAttribute('role') === 'button' ||
+          e.tagName === 'BUTTON' || e.tagName === 'A';
+      });
+    }
+    function findLauncher() {
+      var c = visibleClickables();
+      return c.length ? c[0] : null;
     }
     function findVoiceOption() {
-      var root = blandRoot();
-      if (!root) return null;
-      var buttons = Array.prototype.slice.call(root.querySelectorAll('button'));
-      return buttons.find(function (b) { return /voice chat/i.test(b.textContent || ''); }) || null;
+      return visibleClickables().find(function (e) { return /voice/i.test(e.textContent || ''); }) || null;
     }
     function waitFor(find, timeoutMs) {
       return new Promise(function (resolve) {
@@ -266,21 +279,6 @@
         })();
       });
     }
-    function recolorLauncherWhenReady() {
-      var tries = 0;
-      var t = setInterval(function () {
-        var launcher = findLauncher();
-        tries++;
-        if (launcher) {
-          launcher.style.background = 'var(--accent, #ff6b22)';
-          launcher.style.borderColor = '#ff6b22';
-          clearInterval(t);
-        } else if (tries > 60) {
-          clearInterval(t);
-        }
-      }, 500);
-    }
-
     var connecting = false;
     callBtn.addEventListener('click', async function () {
       if (!enabled || connecting) return;
@@ -303,10 +301,10 @@
         }
       }
 
-      var launcher = findLauncher() || await waitFor(findLauncher, 6000);
+      var launcher = findLauncher() || await waitFor(findLauncher, 8000);
       if (!launcher) {
         connecting = false;
-        setStatus('The agent is still loading. Give it a second and try again.');
+        setStatus('The agent did not load. Refresh and try again, or use the call button in the corner if one appears.');
         return;
       }
       if (!findVoiceOption()) launcher.click();
