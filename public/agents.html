@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Talk to a LYCORE voice agent</title>
+  <meta name="description" content="Test a live LYCORE voice agent from your browser. Pick the general receptionist or the bail bonds intake agent, allow your mic, and talk to it like a real caller would." />
+  <meta name="robots" content="noindex" />
+  <meta property="og:title" content="Talk to a LYCORE voice agent" />
+  <meta property="og:description" content="Pick an agent, allow your mic, and have a real conversation. This is the same agent that answers the phone." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #141210;
+      --bg2: #1b1815;
+      --surface: #211d19;
+      --surface2: #2a251f;
+      --line: rgba(255, 255, 255, 0.09);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --text: #f6f2ec;
+      --muted: #a49d92;
+      --accent: #ff6b22;
+      --accent-deep: #e65714;
+      --ok: #3ad29f;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background:
+        radial-gradient(120% 80% at 80% -10%, rgba(255, 107, 34, 0.16), transparent 55%),
+        radial-gradient(90% 70% at 0% 0%, rgba(255, 107, 34, 0.06), transparent 45%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+    h1, h2, h3 { font-family: 'Sora', system-ui, sans-serif; letter-spacing: -0.02em; margin: 0; }
+    a { color: inherit; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 80px; }
+
+    header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-family: 'Sora'; font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
+    .brand .dot { width: 9px; height: 9px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,107,34,0.18); }
+    .back { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .back:hover { color: var(--text); }
+
+    .hero { margin-top: 44px; max-width: 640px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+    .eyebrow .live { position: relative; width: 8px; height: 8px; }
+    .eyebrow .live span { position: absolute; inset: 0; border-radius: 999px; background: var(--accent); }
+    .eyebrow .live span:first-child { animation: ping 1.4s cubic-bezier(0,0,0.2,1) infinite; opacity: .75; }
+    h1.title { margin-top: 14px; font-size: clamp(2rem, 6vw, 3.3rem); font-weight: 700; line-height: 1.03; }
+    .lede { margin-top: 16px; color: var(--muted); font-size: clamp(1rem, 2.4vw, 1.15rem); line-height: 1.55; }
+
+    /* Agent selector */
+    .agents { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .agent {
+      display: block; text-align: left; text-decoration: none; cursor: pointer;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .agent:hover { transform: translateY(-2px); border-color: var(--line-strong); }
+    .agent.active { border-color: var(--accent); background: linear-gradient(180deg, rgba(255,107,34,0.10), var(--surface)); }
+    .agent .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .agent .name { font-family: 'Sora'; font-weight: 600; font-size: 1.05rem; }
+    .agent .tag { margin-top: 8px; color: var(--muted); font-size: .92rem; line-height: 1.45; }
+    .pill { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+    .pill.on { color: var(--ok); background: rgba(58,210,159,0.12); }
+    .pill.soon { color: var(--muted); background: rgba(255,255,255,0.06); }
+    .pill.sel { color: var(--accent); background: rgba(255,107,34,0.14); }
+
+    /* Stage */
+    .stage { margin-top: 22px; background: var(--bg2); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 4vw, 40px); text-align: center; }
+    .stage h2 { font-size: clamp(1.3rem, 3.4vw, 1.9rem); font-weight: 600; }
+    .stage .sub { margin-top: 10px; color: var(--muted); font-size: .98rem; }
+
+    .orb { position: relative; width: 132px; height: 132px; margin: 26px auto 8px; }
+    .orb .ring { position: absolute; inset: 0; border-radius: 999px; border: 1px solid rgba(255,107,34,0.35); }
+    .orb .core { position: absolute; inset: 26px; border-radius: 999px; background: radial-gradient(circle at 35% 30%, #ff8a4d, var(--accent-deep)); box-shadow: 0 12px 40px -12px rgba(255,107,34,0.8); display: grid; place-items: center; color: #1a0d05; }
+    body.is-live .orb .ring { animation: pulse 1.5s ease-out infinite; }
+    body.is-live .orb .ring.d2 { animation-delay: .5s; }
+    body.is-live .orb .ring.d3 { animation-delay: 1s; }
+
+    .cta {
+      margin-top: 24px; display: inline-flex; align-items: center; gap: 11px; cursor: pointer;
+      background: var(--accent); color: #1a0d05; border: none; border-radius: 999px;
+      font-family: 'Sora'; font-weight: 600; font-size: 1.05rem; padding: 16px 30px;
+      transition: transform .16s ease, background .16s ease; box-shadow: 0 14px 36px -14px rgba(255,107,34,0.9);
+    }
+    .cta:hover { transform: translateY(-2px); background: #ff7d3c; }
+    .cta:disabled { background: var(--surface2); color: var(--muted); cursor: not-allowed; box-shadow: none; }
+    .cta svg { width: 20px; height: 20px; }
+
+    .status { margin-top: 16px; min-height: 22px; font-size: .92rem; color: var(--muted); }
+    .status.ok { color: var(--ok); }
+
+    .prompts { margin-top: 30px; }
+    .prompts .label { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .chips { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+    .chip { background: var(--surface); border: 1px solid var(--line); color: var(--text); border-radius: 999px; padding: 9px 15px; font-size: .9rem; }
+
+    .note { margin-top: 26px; display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; color: var(--muted); font-size: .9rem; line-height: 1.5; }
+    .note svg { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px; color: var(--accent); }
+
+    footer.foot { margin-top: 40px; text-align: center; color: var(--muted); font-size: 13px; }
+
+    @keyframes ping { 75%, 100% { transform: scale(2.2); opacity: 0; } }
+    @keyframes pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(1.7); opacity: 0; } }
+
+    @media (max-width: 620px) {
+      .agents { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .eyebrow .live span:first-child, body.is-live .orb .ring { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <span class="brand"><span class="dot"></span> LYCORE</span>
+      <a class="back" href="/">Back to site</a>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow"><span class="live"><span></span><span></span></span> Live voice demo</span>
+      <h1 class="title">Talk to the agent that answers the phone.</h1>
+      <p class="lede">This is the real thing, not a recording. Pick an agent, allow your microphone, and have a normal conversation. Ask it anything a caller would.</p>
+    </section>
+
+    <div class="agents" id="agents"></div>
+
+    <section class="stage">
+      <h2 id="stage-name">General reception</h2>
+      <p class="sub" id="stage-tag"></p>
+
+      <div class="orb" aria-hidden="true">
+        <span class="ring"></span><span class="ring d2"></span><span class="ring d3"></span>
+        <span class="core">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="none"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="1.6"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+
+      <button class="cta" id="callBtn">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.1 2.2Z" fill="currentColor"/></svg>
+        <span id="callLabel">Start voice call</span>
+      </button>
+      <div class="status" id="status"></div>
+
+      <div class="prompts">
+        <div class="label">Try asking</div>
+        <div class="chips" id="chips"></div>
+      </div>
+    </section>
+
+    <div class="note">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16h.01M12 3l9 16H3l9-16Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>Your browser will ask for microphone access, that is expected. Works best in Chrome or Edge on desktop or mobile. This connects a real, live call to the agent.</span>
+    </div>
+
+    <footer class="foot">LYCORE voice agents. Same agent, day or night.</footer>
+  </div>
+
+  <script>
+    // ── Agent config ──────────────────────────────────────────────────────────
+    // The general agent uses the widget already live on the site. To enable the
+    // bail bonds agent, paste its Bland widget_id into `widgetId` below.
+    var AGENTS = {
+      general: {
+        name: 'General reception',
+        tag: 'Answers calls, books jobs, takes messages, and quotes the basics.',
+        widgetId: '6e97310e-cd02-447b-ab89-92e91784946a',
+        prompts: ['What can you help me with?', 'Are you open right now?', 'Can I book an appointment?', 'How much is a service call?']
+      },
+      bail: {
+        name: 'Bail bonds intake',
+        tag: 'Handles a 2 a.m. inquiry: who was arrested, which jail, the charges, and next steps.',
+        widgetId: '', // TODO: paste the bail bonds Bland widget_id here to enable this agent
+        prompts: ['My brother was just arrested, what do I do?', 'How does bail work?', 'What do you need from me?', 'How fast can this move?']
+      }
+    };
+
+    var API_DOMAIN = 'api.bland.ai';
+    var params = new URLSearchParams(location.search);
+    var activeKey = params.get('agent') === 'bail' ? 'bail' : 'general';
+    var agent = AGENTS[activeKey];
+    var enabled = !!agent.widgetId;
+
+    // ── Render agent selector ─────────────────────────────────────────────────
+    var agentsEl = document.getElementById('agents');
+    Object.keys(AGENTS).forEach(function (key) {
+      var a = AGENTS[key];
+      var isActive = key === activeKey;
+      var ready = !!a.widgetId;
+      var el = document.createElement('a');
+      el.className = 'agent' + (isActive ? ' active' : '');
+      el.href = '?agent=' + key;
+      var pill = isActive
+        ? '<span class="pill sel">Selected</span>'
+        : (ready ? '<span class="pill on">Ready</span>' : '<span class="pill soon">Add widget ID</span>');
+      el.innerHTML =
+        '<div class="row"><span class="name">' + a.name + '</span>' + pill + '</div>' +
+        '<div class="tag">' + a.tag + '</div>';
+      agentsEl.appendChild(el);
+    });
+
+    // ── Render active agent stage ─────────────────────────────────────────────
+    document.getElementById('stage-name').textContent = agent.name;
+    document.getElementById('stage-tag').textContent = agent.tag;
+
+    var chipsEl = document.getElementById('chips');
+    agent.prompts.forEach(function (p) {
+      var c = document.createElement('span');
+      c.className = 'chip';
+      c.textContent = '“' + p + '”';
+      chipsEl.appendChild(c);
+    });
+
+    var callBtn = document.getElementById('callBtn');
+    var callLabel = document.getElementById('callLabel');
+    var statusEl = document.getElementById('status');
+
+    function setStatus(msg, ok) {
+      statusEl.textContent = msg || '';
+      statusEl.className = 'status' + (ok ? ' ok' : '');
+    }
+
+    // ── Load the Bland widget for the active agent ────────────────────────────
+    if (enabled) {
+      window.blandSettings = { widget_id: agent.widgetId, api_domain: API_DOMAIN };
+      var loader = document.createElement('script');
+      loader.src = 'https://widget.bland.ai/loader.js';
+      loader.defer = true;
+      document.body.appendChild(loader);
+      recolorLauncherWhenReady();
+    } else {
+      callBtn.disabled = true;
+      callLabel.textContent = 'Add this agent’s widget ID to enable';
+      setStatus('This agent is not wired up yet. Paste its Bland widget_id into agents.html to turn it on.');
+    }
+
+    // ── Drive Bland's widget (it renders inside a shadow root) ─────────────────
+    function blandRoot() { return window.__BLAND_SHADOW_ROOT__ || null; }
+    function findLauncher() {
+      var root = blandRoot();
+      return root ? root.querySelector('#bland-widget-root button') : null;
+    }
+    function findVoiceOption() {
+      var root = blandRoot();
+      if (!root) return null;
+      var buttons = Array.prototype.slice.call(root.querySelectorAll('button'));
+      return buttons.find(function (b) { return /voice chat/i.test(b.textContent || ''); }) || null;
+    }
+    function waitFor(find, timeoutMs) {
+      return new Promise(function (resolve) {
+        var start = Date.now();
+        (function tick() {
+          var found = find();
+          if (found) return resolve(found);
+          if (Date.now() - start > timeoutMs) return resolve(null);
+          setTimeout(tick, 100);
+        })();
+      });
+    }
+    function recolorLauncherWhenReady() {
+      var tries = 0;
+      var t = setInterval(function () {
+        var launcher = findLauncher();
+        tries++;
+        if (launcher) {
+          launcher.style.background = 'var(--accent, #ff6b22)';
+          launcher.style.borderColor = '#ff6b22';
+          clearInterval(t);
+        } else if (tries > 60) {
+          clearInterval(t);
+        }
+      }, 500);
+    }
+
+    var connecting = false;
+    callBtn.addEventListener('click', async function () {
+      if (!enabled || connecting) return;
+      connecting = true;
+      setStatus('Connecting, allow your microphone if asked…');
+
+      var launcher = await waitFor(findLauncher, 6000);
+      if (!launcher) {
+        connecting = false;
+        setStatus('The agent is still loading. Give it a second and try again.');
+        return;
+      }
+      if (!findVoiceOption()) launcher.click();
+      var voice = await waitFor(findVoiceOption, 2500);
+      if (voice) voice.click();
+
+      document.body.classList.add('is-live');
+      callLabel.textContent = 'Call in progress';
+      setStatus('You are connected. Start talking.', true);
+      connecting = false;
+    });
+  </script>
+</body>
+</html>
