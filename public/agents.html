@@ -285,9 +285,25 @@
     callBtn.addEventListener('click', async function () {
       if (!enabled || connecting) return;
       connecting = true;
-      setStatus('Connecting, allow your microphone if asked…');
 
-      var launcher = await waitFor(findLauncher, 6000);
+      // Ask for the microphone during THIS real click. Browsers only show the mic
+      // consent prompt in response to a genuine user gesture, so we request it here.
+      // The widget's own scripted click cannot trigger it, which is why consent
+      // never appeared before. Once granted for this site, the widget reuses it.
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        setStatus('Allow your microphone to start…');
+        try {
+          var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          stream.getTracks().forEach(function (t) { t.stop(); });
+        } catch (err) {
+          connecting = false;
+          document.body.classList.remove('is-live');
+          setStatus('Microphone access was blocked. Enable the mic for this site in your browser, then try again.');
+          return;
+        }
+      }
+
+      var launcher = findLauncher() || await waitFor(findLauncher, 6000);
       if (!launcher) {
         connecting = false;
         setStatus('The agent is still loading. Give it a second and try again.');
@@ -299,7 +315,7 @@
 
       document.body.classList.add('is-live');
       callLabel.textContent = 'Call in progress';
-      setStatus('You are connected. Start talking.', true);
+      setStatus('Connected. Start talking.', true);
       connecting = false;
     });
   </script>
