@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Mic } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
+import { whopTrack } from '../lib/whop';
 
 type BlandWindow = Window & { __BLAND_SHADOW_ROOT__?: ShadowRoot };
 
@@ -42,6 +43,7 @@ export default function AgentTestCta() {
 
   const openAgent = async () => {
     trackEvent('ai_agent_test_click', { page: window.location.pathname });
+    whopTrack('demo_started', { demo: 'voice_agent' });
 
     const launcher = await waitFor(findLauncher, 3000);
     if (!launcher) {

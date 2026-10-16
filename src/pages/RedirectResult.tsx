@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import { AlertCircle, ArrowRight, CalendarCheck, CheckCircle2, Mail } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
+import { sessionEventId, whopTrack } from '../lib/whop';
 import { signalAccent } from '../content/palette';
 import { site } from '../siteData';
 
@@ -77,7 +78,9 @@ export default function RedirectResult({ type }: RedirectResultProps) {
 
   useEffect(() => {
     trackEvent(content.eventName, { path: window.location.pathname });
-  }, [content.eventName]);
+    // Cal.com sends the visitor here after a booking; the session id keeps a page refresh from counting twice.
+    if (type === 'booking-success') whopTrack('schedule', { event_id: sessionEventId('schedule') });
+  }, [content.eventName, type]);
 
   const secondaryIsEmail = content.secondaryPath.startsWith('mailto:');
 

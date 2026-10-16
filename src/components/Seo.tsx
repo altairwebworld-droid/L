@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { allPages, site } from '../siteData';
 import { schemaFor } from '../content/schema';
 import { trackEvent, trackPageView } from '../lib/analytics';
+import { whopTrack } from '../lib/whop';
 
 export default function Seo() {
   const location = useLocation();
@@ -57,6 +58,10 @@ export default function Seo() {
       }
       const link = target.closest<HTMLAnchorElement>('a[href]');
       if (!link) return;
+      // Any link to the booking page or straight to the Cal.com calendar counts as intent to book.
+      if ((link.hostname === window.location.hostname && link.pathname === '/book') || link.hostname === 'cal.com') {
+        whopTrack('book_call_click');
+      }
       if (link.href.startsWith('mailto:')) trackEvent('email_click', { href: link.href });
       if (link.hostname && link.hostname !== window.location.hostname) trackEvent('outbound_click', { href: link.href });
     };

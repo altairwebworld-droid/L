@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Bot, Send, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '../lib/analytics';
+import { whopTrack } from '../lib/whop';
 
 interface Message {
   id: string;
@@ -52,6 +53,7 @@ export default function AIChatDemo() {
     if (!opened) {
       setOpened(true);
       trackEvent('chatbot_open', { path: window.location.pathname });
+      whopTrack('demo_started', { demo: 'ai_chat' });
     }
 
     const userText = input.trim();

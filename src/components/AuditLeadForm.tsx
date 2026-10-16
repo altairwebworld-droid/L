@@ -3,6 +3,7 @@ import { ArrowUpRight, CalendarDays, CheckCircle2, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getAttribution, trackEvent } from '../lib/analytics';
+import { newEventId, whopCustomer, whopTrack } from '../lib/whop';
 import { site } from '../siteData';
 
 const bookingUrl = 'https://cal.com/lycorellc/discovery-call';
@@ -129,6 +130,11 @@ export default function AuditLeadForm() {
       // GA4's recommended event for a completed enquiry. Mark this as a key
       // event in GA4 so completed forms can be compared with traffic sources.
       trackEvent('generate_lead', { lead_type: 'lead_system_review' });
+      // Fired here, once per real submission, rather than on the thank-you page where a refresh would repeat it.
+      whopTrack('lead', {
+        event_id: newEventId('lead'),
+        ...whopCustomer({ email: formData.email, phone: `${formData.phoneCountryCode}${formData.phone}` }),
+      });
       navigate('/audit-request-received');
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Submission failed.';
