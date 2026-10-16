@@ -27,12 +27,16 @@ const present = (value: string | undefined): value is string => Boolean(value);
 const blandWidgetTags = `<script>window.blandSettings = { widget_id: "6e97310e-cd02-447b-ab89-92e91784946a" };</script>
     <script src="https://widget.bland.ai/loader.js" defer></script>`;
 
+// Whop Pixel (ads attribution). Pasted exactly as issued by Whop; do not edit any character.
+const whopPixelTag = `<script>!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_AeZ4MVyAhypMnI");whop.track("page");</script>`;
+
 function headFor(page: PageMeta, assetTags: string) {
   const canonical = absoluteUrl(page.path);
   const image = `${site.domain}${site.ogImage}`;
   return `<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    ${whopPixelTag}
     <meta name="google-site-verification" content="-G--OXjnQTRMBSyXvGwQlQHyUs-A4DWD8AKBNTXSjTQ" />
     <meta name="google-site-verification" content="TCxr48SCxuIbxHZk0cWv4R2bQg83au0NrPyptABI1qI" />
     <link rel="shortcut icon" href="/favicon.ico" />
